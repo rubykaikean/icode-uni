@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  inventory_management_system_id: 1
+
+two:
+  user_id: 1
+  inventory_management_system_id: 1
