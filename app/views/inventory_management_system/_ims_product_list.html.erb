@@ -1,0 +1,52 @@
+ <tr>
+        <td></td>
+        <td><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_MENU) %> Product</td>
+        <td><%= ims_show_disabled(checkboxes, InventoryManagementSystem::LISTING_PRODUCT_ID) %> Listing Product ID</td>
+        <% 11.times do |td| %><td></td><% end %>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::LISTING_PRODUCT_ID_SHOW) %></td>
+      </tr>
+      
+      <!-- NON OPERATION -->
+      <tr>
+        <% 2.times do |td| %><td></td><% end %>
+        <td><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION) %> Open Non Operation</td>
+        <% 1.times do |td| %><td></td><% end %>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_GROUP) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_GROUP_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_SUB_GROUP) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_SUB_GROUP_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_FILE) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_FILE_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_COMMON) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_COPY)%></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_KIV) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_DELETE) %></td>
+        <% 1.times do |td| %><td></td><% end %>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= ims_show_disabled(checkboxes, InventoryManagementSystem::KIV_PRODUCT_NON_OPERATION) %> Open Non Operation KIV</td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_NON_OPERATION_RECOVER) %></td>
+        <% 11.times do |td| %><td></td><% end %>
+      </tr>
+      
+      <!-- OPERATION -->
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION) %> Open Operation</td>
+        <% 1.times do |td| %><td></td><% end %>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_GROUP) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_GROUP_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_SUB_GROUP) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_SUB_GROUP_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_FILE) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_FILE_EDIT) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_COMMON) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_COPY) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_KIV) %></td>
+        <td align="center"><%= ims_show_disabled(checkboxes, InventoryManagementSystem::PRODUCT_OPERATION_DELETE) %></td>
+        <% 1.times do |td| %><td></td><% end %>
+      </tr>
