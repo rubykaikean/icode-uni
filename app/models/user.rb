@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :lockable, :timeoutable, :validatable
 
+
+  has_many :roles, :dependent => :destroy
+  has_many :inventory_management_systems, :through => :roles
+
   has_many :roles, :dependent => :destroy
   has_many :inventory_management_systems, :through => :roles
 

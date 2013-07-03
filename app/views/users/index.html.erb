@@ -1,6 +1,6 @@
 <h1>Listing users</h1>
 
-<table id="rounded-corner">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Username</th>
@@ -14,9 +14,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= link_to 'Select', user %></td>
+        <td><%= link_to 'Select', user , :class=>"btn btn-info"%></td>
         <td><%#= link_to 'Edit', edit_user_user_path(user) %></td>      
-        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>          
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-danger"%></td>          
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to "Home", home_index_path %>
+<%= link_to "Home", home_index_path , :class =>"btn" %>

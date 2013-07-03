@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  qty: 1
+  batch_no: 1
+  issue_by: MyString
+  issue_date: 2013-06-28
+  remark: MyString
+  client_id: 1
+
+two:
+  name: MyString
+  description: MyString
+  qty: 1
+  batch_no: 1
+  issue_by: MyString
+  issue_date: 2013-06-28
+  remark: MyString
+  client_id: 1

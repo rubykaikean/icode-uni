@@ -11,7 +11,7 @@
       <ul class="nav nav-pills">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Home (<strong><%= current_user.username %> / <%= current_user.current_sign_in_at %></strong>)
+            Home (<strong><%= current_user.username %> <%#= current_user.current_sign_in_at %></strong>)
           <b class="caret"></b>
           </a>
             <ul class="dropdown-menu">
@@ -28,39 +28,11 @@
             <b class="caret"></b>
             </a>
         <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-            <%# if roles.include?(InventoryManagementSystem::CATOGERY_ONE) %>
-            <a tabindex="-1" href="#">catogery One - one</a>
-            <ul class="dropdown-menu">
-              <%# if roles.include?(InventoryManagementSystem::CATOGERY_PAGE_ONE) %>
-                <li>Section selection</li>
-              <%# else %>
-                <li>Section selection</li>
-              <%# end %>
-                
-              
-            </li>
-            <%# end %>
-            </ul>
-
-            <li class="dropdown-submenu">
-            <%# if roles.include?(InventoryManagementSystem::PURCHASE_ORDER_MENU) %>
-            <a tabindex="-1" href="#">Catogery Two</a>
-            <ul class="dropdown-menu">
-              <%# if roles.include?(InventoryManagementSystem::PURCHASE_ORDER_TRANSACTION) %>
-                <li class="text_gray" style="width:210px;">Section selection</li>
-                <li class="text_gray" style="width:210px;">Section selection</li>
-              <%# else %>
-                <!-- <li class="text_gray">PO Transactions & Histories</li> -->
-              <%# end %>
-            </li>
-            </ul>
-      
-            
-              
-            
+            <li><%= link_to "Product list" , product_lists_path %></li>
+            <li><%= link_to "Material" , materials_path %></li>
+            <li><%= link_to "Client" , clients_path %></li>
         </ul>
-      </li>
+      
     </ul>
 
 

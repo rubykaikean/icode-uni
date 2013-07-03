@@ -1,0 +1,49 @@
+<%= form_for(@estimation) do |f| %>
+  <% if @estimation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+
+      <ul>
+      <% @estimation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :part_detail %><br>
+    <%= f.text_field :part_detail %>
+  </div>
+  <div class="field">
+    <%= f.label :material %><br>
+    <%= f.text_field :material %>
+  </div>
+  <div class="field">
+    <%= f.label :thk_dia %><br>
+    <%= f.text_field :thk_dia %>
+  </div>
+  <div class="field">
+    <%= f.label :dimension_h %><br>
+    <%= f.number_field :dimension_h %>
+  </div>
+  <div class="field">
+    <%= f.label :dimension_w %><br>
+    <%= f.number_field :dimension_w %>
+  </div>
+  <div class="field">
+    <%= f.label :dimension_l %><br>
+    <%= f.number_field :dimension_l %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_field :remarks %>
+  </div>
+  <div class="field">
+    <%= f.label :station_id %><br>
+    <%= f.number_field :station_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

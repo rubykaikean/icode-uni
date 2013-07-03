@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Estimation no:</strong>
+  <%= @product_list.estimation_no %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_list.description %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @product_list.qty %>
+</p>
+
+<p>
+  <strong>Batch no:</strong>
+  <%= @product_list.batch_no %>
+</p>
+
+<p>
+  <strong>Issue by:</strong>
+  <%= @product_list.issue_by %>
+</p>
+
+<p>
+  <strong>Issue date:</strong>
+  <%= @product_list.issue_date %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @product_list.remark %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @product_list.client_id %>
+</p>
+
+<%= link_to 'Edit', edit_product_list_path(@product_list) %> |
+<%= link_to 'Back', product_lists_path %>

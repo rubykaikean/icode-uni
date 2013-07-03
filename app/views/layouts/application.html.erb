@@ -11,11 +11,21 @@
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
     <% if user_signed_in? %>
+    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>
+
     <%= render "/layouts/top_menu_layout" %>
     <% end %>
  
+  <div class="container">
+    <%= yield %>
+  </div>
 
-<%= yield %>
+<!-- 
+
+  
+    <%# if user_signed_in? %>
+    <div id="main-footer"></div>
+    <%# end %> -->
 
 </body>
 </html>

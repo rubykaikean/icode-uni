@@ -1,5 +1,17 @@
 IcodeUni::Application.routes.draw do
   
+  resources :materials
+
+  resources :drawings
+
+  resources :estimations
+
+  resources :stations
+
+  resources :clients
+
+  resources :product_lists
+
   resources :roles
 
   get "home/index"

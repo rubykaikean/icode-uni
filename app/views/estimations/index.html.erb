@@ -1,0 +1,41 @@
+<h1>Listing estimations</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Part detail</th>
+      <th>Material</th>
+      <th>Thk dia</th>
+      <th>Dimension h</th>
+      <th>Dimension w</th>
+      <th>Dimension l</th>
+      <th>Remarks</th>
+      <th>Station</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimations.each do |estimation| %>
+      <tr>
+        <td><%= estimation.part_detail %></td>
+        <td><%= estimation.material %></td>
+        <td><%= estimation.thk_dia %></td>
+        <td><%= estimation.dimension_h %></td>
+        <td><%= estimation.dimension_w %></td>
+        <td><%= estimation.dimension_l %></td>
+        <td><%= estimation.remarks %></td>
+        <td><%= estimation.station_id %></td>
+        <td><%= link_to 'Show', estimation %></td>
+        <td><%= link_to 'Edit', edit_estimation_path(estimation) %></td>
+        <td><%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimation', new_estimation_path %>

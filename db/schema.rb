@@ -11,9 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130605100139) do
+ActiveRecord::Schema.define(version: 20130702095741) do
+
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "drawings", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "estimations", force: true do |t|
+    t.string   "part_detail"
+    t.string   "material"
+    t.float    "thk_dia",     default: 0.0
+    t.float    "decimal",     default: 0.0
+    t.integer  "dimension_h"
+    t.integer  "dimension_w"
+    t.integer  "dimension_l"
+    t.string   "remarks"
+    t.integer  "station_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inventory_management_systems", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materials", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -21,6 +66,14 @@ ActiveRecord::Schema.define(version: 20130605100139) do
   create_table "roles", force: true do |t|
     t.integer  "user_id"
     t.integer  "inventory_management_system_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stations", force: true do |t|
+    t.string   "name"
+    t.integer  "product_list_id"
+    t.integer  "estimation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

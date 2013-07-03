@@ -1,4 +1,4 @@
-<h1>Home#index</h1>
+<h1>Home</h1>
 <!-- <p>
 username: <%= current_user.username %> <br>
 
@@ -11,7 +11,6 @@ username: <%= current_user.username %> <br>
 	No, not signed in
 <%# end %>
 </p> -->
-
 <% if current_user.admin? %>
 	
 	<%= link_to "Add user", new_user_users_path %><br />
@@ -19,5 +18,4 @@ username: <%= current_user.username %> <br>
 <% else %>
 	No, not admin
 <% end %>
-
 

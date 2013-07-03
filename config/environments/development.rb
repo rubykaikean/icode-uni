@@ -39,8 +39,8 @@ IcodeUni::Application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "dynamicpubo@gmail.com",
-    password: "975315023"
+    user_name: "khongkk89@gmail.com",
+    password: "kkk105201314"
 
   }
 end
