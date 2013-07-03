@@ -13,11 +13,11 @@
     </tr>
     <tr>
       <td><%= f.input :issue_by %></td>
-      <td><%= f.input :issue_date , :id=>"dp2" %></td>
+      <td><%= f.input :issue_date %></td>
     </tr>
     <tr align="margin-left">
       <td><%= f.input :remark %></td>
-      <td><%#= f.select :client_id , Client.all.map {|r| r.client.name r.id } , :include=> "_blank" %></td>
+      <td><%= f.select :client_id , Client.all.map {|r| [r.name, r.id] } , :include=> "_blank" %></td>
     </tr>
   </div>
 </table>

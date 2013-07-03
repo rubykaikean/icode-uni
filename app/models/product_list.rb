@@ -1,6 +1,6 @@
 class ProductList < ActiveRecord::Base
 
-	belongs_to :product_list   
+	belongs_to :client   
 
 	has_many :estimation , :through => :station
 
