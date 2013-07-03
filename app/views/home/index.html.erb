@@ -16,5 +16,7 @@ username: <%= current_user.username %> <br>
 	<%= link_to "Add user", new_user_users_path %><br />
 	<%= link_to 'Listing User', users_path %>
 <% else %>
-	No, not admin
+	&nbsp;
 <% end %>
+
+<% link_to "Product" , product_lists_path , :class=>"btn" %>
