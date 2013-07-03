@@ -3,14 +3,22 @@
 
 <table>
   <div class="inputs">
-    <%= f.input :estimation_no %>
-    <%= f.input :description %>
-    <%= f.input :qty %>
-    <%= f.input :batch_no %>
-    <%= f.input :issue_by %>
-    <%= f.input :issue_date %>
-    <%= f.input :remark %>
-    <%= f.input :client_id %>
+    <tr>
+      <td><%= f.input :estimation_no %></td>
+      <td><%= f.input :description %></td>
+    </tr>
+    <tr align="margin-left">
+      <td><%= f.input :qty %></td>
+      <td><%= f.input :batch_no %></td>
+    </tr>
+    <tr>
+      <td><%= f.input :issue_by %></td>
+      <td><%= f.input :issue_date , :id=>"dp2" %></td>
+    </tr>
+    <tr align="margin-left">
+      <td><%= f.input :remark %></td>
+      <td><%#= f.select :client_id , Client.all.map {|r| r.client.name r.id } , :include=> "_blank" %></td>
+    </tr>
   </div>
 </table>
 
