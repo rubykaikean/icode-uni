@@ -1,0 +1,15 @@
+<% content_for :jquery_script do %>
+  <script>    
+    $(document).ready(function() {
+        var validator = $("#valid_user_form").kendoValidator().data("kendoValidator");
+        
+        $("#new_name").keyup(function(){
+          var string = $(this).val();
+          $("#insert_name").html(string);
+          return false;
+        });
+        
+        $("#save_button").click(function() {
+            if (validator.validate()) { busyHours(); } 
+            else { alert("Invalid Data Form..."); return false; }
+        });

@@ -25,6 +25,7 @@ IcodeUni::Application.routes.draw do
     collection do
       get :contact
       get :new_user
+      get :new_user_entry
       post :create_user
 
     end
