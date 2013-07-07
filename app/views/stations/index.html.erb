@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to station.id, station_path(station) %></td>
         <td><%= station.name %></td>
-        <td><%= station.product_id %></td>
+        <td><%= station.product.name %></td>
         <td><%= station.estimation_id %></td>
         <td><%=l station.created_at %></td>
         <td>
