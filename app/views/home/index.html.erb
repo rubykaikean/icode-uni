@@ -13,8 +13,10 @@ username: <%= current_user.username %> <br>
 </p> -->
 <% if current_user.admin? %>
 	
-	<%= link_to "Add user", new_user_users_path %><br />
-	<%= link_to 'Listing User', users_path %>
+	<%= link_to "Add user", new_user_users_path, :class=>"btn" %><br /><br />
+
+	<%= link_to 'Listing User', users_path, :class=>"btn" %><br />
+
 <% else %>
 	&nbsp;
 <% end %><br>

@@ -1,27 +1,39 @@
-<h1>Listing users</h1>
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
 
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Username</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>  
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= link_to user.id, user_path(user) %></td>
         <td><%= user.username %></td>
-        <td><%= link_to 'Select', user , :class=>"btn btn-info"%></td>
-        <td><%#= link_to 'Edit', edit_user_user_path(user) %></td>      
-        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-danger"%></td>          
+        <%#= link_to 'Select', user , :class=>"btn btn-info"%>
+        <%#= link_to 'Edit', edit_user_user_path(user) %>     
+        <%#= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-danger"%>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      user, :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      user,
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>          
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to "Home", home_index_path , :class =>"btn" %>
+<div style="float: right; "><%= link_home_button %></div> 
