@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 20130705065125) do
     t.datetime "updated_at"
   end
 
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"

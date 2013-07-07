@@ -7,12 +7,9 @@
         <th width="300">SUB-MODULE</th>
         <th width="50">Add</th>
         <th width="50">Show</th>
-        <th width="50">Edit</th>
-        <th width="50">Drop To KIV</th>
-        <th width="50">Printer</th>
-        <th width="50">Show KIV</th>
-        <th width="50">Recover</th>
-        <th width="50">Show History</th>
+        <th width="50">Edit</th>       
+        <th width="50">Printer</th>      
+        
       </tr>
       <tr style="background-color: black;"><td colspan="100"></td></tr>
     </thead>
@@ -26,3 +23,9 @@
     </tbody>
   </table>
 </div>
+<div class="form-actions">
+    <%#= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+</div>
+

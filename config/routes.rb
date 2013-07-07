@@ -21,7 +21,7 @@ IcodeUni::Application.routes.draw do
   resources :users do
     member do
       get :info
-      get :edit_user
+      get :edit_user      
       patch :update_user    
     end
     collection do
