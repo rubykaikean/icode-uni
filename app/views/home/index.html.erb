@@ -17,6 +17,10 @@ username: <%= current_user.username %> <br>
 	<%= link_to 'Listing User', users_path %>
 <% else %>
 	&nbsp;
-<% end %>
+<% end %><br>
+<%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
 
-<% link_to "Product" , product_lists_path , :class=>"btn" %>
+<%= link_to "Product" , products_path , :class=>"btn" %><br><br>
+
+<%= link_to "Client" , clients_path , :class=>"btn" %><br>
+<%# link_to "Product" , product_lists_path , :class=>"btn btn-info" %>

@@ -1,6 +1,6 @@
 class Station < ActiveRecord::Base
 
-	belongs_to :product_list
+	belongs_to :products
 	belongs_to :estimation
 
 

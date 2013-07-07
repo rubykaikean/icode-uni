@@ -1,4 +1,4 @@
-<%= form_for(@estimation) do |f| %>
+<%= simple_form_for(@estimation) do |f| %>
   <% if @estimation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>

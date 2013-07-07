@@ -1,5 +1,7 @@
 IcodeUni::Application.routes.draw do
   
+  resources :products
+
   resources :materials
 
   resources :drawings
@@ -10,7 +12,6 @@ IcodeUni::Application.routes.draw do
 
   resources :clients
 
-  resources :product_lists
 
   resources :roles
 
