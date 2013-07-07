@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Station -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @station.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @station.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:product_id) %>:</strong></dt>
+  <dd><%= @station.product_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:estimation_id) %>:</strong></dt>
+  <dd><%= @station.estimation_id %></dd>
+</dl>
 
-<p>
-  <strong>Product list:</strong>
-  <%= @station.product_list_id %>
-</p>
-
-<p>
-  <strong>Estimation:</strong>
-  <%= @station.estimation_id %>
-</p>
-
-<%= link_to 'Edit', edit_station_path(@station) %> |
-<%= link_to 'Back', stations_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              stations_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_station_path(@station), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              station_path(@station),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

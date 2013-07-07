@@ -28,14 +28,18 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @product }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+      if @product.standard ==  true
+          @product.save
+          format.html { redirect_to @product, notice: 'Product was successfully created Standard.' }
+          format.json { render action: 'show', status: :created, location: @product }
+        elsif @product.standard == false
+          @product.save
+          format.html { redirect_to stations_path, notice: 'Product Was successfully created with Non Standard' }
+        else 
+          format.html { render action: 'new'}
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /products/1
@@ -72,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :client_id, :date)
+      params.require(:product).permit(:name, :client_id, :date , :standard , :non_standard)
     end
 end

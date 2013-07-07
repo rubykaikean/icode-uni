@@ -41,7 +41,7 @@ gem 'devise', "~> 3.0.0.rc"
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
-
+gem 'bootstrap-datepicker-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

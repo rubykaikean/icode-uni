@@ -1,5 +1,7 @@
 IcodeUni::Application.routes.draw do
   
+  resources :stations
+
   resources :products
   
 
@@ -8,8 +10,6 @@ IcodeUni::Application.routes.draw do
   resources :drawings
 
   resources :estimations
-
-  resources :stations
 
   resources :clients
 

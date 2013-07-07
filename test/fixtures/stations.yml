@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  product_list_id: 1
+  product_id: 1
   estimation_id: 1
 
 two:
   name: MyString
-  product_list_id: 1
+  product_id: 1
   estimation_id: 1

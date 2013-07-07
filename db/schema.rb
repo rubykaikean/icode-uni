@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130705065125) do
+ActiveRecord::Schema.define(version: 20130707150931) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20130705065125) do
     t.string   "name"
     t.integer  "client_id"
     t.string   "date"
+    t.boolean  "standard",     default: false
+    t.boolean  "non_standard", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,7 +69,7 @@ ActiveRecord::Schema.define(version: 20130705065125) do
 
   create_table "stations", force: true do |t|
     t.string   "name"
-    t.integer  "product_list_id"
+    t.integer  "product_id"
     t.integer  "estimation_id"
     t.datetime "created_at"
     t.datetime "updated_at"

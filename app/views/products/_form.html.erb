@@ -6,16 +6,17 @@
   <!-- <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i></span>
  -->
-  
-
-
-  <div id="datetimepicker4" class="input-append">
+<!-- 
+<input type="text" data-behaviour='datepicker' >
+<%#= f.input :date , "data-behaviour"=>"datepicker" %>
+ -->
+ <div id="datetimepicker4" class="input-append">
     <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
      <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
     </span>
-  </div>
+  </div> 
 <!-- <div class="well">
   <div id="datetimepicker4" class="input-append">
     <input data-format="yyyy-MM-dd" type="text"></input>
@@ -26,6 +27,13 @@
   </div>
 </div>
  -->
+  <br>
+  <%= check_box_tag(:standard) %>
+  <%= label_tag(:standard, "standard") %>
+  <%= check_box_tag(:non_standard) %>
+  <%= label_tag(:non_standard, "Non standard") %>
+
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -35,8 +43,28 @@
 
 <script type="text/javascript">
   $(function() {
+    // $('[data-behaviour~=datepicker]').datepicker();
     $('#datetimepicker4').datetimepicker({
       pickTime: false
     });
   });
+
+  $("input:checkbox").change(function(){
+ 
+    // total allowed to be checked.
+    var max_allowed = 1;
+    // count how many checked.
+    var checked = $("input:checked").size();
+    // perform test.
+    if ( checked > max_allowed ) {
+        // is more than the max so uncheck.
+        $(this).attr("checked", false);
+        //$(this).
+        // display error message.
+        //alert("Please select a maximum of " + max_allowed + " options.");
+ 
+    }
+ 
+  });
 </script>
+

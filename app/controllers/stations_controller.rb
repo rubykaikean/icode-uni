@@ -1,5 +1,4 @@
 class StationsController < ApplicationController
-  before_filter :authenticate_user!
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   # GET /stations
@@ -70,6 +69,6 @@ class StationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
-      params.require(:station).permit(:name, :product_list_id, :estimation_id)
+      params.require(:station).permit(:name, :product_id, :estimation_id)
     end
 end
