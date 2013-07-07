@@ -1,6 +1,7 @@
 IcodeUni::Application.routes.draw do
   
   resources :products
+  
 
   resources :materials
 

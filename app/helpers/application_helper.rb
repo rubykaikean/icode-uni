@@ -6,6 +6,6 @@ module ApplicationHelper
   	end
 
   	def link_home_button
-    	link_to 'Home' , root_url , :class=>"k-button font_bold"
+    	link_to 'Home' , root_url , :class=>"btn btn-info"
   	end
 end

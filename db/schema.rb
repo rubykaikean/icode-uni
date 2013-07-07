@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20130705065125) do
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
-    t.date     "date"
+    t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -7,7 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
       <tr>
         <td><%= link_to material.id, material_path(material) %></td>
         <td><%= material.name %></td>
-        <td><%=l material.created_at %></td>
+        <td><%#=l material.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_material_path(material), :class => 'btn btn-mini' %>
+                      edit_material_path(material), :class => 'btn btn-mini' %> /
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       material_path(material),
                       :method => :delete,
@@ -33,4 +33,4 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_material_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary' %> <div style="float: right; "><%= link_home_button %></div> 

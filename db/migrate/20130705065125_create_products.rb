@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.string :name
       t.integer :client_id
-      t.date :date
+      t.string :date
 
       t.timestamps
     end
