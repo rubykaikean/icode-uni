@@ -1,10 +1,13 @@
 class StationsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   # GET /stations
   # GET /stations.json
   def index
     @stations = Station.all
+    # @products = Product.first
+    #@detail_inventory_report = InventoryHistory.find(params[:in_ids])
   end
 
   # GET /stations/1

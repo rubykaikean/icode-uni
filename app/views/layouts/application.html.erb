@@ -10,12 +10,13 @@
 	<%#= link_to "Home", home_index_path %>
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
+    
+    
     <% if user_signed_in? %>
-    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>
-
     <%= render "/layouts/top_menu_layout" %>
+    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>
     <% end %>
- 
+  
   <div class="container">  <!-- this link is fix layout --> 
     <%= yield %>
 

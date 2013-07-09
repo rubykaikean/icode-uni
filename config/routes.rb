@@ -2,7 +2,12 @@ IcodeUni::Application.routes.draw do
   
   resources :stations
 
-  resources :products
+  resources :products do
+    collection do
+      get "product_station"
+      get "standard_project"
+    end
+  end
   
 
   resources :materials
@@ -12,7 +17,6 @@ IcodeUni::Application.routes.draw do
   resources :estimations
 
   resources :clients
-
 
   resources :roles
 

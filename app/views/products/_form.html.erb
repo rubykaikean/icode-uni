@@ -6,10 +6,10 @@
   <!-- <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i></span>
  -->
-<!-- 
-<input type="text" data-behaviour='datepicker' >
+
+<!-- <input type="text" data-behaviour='datepicker' > -->
 <%#= f.input :date , "data-behaviour"=>"datepicker" %>
- -->
+
  <div id="datetimepicker4" class="input-append">
     <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
      <span class="add-on">
@@ -28,10 +28,10 @@
 </div>
  -->
   <br>
-  <%= check_box_tag(:standard) %>
-  <%= label_tag(:standard, "standard") %>
-  <%= check_box_tag(:non_standard) %>
-  <%= label_tag(:non_standard, "Non standard") %>
+  <%= f.check_box(:standard) %>
+  <%= f.label(:standard, "standard") %>
+  <%= f.check_box(:non_standard) %>
+  <%= f.label(:non_standard, "Non standard") %>
 
 
   <div class="form-actions">
@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
   $(function() {
-    // $('[data-behaviour~=datepicker]').datepicker();
+    $('[data-behaviour~=datepicker]').datepicker();
     $('#datetimepicker4').datetimepicker({
       pickTime: false
     });

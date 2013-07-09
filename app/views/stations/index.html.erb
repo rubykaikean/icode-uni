@@ -2,14 +2,16 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
 <table class="table table-striped">
+  <% form_tag %>
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:product_id) %></th>
       <th><%= model_class.human_attribute_name(:estimation_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +22,7 @@
         <td><%= station.name %></td>
         <td><%= station.product.name %></td>
         <td><%= station.estimation_id %></td>
-        <td><%=l station.created_at %></td>
+        <td><%#=l station.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_station_path(station), :class => 'btn btn-mini' %>
@@ -38,3 +40,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_station_path,
             :class => 'btn btn-primary' %>
+            <div style="float : right;"><%= link_home_button %></div>
