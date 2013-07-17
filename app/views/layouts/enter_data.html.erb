@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IcodeUni</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<%#= link_to "Home", home_index_path %>
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+
+  <div class="container">  <!-- this link is fix layout --> 
+    <%= yield %>
+
+  </div>
+
+<!-- 
+
+  
+    <%# if user_signed_in? %>
+    <div id="main-footer"></div>
+    <%# end %> -->
+
+</body>
+</html>

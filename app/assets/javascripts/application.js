@@ -20,6 +20,9 @@
 
 // this line mean .. loop view code first , then only come back loop jquery
  $(document).ready(function () {     
+
+
+ 	
  	
 
 // // //===================== datepicker ======================= 

@@ -1,43 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Part detail:</strong>
-  <%= @estimation.part_detail %>
+  <strong>Client:</strong>
+  <%= @estimation.client_id %>
 </p>
 
 <p>
-  <strong>Material:</strong>
-  <%= @estimation.material %>
+  <strong>Title:</strong>
+  <%= @estimation.title %>
 </p>
 
 <p>
-  <strong>Thk dia:</strong>
-  <%= @estimation.thk_dia %>
+  <strong>Dimension:</strong>
+  <%= @estimation.dimension %>
 </p>
 
 <p>
-  <strong>Dimension h:</strong>
-  <%= @estimation.dimension_h %>
+  <strong>Drawing no:</strong>
+  <%= @estimation.drawing_no_id %>
 </p>
 
 <p>
-  <strong>Dimension w:</strong>
-  <%= @estimation.dimension_w %>
+  <strong>Date:</strong>
+  <%= @estimation.date %>
 </p>
 
 <p>
-  <strong>Dimension l:</strong>
-  <%= @estimation.dimension_l %>
-</p>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @estimation.remarks %>
-</p>
-
-<p>
-  <strong>Station:</strong>
-  <%= @estimation.station_id %>
+  <strong>Issued by:</strong>
+  <%#= @estimation.issued_by %>
 </p>
 
 <%= link_to 'Edit', edit_estimation_path(@estimation) %> |

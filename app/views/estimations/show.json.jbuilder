@@ -1,1 +1,1 @@
-json.extract! @estimation, :part_detail, :material, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :remarks, :station_id, :created_at, :updated_at
+json.extract! @estimation, :client_id, :title, :dimension, :drawing_no, :date, :issued_by, :created_at, :updated_at

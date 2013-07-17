@@ -1,0 +1,89 @@
+<%= simple_form_for(@estimation_item) do |f| %>
+  <%= f.error_notification %>
+<!-- stlye="width:100%;border:1px solid black;" -->
+<table class="table table-bordered" id="my_table" >
+  <thead>
+    <tr>
+      <th rowspan="2">No.</th>
+      <th rowspan="2">Part Detail</th>
+      <th rowspan="2">Material</th>
+      <th colspan="4" align="center">Dimension(mm)</th>
+      <th colspan="1">WT</th>
+      <th rowspan="2">Qty</th>
+      <th rowspan="2">UOM</th>
+      <th rowspan="1">Weight</th>
+      <th rowspan="2" width="50">Unit Price</th>
+      <th rowspan="2">Total</th>
+      <th rowspan="2" width="150">Remarks</th>
+    </tr>
+    <tr>
+      <th align="center">Thk/Dia.</th>
+      <th align="center">H</th>
+      <th align="center">W</th>
+      <th align="center">L</th>
+      <th align="center">Ibs/Ft<sup>2</sup></th>
+      <th align="center">Ib / KG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <div class="inputs">
+        <td></td>
+        <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} , :label=>false %></td>
+        <td><%= f.select :material , Material.all.map { |r| [r.name, r.id] }, :label=>false ,:size=>9 %></td>
+        <td><%= f.input :thk_dia, :label=>false,:size=>6 %></td>
+        <td><%= f.input :dimension_h, :label=>false,:size=> 9 %></td>
+        <td><%= f.input :dimension_w , :label=>false ,:size=> 9 %></td>
+        <td><%= f.input :dimension_l, :label=>false,:size=> 9  %></td>
+        <td><%= f.input :wt_ibs_ft , :label=>false,:size=> 9 %></td>
+        <td><%= f.input :qty , :label=>false,:size=> 9 %></td>
+        <td><%= f.input :uom , :label=>false,:size=> 9 %></td>
+        <td><%= f.input :weight, :label=>false,:size=> 9  %></td>
+        <td><%= f.input :remarks , :label=>false,:size=> 9 %></td>
+      </div>
+    </tr>
+  </tbody>
+</table>
+
+  <div class="actions">
+    <%#= f.button :add_row  , :class=>"append_row" ,:onclick=>"javascript:appendRow()" %>
+    <!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"> -->
+    <%= f.button :submit , :class=>"btn btn-primary" %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+
+// append row to the HTML table
+  function appendRow() {
+      var tbl = document.getElementById('my_table'), // table reference
+          row = tbl.insertRow(tbl.rows.length),      // append table row
+          i;
+      // insert table cells to the new row
+      for (i = 0; i < tbl.rows[0].cells.length; i++) {
+          createCell(row.insertCell(i), i, 'row');
+      }
+  }
+ 
+// create DIV element and append to the table cell
+  function createCell(cell, text, style) {
+      var div = document.createElement('div'), // create DIV element
+          txt = document.createTextNode(text); // create text node
+      div.appendChild(txt);                    // append text node to the DIV
+      div.setAttribute('class', style);        // set DIV class attribute
+      div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+      cell.appendChild(div);                   // append DIV to the table cell
+  }
+
+  // delete table rows with index greater then 0
+function deleteRows() {
+    var tbl = document.getElementById('my_table'), // table reference
+        lastRow = tbl.rows.length - 1,             // set the last row index
+        i;
+    // delete rows with index greater then 0
+    for (i = lastRow; i > 0; i--) {
+        tbl.deleteRow(i);
+    }
+}
+</script>

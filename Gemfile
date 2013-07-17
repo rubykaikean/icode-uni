@@ -35,7 +35,7 @@ group :doc do
 end
 
 gem 'devise', "~> 3.0.0.rc"
-
+gem "ransack", github: "ernie/ransack", branch: "rails-4"
 # gem "twitter-bootstrap-rails", "~> 2.2.7"
 
 gem "therubyracer"

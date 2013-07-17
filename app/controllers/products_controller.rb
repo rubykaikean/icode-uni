@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @product = Product.new
+
+  
+    # @search = Article.search(params[:search])
+    # @articles = @search.all
   end
 
   # GET /products/1

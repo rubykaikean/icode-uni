@@ -1,6 +1,15 @@
 IcodeUni::Application.routes.draw do
   
-  resources :stations
+  resources :estimations
+
+  resources :estimation_items
+
+  resources :stations do
+    collection do
+      match 'search' => 'stations#search', :via => [:get, :post], :as => :search
+    end
+  end
+
 
   resources :products do
     collection do
@@ -13,8 +22,6 @@ IcodeUni::Application.routes.draw do
   resources :materials
 
   resources :drawings
-
-  resources :estimations
 
   resources :clients
 

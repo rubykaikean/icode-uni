@@ -1,6 +1,7 @@
 class EstimationsController < ApplicationController
-  before_filter :authenticate_user!
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
+
+  before_filter :authenticate_user!
 
   # GET /estimations
   # GET /estimations.json
@@ -70,6 +71,6 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:part_detail, :material, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :remarks, :station_id)
+      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by)
     end
 end

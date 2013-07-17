@@ -1,0 +1,27 @@
+<table>
+	<tr>
+		<td align="left">Client :</td>
+		<td><%#=  %></td>
+		<td style="float:right; align:right">Drawing No. :</td>
+		<td><%#= drawing_no %></td>
+	</tr>
+	<tr>
+		<td align="left">Title :</td>
+		<td><%= f.input :title %></td>
+		<td style="float:right; align:right">Date :</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="left">Dimension :</td>
+		<td><%#= dimension %></td>
+		<td style="float:right; align:right">Issued By :</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td align="right">Weight :</td>
+		<td>Ton(s)</td>
+		<td><%#= f.select :station_id , Select.all.map{|r| [r.name , r.id] }, :include_blank => true%></td>
+	</tr>
+</table>

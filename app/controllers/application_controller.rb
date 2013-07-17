@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
     @roles = current_user.roles.map(&:inventory_management_system_id)
   end
 
+  def search
+    index
+    render :index
+  end
+
    protected
 
   def configure_permitted_parameters
@@ -27,7 +32,7 @@ class ApplicationController < ActionController::Base
     # 	:failed_attempts, :unlock_token, :locked_at, :authentication_token, :admin) }
   end
 
-  	private
+  private
 
   def set_cache_buster
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"

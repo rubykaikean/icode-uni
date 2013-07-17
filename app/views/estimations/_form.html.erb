@@ -1,49 +1,63 @@
 <%= simple_form_for(@estimation) do |f| %>
-  <% if @estimation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @estimation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="inputs">
+  <table class="table table-striped">
+    <th>
+      <td>
+          <%= f.label :client %><%= f.select :client_id , Client.all.map {|r| [r.name ,r.id]} , :include_blank=>true %>
+          <%= f.input :title %>
+        
+      </td>
+      <td>
+          <%= f.input :dimension %>
+          <%= f.input :drawing_no_id %>
+      </td>
+      <td>
+          <div id="datetimepicker4" class="input-append">
+          <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
+           <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+          </span>
+          </div> 
+          <%= f.input :issued_by %>
+      </td>
+    </th>
+  </table>
+</div>
 
-  <div class="field">
-    <%= f.label :part_detail %><br>
-    <%= f.text_field :part_detail %>
-  </div>
-  <div class="field">
-    <%= f.label :material %><br>
-    <%= f.text_field :material %>
-  </div>
-  <div class="field">
-    <%= f.label :thk_dia %><br>
-    <%= f.text_field :thk_dia %>
-  </div>
-  <div class="field">
-    <%= f.label :dimension_h %><br>
-    <%= f.number_field :dimension_h %>
-  </div>
-  <div class="field">
-    <%= f.label :dimension_w %><br>
-    <%= f.number_field :dimension_w %>
-  </div>
-  <div class="field">
-    <%= f.label :dimension_l %><br>
-    <%= f.number_field :dimension_l %>
-  </div>
-  <div class="field">
-    <%= f.label :remarks %><br>
-    <%= f.text_field :remarks %>
-  </div>
-  <div class="field">
-    <%= f.label :station_id %><br>
-    <%= f.number_field :station_id %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit , :class=>"btn btn-primary" %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(function() {
+    $('[data-behaviour~=datepicker]').datepicker();
+    $('#datetimepicker4').datetimepicker({
+      pickTime: false
+    });
+  });
+
+  $("input:checkbox").change(function(){
+ 
+    // total allowed to be checked.
+    var max_allowed = 1;
+    // count how many checked.
+    var checked = $("input:checked").size();
+    // perform test.
+    if ( checked > max_allowed ) {
+        // is more than the max so uncheck.
+        $(this).attr("checked", false);
+        //$(this).
+        // display error message.
+        //alert("Please select a maximum of " + max_allowed + " options.");
+ 
+    }
+ 
+  });
+</script>
+
+

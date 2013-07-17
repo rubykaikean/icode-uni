@@ -1,5 +1,6 @@
 class StationsController < ApplicationController
   before_filter :authenticate_user!
+  #before_filter :search
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   # GET /stations
@@ -8,6 +9,11 @@ class StationsController < ApplicationController
     @stations = Station.all
     # @products = Product.first
     #@detail_inventory_report = InventoryHistory.find(params[:in_ids])
+
+    @search = Station.search(params[:q])
+    #render :text => @search.result(:distinct => true).to_json
+    @search_index_station = @search.result(:distinct => true)
+    
   end
 
   # GET /stations/1
@@ -68,6 +74,11 @@ class StationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_station
       @station = Station.find(params[:id])
+    end
+
+    def search
+      index
+      render :index
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

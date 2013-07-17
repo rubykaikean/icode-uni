@@ -1,0 +1,47 @@
+<h1>Listing estimation_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Part detail</th>
+      <th>Material</th>
+      <th>Thk dia</th>
+      <th>Dimension h</th>
+      <th>Dimension w</th>
+      <th>Dimension l</th>
+      <th>Wt ibs ft</th>
+      <th>Qty</th>
+      <th>Uom</th>
+      <th>Weight</th>
+      <th>Remarks</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimation_items.each do |estimation_item| %>
+      <tr>
+        <td><%= estimation_item.part_detail %></td>
+        <td><%= estimation_item.material %></td>
+        <td><%= estimation_item.thk_dia %></td>
+        <td><%= estimation_item.dimension_h %></td>
+        <td><%= estimation_item.dimension_w %></td>
+        <td><%= estimation_item.dimension_l %></td>
+        <td><%= estimation_item.wt_ibs_ft %></td>
+        <td><%= estimation_item.qty %></td>
+        <td><%= estimation_item.uom %></td>
+        <td><%= estimation_item.weight %></td>
+        <td><%= estimation_item.remarks %></td>
+        <td><%= link_to 'Show', estimation_item %></td>
+        <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item) %></td>
+        <td><%= link_to 'Destroy', estimation_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimation item', new_estimation_item_path %>

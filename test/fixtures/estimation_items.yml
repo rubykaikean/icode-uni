@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  part_detail: MyString
+  material: MyString
+  thk_dia: MyString
+  dimension_h: 1
+  dimension_w: 1
+  dimension_l: 1
+  wt_ibs_ft: 1.5
+  qty: 1.5
+  uom: MyString
+  weight: 1
+  unit_price: 1.5
+  remarks: MyString
+
+two:
+  part_detail: MyString
+  material: MyString
+  thk_dia: MyString
+  dimension_h: 1
+  dimension_w: 1
+  dimension_l: 1
+  wt_ibs_ft: 1.5
+  qty: 1.5
+  uom: MyString
+  weight: 1
+  unit_price: 1.5
+  remarks: MyString
