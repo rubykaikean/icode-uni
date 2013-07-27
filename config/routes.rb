@@ -12,6 +12,7 @@ IcodeUni::Application.routes.draw do
 
 
   resources :products do
+    get :autocomplete_client_name, :on => :collection
     collection do
       get "product_station"
       get "standard_project"

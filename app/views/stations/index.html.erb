@@ -1,30 +1,70 @@
 <%- model_class = Station -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-  <div><%#%></div>
+  <div>
+        <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_station_path,
+            :class => 'btn btn-primary' %>
+        <div style="float : right;"><%= link_home_button %></div>
+  </div>
 
 </div>
 
-
-<div class="tabbable"> <!-- Only required for left/right tabs -->
+<!-- Only required for left/right tabs -->
+<!-- <div class="tabbable">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Index</a></li>
         <li><a href="#tab2" data-toggle="tab">Search</a></li>
       </ul>
     <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <%= render "index_station" %>
+      <%#= render "index_station" %>
     </div>
     <div class="tab-pane" id="tab2">
-      <p><%= render "index_search" %></p>
+      <p><%#= render "index_search" %></p>
     </div>
    </div>
+</div> -->
+
+<div class="accordion" id="accordion2">
+  <% @products.each do |product| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= product.id %>">
+        <%= product.name %> - <%= product.client.name %>
+      </div>
+    </div>
+
+    <div id="collapse<%= product.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render "index_station", :product_stations => product %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<!--   <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        section 2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+ -->
 </div>
+<!-- 
+<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+  simple collapsible
+</button>
+ 
+<div id="demo" class="collapse in"> … </div> -->
+
+<script type="text/javascript">
+
+</script>
 
 
-
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_station_path,
-            :class => 'btn btn-primary' %>
-            <div style="float : right;"><%= link_home_button %></div>

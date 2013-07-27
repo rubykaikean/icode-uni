@@ -9,10 +9,13 @@ class StationsController < ApplicationController
     @stations = Station.all
     # @products = Product.first
     #@detail_inventory_report = InventoryHistory.find(params[:in_ids])
-
-    @search = Station.search(params[:q])
-    #render :text => @search.result(:distinct => true).to_json
-    @search_index_station = @search.result(:distinct => true)
+    @station = Station.new
+    # @search = Station.search(params[:q])
+    # #render :text => @search.result(:distinct => true).to_json
+    # @search_index_station = @search.result(:distinct => true)
+    @products = Product.all
+    a = Station.all
+    @show_product_station = a.all
     
   end
 
@@ -34,11 +37,11 @@ class StationsController < ApplicationController
   # POST /stations.json
   def create
     @station = Station.new(station_params)
-
+    #Station.generation_new_item(params[:station])
     respond_to do |format|
       if @station.save
-        format.html { redirect_to @station, notice: 'Station was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @station }
+        format.html { redirect_to estimations_path , notice: 'Station was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @station }
       else
         format.html { render action: 'new' }
         format.json { render json: @station.errors, status: :unprocessable_entity }
@@ -69,6 +72,8 @@ class StationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

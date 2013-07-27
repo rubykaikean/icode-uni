@@ -1,13 +1,18 @@
-<%- model_class = Material -%>
+<%- model_class = Material -%> <div style="float: right; "><%= link_home_button %></div>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped">
+
+<input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"></input>
+
+
+
+<table class="table table-striped" , id="my_table">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%#= model_class.human_attribute_name(:created_at) %></th>
+      <%#= model_class.human_attribute_name(:created_at) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,7 +21,7 @@
       <tr>
         <td><%= link_to material.id, material_path(material) %></td>
         <td><%= material.name %></td>
-        <td><%#=l material.created_at %></td>
+        <%#=l material.created_at %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_material_path(material), :class => 'btn btn-mini' %> /
@@ -31,6 +36,57 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%#= link_to t('.new', :default => t("helpers.links.new")),
             new_material_path,
-            :class => 'btn btn-primary' %> <div style="float: right; "><%= link_home_button %></div> 
+            :class => 'btn btn-primary' %>  
+
+
+<%= simple_form_for @create_material, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="combobox-container">
+  <%= f.input :name , :autocomplete=>false, :placeholder=>"choose a materails" , :class=>"combobox input-large" %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                materials_path, :class => 'btn' %>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+
+<script type="text/javascript">
+
+// // append row to the HTML table
+//   function appendRow() {
+//       var tbl = document.getElementById('my_table'), // table reference
+//           row = tbl.insertRow(tbl.rows.length),      // append table row
+//           i;
+//       // insert table cells to the new row
+//       for (i = 0; i < tbl.rows[0].cells.length; i++) {
+//           createCell(row.insertCell(i), i, 'row');
+//       }
+//   }
+ 
+// // create DIV element and append to the table cell
+//   function createCell(cell, text, style) {
+//       var div = document.createElement('div'), // create DIV element
+//           txt = document.createTextNode(text); // create text node
+//       div.appendChild(txt);                    // append text node to the DIV
+//       div.setAttribute('class', style);        // set DIV class attribute
+//       div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+//       cell.appendChild(div);                   // append DIV to the table cell
+//   }
+
+//   // delete table rows with index greater then 0
+// function deleteRows() {
+//     var tbl = document.getElementById('my_table'), // table reference
+//         lastRow = tbl.rows.length - 1,             // set the last row index
+//         i;
+//     // delete rows with index greater then 0
+//     for (i = lastRow; i > 0; i--) {
+//         tbl.deleteRow(i);
+//     }
+// }
+</script>

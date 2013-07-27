@@ -7,6 +7,8 @@ class EstimationsController < ApplicationController
   # GET /estimations.json
   def index
     @estimations = Estimation.all
+
+    #@estimation_station = Station.find(params[:id]) 
   end
 
   # GET /estimations/1
@@ -27,7 +29,7 @@ class EstimationsController < ApplicationController
   # POST /estimations.json
   def create
     @estimation = Estimation.new(estimation_params)
-
+    #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.save
         format.html { redirect_to @estimation, notice: 'Estimation was successfully created.' }
@@ -42,6 +44,8 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
+    # @estimation.estimation_items.build(params[:estimation_items])
+    Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.update(estimation_params)
         format.html { redirect_to @estimation, notice: 'Estimation was successfully updated.' }

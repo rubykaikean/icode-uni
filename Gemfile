@@ -42,8 +42,11 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
+
+gem 'rails3-jquery-autocomplete' , git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

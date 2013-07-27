@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  #autocomplete :client, :name
+
   # GET /products
   # GET /products.json
   def index
@@ -23,6 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @client = Client.all
   end
 
   # GET /products/1/edit

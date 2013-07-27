@@ -10,5 +10,9 @@ class CreateEstimations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    remove_column :estimation_items , :material 
+
+    add_column :estimation_items , :material_id , :integer
   end
 end

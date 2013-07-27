@@ -1,9 +1,11 @@
-<h1>Listing estimations</h1>
+
+<%#  %>
+<h1>Listing estimations - <%= station.name rescue'-' %> </h1>
 
 <table class="table table-stripped">
   <thead>
     <tr>
-      <th>Client</th>
+      <th>No.</th>
       <th>Title</th>
       <th>Dimension</th>
       <th>Drawing no id</th>
@@ -18,14 +20,18 @@
   <tbody>
     <% @estimations.each_with_index do |estimation , index| %>
       <tr>
-        <td><%= estimation.client.name rescue'-' %></td>
+        <td><%= index + 1 %></td>
         <td><%= estimation.title %></td>
         <td><%= estimation.dimension %></td>
         <td><%= estimation.drawing_no_id %></td>
         <td><%= estimation.date %></td>
         <td><%= estimation.issued_by %></td>
         <td><%#= link_to 'Show', estimation %></td>
-        <td><%= link_to 'add item' , estimation_items_path(estimation) %>
+        <td><%= link_to 'add item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+
+          <%= link_to 'Detail' , estimation_items_path(:estimation => estimation) ,:class=>
+          " btn btn-mini btn-success" %>
+
           <%= link_to 'Edit', edit_estimation_path(estimation),:class => 'btn btn-mini' %>
           <%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %></td>
       </tr>

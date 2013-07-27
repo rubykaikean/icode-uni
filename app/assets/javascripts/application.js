@@ -12,16 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require autocomplete-rails
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-datepicker
 
 
+
+
 // this line mean .. loop view code first , then only come back loop jquery
- $(document).ready(function () {     
+ $(document).ready(function () {    
 
-
+ });
  	
  	
 
@@ -90,4 +93,3 @@
 // 		});
 
 // // end of top document 
-}

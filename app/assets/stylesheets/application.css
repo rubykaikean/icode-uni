@@ -10,18 +10,20 @@
  *
  *= require_self
  *= require_tree .
+ 
 
  */
 
+* { margin: 0; padding: 0; }
+
 body {
-  
+  background-color: lightblue;
   font-family: 'Arvo', serif;
   font-size: 14px;
   color: #000000;
-
 }
 
-body#first-layout {
+#first-layout{
   background-image: url('/images/background2.jpg');
   background-repeat: repeat;
 }
@@ -138,3 +140,6 @@ body#first-layout {
    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#288CC8, endColorstr=#A6DEFF) no-repeat;
    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#288CC8, endColorstr=#288CC8)" no-repeat;
 }
+
+/*===================================================================================*/
+

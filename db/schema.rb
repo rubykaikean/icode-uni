@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20130716040754) do
 
   create_table "estimation_items", force: true do |t|
     t.string   "part_detail"
-    t.string   "material"
     t.string   "thk_dia"
     t.integer  "dimension_h"
     t.integer  "dimension_w"
@@ -41,6 +40,7 @@ ActiveRecord::Schema.define(version: 20130716040754) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "estimation_id"
+    t.integer  "material_id"
   end
 
   create_table "estimations", force: true do |t|
