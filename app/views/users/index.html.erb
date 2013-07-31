@@ -1,9 +1,7 @@
-<%- model_class = User -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+<%#- model_class = User -%>
+  <h4><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h4>
 
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="users" data-source="<%= users_url(format: "json") %>">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="users">
   <thead>
     <tr>
       <th>Status</th>
@@ -45,14 +43,22 @@
   </tbody>
     </table>
     <br>
-    <br>
-
-  
+      
 <div style="float: right; "><%#= link_home_button %></div> 
 <div><%= link_to "Add User", new_user_users_path, :class=>"btn btn-primary" %></div>
 
 <br>
 
-    
+<%= render "js_user" %>
+<!--
+<script>
+ $(document).ready(function () { 
 
-  
+        $('#users').dataTable({
+          sPaginationType: "full_numbers",
+          bJQueryUI: true,
+          sScrollY: $(window).height() - 400
+        });
+ });
+</script>  
+-->

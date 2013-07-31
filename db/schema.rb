@@ -63,15 +63,14 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "estimation_id"
   end
-  
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
     t.string   "date"
-    t.boolean  "standard"
-    t.boolean  "non_standard"
+    t.boolean  "standard",     default: false
+    t.boolean  "non_standard", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You are not authorize!!"
       redirect_to root_url
     end
+  end
 
   def search
     index

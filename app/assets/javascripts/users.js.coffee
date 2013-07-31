@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-        $('#users').dataTable
-          sPaginationType: "full_numbers"
-          bJQueryUI: true
+#jQuery ->
+#        $('#users').dataTable	
+#          sPaginationType: "full_numbers"
+#          bJQueryUI: true
+ #         sScrollY: $(window).height() - 400
