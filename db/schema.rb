@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130731131849) do
 
-
   create_table "clients", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.integer  "issued_by"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "estimation_id"
   end
 
   create_table "inventory_management_systems", force: true do |t|
@@ -67,7 +65,7 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.datetime "updated_at"
     t.integer  "estimation_id"
   end
-  
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
@@ -90,6 +88,7 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "estimation_id"
   end
 
   create_table "users", force: true do |t|

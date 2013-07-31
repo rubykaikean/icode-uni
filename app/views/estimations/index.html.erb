@@ -1,4 +1,4 @@
-<h1>Listing estimations <%#= station.name rescue'-' %> </h1>
+<h3>Listing Estimations <%#= station.name rescue'-' %> </h3>
 
 <table class="table table-stripped">
   <thead>
@@ -6,9 +6,9 @@
       <th>No.</th>
       <th>Title</th>
       <th>Dimension</th>
-      <th>Drawing no id</th>
+      <th></th>
       <th>Date</th>
-      <th>Issued by</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,9 +21,9 @@
         <td><%= index + 1 %></td>
         <td><%= estimation.title %></td>
         <td><%= estimation.dimension %></td>
-        <td><%= estimation.drawing_no_id %></td>
+        <td><%#= estimation.drawing_no_id %></td>
         <td><%= estimation.date %></td>
-        <td><%= estimation.issued_by %></td>
+        <td><%#= estimation.issued_by %></td>
         <td><%#= link_to 'Show', estimation %></td>
         <td><%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
 
