@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require dataTables/jquery.dataTables
 //= require_tree .
 //= require bootstrap-datepicker
+
 
 
 // this line mean .. loop view code first , then only come back loop jquery
@@ -88,3 +90,4 @@
 
 // end of top document 
 // }
+

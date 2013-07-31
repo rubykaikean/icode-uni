@@ -9,18 +9,17 @@ class User < ActiveRecord::Base
 
 
   has_many :roles, :dependent => :destroy
-  has_many :inventory_management_systems, :through => :roles
+  has_many :inventory_management_systems, through: :roles
 
-  has_many :roles, :dependent => :destroy
-  has_many :inventory_management_systems, :through => :roles
-
-  validates :username, presence: :true, length: {:in => 5..24}
+  
+  validates :username, presence: :true, length: {:in => 5..24}, uniqueness: true
 
 private
 
   def is_admin?  
-    if admin == true
-      raise "Cant delete Admin"
+    # if admin == true
+    if user_id == 1
+      raise "The user cannot be delete!"
     end
   end
 end

@@ -13,25 +13,25 @@ IcodeUni::Application.routes.draw do
 
   resources :clients
 
+  
 
-  resources :roles
+  
 
   get "home/index"
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
-    member do
-      get :info
+    member do      
       get :edit_user      
       patch :update_user    
     end
     collection do
-      get :contact
-      get :new_user
-      get :new_user_entry
+      get :new_user       
       post :create_user
-
-    end
+    end   
+    
   end
+    resources :roles do        
+      end    
   
 
   # devise_for :admins

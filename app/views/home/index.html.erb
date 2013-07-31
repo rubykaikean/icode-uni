@@ -12,14 +12,19 @@ username: <%= current_user.username %> <br>
 <%# end %>
 </p> -->
 <% if current_user.admin? %>
+	<div id="view_admin">
+
 	
-	<%= link_to "Add user", new_user_users_path, :class=>"btn" %><br /><br />
+
+	<%#= link_to "Add user", new_user_users_path, :class=>"btn" %><br /><br />
 
 	<%= link_to 'Listing User', users_path, :class=>"btn" %><br />
-
+	</div>
 <% else %>
 	&nbsp;
 <% end %><br>
+<%= link_to "Edit user",  edit_user_registration_path, :class=>"btn" %><br /><br />
+
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
 
 <%= link_to "Product" , products_path , :class=>"btn" %><br><br>

@@ -8,13 +8,18 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+ *= require_self 
+ 
+
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/src/demo_table_jui
+ 
  *= require_tree .
 
  */
 
 body {
-  
   font-family: 'Arvo', serif;
   font-size: 14px;
   color: #000000;
@@ -25,6 +30,15 @@ body#first-layout {
   background-image: url('/images/background2.jpg');
   background-repeat: repeat;
 }
+
+#second-layout {
+    background-image: url('/images/grablue.jpg'), url('/images/gragreen.jpg');
+    background-position: left top, left bottom;
+    background-repeat: repeat-x, repeat-x;    
+    
+}
+
+
 
 /*  ========================login box ======================================*/
 #login-box {
@@ -138,3 +152,5 @@ body#first-layout {
    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#288CC8, endColorstr=#A6DEFF) no-repeat;
    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#288CC8, endColorstr=#288CC8)" no-repeat;
 }
+
+#view_admin { background-color: gainsboro; width: 200px; padding: 10px; }
