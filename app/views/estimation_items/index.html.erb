@@ -1,5 +1,20 @@
 <h1>Listing Estimation Items</h1>
 
+  <%#= render :text => params[:estimation].to_json %>
+<table>
+  <% estimation = @info_estimation_items %>
+  <tr>
+    <td>Title :</td>
+    <td><%= estimation.title rescue'-' %></td>
+  </tr>
+
+  <tr>
+    <td>Dimension :</td>
+    <td><%= estimation.dimension rescue'-' %></td>
+  </tr>
+  <%# end %>
+</table>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -26,34 +41,34 @@
       <th align="center">Ib / KG</th>
     </tr>
   </thead>
-  <% estimation = params[:estimation] %>
+  <%# estimation = params[:estimation] %>
   <tbody>
-    <% estimation.estimation_items.each_with_index do |estimation_item , index| %>
+    <% estimation.estimation_item.each_with_index do |estimation_item , index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= estimation_item.part_detail %></td>
+        <td><%= estimation_item.part_detail rescue'-' %></td>
         <td><%= estimation_item.material.name rescue'-' %></td>
-        <td><%= estimation_item.thk_dia %></td>
-        <td><%= estimation_item.dimension_h %></td>
-        <td><%= estimation_item.dimension_w %></td>
-        <td><%= estimation_item.dimension_l %></td>
-        <td><%= estimation_item.wt_ibs_ft %></td>
-        <td><%= estimation_item.qty %></td>
-        <td><%= estimation_item.uom %></td>
-        <td><%= estimation_item.weight %></td>
+        <td><%= estimation_item.thk_dia rescue'-' %></td>
+        <td><%= estimation_item.dimension_h rescue'-' %></td>
+        <td><%= estimation_item.dimension_w rescue'-' %></td>
+        <td><%= estimation_item.dimension_l rescue'-' %></td>
+        <td><%= estimation_item.wt_ibs_ft rescue'-' %></td>
+        <td><%= estimation_item.qty rescue'-' %></td>
+        <td><%= estimation_item.uom rescue'-' %></td>
+        <td><%= estimation_item.weight rescue'-' %></td>
         <td></td>
         <td></td>
-        <td><%= estimation_item.remarks %></td>
+        <td><%= estimation_item.remarks rescue'-' %></td>
         <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item) , :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Destroy', estimation_item, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= link_to "Back" , estimations_path , :class=>"btn" %>
 <br>
 
-<%= link_to 'New Estimation item', new_estimation_item_path , :target=>"_blank", :class=>"btn btn-primary" %>
+<%#= link_to 'New Estimation item', new_estimation_item_path , :target=>"_blank", :class=>"btn btn-primary" %>
 <!-- 
 <tbody>
     <tr>

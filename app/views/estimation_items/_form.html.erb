@@ -1,16 +1,32 @@
+
+<%#= render :text => params[:estimation_id].to_json %>
+<table>
+    <%# %>
+  <%# estimation => :estimation_id %>
+  <tr>
+    <th>Title :</td>
+    <th style="width:150px;"><%= @estimation.title rescue'-' %></th>
+    <th style="width:150px;">Dimension :</th>
+    <th><%= @estimation.dimension rescue'-' %></th>
+  </tr>
+  <%# end %>
+</table>
+<hr />
 <%= simple_form_for(@estimation_item) do |f| %>
   <%= f.error_notification %>
 <!-- stlye="width:100%;border:1px solid black;" -->
-    <%= f.input :estimation_id, :value => params[:estimation_id] %>
+    <%#= f.input :estimation_id, :value => params[:estimation_id] %>
+    <%= hidden_field_tag "estimation_id", params[:estimation_id] %>
 
-<fieldset>
 <table >
     <div class="inputs">
     <tr>
         <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} %></td>
         <td><%= f.label :material_id %><%= f.select :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %></td>
+
     </tr>
     <tr style="align:margin-right">
+      <legend>Dimension</legend>
         <td><%= f.input :thk_dia %></td>
         <td><%= f.input :dimension_h ,label: "Dimension H" , :size=> 9 %></td>
         <td><%= f.input :dimension_w ,label: "Dimension W",:size=> 9 %></td>
@@ -29,15 +45,13 @@
     </tr>
     </div>
 </table>
-</fieldset>
 <br>
   <div class="actions">
     <%#= f.button :add_row  , :class=>"append_row" ,:onclick=>"javascript:appendRow()" %>
     <!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"> -->
-    <%= f.button :submit , :class=>"btn btn-primary" %> <%= link_to 'Back', estimation_items_path , :class=>"btn" %>
+    <%= f.button :submit , :class=>"btn btn-primary" %> <%= link_to 'Back', estimations_path , :class=>"btn" %>
   </div>
 <% end %>
-
 
 <script type="text/javascript">
 

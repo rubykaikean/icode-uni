@@ -7,17 +7,28 @@ class EstimationItemsController < ApplicationController
   # GET /estimation_items.json
   def index
     @estimation_items = EstimationItem.all
+
+    @info_estimation_items = Estimation.find(params[:estimation])
   end
 
   # GET /estimation_items/1
   # GET /estimation_items/1.json
   def show
+
   end
 
   # GET /estimation_items/new
   def new
+
+    @estimation = Estimation.find(params[:estimation_id]) 
+    
     @estimation_item = EstimationItem.new
-    # render :text => params[:estimationmation_id].to_json
+      
+    #params[:commit] == "Detail" 
+      
+    
+    # @show_estimation_id = Estimation.find(params[:estimation])
+    # render :text => params[:estimation_id].to_json
     # session[:es] = session[:es].present? ? session[:es] : params[:estimation_id]
   end
 
@@ -35,7 +46,7 @@ class EstimationItemsController < ApplicationController
       if @estimation_item.save
         # if params[:commit] == "submit_and_new"
         format.html { 
-          redirect_to new_estimation_item_path(:estimation_id => params[:estimation_id]), notice: 'Estimation item was successfully created.' 
+          redirect_to new_estimation_item_path(:estimation_id => params[:estimation_id]), notice: 'Estimation item #{:estimation_id}was successfully created.' 
         }
         format.json { render action: 'show', status: :created, location: @estimation_item }
       else
@@ -50,7 +61,7 @@ class EstimationItemsController < ApplicationController
   def update
     respond_to do |format|
       if @estimation_item.update(estimation_item_params)
-        format.html { redirect_to estimation_items_path, notice: 'Estimation item was successfully updated.' }
+        format.html { redirect_to estimations_path, notice: 'Estimation item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,6 +79,8 @@ class EstimationItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
  
 
   private

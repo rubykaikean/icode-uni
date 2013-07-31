@@ -12,7 +12,7 @@ class Estimation < ActiveRecord::Base
 	
 
 
-	validates :client_id ,:title , :dimension , :date,  presence: :true
+	validates :title , :dimension , :date,  presence: :true
 
 
 end

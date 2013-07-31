@@ -1,0 +1,43 @@
+<h3>Station - Estimation</h3>
+
+<div> Station : <%= @station_estimation.name rescue'-' %></div>
+
+
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Title</th>
+      <th>Dimension</th>
+      <th>Drawing no id</th>
+      <th>Date</th>
+      <th>Issued by</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%# @station_estimation.each_with_index do | estimation ,index| %>
+      <tr>
+        <td><%#= index + 1 %></td>
+        <td><%#= estimation.title %></td>
+        <td><%#= estimation.dimension %></td>
+        <td><%#= estimation.drawing_no_id %></td>
+        <td><%#= estimation.date %></td>
+        <td><%#= estimation.issued_by %></td>
+        <td><%#= link_to 'Show', estimation %></td>
+        <td><%#= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+
+          <%#= link_to 'Detail' , estimation_items_path(:estimation => estimation) ,:class=>
+          " btn btn-mini btn-success" %>
+
+        </td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Back', stations_path , :class=>"btn" %>

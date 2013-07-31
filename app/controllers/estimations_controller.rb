@@ -8,6 +8,8 @@ class EstimationsController < ApplicationController
   def index
     @estimations = Estimation.all
 
+    # a = Estimation.where(:station_id => params[:id])
+    # @show_station = a.all
     #@estimation_station = Station.find(params[:id]) 
   end
 
@@ -18,6 +20,9 @@ class EstimationsController < ApplicationController
 
   # GET /estimations/new
   def new
+
+    #@info_station = Station.find(params[:station_id])
+    @station = Station.find(params[:estimation])
     @estimation = Estimation.new
   end
 
@@ -32,7 +37,7 @@ class EstimationsController < ApplicationController
     #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.save
-        format.html { redirect_to @estimation, notice: 'Estimation was successfully created.' }
+        format.html { redirect_to estimations_url, notice: 'Estimation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @estimation }
       else
         format.html { render action: 'new' }
@@ -44,11 +49,11 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
-    # @estimation.estimation_items.build(params[:estimation_items])
-    Estimation.generation_new_item(params[:estimation])
+    #@estimation.estimation_items.build(params[:estimation_items])
+    #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.update(estimation_params)
-        format.html { redirect_to @estimation, notice: 'Estimation was successfully updated.' }
+        format.html { redirect_to estimation_url, notice: 'Estimation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -67,6 +72,15 @@ class EstimationsController < ApplicationController
     end
   end
 
+  def station_estimation
+    @station_estimation = Estimation.find(params[:station_estimation])
+
+    #a = Estimation.where(:station_estimation => params[:id])
+    #@show_estimation = a.all
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_estimation
@@ -75,6 +89,6 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by)
+      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by , :station_id)
     end
 end
