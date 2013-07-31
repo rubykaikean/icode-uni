@@ -1,7 +1,8 @@
 class Station < ActiveRecord::Base
 	
-	belongs_to :estimation
 	belongs_to :product
+
+	has_many :estimations
 
 	validates :name , :product_id ,  presence: :true
 

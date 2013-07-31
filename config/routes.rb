@@ -1,6 +1,10 @@
 IcodeUni::Application.routes.draw do
   
-  resources :estimations
+  resources :estimations do
+    collection do
+      get "station_estimation"
+    end
+  end
 
   resources :estimation_items
 

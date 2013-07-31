@@ -1,3 +1,8 @@
+
+
+<%#= render :text => params[:estimation].to_json %>
+
+Station :<%= @station.name %>
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
 
@@ -5,13 +10,13 @@
   <table class="table table-striped">
     <th>
       <td>
-          <%= f.label :client %><%= f.select :client_id , Client.all.map {|r| [r.name ,r.id]} , :include_blank=>true %>
+          <%#= f.label :client %><%#= f.select :client_id , Client.all.map {|r| [r.name ,r.id]} , :include_blank=>true %>
           <%= f.input :title %>
         
       </td>
       <td>
           <%= f.input :dimension %>
-          <%= f.input :drawing_no_id %>
+          <%#= f.input :drawing_no_id %>
       </td>
       <td>
           <div id="datetimepicker4" class="input-append">
@@ -21,14 +26,15 @@
             </i>
           </span>
           </div> 
-          <%= f.input :issued_by %>
+          <%#= f.input :issued_by %>
       </td>
     </th>
   </table>
 </div>
 
   <div class="actions">
-    <%= f.button :submit , :class=>"btn btn-primary" %>
+    <%= f.button :submit , :class=>"btn btn-primary" %> 
+    <%= link_to 'Back', stations_path , :class=>"btn" %>
   </div>
 <% end %>
 

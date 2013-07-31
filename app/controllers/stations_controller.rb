@@ -40,7 +40,7 @@ class StationsController < ApplicationController
     #Station.generation_new_item(params[:station])
     respond_to do |format|
       if @station.save
-        format.html { redirect_to estimations_path , notice: 'Station was successfully created.' }
+        format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @station }
       else
         format.html { render action: 'new' }
@@ -54,7 +54,7 @@ class StationsController < ApplicationController
   def update
     respond_to do |format|
       if @station.update(station_params)
-        format.html { redirect_to @station, notice: 'Station was successfully updated.' }
+        format.html { redirect_to stations_path, notice: 'Station was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,10 +68,12 @@ class StationsController < ApplicationController
   def destroy
     @station.destroy
     respond_to do |format|
-      format.html { redirect_to stations_url }
+      format.html { redirect_to stations_path }
       format.json { head :no_content }
     end
   end
+
+
 
 
 

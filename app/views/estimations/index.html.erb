@@ -1,6 +1,4 @@
-
-<%#  %>
-<h1>Listing estimations - <%= station.name rescue'-' %> </h1>
+<h1>Listing estimations <%#= station.name rescue'-' %> </h1>
 
 <table class="table table-stripped">
   <thead>
@@ -27,7 +25,7 @@
         <td><%= estimation.date %></td>
         <td><%= estimation.issued_by %></td>
         <td><%#= link_to 'Show', estimation %></td>
-        <td><%= link_to 'add item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+        <td><%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
 
           <%= link_to 'Detail' , estimation_items_path(:estimation => estimation) ,:class=>
           " btn btn-mini btn-success" %>
@@ -40,5 +38,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Estimation', new_estimation_path %>
+<%= link_to 'Back', stations_path , :class=>"btn" %>
