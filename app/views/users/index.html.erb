@@ -5,7 +5,6 @@
   <thead>
     <tr>
       <th>Status</th>
-      <th>ID</th>
       <th>Username</th>
       <th>Email</th>       
       <th>Actions</th>       
@@ -20,8 +19,7 @@
             <i class='icon-ok'> Active</i>
             <% else %>
             <i class='icon-remove'> Inactive</i> 
-            <% end %></td>
-        <td><%= link_to user.id, user_path(user) %></td>
+            <% end %></td>        
         <td><%= user.username %></td>
         <td><%= user.email%></td>
         <%#= link_to 'Select', user , :class=>"btn btn-info"%>

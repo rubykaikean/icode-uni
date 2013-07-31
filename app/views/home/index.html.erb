@@ -28,10 +28,7 @@ username: <%= current_user.username %> <br>
 <hr />
     <!-- <footer class="footer"> -->
       <div>
-      <% if current_user.admin? %>
-
-  
-      <%= link_to "Add user", new_user_users_path, :class=>"btn" %>
+      <% if current_user.admin? %>      
 
       <%= link_to 'Listing User', users_path, :class=>"btn" %><br />
 

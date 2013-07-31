@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130731131849) do
+ActiveRecord::Schema.define(version: 20130724082535) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -21,35 +21,6 @@ ActiveRecord::Schema.define(version: 20130731131849) do
 
   create_table "drawings", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "estimation_items", force: true do |t|
-    t.string   "part_detail"
-    t.string   "thk_dia"
-    t.integer  "dimension_h"
-    t.integer  "dimension_w"
-    t.integer  "dimension_l"
-    t.float    "wt_ibs_ft"
-    t.float    "decimal"
-    t.float    "qty"
-    t.string   "uom"
-    t.integer  "weight"
-    t.string   "remarks"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "estimation_id"
-    t.integer  "material_id"
-  end
-
-  create_table "estimations", force: true do |t|
-    t.integer  "client_id"
-    t.string   "title"
-    t.string   "dimension"
-    t.integer  "drawing_no_id"
-    t.string   "date"
-    t.integer  "issued_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,14 +51,6 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.integer  "inventory_management_system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "stations", force: true do |t|
-    t.string   "name"
-    t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "estimation_id"
   end
 
   create_table "users", force: true do |t|
