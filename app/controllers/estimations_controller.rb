@@ -1,10 +1,14 @@
 class EstimationsController < ApplicationController
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate_user!
+
   # GET /estimations
   # GET /estimations.json
   def index
     @estimations = Estimation.all
+
+    #@estimation_station = Station.find(params[:id]) 
   end
 
   # GET /estimations/1
@@ -25,7 +29,7 @@ class EstimationsController < ApplicationController
   # POST /estimations.json
   def create
     @estimation = Estimation.new(estimation_params)
-
+    #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.save
         format.html { redirect_to @estimation, notice: 'Estimation was successfully created.' }
@@ -40,6 +44,8 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
+    # @estimation.estimation_items.build(params[:estimation_items])
+    Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.update(estimation_params)
         format.html { redirect_to @estimation, notice: 'Estimation was successfully updated.' }
@@ -69,6 +75,6 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:part_detail, :material, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :remarks, :station_id)
+      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by)
     end
 end

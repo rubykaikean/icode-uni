@@ -40,15 +40,18 @@ group :doc do
 end
 
 gem 'devise', "~> 3.0.0.rc"
-
+gem "ransack", github: "ernie/ransack", branch: "rails-4"
 # gem "twitter-bootstrap-rails", "~> 2.2.7"
 
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
+
+gem 'rails3-jquery-autocomplete' , git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

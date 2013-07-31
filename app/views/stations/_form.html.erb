@@ -1,11 +1,31 @@
-<%= simple_form_for @station, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
-  <%= f.label :product %>
-  <%= f.select :product_id , Product.all.map { |r| [r.name, r.id] }, :include_blank=>true %>
+<%#= simple_form_for @station, :html => { :class => 'form-horizontal' } do |f| %>
+  <%#= f.input :name %>
+  <%#= f.label :product %>
+  <%#= f.select :product_id , Product.all.map { |r| [r.name, r.id] }, :include_blank=>true %>
   <%#= f.input :estimation_id , :type=>"hidden" %>
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+<!--   <div class="form-actions">
+    <%#= f.button :submit, :class => 'btn-primary' %>
+    <%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 stations_path, :class => 'btn' %>
   </div>
+ -->
+
+<%= simple_form_for @station, :html => { :class => 'form-horizontal' } do |f| %>
+<table>
+	<thead>
+	<tr>
+		<th>Name</th>
+		<th>Product</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><%= f.input :name , :label => false %></td>
+  		<td><%= f.select :product_id , Product.all.map { |r| [r.name, r.id] }, :include_blank=>true, :label => false %></td>
+	</tr>
+	</tbody>
+</table>
+<br>
+	<%= f.button :submit ,"Create", :class => 'btn btn-primary' %>
+	<%= link_to t('.cancal' ,  :default => t("helpers.link.cancel")), stations_path, :class=>'btn' %>
 <% end %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Part detail:</strong>
+  <%= @estimation_item.part_detail %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @estimation_item.material %>
+</p>
+
+<p>
+  <strong>Thk dia:</strong>
+  <%= @estimation_item.thk_dia %>
+</p>
+
+<p>
+  <strong>Dimension h:</strong>
+  <%= @estimation_item.dimension_h %>
+</p>
+
+<p>
+  <strong>Dimension w:</strong>
+  <%= @estimation_item.dimension_w %>
+</p>
+
+<p>
+  <strong>Dimension l:</strong>
+  <%= @estimation_item.dimension_l %>
+</p>
+
+<p>
+  <strong>Wt ibs ft:</strong>
+  <%= @estimation_item.wt_ibs_ft %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @estimation_item.qty %>
+</p>
+
+<p>
+  <strong>Uom:</strong>
+  <%= @estimation_item.uom %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @estimation_item.weight %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @estimation_item.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_estimation_item_path(@estimation_item) %> |
+<%= link_to 'Back', estimation_items_path %>

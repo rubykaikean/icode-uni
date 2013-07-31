@@ -80,6 +80,8 @@ GEM
     multi_json (1.7.7)
     mysql2 (0.3.13)
     orm_adapter (0.4.0)
+    polyamorous (0.6.3)
+      activerecord (>= 3.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -158,6 +160,8 @@ DEPENDENCIES
   less-rails
   mysql2
   rails (= 4.0.0)
+  rails3-jquery-autocomplete!
+  ransack!
   sass-rails (~> 4.0.0)
   sdoc
   simple_form

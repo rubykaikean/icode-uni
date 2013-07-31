@@ -1,0 +1,75 @@
+<%= simple_form_for(@estimation_item) do |f| %>
+  <%= f.error_notification %>
+<!-- stlye="width:100%;border:1px solid black;" -->
+    <%= f.input :estimation_id, :value => params[:estimation_id] %>
+
+<fieldset>
+<table >
+    <div class="inputs">
+    <tr>
+        <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} %></td>
+        <td><%= f.label :material_id %><%= f.select :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %></td>
+    </tr>
+    <tr style="align:margin-right">
+        <td><%= f.input :thk_dia %></td>
+        <td><%= f.input :dimension_h ,label: "Dimension H" , :size=> 9 %></td>
+        <td><%= f.input :dimension_w ,label: "Dimension W",:size=> 9 %></td>
+        <td><%= f.input :dimension_l ,label: "Dimension L",:size=> 9  %></td>
+    </tr> 
+    <tr>
+        <td><%= f.input :wt_ibs_ft ,:size=> 9 %></td>
+        <td><%= f.input :qty ,:size=> 9 %></td>
+        <td><%= f.input :uom ,:size=> 9 %></td>
+        <td><%= f.input :weight,:size=> 9  %></td>
+    </tr>
+    <tr>
+        <td>Unit price</td>
+        <td>Total</td>
+        <td><%= f.input :remarks, :size=> 9 %></td>
+    </tr>
+    </div>
+</table>
+</fieldset>
+<br>
+  <div class="actions">
+    <%#= f.button :add_row  , :class=>"append_row" ,:onclick=>"javascript:appendRow()" %>
+    <!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"> -->
+    <%= f.button :submit , :class=>"btn btn-primary" %> <%= link_to 'Back', estimation_items_path , :class=>"btn" %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+
+// // append row to the HTML table
+//   function appendRow() {
+//       var tbl = document.getElementById('my_table'), // table reference
+//           row = tbl.insertRow(tbl.rows.length),      // append table row
+//           i;
+//       // insert table cells to the new row
+//       for (i = 0; i < tbl.rows[0].cells.length; i++) {
+//           createCell(row.insertCell(i), i, 'row');
+//       }
+//   }
+ 
+// // create DIV element and append to the table cell
+//   function createCell(cell, text, style) {
+//       var div = document.createElement('div'), // create DIV element
+//           txt = document.createTextNode(text); // create text node
+//       div.appendChild(txt);                    // append text node to the DIV
+//       div.setAttribute('class', style);        // set DIV class attribute
+//       div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+//       cell.appendChild(div);                   // append DIV to the table cell
+//   }
+
+//   // delete table rows with index greater then 0
+// function deleteRows() {
+//     var tbl = document.getElementById('my_table'), // table reference
+//         lastRow = tbl.rows.length - 1,             // set the last row index
+//         i;
+//     // delete rows with index greater then 0
+//     for (i = lastRow; i > 0; i--) {
+//         tbl.deleteRow(i);
+//     }
+// }
+</script>

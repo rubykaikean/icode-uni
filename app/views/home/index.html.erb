@@ -1,4 +1,4 @@
-<h1>Home</h1>
+<h2><u>Home</u></h2>
 <!-- <p>
 username: <%= current_user.username %> <br>
 
@@ -11,23 +11,29 @@ username: <%= current_user.username %> <br>
 	No, not signed in
 <%# end %>
 </p> -->
-<% if current_user.admin? %>
-	<div id="view_admin">
 
-	
 
-	<%#= link_to "Add user", new_user_users_path, :class=>"btn" %><br /><br />
-
-	<%= link_to 'Listing User', users_path, :class=>"btn" %><br />
-	</div>
-<% else %>
-	&nbsp;
-<% end %><br>
 <%= link_to "Edit user",  edit_user_registration_path, :class=>"btn" %><br /><br />
+
+<%= link_to "New Product" , new_product_path , :class=>"btn" %> 
+&nbsp;
+<%= link_to "List Project" , products_path , :class=>"btn" %>
+<br><br>
 
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
 
-<%= link_to "Product" , products_path , :class=>"btn" %><br><br>
-
 <%= link_to "Client" , clients_path , :class=>"btn" %><br>
+
+<br>
+<hr />
+    <footer class="footer">
+      <% if current_user.admin? %>
+      	<div id="view_admin"> 
+      		<%= link_to 'Listing User', users_path, :class=>"btn" %><br />
+      	</div>
+    	<% else %>
+      	&nbsp;
+    	<% end %><br>
+
+
 <%# link_to "Product" , product_lists_path , :class=>"btn btn-info" %>

@@ -1,0 +1,75 @@
+<h1>Listing Estimation Items</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th rowspan="2">No.</th>
+      <th rowspan="2">Part Detail</th>
+      <th rowspan="2">Material</th>
+      <th colspan="4" align="center">Dimension(mm)</th>
+      <th colspan="1">WT</th>
+      <th rowspan="2">Qty</th>
+      <th rowspan="2">UOM</th>
+      <th rowspan="1">Weight</th>
+      <th rowspan="2" width="50">Unit Price</th>
+      <th rowspan="2">Total</th>
+      <th rowspan="2">Remarks</th>
+      <th rowspan="2">Action</th>
+
+    </tr>
+    <tr>
+      <th align="center">Thk/Dia.</th>
+      <th align="center">H</th>
+      <th align="center">W</th>
+      <th align="center">L</th>
+      <th align="center">Ibs/Ft<sup>2</sup></th>
+      <th align="center">Ib / KG</th>
+    </tr>
+  </thead>
+  <% estimation = params[:estimation] %>
+  <tbody>
+    <% estimation.estimation_items.each_with_index do |estimation_item , index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= estimation_item.part_detail %></td>
+        <td><%= estimation_item.material.name rescue'-' %></td>
+        <td><%= estimation_item.thk_dia %></td>
+        <td><%= estimation_item.dimension_h %></td>
+        <td><%= estimation_item.dimension_w %></td>
+        <td><%= estimation_item.dimension_l %></td>
+        <td><%= estimation_item.wt_ibs_ft %></td>
+        <td><%= estimation_item.qty %></td>
+        <td><%= estimation_item.uom %></td>
+        <td><%= estimation_item.weight %></td>
+        <td></td>
+        <td></td>
+        <td><%= estimation_item.remarks %></td>
+        <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item) , :class => 'btn btn-mini' %></td>
+        <td><%= link_to 'Destroy', estimation_item, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimation item', new_estimation_item_path , :target=>"_blank", :class=>"btn btn-primary" %>
+<!-- 
+<tbody>
+    <tr>
+      <div class="inputs">
+        <td></td>
+        <td><%#= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} , :label=>false %></td>
+        <td><%#= f.select :material , Material.all.map { |r| [r.name, r.id] }, :label=>false ,:size=>9 %></td>
+        <td><%#= f.input :thk_dia, :label=>false,:size=>6 %></td>
+        <td><%#= f.input :dimension_h, :label=>false,:size=> 9 %></td>
+        <td><%#= f.input :dimension_w , :label=>false ,:size=> 9 %></td>
+        <td><%#= f.input :dimension_l, :label=>false,:size=> 9  %></td>
+        <td><%#= f.input :wt_ibs_ft , :label=>false,:size=> 9 %></td>
+        <td><%#= f.input :qty , :label=>false,:size=> 9 %></td>
+        <td><%#= f.input :uom , :label=>false,:size=> 9 %></td>
+        <td><%#= f.input :weight, :label=>false,:size=> 9  %></td>
+        <td><%#= f.input :remarks , :label=>false,:size=> 9 %></td>
+      </div>
+    </tr>
+  </tbody> -->

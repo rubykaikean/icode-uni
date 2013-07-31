@@ -1,16 +1,16 @@
-<h1>Listing estimations</h1>
 
-<table class="table table-striped">
+<%#  %>
+<h1>Listing estimations - <%= station.name rescue'-' %> </h1>
+
+<table class="table table-stripped">
   <thead>
     <tr>
-      <th>Part detail</th>
-      <th>Material</th>
-      <th>Thk dia</th>
-      <th>Dimension h</th>
-      <th>Dimension w</th>
-      <th>Dimension l</th>
-      <th>Remarks</th>
-      <th>Station</th>
+      <th>No.</th>
+      <th>Title</th>
+      <th>Dimension</th>
+      <th>Drawing no id</th>
+      <th>Date</th>
+      <th>Issued by</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,19 +18,22 @@
   </thead>
 
   <tbody>
-    <% @estimations.each do |estimation| %>
+    <% @estimations.each_with_index do |estimation , index| %>
       <tr>
-        <td><%= estimation.part_detail %></td>
-        <td><%= estimation.material %></td>
-        <td><%= estimation.thk_dia %></td>
-        <td><%= estimation.dimension_h %></td>
-        <td><%= estimation.dimension_w %></td>
-        <td><%= estimation.dimension_l %></td>
-        <td><%= estimation.remarks %></td>
-        <td><%= estimation.station_id %></td>
-        <td><%= link_to 'Show', estimation %></td>
-        <td><%= link_to 'Edit', edit_estimation_path(estimation) %></td>
-        <td><%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= index + 1 %></td>
+        <td><%= estimation.title %></td>
+        <td><%= estimation.dimension %></td>
+        <td><%= estimation.drawing_no_id %></td>
+        <td><%= estimation.date %></td>
+        <td><%= estimation.issued_by %></td>
+        <td><%#= link_to 'Show', estimation %></td>
+        <td><%= link_to 'add item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+
+          <%= link_to 'Detail' , estimation_items_path(:estimation => estimation) ,:class=>
+          " btn btn-mini btn-success" %>
+
+          <%= link_to 'Edit', edit_estimation_path(estimation),:class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -5,6 +5,7 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+    @create_material = Material.new
   end
 
   # GET /materials/1
@@ -28,10 +29,10 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: 'Material was successfully created.' }
+        format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
         format.json { render action: 'show', status: :created, location: @material }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to new_material_path }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +43,10 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
+        format.html { redirect_to materials_path, notice: 'Material was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to edit_materials_path }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end

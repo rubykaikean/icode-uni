@@ -1,21 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  part_detail: MyString
-  material: MyString
-  thk_dia: 1.5
-  dimension_h: 1
-  dimension_w: 1
-  dimension_l: 1
-  remarks: MyString
-  station_id: 1
+  client_id: 1
+  title: MyString
+  dimension: MyString
+  drawing_no: MyString
+  date: 2013-07-16
+  issued_by: 1
 
 two:
-  part_detail: MyString
-  material: MyString
-  thk_dia: 1.5
-  dimension_h: 1
-  dimension_w: 1
-  dimension_l: 1
-  remarks: MyString
-  station_id: 1
+  client_id: 1
+  title: MyString
+  dimension: MyString
+  drawing_no: MyString
+  date: 2013-07-16
+  issued_by: 1

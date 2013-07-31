@@ -1,21 +1,31 @@
 class ProductsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  #autocomplete :client, :name
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
     @product = Product.new
+
+  
+    # @search = Article.search(params[:search])
+    # @articles = @search.all
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    a = Station.where(:product_id => params[:id])
+    @show_product = a.all
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @client = Client.all
   end
 
   # GET /products/1/edit
@@ -30,14 +40,14 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.standard ==  true
           @product.save
-          format.html { redirect_to @product, notice: 'Product was successfully created Standard.' }
+          format.html { redirect_to standard_project_products_path , notice: 'Product was successfully created Standard.' }
           format.json { render action: 'show', status: :created, location: @product }
-        elsif @product.standard == false
+        elsif @product.non_standard == true
           @product.save
           format.html { redirect_to stations_path, notice: 'Product Was successfully created with Non Standard' }
-        else 
-          format.html { render action: 'new'}
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+         else 
+           format.html { render action: 'new'}
+           format.json { render json: @product.errors, status: :unprocessable_entity }
         end
       end
   end
@@ -65,6 +75,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def product_station
+    #@product_station = Product.find(params[:id])
+    @product_station = Station.where(:product_id => 11)
+    @show_product_station = @product_station.all
+  end 
 
   
 

@@ -25,16 +25,31 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.datetime "updated_at"
   end
 
-  create_table "estimations", force: true do |t|
+  create_table "estimation_items", force: true do |t|
     t.string   "part_detail"
-    t.string   "material"
-    t.float    "thk_dia",     default: 0.0
-    t.float    "decimal",     default: 0.0
+    t.string   "thk_dia"
     t.integer  "dimension_h"
     t.integer  "dimension_w"
     t.integer  "dimension_l"
+    t.float    "wt_ibs_ft"
+    t.float    "decimal"
+    t.float    "qty"
+    t.string   "uom"
+    t.integer  "weight"
     t.string   "remarks"
-    t.integer  "station_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "estimation_id"
+    t.integer  "material_id"
+  end
+
+  create_table "estimations", force: true do |t|
+    t.integer  "client_id"
+    t.string   "title"
+    t.string   "dimension"
+    t.integer  "drawing_no_id"
+    t.string   "date"
+    t.integer  "issued_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,14 +63,15 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "estimation_id"
   end
-
+  
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
     t.string   "date"
-    t.boolean  "standard",     default: false
-    t.boolean  "non_standard", default: false
+    t.boolean  "standard"
+    t.boolean  "non_standard"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

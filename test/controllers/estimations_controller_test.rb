@@ -18,7 +18,7 @@ class EstimationsControllerTest < ActionController::TestCase
 
   test "should create estimation" do
     assert_difference('Estimation.count') do
-      post :create, estimation: { dimension_h: @estimation.dimension_h, dimension_l: @estimation.dimension_l, dimension_w: @estimation.dimension_w, material: @estimation.material, part_detail: @estimation.part_detail, remarks: @estimation.remarks, station_id: @estimation.station_id, thk_dia: @estimation.thk_dia }
+      post :create, estimation: { client_id: @estimation.client_id, date: @estimation.date, dimension: @estimation.dimension, drawing_no: @estimation.drawing_no, issued_by: @estimation.issued_by, title: @estimation.title }
     end
 
     assert_redirected_to estimation_path(assigns(:estimation))
@@ -35,7 +35,7 @@ class EstimationsControllerTest < ActionController::TestCase
   end
 
   test "should update estimation" do
-    patch :update, id: @estimation, estimation: { dimension_h: @estimation.dimension_h, dimension_l: @estimation.dimension_l, dimension_w: @estimation.dimension_w, material: @estimation.material, part_detail: @estimation.part_detail, remarks: @estimation.remarks, station_id: @estimation.station_id, thk_dia: @estimation.thk_dia }
+    patch :update, id: @estimation, estimation: { client_id: @estimation.client_id, date: @estimation.date, dimension: @estimation.dimension, drawing_no: @estimation.drawing_no, issued_by: @estimation.issued_by, title: @estimation.title }
     assert_redirected_to estimation_path(assigns(:estimation))
   end
 

@@ -16,17 +16,19 @@
  *= require dataTables/src/demo_table_jui
  
  *= require_tree .
+ 
 
  */
+
+* { margin: 0; padding: 0; }
 
 body {
   font-family: 'Arvo', serif;
   font-size: 14px;
   color: #000000;
-
 }
 
-body#first-layout {
+#first-layout{
   background-image: url('/images/background2.jpg');
   background-repeat: repeat;
 }

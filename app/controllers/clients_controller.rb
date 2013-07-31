@@ -28,8 +28,8 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @client }
+        format.html { redirect_to clients_path , notice: 'Client was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @client }
       else
         format.html { render action: 'new' }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to clients_path, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

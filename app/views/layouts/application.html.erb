@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
   <title>IcodeUni</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -9,14 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 
+
 <body id="second-layout">  
     <a class="close" data-dismiss="alert" href="#"><%= notice %></a>  
-    <% if user_signed_in? %>    
-    <%= render "/layouts/top_menu_layout" %>
-    <% end %> 
+      <% if user_signed_in? %>    
+      <%= render "/layouts/top_menu_layout" %>
+      <% end %> 
+
   <div class="container">  <!-- this link is fix layout --> 
     <%= yield %>
   </div>
-</body>
 
+</body>
 </html>
