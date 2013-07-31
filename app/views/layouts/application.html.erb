@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <title>IcodeUni</title>
@@ -6,30 +7,17 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-	<%#= link_to "Home", home_index_path %>
-    <!-- <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
-    
-    
-    <% if user_signed_in? %>
-    <%= render "/layouts/top_menu_layout" %>
-    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>
-    <% end %>
-  
+
+
+<body id="second-layout">  
+    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>  
+      <% if user_signed_in? %>    
+      <%= render "/layouts/top_menu_layout" %>
+      <% end %> 
+
   <div class="container">  <!-- this link is fix layout --> 
     <%= yield %>
+  </div>
 
-
-<!-- 
-
-  
-    <%# if user_signed_in? %>
-    <div id="main-footer"></div>
-    <%# end %> -->
-    <hr />
-
-</footer>
-  </div>  <!-- end of container -->
 </body>
 </html>

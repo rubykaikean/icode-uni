@@ -1,35 +1,42 @@
+
+
 <tr>
+    <!-- Show -->
     <td></td>
-    <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Product</td>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MENU) %> Product </td>
 
-    <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Station</td>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> Station </td>
 
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_ADD) %></td>
 
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_SHOW) %></td>
 
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_EDIT) %></td>
 
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
 
     <tr>
         <td></td>
         <td></td>
 
-        <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Material</td>
+        <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL) %> Material    </td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_ADD) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_SHOW) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_EDIT) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_PRINTER) %> </td>
 
     </tr>    
 
 </tr>
 
+
+
+<!-- 
 <tr>
     <td></td>
     <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Inventory</td>
@@ -57,3 +64,6 @@
 
 </tr>
 
+ -->
+
+ 

@@ -1,0 +1,20 @@
+
+
+
+
+<%= form_tag "/roles"  do %>
+
+<%= hidden_field_tag :user_id, nil, :value => @user.id %>
+
+<div><%= render "/users/management_account" %></div>
+
+
+<div class="form-actions">
+
+    <%=  submit_tag "Submit", :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+</div>
+  
+<% end %>
+

@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20130731131849) do
 
+
   create_table "clients", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.datetime "updated_at"
     t.integer  "estimation_id"
   end
-
+  
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20130731131849) do
     t.datetime "locked_at"
     t.string   "authentication_token"
     t.boolean  "admin"
+    t.boolean  "status"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

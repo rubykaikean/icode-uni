@@ -8,10 +8,21 @@ class ApplicationController < ActionController::Base
   before_filter :set_cache_buster
   
   helper_method :roles
+  helper_method :user_is_admin?
+
+  def user_is_admin?
+    current_user.admin == true
+  end
 
   def roles
     @roles = current_user.roles.map(&:inventory_management_system_id)
   end
+
+  def are_you_admin?
+    unless user_is_admin?
+      flash[:alert] = "You are not authorize!!"
+      redirect_to root_url
+    end
 
   def search
     index

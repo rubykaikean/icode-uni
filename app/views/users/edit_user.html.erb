@@ -8,9 +8,13 @@
   <%= f.label :username %>
   <%= f.label @user.username %><br>
   <%= f.label :email %>
-  <%= f.email_field :email %>  
-  <%= f.label :admin %>
-  <%= f.check_box(:admin) %>
+  <%= f.email_field :email %><br>   
+  <%= f.label :admin, "As Admin?" %>
+  <%= f.check_box(:admin) %>    
+  <%= f.label :status, "Is Active?" %>
+  <%= f.check_box(:status) %>
+  
+  
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

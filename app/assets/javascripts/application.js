@@ -15,12 +15,16 @@
 //= require autocomplete-rails
 //= require bootstrap
 //= require turbolinks
+//= require dataTables/jquery.dataTables
 //= require_tree .
 //= require bootstrap-datepicker
 
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> f6fb6acb90c94e3670439c36caecbfb37ab62872
 // this line mean .. loop view code first , then only come back loop jquery
  $(document).ready(function () {    
 
@@ -92,4 +96,10 @@
 //         }).data('datepicker');
 // 		});
 
+<<<<<<< HEAD
+// end of top document 
+// }
+
+=======
 // // end of top document 
+>>>>>>> f6fb6acb90c94e3670439c36caecbfb37ab62872

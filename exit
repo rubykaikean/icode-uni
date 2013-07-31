@@ -1,0 +1,182 @@
+commit 18dce01f75aa9437b81db554e8c3aa39c69d411b
+Author: cclim <austincclim@gmail.com>
+Date:   Mon Jul 8 01:32:38 2013 +0800
+
+    check admin
+
+commit 4e44399b025c45f8fabd4ab7302e7b2680332d35
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Mon Jul 8 01:14:52 2013 +0800
+
+    download
+
+commit baeedddc85f00e9db9de1037547787a7bff770c5
+Merge: bd8b78b ce6ae33
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Mon Jul 8 00:30:31 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit bd8b78bbe090379aba916d8ac0fd758bc82dff4c
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Mon Jul 8 00:30:13 2013 +0800
+
+    download
+
+commit ce6ae333161bbe6667e5e49e48cbd28833bec1f9
+Author: cclim <austincclim@gmail.com>
+Date:   Mon Jul 8 00:28:21 2013 +0800
+
+    Redesign User
+
+commit 6f62db9816e990c1d0997c542aaab4bfd3dadce0
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Sun Jul 7 18:48:28 2013 +0800
+
+    upload 2
+
+commit c69a3a81b9eeeca6f7c51690b38c3196b6b8e570
+Merge: 24e5863 d93cc74
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Sun Jul 7 13:49:36 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit 24e5863ba4198cfb5b1aba83db0e8572a53fdaff
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Sun Jul 7 13:47:25 2013 +0800
+
+    upload
+
+commit d93cc747bf474d56ff4236faf06e54c8ec8a551a
+Author: cclim <austincclim@gmail.com>
+Date:   Sat Jul 6 17:26:40 2013 +0800
+
+    upload
+
+commit af4890862d068af50752b9531cc3d5e10cf1782d
+Author: cclim <austincclim@gmail.com>
+Date:   Sat Jul 6 16:59:04 2013 +0800
+
+    upload
+
+commit a91150a8054e1b3235bc1019dbcf7c1bda7bafdd
+Author: cclim <austincclim@gmail.com>
+Date:   Wed Jul 3 22:19:58 2013 +0800
+
+    download
+
+commit d75dfb74121a6741d77f26bc3bc808eda4b2c814
+Author: cclim <austincclim@gmail.com>
+Date:   Wed Jul 3 22:18:07 2013 +0800
+
+    download
+
+commit 5008c9650b2eaca0056395427e5df51babfc73c5
+Merge: 5112138 50c3ae5
+Author: cclim <austincclim@gmail.com>
+Date:   Wed Jul 3 22:14:30 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit 50c3ae5cab78c3ac933aecb77e0b2d923691b078
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 22:13:19 2013 +0800
+
+    upload
+
+commit 5112138b7d822b50b91f76616fa9c006259a3b6a
+Merge: bbf21a7 0dcd838
+Author: cclim <austincclim@gmail.com>
+Date:   Wed Jul 3 19:10:31 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit bbf21a789a05b9e0682dfdfadd83b977195c5517
+Author: cclim <austincclim@gmail.com>
+Date:   Wed Jul 3 19:10:13 2013 +0800
+
+    Modify ims
+
+commit 0dcd838cf3787639c2941362df2e2d75249739fb
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 18:38:52 2013 +0800
+
+    update
+
+commit 448416d2d4db44b185f9bbded3ccf41eb5a3f5ab
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 18:13:12 2013 +0800
+
+    update
+
+commit f33b575d9b7578a488552541d5e23d37950febd0
+Merge: f0010bc dbc6687
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 17:45:39 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit f0010bca3f43cd17e489fcad0c22a59fb44e7be5
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 17:44:09 2013 +0800
+
+    testing
+
+commit dbc6687bc43d6e6b9aa8357a3744692b685b25e9
+Merge: 1ec4e15 e0d1340
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 02:43:12 2013 -0700
+
+    Merge pull request #1 from angmeng/master
+    
+    Restructure the app
+
+commit e0d13401f6ffefa46c3199d54c8701dc9718131b
+Author: Jaz Lim <angmeng@gmail.com>
+Date:   Wed Jul 3 17:26:51 2013 +0800
+
+    Restructure the initial app
+
+commit 1ec4e154095ed5ea8c19a5d427078e178ed6336a
+Merge: 95a7102 9f2f07e
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 16:28:58 2013 +0800
+
+    Merge branch 'master' of github.com:rubykaikean/icode-uni
+
+commit 95a710260d24ad5fcb605a6b004e88c816ee8477
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Wed Jul 3 16:15:54 2013 +0800
+
+    update
+
+commit 3c54e7b07673aa2e1d10595e645bb91a21482898
+Author: khong <khong@khong-N56VZ.(none)>
+Date:   Wed Jul 3 15:42:21 2013 +0800
+
+    update
+
+commit 909fd0569149a32c96e062fd2952d82937bd8b44
+Author: khong <khong@khong-N56VZ.(none)>
+Date:   Wed Jul 3 14:16:53 2013 +0800
+
+    upload
+
+commit ed7a84f44cb7eadabb3873d0ab5ac6394f55995c
+Author: khong <khong@khong-N56VZ.(none)>
+Date:   Fri Jun 28 15:51:33 2013 +0800
+
+    uni project
+
+commit c55ddfeecedab5437bc558b50dd2d2a095b9a9a5
+Author: khong <khong@khong-N56VZ.(none)>
+Date:   Fri Jun 28 15:28:03 2013 +0800
+
+    new project
+
+commit 9f2f07ed54f4730171daaf7cee3cefc6dfa57174
+Author: rubykaikean <khongkk89@gmail.com>
+Date:   Tue Jun 25 00:45:09 2013 -0700
+
+    Initial commit

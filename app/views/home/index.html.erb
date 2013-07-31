@@ -13,10 +13,13 @@ username: <%= current_user.username %> <br>
 </p> -->
 
 
+<%= link_to "Edit user",  edit_user_registration_path, :class=>"btn" %><br /><br />
+
 <%= link_to "New Product" , new_product_path , :class=>"btn" %> 
 &nbsp;
 <%= link_to "List Project" , products_path , :class=>"btn" %>
 <br><br>
+
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
 
 <%= link_to "Client" , clients_path , :class=>"btn" %><br>
@@ -26,6 +29,7 @@ username: <%= current_user.username %> <br>
     <!-- <footer class="footer"> -->
       <div>
       <% if current_user.admin? %>
+
   
       <%= link_to "Add user", new_user_users_path, :class=>"btn" %>
 
@@ -35,6 +39,6 @@ username: <%= current_user.username %> <br>
       &nbsp;
     <% end %>
 	</div>
-    
+
 
 <%# link_to "Product" , product_lists_path , :class=>"btn btn-info" %>
