@@ -1,6 +1,6 @@
 <div align="center" >
-<h2 align="center" style="border: 5px solid black; width: 800px; padding: 10px;" , class="hero-unit" >
-  UNI - Vessel Engineering SDN. BHD
+<h2 align="center" style="border: 5px solid black; width: 800px; padding: 10px;" , class="hero-unit" ><%= link_to "UNI - Vessel Engineering SDN. BHD", root_url %>
+  
 </h2>
 </div>
 
@@ -16,6 +16,7 @@
           </a>
             <ul class="dropdown-menu">
               <li><a href="#"></a><%= link_to "Main", root_url %></li>
+              <li><a href="#"></a><%= link_to "Edit Profile",  edit_user_registration_path %></li>
               <li><a href="#"></a><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>
         </li>

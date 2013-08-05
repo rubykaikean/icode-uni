@@ -6,18 +6,30 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= yield(:jquery_script) %>
 </head>
 
 
-<body id="second-layout">  
-    <a class="close" data-dismiss="alert" href="#"><%= notice %></a>  
-      <% if user_signed_in? %>    
-      <%= render "/layouts/top_menu_layout" %>
-      <% end %> 
+<body id="second-layout">
+  
+    <% if notice.present? %>
+    <div class="alert alert-success" data-dismiss="alert">
+      <a href="#" class="alert-link">
+        <%= notice %>
+        <button class="close" >&times;</button>
+      </a>
+        
 
-  <div class="container">  <!-- this link is fix layout --> 
-    <%= yield %>
-  </div>
+    </div>
+    <% end %>
 
+        <% if user_signed_in? %>    
+        <%= render "/layouts/top_menu_layout" %>
+        <% end %> 
+
+    <div class="">  <!-- this link is fix layout --> 
+      <%= yield %>
+    </div>
+ 
 </body>
 </html>
