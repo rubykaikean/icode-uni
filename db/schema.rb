@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.integer  "issued_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "station_id"
   end
 
   create_table "inventory_management_systems", force: true do |t|
@@ -98,7 +99,6 @@ ActiveRecord::Schema.define(version: 20130724082535) do
   create_table "stations", force: true do |t|
     t.string   "name"
     t.integer  "product_id"
-    t.integer  "estimation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

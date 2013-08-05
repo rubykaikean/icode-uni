@@ -35,10 +35,13 @@ body {
 
 #second-layout {
     background-image: url('/images/grablue.jpg');
+
     background-position: left top;
     background-repeat: repeat-x;    
     
 }
+
+/*, url('/images/gragreen.jpg');*/
 
 
 

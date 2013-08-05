@@ -3,8 +3,8 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"></input>
-
+<!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"></input>
+ -->
 
 
 <table class="table table-striped" , id="my_table">
@@ -19,7 +19,7 @@
   <tbody>
     <% @materials.each do |material| %>
       <tr>
-        <td><%= link_to material.id, material_path(material) %></td>
+        <td><%#= link_to material.id, material_path(material) %><%= material.id %></td>
         <td><%= material.name %></td>
         <%#=l material.created_at %>
         <td>
@@ -36,20 +36,9 @@
   </tbody>
 </table>
 
-<%#= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => t("helpers.links.new")),
             new_material_path,
-            :class => 'btn btn-primary' %>  
-
-
-<%= simple_form_for @create_material, :html => { :class => 'form-horizontal' } do |f| %>
-<div class="combobox-container">
-  <%= f.input :name , :autocomplete=>false, :placeholder=>"choose a materails" , :class=>"combobox input-large" %>
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                materials_path, :class => 'btn' %>
-  </div>
-</div>
-<% end %>
+            :class => 'btn btn-primary' %>   
 
 
 

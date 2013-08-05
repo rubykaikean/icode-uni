@@ -16,7 +16,7 @@
   <%= f.error_notification %>
 <!-- stlye="width:100%;border:1px solid black;" -->
     <%#= f.input :estimation_id, :value => params[:estimation_id] %>
-    <%= hidden_field_tag "estimation_id", params[:estimation_id] %>
+    <%= f.input "estimation_id", :as => :hidden, :input_html => { :value => params[:estimation_id]} %>
 
 <table >
     <div class="inputs">

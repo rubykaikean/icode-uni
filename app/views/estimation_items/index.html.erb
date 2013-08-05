@@ -1,16 +1,16 @@
-<h1>Listing Estimation Items</h1>
+<h3>Product => Station => Estimation => <u>Estimation Items</u></h3>
 
   <%#= render :text => params[:estimation].to_json %>
 <table>
   <% estimation = @info_estimation_items %>
   <tr>
     <td>Title :</td>
-    <td><%= estimation.title rescue'-' %></td>
+    <td><u><%= estimation.title rescue'-' %></u></td>
   </tr>
 
   <tr>
     <td>Dimension :</td>
-    <td><%= estimation.dimension rescue'-' %></td>
+    <td><u><%= estimation.dimension rescue'-' %></u></td>
   </tr>
   <%# end %>
 </table>
