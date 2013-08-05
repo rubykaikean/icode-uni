@@ -35,14 +35,9 @@ body {
 
 #second-layout {
     background-image: url('/images/grablue.jpg');
-<<<<<<< HEAD
-    
-    background-position: left top, left bottom;
-    background-repeat: repeat-x, repeat-x;    
-=======
+
     background-position: left top;
     background-repeat: repeat-x;    
->>>>>>> 745571aab6bf7e4daf3517dae4c1fdd6bac6a20d
     
 }
 
