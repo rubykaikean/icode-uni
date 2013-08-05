@@ -51,6 +51,7 @@ class EstimationsController < ApplicationController
   def update
     #@estimation.estimation_items.build(params[:estimation_items])
     #Estimation.generation_new_item(params[:estimation])
+    @station = Station.find(params[:estimation_id])
     respond_to do |format|
       if @estimation.update(estimation_params)
         format.html { redirect_to estimation_url, notice: 'Estimation was successfully updated.' }
@@ -73,11 +74,12 @@ class EstimationsController < ApplicationController
   end
 
   def station_estimation
-    @station_estimation = Estimation.find(params[:station_estimation])
+    # render :text => params[:station_estimation].to_json
+    @station_estimation = Station.find(params[:station_estimation])
 
-    #a = Estimation.where(:station_estimation => params[:id])
     #@show_estimation = a.all
   end
+
 
 
 

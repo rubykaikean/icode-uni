@@ -42,11 +42,12 @@ class EstimationItemsController < ApplicationController
   # POST /estimation_items.json
   def create
     @estimation_item = EstimationItem.new(estimation_item_params)
+    #render :text => @estimation_item.estimation_id.to_json
     respond_to do |format|
       if @estimation_item.save
         # if params[:commit] == "submit_and_new"
         format.html { 
-          redirect_to new_estimation_item_path(:estimation_id => params[:estimation_id]), notice: 'Estimation item #{:estimation_id}was successfully created.' 
+          redirect_to new_estimation_item_path(:estimation_id => params[:estimation_item][:estimation_id]), notice: 'Estimation item #{:estimation_id}was successfully created.' 
         }
         format.json { render action: 'show', status: :created, location: @estimation_item }
       else
@@ -91,6 +92,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
     end
 end

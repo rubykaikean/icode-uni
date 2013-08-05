@@ -1,8 +1,9 @@
 <%- model_class = Station -%>
 <div class="page-header">
-  <h3>Product - Stations<%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
+  <h3>Product => <u>Stations</u><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
   <div>
-        <%= link_to t('.new', :default => t("helpers.links.new")),
+        <%= link_to 'New Station', new_station_path, :class=>"btn btn-primary" %>
+        <%#= link_to t('.new', :default => t("helpers.links.new")),
             new_station_path,
             :class => 'btn btn-primary' %>
         <div style="float : right;"><%= link_home_button %></div>
