@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.datetime "updated_at"
   end
 
-
   create_table "estimation_items", force: true do |t|
     t.string   "part_detail"
     t.string   "thk_dia"
@@ -67,6 +66,19 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.datetime "updated_at"
   end
 
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
@@ -83,7 +95,6 @@ ActiveRecord::Schema.define(version: 20130724082535) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
   create_table "stations", force: true do |t|
     t.string   "name"
