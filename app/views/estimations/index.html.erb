@@ -27,7 +27,7 @@
         <td><%#= link_to 'Show', estimation %></td>
         <td><%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
 
-          <%= link_to 'Detail' , estimation_items_path(:estimation => estimation) ,:class=>
+          <%= link_to 'Detail' , estimation_items_path(:estimation_id => estimation) ,:class=>
           " btn btn-mini btn-success" %>
 
           <%= link_to 'Edit', edit_estimation_path(estimation),:class => 'btn btn-mini' %>
