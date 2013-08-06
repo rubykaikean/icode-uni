@@ -35,10 +35,9 @@ body {
 
 #second-layout {
     background-image: url('/images/grablue.jpg');
-
     background-position: left top;
     background-repeat: repeat-x;    
-    
+
 }
 
 /*, url('/images/gragreen.jpg');*/
@@ -159,3 +158,9 @@ body {
 }
 
 #view_admin { background-color: gainsboro; width: 200px; padding: 10px; }
+
+
+#arrow_right {
+    background-image: url("images.png");
+
+}

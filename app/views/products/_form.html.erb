@@ -1,11 +1,11 @@
 <%= simple_form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
-  <%#= f.label :name %>
-  <%= f.input :name %>
+  <%#= f.label "*Project Name" %>
+  <%= f.input :name , :label => "Project Name" %>
   <%#= f.label :client_id %>
   <%#= f.input :client , :url => autocomplete_client_name_products_path, 
   :id_element => '#products_client_id', :as => :autocomplete , :autocomplete => false %>
   <%= f.label :client %>
-  <%= f.select :client_id ,Client.all.map{|r| [r.name, r.id]} ,:autocomplete => false , :class=>"combobox input-large" , :include_blank => true %>
+  <%= f.select :client_id ,Client.all.map{|r| [r.name, r.id]} ,:autocomplete => false , :class=>"combobox input-large" , :include_blank => true, placeholder:"Please a Client" %>
 
   <br>
 

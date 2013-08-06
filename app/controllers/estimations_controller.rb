@@ -28,6 +28,8 @@ class EstimationsController < ApplicationController
 
   # GET /estimations/1/edit
   def edit
+    #render :text => params[:id].to_json
+    @station = Station.find(params[:id])
   end
 
   # POST /estimations
@@ -51,10 +53,10 @@ class EstimationsController < ApplicationController
   def update
     #@estimation.estimation_items.build(params[:estimation_items])
     #Estimation.generation_new_item(params[:estimation])
-    @station = Station.find(params[:estimation_id])
+    
     respond_to do |format|
       if @estimation.update(estimation_params)
-        format.html { redirect_to estimation_url, notice: 'Estimation was successfully updated.' }
+        format.html { redirect_to estimations_path, notice: 'Estimation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

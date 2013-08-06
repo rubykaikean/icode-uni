@@ -1,4 +1,6 @@
 <h2><u>Home</u></h2>
+<hr />
+
 <!-- <p>
 username: <%= current_user.username %> <br>
 
@@ -12,19 +14,19 @@ username: <%= current_user.username %> <br>
 <%# end %>
 </p> -->
 
-<%= link_to "New Product" , new_product_path , :class=>"btn" %> 
-&nbsp;
+<%= link_to "New Project" , new_product_path , :class=>"btn" %>
 
-<fieldset>
-        <legend>Listing Stats</legend>
+<%= link_to "Create with Existing Project" , stations_path , :class => "btn" %> 
+<br>
+<br>
+
 <%= link_to "List Projects" , products_path , :class=>"btn" %>
 &nbsp;
 <%= link_to "List Stations" , stations_path , :class=>"btn" %>
 &nbsp;
 <%= link_to "List Estimations" , estimations_path , :class=>"btn" %>
-</fieldset>
 
-<br><br>
+<hr />
 
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
 

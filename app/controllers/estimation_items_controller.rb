@@ -8,7 +8,7 @@ class EstimationItemsController < ApplicationController
   def index
     @estimation_items = EstimationItem.all
 
-    @info_estimation_items = Estimation.find(params[:estimation])
+    @info_estimation_items = Estimation.find(params[:estimation_id])
   end
 
   # GET /estimation_items/1

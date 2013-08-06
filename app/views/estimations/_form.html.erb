@@ -2,7 +2,7 @@
 
 <%#= render :text => params[:estimation].to_json %>
 
-Station :<%#= @station.name %>
+Station : <%= @station.name %>
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
   <%= f.input "station_id" , :as => :hidden , :input_html=>{:value => params[:estimation]}, :label => false %>
@@ -35,7 +35,7 @@ Station :<%#= @station.name %>
 
   <div class="actions">
     <%= f.button :submit , :class=>"btn btn-primary" %> 
-    <%= link_to 'Back', stations_path , :class=>"btn" %>
+    <%= link_to 'Back', estimations_path , :class=>"btn" %>
   </div>
 <% end %>
 
