@@ -26,6 +26,7 @@ IcodeUni::Application.routes.draw do
       get "show_standard_project"
       get "show_standard_station"
       get "show_standard_estimation"
+      get "add_standard_estimation"
     end
   end
   
