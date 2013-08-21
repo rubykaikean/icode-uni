@@ -1,0 +1,11 @@
+<%# drawing_id = @pdf_drawing_picture %>
+
+<%  @pdf_drawing_picture %>
+
+<%= render :text => params[:drawing].to_json %>
+
+<%# @pdf_drawing_picture.each do |drawing| %>
+	<%= image_tag @pdf_drawing_picture.photo.url  %>
+<%# end %>
+
+<%#= image_tag @pdf_drawing_picture.photo.url %>

@@ -5,6 +5,26 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= yield(:jquery_script) %>
+  <script type="text/javascript">
+    
+    var ready = function()
+    {
+     
+      EstimationItem.init();
+    }
+
+    $(document).ready(function() {  
+      ready();
+
+    });
+    $(document).on("page:load", function() {  
+      ready();
+
+    });
+
+
+  </script>
 </head>
 <body>
 	<%#= link_to "Home", home_index_path %>

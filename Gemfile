@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'simple_form'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -55,7 +56,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'rails3-jquery-autocomplete' , git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "pdfkit", "0.5.2"
+gem 'wkhtmltopdf-binary'
 
 # Use unicorn as the app server
 # gem 'unicorn'

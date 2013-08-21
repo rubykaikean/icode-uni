@@ -9,6 +9,7 @@
       <th><%= "No." || model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= "Project Name" || model_class.human_attribute_name(:name) %></th>
+      <th><%= "Project Code" || model_class.human_attribute_name(:product_code) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
       <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= product.id %></td>
         <td><%= product.client.name %></td>
+        <td><%= product.product_code rescue'-' %></td>
         <td><%= link_to product.name , product_path(product) %></td>
           <%#= link_to product.name, product_station_products_path(product) %></td>
         <td><%= product.date %></td>

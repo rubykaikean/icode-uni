@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  thk: 1.5
+  dimension_w: 1.5
+  dimension_l: 1.5
+  wt_ibs_ft: 1.5
+
+two:
+  thk: 1.5
+  dimension_w: 1.5
+  dimension_l: 1.5
+  wt_ibs_ft: 1.5

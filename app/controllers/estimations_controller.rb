@@ -23,7 +23,6 @@ class EstimationsController < ApplicationController
 
   # GET /estimations/new
   def new
-
     #@info_station = Station.find(params[:station_id])
     @station = Station.find(params[:estimation])
     @estimation = Estimation.new
@@ -32,12 +31,13 @@ class EstimationsController < ApplicationController
   # GET /estimations/1/edit
   def edit
     #render :text => params[:id].to_json
-    @station = Station.find(params[:id])
+    #@station = Station.find(params[:id])
   end
 
   # POST /estimations
   # POST /estimations.json
   def create
+
     @estimation = Estimation.new(estimation_params)
     #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
@@ -99,6 +99,7 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by , :station_id)
+      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
     end
+
 end

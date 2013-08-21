@@ -1,5 +1,7 @@
 IcodeUni::Application.routes.draw do
   
+  resources :fomulations
+
   resources :estimations do
     get :autocomplete_estimation_title, :on => :collection
     collection do
@@ -31,9 +33,17 @@ IcodeUni::Application.routes.draw do
   end
   
 
-  resources :materials
+  resources :materials do
+    member do
+      get "estimation_item"
+    end
+  end
 
-  resources :drawings
+  resources :drawings do
+    collection do
+      get "pdf_drawing_pic"
+    end
+  end
 
   resources :clients do
     get :autocomplete_client_name, :on => :collection

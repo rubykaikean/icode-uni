@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 
 
-	validates :client , :name , :date ,  presence: :true
+	validates :client , :product_code, :name , :date ,  presence: :true
 	validates :name, uniqueness: :true
 
 	belongs_to :client

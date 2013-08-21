@@ -1,5 +1,5 @@
 class MaterialsController < ApplicationController
-  before_action :set_material, only: [:show, :edit, :update, :destroy]
+  before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
 
   # GET /materials
   # GET /materials.json
@@ -64,6 +64,10 @@ class MaterialsController < ApplicationController
     end
   end
 
+  def estimation_item
+    @estimation_item = @material.estimation_item
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_material
@@ -72,6 +76,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name)
+      params.require(:material).permit(:name , :type_id , :semi_total_weight , :wt_ibs_ft,  :thk_dia_1 , :thk_dia_2 , :dimension_h , :dimension_w , :dimension_l , :plate , :category_id)
     end
 end

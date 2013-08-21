@@ -1,0 +1,144 @@
+<!--  -->
+
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Show Other Expenses</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Remark</h3>
+  </div>
+  <div class="modal-body">
+<p>
+    <%#= render :text => params[:estimation_id].to_json %>
+    <%  estimation = @info_estimation_items %>
+    <table class="table">
+        <tr>
+            <td align="center">Materails</td>
+            <td align="right"></td>
+            <td align="center">Welding</td>
+            <td align="right"><%= estimation.welding rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Oxygen & Acetylene</td>
+            <td align="right"><%= estimation.oxygen_acetylene rescue'-' %></td>
+            <td align="center">Painting</td>
+            <td align="right"><%= estimation.painting rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Sand Blasting</td>
+            <td align="right"><%= estimation.sand_blasting rescue'-' %></td>
+            <td align="center">Transport</td>
+            <td align="right"><%= estimation.transport rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Crane</td>
+            <td align="right"><%= estimation.crane rescue'-' %></td>
+            <td align="center">Shipment</td>
+            <td align="right"><%= estimation.shipment rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Labour</td>
+            <td align="right"><%= estimation.labour rescue'-' %></td>
+            <td align="center">Installation</td>
+            <td align="right"><%= estimation.installation rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Dismantle</td>
+            <td align="right"><%= estimation.dismantle rescue'-' %></td>
+            <td align="center">Machining</td>
+            <td align="right"><%= estimation.machining rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Insulation</td>
+            <td align="right"><%= estimation.insulation rescue'-' %></td>
+            <td align="center">Civil Work</td>
+            <td align="right"><%= estimation.civil_work rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Electrik</td>
+            <td align="right"><%= estimation.electrik rescue'-' %></td>
+            <td align="center">Piling Work</td>
+            <td align="right"><%= estimation.piling_work rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">Forming</td>
+            <td align="right"><%= estimation.forming rescue'-' %></td>
+            <td align="center">Misc</td>
+            <td align="right"><%= estimation.misc rescue'-' %></td>
+        </tr>
+        <tr>
+            <td align="center">JKKP</td>
+            <td align="right"><%= estimation.jkkp rescue'-' %></td>
+            <td align="center"></td>
+            <td align="right"></td>
+        </tr>
+    </table>
+</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+<!-- <table class="table" style="size:50%;">
+  <thead>
+  <tr>
+    <th colspan="19" align="center">Remark</th>
+  </tr>
+  <tr>
+    <th align="center">Materails</th>
+    <th align="center">Welding</th>
+    <th align="center">Oxygen & Acetylne</th>
+    <th align="center">Painting</th>
+    <th align="center">Sand Blasting</th>
+    <th align="center">Transport</th>
+    <th align="center">Crane</th>
+    <th align="center">Shipment</th>
+    <th align="center">Labour</th>
+    <th align="center">Installation</th>
+    
+  </tr>
+  </thead>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+  </tr>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th align="center">Dismantle</th>
+        <th align="center">Machining</th>
+        <th align="center">Insulation</th>
+        <th align="center">Civil Work</th>
+        <th align="center">Electrik</th>
+        <th align="center">Piling Work</th>
+        <th align="center">Forming</th>
+        <th align="center">Misc</th>
+        <th align="center">JKKP</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+</tbody>
+</table> -->

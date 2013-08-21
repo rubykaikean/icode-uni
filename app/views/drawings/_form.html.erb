@@ -1,8 +1,18 @@
-<%= simple_form_for @drawing, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for @drawing, :html => { :class => 'form-horizontal' , :multipart => true } do |f| %>
+
+	<%= f.input "estimation_id",as: :hidden , :input_html => { :value => params[:drawing_id]} %>
+  	<%= f.input :name, :label => "Add Photo" %>
+  
+<%#= render :text => params[:drawing_id].to_json %>
+
+  	<%= f.file_field :photo %>
+  <%#= image_tag @drawings_path %>
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                drawings_path, :class => 'btn' %>
+                drawings_path(:estimation_id => params[:drawing_id] ), :class => 'btn' %>
   </div>
 <% end %>
+
+

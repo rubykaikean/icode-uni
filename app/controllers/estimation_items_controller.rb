@@ -9,17 +9,17 @@ class EstimationItemsController < ApplicationController
     @estimation_items = EstimationItem.all
 
     @info_estimation_items = Estimation.find(params[:estimation_id])
+    
   end
 
   # GET /estimation_items/1
   # GET /estimation_items/1.json
   def show
-
+    
   end
 
   # GET /estimation_items/new
   def new
-
     @estimation = Estimation.find(params[:estimation_id]) 
     
     @estimation_item = EstimationItem.new
@@ -92,6 +92,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia, :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia_1 , :thk_dia_2 , :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
     end
 end
