@@ -2,23 +2,45 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%#= render :text => params[:estimation_id].to_json %>
+<%= link_to "New",new_drawing_path(:drawing_id => params[:estimation_id]),:class => 'btn btn-primary' %>
+<%= link_to "Back To Estimation" ,estimations_path , :class => 'btn' %>
+
+
+<table>
+  <% estimation = @info_estimations %>
+  <tr>
+    <td>Title :</td>
+    <td><u><%= estimation.title rescue'-' %></u></td>
+  </tr>
+
+  <tr>
+    <td>Dimension :</td>
+    <td><u><%= estimation.dimension rescue'-' %></u></td>
+  </tr>
+  <%# end %>
+</table>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th></th>
+      <th></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @drawings.each do |drawing| %>
+    <%#= render :text => params[:estimation_id].to_json %>
+    <% @info_estimations.drawings.each_with_index do |drawing , index| %>
       <tr>
-        <td><%= link_to drawing.id, drawing_path(drawing) %></td>
+        <td><%= index + 1 %><%#= link_to drawing.id, drawing_path(drawing) %></td>
         <td><%= drawing.name %></td>
-        <td><%=l drawing.created_at %></td>
+        <td><%= image_tag drawing.photo.url %></td>
+        <td><%#= link_to "Print PDF" , pdf_drawing_pic_drawings_path(:drawing => drawing) , :class=>"btn btn-info", :target =>"_blank" %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_drawing_path(drawing), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       drawing_path(drawing),
@@ -31,6 +53,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_drawing_path,
-            :class => 'btn btn-primary' %>

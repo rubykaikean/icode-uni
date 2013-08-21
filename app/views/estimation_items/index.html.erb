@@ -1,6 +1,7 @@
 <h3>Project => Station => Estimation => <u>Estimation Items</u></h3>
 
   <%#= render :text => params[:estimation].to_json %>
+<div style="flaot:left;">
 <table>
   <% estimation = @info_estimation_items %>
   <tr>
@@ -14,6 +15,9 @@
   </tr>
   <%# end %>
 </table>
+</div>
+
+<%= render "remark_table_estimation" %>
 
 <table class="table table-bordered">
   <thead>
@@ -28,7 +32,7 @@
       <th rowspan="1">Weight</th>
       <th rowspan="2" width="50">Unit Price</th>
       <th rowspan="2">Total</th>
-      <th rowspan="2">Remarks</th>
+      <!-- <th rowspan="2">Remarks</th> -->
       <th rowspan="2">Action</th>
 
     </tr>
@@ -41,6 +45,7 @@
       <th align="center">Ib / KG</th>
     </tr>
   </thead>
+  
   <%# estimation = params[:estimation] %>
   <tbody>
     <% estimation.estimation_item.each_with_index do |estimation_item , index| %>
@@ -55,16 +60,17 @@
         <td><%= estimation_item.wt_ibs_ft rescue'-' %></td>
         <td><%= estimation_item.qty rescue'-' %></td>
         <td><%= estimation_item.uom rescue'-' %></td>
-        <td><%= estimation_item.weight rescue'-' %></td>
+        <td><%= Material.total_weigth rescue'-' %></td>
+        <td><%#= estimation_item.total_weigth %></td>
         <td></td>
-        <td></td>
-        <td><%= estimation_item.remarks rescue'-' %></td>
+        <!-- <td><%#= estimation_item.remarks rescue'-' %></td> -->
         <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item) , :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Destroy', estimation_item, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <%= link_to "Back" , estimations_path , :class=>"btn" %>
 <br>
 

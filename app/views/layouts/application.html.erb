@@ -7,6 +7,25 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= yield(:jquery_script) %>
+  <script type="text/javascript">
+    
+    var ready = function()
+    {
+      Material.init();
+    }
+
+    $(document).ready(function() {  
+      ready();
+
+    });
+    $(document).on("page:load", function() {  
+      ready();
+
+    });
+
+
+  </script>
+  
 </head>
 
 
@@ -30,6 +49,7 @@
     <div class="container">  <!-- this link is fix layout --> 
       <%= yield %>
     </div>
+
  
 </body>
 </html>

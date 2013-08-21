@@ -5,11 +5,7 @@ class EstimationItem < ActiveRecord::Base
 
 
 
-	validates :part_detail, :material ,:uom , :thk_dia , :weight ,  presence: :true
-
-	def create_item_id
-		
-	end
+	# validates :part_detail, :material ,:uom , :thk_dia , :weight ,  presence: :true
 
 
 end

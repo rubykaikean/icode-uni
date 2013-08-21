@@ -1,0 +1,14 @@
+<%= simple_form_for(@fomulation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :thk %>
+    <%= f.input :dimension_w %>
+    <%= f.input :dimension_l %>
+    <%= f.input :wt_ibs_ft %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

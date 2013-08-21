@@ -11,19 +11,22 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require autocomplete-rails
 //= require bootstrap
-//= require turbolinks
 //= require dataTables/jquery.dataTables
-//= require_tree .
 //= require bootstrap-datepicker
+//= require turbolinks
+//= require_tree .
 
 
-// this line mean .. loop view code first , then only come back loop jquery
- $(document).ready(function () {    
 
- });
+
+
+$(document).ready(function () {  
+
+});
  	
  	
 

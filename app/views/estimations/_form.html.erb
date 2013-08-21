@@ -2,7 +2,7 @@
 
 <%#= render :text => params[:estimation].to_json %>
 
-Station : <%= @station.name %>
+<!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
   <%= f.input "station_id" , :as => :hidden , :input_html=>{:value => params[:estimation]}, :label => false %>
@@ -32,6 +32,35 @@ Station : <%= @station.name %>
     </th>
   </table>
 </div>
+
+<table>
+  <tr>
+    <td><%= f.input :welding %></td>
+    <td><%= f.input :oxygen_acetylene %></td>
+    <td><%= f.input :painting %></td>
+    <td><%= f.input :sand_blasting %></td>
+    <td><%= f.input :transport %></td>
+  </tr>
+  <tr>
+    <td><%= f.input :crane %></td>
+    <td><%= f.input :shipment %></td>
+    <td><%= f.input :labour %></td>
+    <td><%= f.input :installation %></td>
+    <td><%= f.input :dismantle %></td>
+  </tr>
+  <tr>
+    <td><%= f.input :machining %></td>
+    <td><%= f.input :insulation %></td>
+    <td><%= f.input :civil_work %></td>
+    <td><%= f.input :electrik %></td>
+    <td><%= f.input :piling_work %></td>
+  </tr>
+  <tr>
+    <td><%= f.input :forming %></td>
+    <td><%= f.input :misc %></td>
+    <td><%= f.input :jkkp %></td>
+  </tr>
+</table>
 
   <div class="actions">
     <%= f.button :submit , :class=>"btn btn-primary" %> 
@@ -66,5 +95,4 @@ Station : <%= @station.name %>
  
   });
 </script>
-
 

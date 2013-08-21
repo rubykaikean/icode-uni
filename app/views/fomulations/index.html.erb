@@ -1,0 +1,33 @@
+<h1>Listing fomulations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Thk</th>
+      <th>Dimension w</th>
+      <th>Dimension l</th>
+      <th>Wt ibs ft</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fomulations.each do |fomulation| %>
+      <tr>
+        <td><%= fomulation.thk %></td>
+        <td><%= fomulation.dimension_w %></td>
+        <td><%= fomulation.dimension_l %></td>
+        <td><%= fomulation.wt_ibs_ft %></td>
+        <td><%= link_to 'Show', fomulation %></td>
+        <td><%= link_to 'Edit', edit_fomulation_path(fomulation) %></td>
+        <td><%= link_to 'Destroy', fomulation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fomulation', new_fomulation_path %>

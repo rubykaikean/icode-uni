@@ -1,5 +1,7 @@
 IcodeUni::Application.routes.draw do
   
+  resources :fomulations
+
   resources :estimations do
     collection do
       get "station_estimation"
@@ -24,9 +26,17 @@ IcodeUni::Application.routes.draw do
   end
   
 
-  resources :materials
+  resources :materials do
+    member do
+      get "estimation_item"
+    end
+  end
 
-  resources :drawings
+  resources :drawings do
+    collection do
+      get "pdf_drawing_pic"
+    end
+  end
 
   resources :clients
 
