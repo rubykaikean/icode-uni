@@ -68,19 +68,12 @@ GEM
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
-<<<<<<< HEAD
+
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
-=======
-    chosen-rails (1.0.0)
-      coffee-rails (>= 3.2)
-      compass-rails (>= 1.0)
-      railties (>= 3.0)
-      sass-rails (>= 3.2)
-    chunky_png (1.2.8)
->>>>>>> d9cc6b81a886ca22267a78b3444c9229507040f4
+
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
