@@ -5,7 +5,7 @@ class AddAndRemoveColumn < ActiveRecord::Migration
 
   	remove_column :stations , :estimation_id
 
-  	remove_column :estimations , :estimation_id
+  	
 
   end
 end

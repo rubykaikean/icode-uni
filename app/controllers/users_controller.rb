@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_filter :are_you_admin?
   before_action :set_user, only: [:show, :edit_user, :update_user, :destroy, :entry_user]
+  autocomplete :user, :username
   ## before_action :checkboxes##, only: [:show]
-  
   # GET /users
   # GET /users.json
   
@@ -15,14 +15,19 @@ class UsersController < ApplicationController
   # end
 
   def index
-    @users = User.all
+    @search = User.search(params[:q])
+    @users = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
+  # def search
+  #   index
+  #   render :index
+  # end
 
   # GET /users/1
   # GET /users/1.json
-  # def show
-  # end
+  def show
+  end
 
   # GET /users/new
   def new_user
@@ -35,50 +40,6 @@ class UsersController < ApplicationController
 
   def entry_user
   end
-
-
-  # def generator_user
-
-  #    respond_to do |format|
-  #     if UserRegister.generate_role(@user, params[:inventory_management_system])
-  #       format.html { redirect_to users_path, notice: 'Role was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @role }
-  #     else
-  #       format.html { render action: 'new_role' }
-  #       format.json { render json: @role.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   @role = @user.roles.find(params[:id])
-  #   respond_to do |format|
-  #     if UserRegister.generate_role(@user, params[:inventory_management_system])
-  #       format.html { redirect_to users_path, notice: 'Role was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @role }
-  #     else
-  #       format.html { render action: 'new_role' }
-  #       format.json { render json: @role.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # def old_generator_user
-  #   if params[:inventory_management_system].present?
-  #     @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :admin => params[:admin])
-  #     if @user.save
-  #       UserRegister.generate_role(@user, params[:inventory_management_system])
-  #       redirect_to user_path(@user), :notice => "User has created successfully."
-  #     else
-  #       flash[:alert] = @user.errors.full_messages.join(", ")
-  #       render "entry_user"
-  #     end
-  #   else
-  #     flash[:alert] = "Please tick the checkboxes on your inventory management system."
-  #     render "entry_user"
-  #   end
-  # end
 
   # POST /users
   # POST /users.json

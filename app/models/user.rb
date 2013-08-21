@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   
   validates :username, presence: :true, length: {:in => 5..24}, uniqueness: true
 
+
 private
 
   def is_admin?  

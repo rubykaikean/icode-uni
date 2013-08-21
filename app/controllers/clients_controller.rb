@@ -1,10 +1,13 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  autocomplete :client, :name
 
   # GET /clients
   # GET /clients.json
   def index
     @clients = Client.all
+    @search = Client.search(params[:q])
+    @clients = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /clients/1

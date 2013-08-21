@@ -1,11 +1,5 @@
-<%= search_form_for @search , :url => stations_path do |f| %>
-<table>
-	<tr>
-		<td>Station Name :</td>
-		<td><%= f.text_field :name_cont %></td>
-	</tr>
-	<tr>
-		<td><%= f.submit %></td>
-	</tr>
-</table>
+<%= search_form_for @search, :url => stations_path do |f| %> 
+  <%#= f.text_field :name_cont, :class => "input-medium search-query", :placeholder => "Project Name" %>
+  <%= f.text_field :name_cont, "data-autocomplete" => autocomplete_product_name_products_path, :class => "input-medium search-query", :placeholder => "Project Name" %>
+  <%= f.submit "Search", :class => "btn"%>
 <% end %>

@@ -16,9 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # Datatables railscasts #340
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+#gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-rails'
-gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+# Chosen
+gem 'chosen-rails'
+#gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

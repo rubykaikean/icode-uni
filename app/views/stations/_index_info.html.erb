@@ -1,0 +1,17 @@
+<div class="accordion" id="accordion2">
+  <% @products.each do |product| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= product.id %>">
+        <%= product.name %> - <%= product.client.name %>
+      </div>
+    </div>
+
+    <div id="collapse<%= product.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render "index_station", :product_stations => product %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>

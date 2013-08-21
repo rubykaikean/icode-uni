@@ -2,20 +2,31 @@ class StationsController < ApplicationController
   before_filter :authenticate_user!
   #before_filter :search
   before_action :set_station, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /stations
   # GET /stations.json
   def index
-    @stations = Station.all
+    # @search = Station.search(params[:q])
+    # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+
+    # @search = Product.search(params[:search])
+    # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+
+    @search = Product.search(params[:q])
+    @products = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
+
+    # @stations = Station.all
     # @products = Product.first
     #@detail_inventory_report = InventoryHistory.find(params[:in_ids])
-    @station = Station.new
+    # @station = Station.new
     # @search = Station.search(params[:q])
     # #render :text => @search.result(:distinct => true).to_json
     # @search_index_station = @search.result(:distinct => true)
-    @products = Product.all
-    a = Station.all
-    @show_product_station = a.all
+
+    # @products = Product.all
+    # a = Station.all
+    # @show_product_station = a.all
     
   end
 
@@ -73,8 +84,12 @@ class StationsController < ApplicationController
     end
   end
 
-
-
+  def standard_project_station
+    @search = Station.search(params[:q])
+    @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    #@product = Product.find(params[:id])
+    #@stations = Station.where("product_id = ?", params[:id])
+  end
 
 
 

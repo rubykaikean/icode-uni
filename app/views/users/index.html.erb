@@ -1,12 +1,23 @@
-<%#- model_class = User -%>
-  <h4><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h4>
+<div class="page-header">
+<h1>User</h1>
+</div>
 
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="users">
+<div style="float: left;">
+<%= search_form_for @search do |f| %> 
+  <%#= f.text_field :username_cont, :class => "input-medium search-query", :placeholder => "Username", autocomplete: true %>
+  <%= f.text_field :username_cont, "data-autocomplete" => autocomplete_user_username_users_path, :class => "input-medium search-query", :placeholder => "Username" %>
+  <%= f.submit "Search", :class => "btn" %>
+<% end %>
+</div>
+
+<div style="float: right;"><%= will_paginate @users, :class => "pagination" %></div>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="users">
   <thead>
     <tr>
-      <th>Status</th>
-      <th>Username</th>
-      <th>Email</th>       
+      <th><%= sort_link(@search, :status, "Status") %></th>
+      <th><%= sort_link(@search, :username, "Username") %></th>
+      <th><%= sort_link(@search, :email, "Email") %></th>       
       <th>Actions</th>       
     </tr>
   </thead>
@@ -27,27 +38,27 @@
         <%#= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-danger"%>           
         <td>
           <%= link_to 'Edit User', edit_user_user_path(user), :class=>"btn" %> 
-          <%#= link_to 'Role', entry_user_user_path(user, @role), :class=>"btn btn-primary" %> 
+
           <% if user.roles.present? %>
             <%= link_to 'Role', edit_role_path(user), :class =>"btn btn-primary" %>
-          <% else %>
+            <% else %>
             <%= link_to 'Role', new_role_path(:user_id => user), :class =>"btn btn-primary" %>
-          <% end %>     
-          
-        </td>
-                 
+          <% end %>       
+        </td>                 
       </tr>
     <% end %>
   </tbody>
-    </table>
-    <br>
+</table>
+  <br>
       
 <div style="float: right; "><%#= link_home_button %></div> 
 <div><%= link_to "Add User", new_user_users_path, :class=>"btn btn-primary" %></div>
 
 <br>
 
-<%= render "js_user" %>
+
+
+<%#= render "js_user" %>
 <!--
 <script>
  $(document).ready(function () { 

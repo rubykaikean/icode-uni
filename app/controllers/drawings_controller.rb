@@ -7,8 +7,12 @@ class DrawingsController < ApplicationController
   def index
     @drawings = Drawing.all
 
+
     #render :test => params[:estimation_id].to_json
-    @info_estimations = Estimation.find(params[:estimation_id])
+    @info_estimations = Estimation.find(params[:estimation_id])\
+    @search = Drawing.search(params[:q])
+    @drawings = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+
   end
 
   # GET /drawings/1

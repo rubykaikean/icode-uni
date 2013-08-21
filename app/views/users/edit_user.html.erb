@@ -1,6 +1,5 @@
-<%- model_class = User -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+<h1>Edit User</h1>
 </div>
 
 <%= form_for(@user, url: update_user_user_path(@user), method: :patch) do |f| %>
@@ -11,7 +10,8 @@
   <%= f.email_field :email %><br>   
   <%= f.label :status, "Is Active?" %>
   <%= f.check_box(:status) %>
-  
+  <%#= f.label :admin, "Is Admin?" %>
+  <%#= f.check_box(:admin) %>
   
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

@@ -13,14 +13,15 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require autocomplete-rails
 //= require bootstrap
 //= require dataTables/jquery.dataTables
 //= require bootstrap-datepicker
+//= require chosen-jquery
+//= require chosenrails
 //= require turbolinks
 //= require_tree .
-
-
 
 
 
@@ -93,5 +94,3 @@ $(document).ready(function () {
 //           checkout.hide();
 //         }).data('datepicker');
 // 		});
-
-
