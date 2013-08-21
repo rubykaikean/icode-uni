@@ -5,6 +5,8 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
     @drawings = Drawing.all
+    @search = Drawing.search(params[:q])
+    @drawings = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /drawings/1

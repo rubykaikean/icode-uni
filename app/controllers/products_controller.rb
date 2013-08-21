@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  autocomplete :product, :name
 
   #autocomplete :client, :name
 
@@ -8,9 +9,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @product = Product.new
 
-  
+    # @search = Product.search(params[:q])
+    # @products = @search.result(distinct: true)
+
+    # @search = Product.search(params[:q])
+    # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>100)
+    
+    #@product = Product.new  
     # @search = Article.search(params[:search])
     # @articles = @search.all
   end
@@ -40,7 +46,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.standard ==  true
           @product.save
-          format.html { redirect_to standard_project_products_path , notice: 'Product was successfully created Standard.' }
+          format.html { redirect_to show_standard_project_products_path , notice: 'Product was successfully created Standard.' }
           format.json { render action: 'show', status: :created, location: @product }
         elsif @product.non_standard == true
           @product.save
@@ -82,7 +88,10 @@ class ProductsController < ApplicationController
     @show_product_station = @product_station.all
   end 
 
-  
+  def standard_project
+    @search = Product.search(params[:q])
+    @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

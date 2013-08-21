@@ -1,12 +1,15 @@
 class EstimationsController < ApplicationController
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
-
   before_filter :authenticate_user!
+  autocomplete :estimation, :title
+
 
   # GET /estimations
   # GET /estimations.json
   def index
-    @estimations = Estimation.all
+    @search = Estimation.search(params[:q])
+    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    # @estimations = Estimation.all
 
     # a = Estimation.where(:station_id => params[:id])
     # @show_station = a.all
@@ -82,7 +85,10 @@ class EstimationsController < ApplicationController
     #@show_estimation = a.all
   end
 
-
+  def standard_project_estimation
+    @search = Estimation.search(params[:q])
+    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+  end
 
 
   private

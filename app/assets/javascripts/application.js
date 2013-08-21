@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require autocomplete-rails
 //= require bootstrap
 //= require turbolinks
-//= require dataTables/jquery.dataTables
-//= require_tree .
 //= require bootstrap-datepicker
+//= require chosen-jquery
+//= require chosenrails
+//= require_tree .
 
 
 // this line mean .. loop view code first , then only come back loop jquery
@@ -90,5 +92,3 @@
 //           checkout.hide();
 //         }).data('datepicker');
 // 		});
-
-

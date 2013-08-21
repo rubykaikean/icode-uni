@@ -4,8 +4,14 @@
   <%#= f.label :client_id %>
   <%#= f.input :client , :url => autocomplete_client_name_products_path, 
   :id_element => '#products_client_id', :as => :autocomplete , :autocomplete => false %>
-  <%= f.label :client %>
-  <%= f.select :client_id ,Client.all.map{|r| [r.name, r.id]} ,:autocomplete => false , :class=>"combobox input-large" , :include_blank => true, placeholder:"Please a Client" %>
+  <%#= f.label :client %>
+  <%#= f.select :client_id ,Client.all.map{|r| [r.name, r.id]}, :class=>"chosen-select" , :include_blank => true, :placeholder=>"Choose a country..." %>
+
+  <%= f.association :client,
+                    collection: Client.all,
+                    include_blank: true,
+                    input_html: { class: 'chosen-select' }
+  %>
 
   <br>
 
@@ -25,15 +31,12 @@
 
    <br>
    <br>
+   <br>
 
-
-
-  <br>
   <%= f.check_box(:standard) %>
   <%= f.label(:standard, "standard") %>
   <%= f.check_box(:non_standard) %>
   <%= f.label(:non_standard, "Non standard")   %>
-
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
@@ -42,10 +45,9 @@
   </div>
 <% end %>
 
-
+<%#= render "js_station" %>
 
 <script type="text/javascript">
-
 
 $(document).ready(function () {    
   $(function() {
@@ -67,13 +69,9 @@ $(document).ready(function () {
         $(this).attr("checked", false);
         //$(this).
         // display error message.
-        //alert("Please select a maximum of " + max_allowed + " options.");
- 
-    }
- 
+        //alert("Please select a maximum of " + max_allowed + " options."); 
+    } 
   });
-
- 
 
   // var data = [ "<%= @client %>" ]
 
@@ -87,7 +85,5 @@ $(document).ready(function () {
 
   // });
  });
-  
 
 </script>
-

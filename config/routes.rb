@@ -1,6 +1,7 @@
 IcodeUni::Application.routes.draw do
   
   resources :estimations do
+    get :autocomplete_estimation_title, :on => :collection
     collection do
       get "station_estimation"
     end
@@ -9,17 +10,22 @@ IcodeUni::Application.routes.draw do
   resources :estimation_items
 
   resources :stations do
+
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
+      get "standard_project_station"
+      get "standard_project_estimation"
     end
   end
 
 
   resources :products do
-    get :autocomplete_client_name, :on => :collection
+    get :autocomplete_product_name, :on => :collection
     collection do
       get "product_station"
-      get "standard_project"
+      get "show_standard_project"
+      get "show_standard_station"
+      get "show_standard_estimation"
     end
   end
   
@@ -28,13 +34,17 @@ IcodeUni::Application.routes.draw do
 
   resources :drawings
 
-  resources :clients
+  resources :clients do
+    get :autocomplete_client_name, :on => :collection
+  end
+
 
 
 
   get "home/index"
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
+    get :autocomplete_user_username, :on => :collection
     member do      
       get :edit_user      
       patch :update_user    
@@ -42,9 +52,9 @@ IcodeUni::Application.routes.draw do
     collection do
       get :new_user       
       post :create_user
-    end   
-    
+    end       
   end
+
     resources :roles         
      
   
