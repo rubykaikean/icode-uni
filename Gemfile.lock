@@ -9,13 +9,6 @@ GIT
       polyamorous (~> 0.6.0)
 
 GIT
-  remote: git://github.com/rweng/jquery-datatables-rails.git
-  revision: 494f752b8eb8350f33841c822a67d014c869219f
-  specs:
-    jquery-datatables-rails (1.11.2)
-      jquery-rails
-
-GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 0b080eeeb34eb16cc2ba831ccbea3fb523e147af
   specs:
@@ -26,7 +19,6 @@ GIT
       mime-types
 
 GIT
-
   remote: https://github.com/francisd/rails3-jquery-autocomplete
   revision: 9884a40f2bb1a8fa3ffab445e6d2c74c3ee99a0d
   specs:
@@ -68,12 +60,16 @@ GEM
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
-
+    chosen-rails (1.0.0)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 1.0)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.2.8)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
-
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -220,5 +216,4 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
-  will_paginate
   wkhtmltopdf-binary
