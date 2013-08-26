@@ -1,6 +1,8 @@
 class DrawingsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_drawing, only: [:show, :edit, :update, :destroy ]
+  # toDo
+  # delete the 'enter_data' and use logic in application.html.erb
   layout "enter_data", :only => [:pdf_drawing_pic]
 
   # GET /drawings

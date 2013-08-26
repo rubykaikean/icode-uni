@@ -95,6 +95,8 @@ class UsersController < ApplicationController
     end
 
     def checkboxes
+      # toDo
+      # refactor into a class for user.roles.map ...
       @checkboxes = @user.roles.map(&:inventory_management_system_id)
     end
 end

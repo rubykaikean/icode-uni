@@ -15,9 +15,13 @@ class ApplicationController < ActionController::Base
   end
 
   def roles
+    # toDo
+    # refactor into a class for user.roles.map ...
     @roles = current_user.roles.map(&:inventory_management_system_id)
   end
 
+  # toDo
+  # change the below method name to something descriptive 
   def are_you_admin?
     unless user_is_admin?
       flash[:alert] = "You are not authorize!!"
