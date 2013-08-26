@@ -1,5 +1,7 @@
 IcodeUni::Application.routes.draw do
   
+  resources :projects
+
   resources :fomulations
 
   resources :estimations do

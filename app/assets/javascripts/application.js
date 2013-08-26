@@ -16,7 +16,7 @@
 //= require jquery.ui.all
 //= require autocomplete-rails
 //= require bootstrap
-//= require dataTables/jquery.dataTables
+
 //= require bootstrap-datepicker
 //= require chosen-jquery
 //= require chosenrails

@@ -1,11 +1,10 @@
-<%# drawing_id = @pdf_drawing_picture %>
 
-<%  @pdf_drawing_picture %>
+<%#= render :text => params[:drawing].to_json %>
 
-<%= render :text => params[:drawing].to_json %>
+<%#= "#{::Rails.root}/public" %> 	<!-- url>>> /home/khong/project/icode-uni/public -->
 
-<%# @pdf_drawing_picture.each do |drawing| %>
-	<%= image_tag @pdf_drawing_picture.photo.url  %>
-<%# end %>
+<%#= "#{@pdf_drawing_picture.photo.url}" %>   <!--url>>> /system/photos/19/original/download.jpg?1377139893 -->
 
-<%#= image_tag @pdf_drawing_picture.photo.url %>
+ <%= image_tag("#{::Rails.root}/public" << "#{@pdf_drawing_picture.photo.url}") %>
+
+

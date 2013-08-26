@@ -26,9 +26,11 @@ var EstimationItem =
 	 		// $("#thk_dia_2").html(thk_dia_2);
 	 		// $("#thk_dia_1").html(thk_dia_1);
 	 	});
+
+
 	 }
 		
 
   };
-	
+
 		

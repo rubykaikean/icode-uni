@@ -1,6 +1,7 @@
 class DrawingsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_drawing, only: [:show, :edit, :update, :destroy]
+  before_action :set_drawing, only: [:show, :edit, :update, :destroy ]
+  layout "enter_data", :only => [:pdf_drawing_pic]
 
   # GET /drawings
   # GET /drawings.json
@@ -9,15 +10,16 @@ class DrawingsController < ApplicationController
 
 
     #render :test => params[:estimation_id].to_json
-    @info_estimations = Estimation.find(params[:estimation_id])\
-    @search = Drawing.search(params[:q])
-    @drawings = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    @info_estimations = Estimation.find(params[:estimation_id])
+    #@search = Drawing.search(params[:q])
+    #@drawings = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
 
   end
 
   # GET /drawings/1
   # GET /drawings/1.json
   def show
+
 
   end
 
@@ -74,18 +76,18 @@ class DrawingsController < ApplicationController
   end
 
   def pdf_drawing_pic
-    if params[:commit] == "Print PDF"
-    #if params[:pr_ids].present?
-    #@drawing.photo = params[:drawing][:photo]
+    # if params[:commit] == "Print PDF"
+    # #if params[:pr_ids].present?
+    # #@drawing.photo = params[:drawing][:photo]
 
-      @pdf_drawing_picture = Drawing.find(params[:drawing_id])
-      html = render_to_string(:layout => false , :action => "pdf_drawing_picture.html.erb")
+       @pdf_drawing_picture = Drawing.find(params[:drawing])
+      html = render_to_string(:layout => false , :action => "pdf_drawing_pic.html.erb")
           @kit = PDFKit.new(html)
-          send_data(@kit.to_pdf, :filename => "pdf_drawing_picture.pdf", 
+          send_data(@kit.to_pdf, :filename => "pdf_#{@pdf_drawing_picture.name}.pdf", 
                                   :type => 'application/pdf' , 
                                   :disposition => "attachement" )
-        #return # to avoid double render call
-    end
+    #     #return # to avoid double render call
+    # end
   end
 
   private
@@ -99,3 +101,11 @@ class DrawingsController < ApplicationController
       params.require(:drawing).permit(:name  , :estimation_id )
     end
 end
+
+
+
+# html = render_to_string(:layout => false , :action => "pdf_so_customer_po_detail_report.html.erb")
+#           @kit = PDFKit.new(html)
+#           send_data(@kit.to_pdf ,:filename => "pdf_so_customer_po_detail_report.pdf",
+#                                 :type => 'application/pdf' , 
+#                                 :disposition => "attachement")
