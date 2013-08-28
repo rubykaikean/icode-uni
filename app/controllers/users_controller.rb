@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :are_you_admin?
+  before_filter :authorization_admin
   before_action :set_user, only: [:show, :edit_user, :update_user, :destroy, :entry_user]
   autocomplete :user, :username
   ## before_action :checkboxes##, only: [:show]

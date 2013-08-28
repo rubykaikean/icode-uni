@@ -5,23 +5,23 @@ class InventoryManagementSystem < ActiveRecord::Base
 
 
   #MODULE
-  PRODUCT_MENU                                      = 1  #ok
+  PRODUCT_MENU                = 1  #ok
 
   #SUB MODULE
-  PRODUCT_STATION                                   = 2  #ok
-  PRODUCT_MATERIAL                                  = 3
+  PRODUCT_STATION             = 2  #ok
+  PRODUCT_MATERIAL            = 3
 
   #PRODUCT STATION
-  PRODUCT_STATION_ADD							    = 4
-  PRODUCT_STATION_SHOW								= 5
-  PRODUCT_STATION_EDIT								= 6
-  PRODUCT_STATION_PRINTER							= 7
+  PRODUCT_STATION_ADD					= 4
+  PRODUCT_STATION_SHOW				= 5
+  PRODUCT_STATION_EDIT				= 6
+  PRODUCT_STATION_PRINTER			= 7
 
   #PRODUCT MATERIAL
-  PRODUCT_MATERIAL_ADD								= 8
-  PRODUCT_MATERIAL_SHOW								= 9	
-  PRODUCT_MATERIAL_EDIT								= 10	
-  PRODUCT_MATERIAL_PRINTER							= 11
+  PRODUCT_MATERIAL_ADD				= 8
+  PRODUCT_MATERIAL_SHOW				= 9	
+  PRODUCT_MATERIAL_EDIT				= 10	
+  PRODUCT_MATERIAL_PRINTER	  = 11
 
  
 end

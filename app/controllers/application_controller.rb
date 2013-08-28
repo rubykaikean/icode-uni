@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     @roles = current_user.roles.map(&:inventory_management_system_id)
   end
 
-  def are_you_admin?
+  def authorization_admin
     unless user_is_admin?
       flash[:alert] = "You are not authorize!!"
       redirect_to root_url
@@ -30,7 +30,11 @@ class ApplicationController < ActionController::Base
     render :index
   end
 
-   protected
+  def authorization_role
+    unless roles == true
+      flash[:alert] = "You are not allowed(authorize)!!"
+      redirect_to root_url
+  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, 
