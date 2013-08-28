@@ -15,7 +15,12 @@ var Material =
             }
             else if ($('#material_type_id').val() == 2 ) {
                 $('#id_a').hide();
-                $('#id_b').hide();
+                $('#id_b').show();
+                $('#id_c').show();
+            }
+            else if ($("#material_type_id").val() == 3 ){
+                $('#id_a').hide();
+                $('#id_b').show();
                 $('#id_c').show();
             }
             else{
@@ -29,22 +34,18 @@ var Material =
             if ($('#material_category_id').val() == 1) {
                 $('#catogery_a').show();
                 $('#catogery_b').hide();
-                $('#catogery_c').show(); 
             }
             else if ($('#material_category_id').val() == 2 ) {
-                $('#catogery_a').show();
-                $('#catogery_b').show();
-                $('#catogery_c').show();
+                $('#catogery_a').hide();
+                $('#catogery_b').hide();
             }
             else if ($('#material_category_id').val() == 3 ) {
                 $('#catogery_a').hide();
-                $('#catogery_b').show();
-                $('#catogery_c').show();
+                $('#catogery_b').hide();
             }
             else{
                 $('#catogery_a').hide();
                 $('#catogery_b').hide();
-                $('#catogery_c').hide();
             }
       }
 

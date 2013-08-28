@@ -1,7 +1,7 @@
 class EstimationItemsController < ApplicationController
   before_action :set_estimation_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  layout "enter_data", :only => [:new] 
+  #layout "enter_data", :only => [:new] 
 
   # GET /estimation_items
   # GET /estimation_items.json

@@ -76,6 +76,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name , :type_id , :semi_total_weight , :wt_ibs_ft,  :thk_dia_1 , :thk_dia_2 , :dimension_h , :dimension_w , :dimension_l , :plate , :category_id)
+      params.require(:material).permit(:name , :type_id , :semi_total_weight , :wt_ibs_ft,  :thk_dia, :dimension_h , :dimension_w , :plate , :category_id)
     end
 end

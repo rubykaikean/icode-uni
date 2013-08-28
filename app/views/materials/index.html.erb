@@ -12,12 +12,11 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th>WT</th>
       <th><%= "Dimension H" || model_class.human_attribute_name(:dimension_h) %></th>
       <th><%= "Dimension W" || model_class.human_attribute_name(:dimension_w) %></th>
-      <th><%= "Dimension L" || model_class.human_attribute_name(:dimension_l) %></th>
+      <th>WT</th>
       <th><%= model_class.human_attribute_name(:thk_dia) %></th>
-      <th>Weight (Per Material Weight)</th>
+      
       <%#= model_class.human_attribute_name(:created_at) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -27,29 +26,11 @@
       <tr>
         <td><%#= link_to material.id, material_path(material) %><%= material.id %></td>
         <td><%= material.name %></td>
-        <td><% if material.thk_dia_1 > 0.0 %>
-            <%= material.thk_dia_1 rescue'-' %>
-          <% elsif material.thk_dia_2.present? %>
-            <%= material.thk_dia_2 rescue'-' %>
-          <% else %>
-            &nbsp;
-          <% end %>
-        </td>
         
         <td><%= material.dimension_h %></td>
         <td><%= material.dimension_w %></td>
-        <td><%= material.dimension_l %></td>
-        <td><%= material.total_wt_plate %></td>
-        <td><% if material.category_id == 1 %>
-              <%= material.fomular_1 %>
-            <% elsif material.category_id == 2 %>
-              <%= material.fomular_2 %>
-            <% elsif material.category_id == 3 %>
-              <%= material.fomular_3 %>
-            <% else %>
-              &nbsp;
-            <% end %>
-        </td>
+        <td><%= material.thk_dia %></td>
+        <td><%= material.total_wt_ibs_ft %></td>
         <%#=l material.created_at %>
         <td>
           <%#= link_to t('.edit', :default => t("helpers.links.edit")),

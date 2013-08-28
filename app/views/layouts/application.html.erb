@@ -13,6 +13,7 @@
     var ready = function()
     {
       Material.init();
+      EstimationItem.init();
     }
 
     $(document).ready(function() {  
@@ -42,10 +43,11 @@
 
     </div>
     <% end %>
-
+      <%# unless controller_name => "estimation_item" %>
         <% if user_signed_in? %>    
         <%= render "/layouts/top_menu_layout" %>
         <% end %> 
+      <%# end %>
 
     <div class="container">  <!-- this link is fix layout --> 
       <%= yield %>

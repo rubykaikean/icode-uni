@@ -18,37 +18,37 @@
 <table >
     <div class="inputs">
     <tr>
-        <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} %></td>
+        <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20 } %></td>
         <td><%= f.label :material_id %><%= f.select :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %>
         </td>
-        <td><div id="showData"></div></td>
+        <!-- <td><div id="showData"></div></td> -->
     </tr>
+
+    <%#= f.association :client, collection: Client.all, include_blank: true, input_html: { class: 'chosen-select' } %>
+
     
     <tr style="align:margin-right">
-      <legend>Dimension</legend>
-        <td><%= f.input :thk_dia  , as: :hidden %></td>
-        <td><%= f.input :dimension_h, as: :hidden, label: "Dimension H",:size=> 9, :id=>"dimension_h" %></td>
-        <td><%= f.input :dimension_w, as: :hidden, label: "Dimension W",:size=> 9, :id=>"dimension_w" %></td>
-        <td><%= f.input :dimension_l, as: :hidden, label: "Dimension L",:size=> 9, :id=>"dimension_l" %></td>
+        <td><%= f.label :thk_dia %><%= f.select :thk_dia ,Material.all.map{|i| [i.thk_dia , i.id]}, :include_blank=> true , :id=>"thk_dia" %></td>
+
+        <td><%= f.label :dimension_h %><%= f.select :dimension_h, Material.all.map{|h| [h.dimension_h , h.id]} , :include_blank=> true,:size=> 9, :id=>"dimension_h" %></td>
+
+        <td><%= f.label :dimension_w %><%= f.select :dimension_w, Material.all.map{|w| [w.dimension_w , w.id]} , :include_blank=> true,:size=> 9, :id=>"dimension_w" %></td>
+
+        <td><%= f.input :dimension_l, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %></td>
+
+        <td><%= f.label :wt_ibs_ft %><%= f.select :wt_ibs_ft , Material.all.map{|j| [j.wt_ibs_ft , j.id]}, :size=> 9, :include_blank=> true %></td>
     </tr> 
     <tr>
         
-        <td><%= f.input :qty ,:size=> 9 %></td>
-        <td><%= f.input :uom ,:size=> 9 %></td>
+        <td><%= f.input :qty , label: "Quantity" ,:size=> 9 %></td>
+        <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
         <td><%# if Material.category_id == 1 %>
-            <%= f.input :weight ,  :disabled => true,:size=> 9 , :id => "weight" %>
+            <%= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 , :id => "weight" %>
             <%# else %>
             <%#= f.input :weight , :disabled => true , :size => 9  %>
             <%# end %>
         </td>
-        <td><%= f.input :wt_ibs_ft , as: :hidden ,  :size=> 9 %></td>
     </tr>
-    <tr>
-        <td>Unit price</td>
-        <td>Total</td>
-        <td><%#= f.input :remarks, :size=> 9 %></td>
-    </tr>
-
     </div>
 </table>
 <br>
@@ -60,8 +60,6 @@
 <% end %>
 
 
-<%#= label :price, "price"%> 
-<%#= text_field :price, :size=>20, :id =>"price" %>
 
 <%#= label :quantity, "Quantity"%>
 <%#= text_field :quantity, :size=>20, :id =>"qty" %>

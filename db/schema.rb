@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20130824055553) do
 
   create_table "clients", force: true do |t|
@@ -88,36 +87,22 @@ ActiveRecord::Schema.define(version: 20130824055553) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "estimation_id"
     t.integer  "category_id"
     t.integer  "type_id"
-    t.decimal  "thk_dia_1",   precision: 10, scale: 5, default: 0.0
-    t.decimal  "thk_dia_2",   precision: 10, scale: 5, default: 0.0
-    t.decimal  "dimension_h", precision: 10, scale: 5, default: 0.0
-    t.decimal  "dimension_w", precision: 10, scale: 5, default: 0.0
-    t.decimal  "dimension_l", precision: 10, scale: 5, default: 0.0
-    t.decimal  "plate",       precision: 10, scale: 5, default: 0.0
-    t.decimal  "wt_ibs_ft",   precision: 10, scale: 5, default: 0.0
-  end
-
-  create_table "product_lists", force: true do |t|
-    t.string   "estimation_no"
-    t.string   "description"
-    t.integer  "qty"
-    t.string   "batch_no"
-    t.string   "issue_by"
-    t.date     "issue_date"
-    t.string   "remark"
-    t.integer  "client_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.decimal  "thk_dia",       precision: 10, scale: 5, default: 0.0
+    t.decimal  "dimension_h",   precision: 10, scale: 5, default: 0.0
+    t.decimal  "dimension_w",   precision: 10, scale: 5, default: 0.0
+    t.decimal  "plate",         precision: 10, scale: 5, default: 0.0
+    t.decimal  "wt_ibs_ft",     precision: 10, scale: 5, default: 0.0
   end
 
   create_table "products", force: true do |t|
     t.string   "name"
     t.integer  "client_id"
     t.string   "date"
-    t.boolean  "standard",     default: false
-    t.boolean  "non_standard", default: false
+    t.boolean  "standard"
+    t.boolean  "non_standard"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
