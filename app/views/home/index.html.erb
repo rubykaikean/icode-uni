@@ -27,10 +27,12 @@ username: <%= current_user.username %> <br>
 <%= link_to "List Estimations" , estimations_path , :class=>"btn" %>
 
 <hr />
-
+<% if roles.include?(InventoryManagementSystem::MATERIAL) %>
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
-
+<% end %>
+<% if roles.include?(InventoryManagementSystem::CLIENT) %>
 <%= link_to "Client" , clients_path , :class=>"btn" %><br>
+<% end %>
 
 <br>
 <hr />

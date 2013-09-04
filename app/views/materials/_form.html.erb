@@ -10,19 +10,18 @@
   	  	<%= f.label :type_id ,"Type" %>
   	  	<%#= f.select :category_id ,[["Plate * Thk/Dia = WT" , true] , ["Thk/Dia = WT" , false]] , 
   	     :input_html => {:onchange =>"showDiv()"} , :id=>"select_method", include_blank: true  %>
-         <%= f.select :type_id ,[["Plate * Thk/Dia = WT" , 1] , ["Thk/Dia = WT" , 2]] , :include_blank => true %>
+         <%= f.select :type_id ,[["Thickness * Thk/Dia = WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
         
 		</td>
     <td>
-    <%= f.label :category_id %>
+    <%= f.label :category_id , "Fomular" %>
     <%= f.select :category_id ,[[ "W/304 * L/304 * WT" , 1], ["L/1000 * WT * 2.204" , 2], ["L/304 * WT" , 3]], :include_blank => true %>
     </td>
   	</tr>
   	<tr>
-  		<td><div id="id_a" style="display:none"><%= f.input :plate , label: "Plate", :size=>9 %></div></td>
-			<td><div id="id_b" style="display:none"><%= f.input :thk_dia_1 , label: "Thk/Dia",:size => 9 %></div></td>
-      <td><div id="id_c" style="display:none"><%= f.input :thk_dia_2 , label: "Thk/Dia",:size => 9 %></div></td>
-		</td>
+  		<td><div id="id_a" style="display:none"><%= f.input :plate , label: "Z(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div></td>
+			<td><div id="id_b" style="display:none"><%= f.input :thk_dia , label: "Thk/Dia",:size => 9 %></div></td>
+      <td><div id="id_c" style="display:none"><%= f.input :wt_ibs_ft , label: "Wt/ibs ft" , :size => 9 %></div></td>
 	</tr>
 	<tr>
 		<td>
@@ -33,7 +32,7 @@
 	<tr>
 		<td><div id="catogery_a" style="display:none"><%= f.input :dimension_w, label: "Dimension W" , :size=> 9  %></td>
 		<td><div id="catogery_b" style="display:none"><%= f.input :dimension_h, label: "Dimension H" , :size=> 9  %></td>
-    <td><div id="catogery_c" style="display:none"><%= f.input :dimension_l, label: "Dimension L" , :size=> 9  %></td>
+   <!--  <td><div id="catogery_c" style="display:none"><%#= f.input :dimension_l, label: "Dimension L" , :size=> 9  %></td> -->
 
 		</div>
 	</tr>
@@ -46,4 +45,3 @@
                 materials_path, :class => 'btn' %>
   </div>
 <% end %>
-

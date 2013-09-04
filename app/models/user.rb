@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  after_destroy :is_admin?
+  # after_destroy :is_admin?
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,12 +15,12 @@ class User < ActiveRecord::Base
   validates :username, presence: :true, length: {:in => 5..24}, uniqueness: true
 
 
-private
+# private
 
-  def is_admin?  
-    # if admin == true
-    if user_id == 1
-      raise "The user cannot be delete!"
-    end
-  end
+#   def is_admin?  
+#     # if admin == true
+#     if user_id == 1
+#       raise "The user cannot be delete!"
+#     end
+#   end
 end

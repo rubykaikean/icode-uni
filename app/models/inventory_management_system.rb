@@ -5,7 +5,8 @@ class InventoryManagementSystem < ActiveRecord::Base
 
 
   #MODULE
-  PRODUCT_MENU                = 1  #ok
+  CLIENT                      = 1  #ok
+  MATERIAL                    = 20
 
   #SUB MODULE
   PRODUCT_STATION             = 2  #ok
@@ -22,6 +23,8 @@ class InventoryManagementSystem < ActiveRecord::Base
   PRODUCT_MATERIAL_SHOW				= 9	
   PRODUCT_MATERIAL_EDIT				= 10	
   PRODUCT_MATERIAL_PRINTER	  = 11
+
+  MATERIAL                    = 12
 
  
 end

@@ -24,6 +24,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    # toDo
+    # remove the duplicated code
     a = Station.where(:product_id => params[:id])
     @show_product = a.all
   end
@@ -31,7 +33,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @client = Client.all
+    #@client = Client.all
   end
 
   # GET /products/1/edit
@@ -44,6 +46,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     respond_to do |format|
+      # toDo
+      # use ? to request the true/false value
       if @product.standard ==  true
           @product.save
           format.html { redirect_to show_standard_project_products_path , notice: 'Product was successfully created Standard.' }

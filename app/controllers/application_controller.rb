@@ -15,9 +15,13 @@ class ApplicationController < ActionController::Base
   end
 
   def roles
+    # toDo
+    # refactor into a class for user.roles.map ...
     @roles = current_user.roles.map(&:inventory_management_system_id)
   end
 
+  # toDo
+  # change the below method name to something descriptive 
   def authorization_admin
     unless user_is_admin?
       flash[:alert] = "You are not authorize!!"
@@ -30,10 +34,25 @@ class ApplicationController < ActionController::Base
     render :index
   end
 
-  def authorization_role
-    unless roles == true
-      flash[:alert] = "You are not allowed(authorize)!!"
-      redirect_to root_url
+  #testing
+  def role(model_array)
+      ## to check employee is allow to work on task
+      model_array.each do |role|
+        unless roles.include?(role)
+          break;
+          flash[:notice] = "You are not authorize!"
+          redirect_to root_url
+        end
+      end
+  end
+
+  # def authorization_role
+  #   unless roles.include?
+  #     flash[:alert] = "You are not allowed(authorize)!!"
+  #     redirect_to root_url
+  #   end
+  # end
+    
   protected
 
   def configure_permitted_parameters

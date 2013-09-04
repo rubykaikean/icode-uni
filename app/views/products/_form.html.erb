@@ -12,8 +12,7 @@
   <%= f.association :client,
                     collection: Client.all,
                     include_blank: true,
-                    input_html: { class: 'chosen-select' }
-  %>
+                    input_html: { class: 'chosen-select' }  %>
 
   <br>
 
@@ -89,14 +88,4 @@ $(document).ready(function () {
  });
 
 </script>
-<<<<<<< HEAD
 
-<%#= f.select :role, Role.all.map { |r| [r.name, r.id, { class: r.company.id }] }, include_blank: true %>
-  <%#= f.input :date , :id=>"datetimepicker4" , :class=>"input-append" %>
-  <!-- <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i></span>
- -->
-<%#= f.select :role, options_for_select([["Teacher", "t"], ["Student", "s"]]) %>
-
-=======
->>>>>>> d9cc6b81a886ca22267a78b3444c9229507040f4
