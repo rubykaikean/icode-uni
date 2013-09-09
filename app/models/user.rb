@@ -23,4 +23,10 @@ class User < ActiveRecord::Base
 #       raise "The user cannot be delete!"
 #     end
 #   end
+
+# def self.hhy
+#    user = User.new(:username => "administrator", :email => "administrator@gmail.com", :password => '12345678', 
+#    				   :password_confirmation => "12345678" , :status => 1, :admin => 1)
+#    user.save!
+# end
 end

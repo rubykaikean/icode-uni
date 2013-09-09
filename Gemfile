@@ -59,6 +59,10 @@ gem 'rails3-jquery-autocomplete' , git: 'https://github.com/francisd/rails3-jque
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "pdfkit", "0.5.2"
 gem 'wkhtmltopdf-binary'
+
+group :development do
+  gem 'sextant'
+end
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -78,7 +78,7 @@ class ClientsController < ApplicationController
 
     def check_role
       unless role(Client::ROLE)
-        flash[:notice] = "Sorry, you have empty tasks."
+        flash[:notice] = "You are not authorize!"
         redirect_to root_url
       end
     end

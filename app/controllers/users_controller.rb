@@ -19,11 +19,6 @@ class UsersController < ApplicationController
     @users = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
-  # def search
-  #   index
-  #   render :index
-  # end
-
   # GET /users/1
   # GET /users/1.json
   def show
@@ -98,5 +93,6 @@ class UsersController < ApplicationController
       # toDo
       # refactor into a class for user.roles.map ...
       @checkboxes = @user.roles.map(&:inventory_management_system_id)
+      # @checkboxes = UserRole.new(user).roles
     end
 end

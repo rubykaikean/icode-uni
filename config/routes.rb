@@ -1,5 +1,6 @@
 IcodeUni::Application.routes.draw do
   
+  get "report/index"
   resources :projects
 
   resources :fomulations
@@ -51,9 +52,6 @@ IcodeUni::Application.routes.draw do
     get :autocomplete_client_name, :on => :collection
   end
 
-
-
-
   get "home/index"
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
@@ -68,9 +66,11 @@ IcodeUni::Application.routes.draw do
     end       
   end
 
-    resources :roles         
-     
-  
+    resources :roles  
+
+    resources :reports do
+      get :estimation, :on => :collection
+    end
 
   # devise_for :admins
  

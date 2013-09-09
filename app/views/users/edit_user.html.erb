@@ -9,7 +9,11 @@
   <%= f.label :email %>
   <%= f.email_field :email %><br>   
   <%= f.label :status, "Is Active?" %>
+  <% if current_user.admin? %>
+  <%= f.check_box(:status, {:disabled => true}) %>
+  <% else %>
   <%= f.check_box(:status) %>
+  <% end %>
   <%#= f.label :admin, "Is Admin?" %>
   <%#= f.check_box(:admin) %>
   
