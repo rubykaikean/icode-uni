@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require dataTables/jquery.dataTables
 //= require autocomplete-rails
 //= require bootstrap
 //= require bootstrap-datepicker
@@ -25,6 +26,19 @@
 
 
 $(document).ready(function () {  
+
+
+	$('#jdatatable').dataTable({
+        //"sScrollY": content_height - 97,
+        "sPaginationType": "full_numbers",  // "bPaginate": false,
+        "bJQueryUI": true,
+        "bProcessing": true,
+        "oLanguage": {
+                "sZeroRecords":  "No Record Found.",
+                "sSearch": "Search All Columns:"
+            }
+
+     });
 
 });
  	

@@ -20,6 +20,8 @@ module IcodeUni
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.middleware.use "PDFKit::Middleware" , :print_media_type => true 
+
+
   end
 end
 

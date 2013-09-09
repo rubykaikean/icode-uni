@@ -11,6 +11,9 @@
  *= require_self 
  *= require chosen 
  *= require jquery.ui.all
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/src/demo_table_jui
  *= require_tree .
  
 

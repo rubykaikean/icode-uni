@@ -1,5 +1,16 @@
-<a class="label label-success"><h1>New Estimation Item</h1></a>
+<table>
 
+  <tr>
+  	<td><a class="label label-success"><h3>New Estimation Item</h3></a></td>
+    <td>Title :</td>
+    <td style="width:150px;"><%= @estimation.title rescue'-' %></td>
+    <td style="width:150px;">Dimension :</td>
+    <td><%= @estimation.dimension rescue'-' %></td>
+    
+  </tr>
+  <%# end %>
+</table>
+<p style="float:right;align:center;"><%= render "remark_table_estimation" %></p>
 <%= render 'form' %>
 
 <%#= link_to 'Back', estimation_items_path , :class=>"btn" %>

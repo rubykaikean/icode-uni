@@ -16,8 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # Datatables railscasts #340
-#gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-rails'
+
 gem 'bootstrap-will_paginate'
 
 # Chosen
@@ -57,8 +58,10 @@ gem 'rails3-jquery-autocomplete' , git: 'https://github.com/francisd/rails3-jque
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
 gem "pdfkit", "0.5.2"
 gem 'wkhtmltopdf-binary'
+gem "spreadsheet", "~> 0.8.9"
 # Use unicorn as the app server
 # gem 'unicorn'
 
