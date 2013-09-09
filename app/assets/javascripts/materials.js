@@ -36,12 +36,16 @@ var Material =
                 $('#catogery_b').hide();
             }
             else if ($('#material_category_id').val() == 2 ) {
-                $('#catogery_a').hide();
-                $('#catogery_b').hide();
+                $('#catogery_a').show();
+                $('#catogery_b').show();
             }
             else if ($('#material_category_id').val() == 3 ) {
-                $('#catogery_a').hide();
-                $('#catogery_b').hide();
+                $('#catogery_a').show();
+                $('#catogery_b').show();
+            }
+            else if ($('#material_category_id').val() == 4 ) {
+                $('#catogery_a').show();
+                $("#catogery_b").hide();
             }
             else{
                 $('#catogery_a').hide();

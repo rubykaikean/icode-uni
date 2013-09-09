@@ -3,19 +3,13 @@
 
 <table>
 	<tr>
-	  <td>
-  		<%= f.input :name %>
-  	  </td>
-  	  <td>
-  	  	<%= f.label :type_id ,"Type" %>
-  	  	<%#= f.select :category_id ,[["Plate * Thk/Dia = WT" , true] , ["Thk/Dia = WT" , false]] , 
-  	     :input_html => {:onchange =>"showDiv()"} , :id=>"select_method", include_blank: true  %>
-         <%= f.select :type_id ,[["Thickness * Thk/Dia = WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
-        
-		</td>
+	  <td><%= f.input :name , :label => "Name :" %></td>
+  	  <td><%= f.label :type_id ,"Type :" %>
+        <%= f.select :type_id ,[["Thickness * Thk/Dia = WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %></td>
+    
     <td>
-    <%= f.label :category_id , "Fomular" %>
-    <%= f.select :category_id ,[[ "W/304 * L/304 * WT" , 1], ["L/1000 * WT * 2.204" , 2], ["L/304 * WT" , 3]], :include_blank => true %>
+    <%= f.label :category_id , "Select a Fomular :" %>
+    <%= f.select :category_id ,[[ "W/304 * L/304 * WT" , 1], ["L/1000 * WT * 2.204" , 2], ["L/304 * WT" , 3], ["{[(W/1000) * (L/1000)] / 2.9768 } * WT * QTY * 2.20459 " , 4]], :include_blank => true  %>
     </td>
   	</tr>
   	<tr>
@@ -45,3 +39,15 @@
                 materials_path, :class => 'btn' %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+$(document).ready(function () {  
+
+
+
+
+
+
+)};
+</script>

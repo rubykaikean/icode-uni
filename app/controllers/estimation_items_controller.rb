@@ -1,13 +1,13 @@
 class EstimationItemsController < ApplicationController
   before_action :set_estimation_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  #layout "enter_data", :only => [:new] 
+  layout "enter_data", :only => [:new] 
 
   # GET /estimation_items
   # GET /estimation_items.json
   def index
     @estimation_items = EstimationItem.all
-
+    session[:es_id] = params[:estimation_id]
     @info_estimation_items = Estimation.find(params[:estimation_id])
     
   end
@@ -23,6 +23,8 @@ class EstimationItemsController < ApplicationController
     @estimation = Estimation.find(params[:estimation_id]) 
     
     @estimation_item = EstimationItem.new
+
+    @show_material = Material.all
       
     #params[:commit] == "Detail" 
       
@@ -36,13 +38,24 @@ class EstimationItemsController < ApplicationController
   def edit
     #@params = params[:estimation]
     #render :text => @params.to_json
+    @show_material = Material.all
   end
 
   # POST /estimation_items
   # POST /estimation_items.json
   def create
+    # this is for replace the string material_id to integer material_id
+    # params[:estimation_item][:dimension_h] = params[:dimension_h]
+    # params[:estimation_item][:thk_dia] = params[:thk_dia]
+    # params[:estimation_item][:wt_ibs_ft] = params[:wt_ibs_ft]
+    # params[:estimation_item][:dimension_w] = params[:dimension_w]
+    params[:estimation_item][:material_id] = params[:material_id]
     @estimation_item = EstimationItem.new(estimation_item_params)
-    #render :text => @estimation_item.estimation_id.to_json
+    @estimation_item.thk_dia = params[:thk_dia]
+    @estimation_item.dimension_w = params[:dimension_w]
+    @estimation_item.dimension_h = params[:dimension_h]
+    @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
+    
     respond_to do |format|
       if @estimation_item.save
         # if params[:commit] == "submit_and_new"
@@ -51,7 +64,8 @@ class EstimationItemsController < ApplicationController
         }
         format.json { render action: 'show', status: :created, location: @estimation_item }
       else
-        format.html { redirect_to new_estimation_item_path }
+        format.html { redirect_to estimation_items_path }
+        
         format.json { render json: @estimation_item.errors, status: :unprocessable_entity }
       end
     end
@@ -76,7 +90,8 @@ class EstimationItemsController < ApplicationController
   def destroy
     @estimation_item.destroy
     respond_to do |format|
-      format.html { redirect_to estimation_items_url }
+      format.html { redirect_to estimation_items_path(:estimation_id => session[:es_id])
+      session[:es_id] = nil }
       format.json { head :no_content }
     end
   end
@@ -92,6 +107,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia_1 , :thk_dia_2 , :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
     end
 end

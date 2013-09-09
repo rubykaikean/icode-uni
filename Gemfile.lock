@@ -9,6 +9,13 @@ GIT
       polyamorous (~> 0.6.0)
 
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 494f752b8eb8350f33841c822a67d014c869219f
+  specs:
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: a12dec104dde656917963ec6328390003595234a
   specs:
@@ -145,6 +152,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    ruby-ole (1.2.11.7)
     sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -156,6 +164,8 @@ GEM
     sextant (0.2.4)
       rails (>= 3.2)
     simple_form (1.4.1)
+    spreadsheet (0.8.9)
+      ruby-ole (>= 1.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -201,6 +211,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0.rc)
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
@@ -215,6 +226,7 @@ DEPENDENCIES
   sdoc
   sextant
   simple_form
+  spreadsheet (~> 0.8.9)
   therubyracer
   turbolinks
   twitter-bootstrap-rails

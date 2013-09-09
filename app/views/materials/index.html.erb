@@ -7,7 +7,8 @@
  -->
 
 
-<table class="table table-striped" , id="my_table">
+<!-- <table class="table table-striped " , id="my_table "> -->
+<table id="jdatatable" class="display" >
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -29,8 +30,8 @@
         
         <td><%= material.dimension_h %></td>
         <td><%= material.dimension_w %></td>
-        <td><%#= material.thk_dia %></td>
-        <td><%#= material.total_wt_ibs_ft %></td>
+        <td><%= material.total_wt_ibs_ft %></td>
+        <td><%= material.thk_dia %></td>
         <%#=l material.created_at %>
         <td>
           <%#= link_to t('.edit', :default => t("helpers.links.edit")),

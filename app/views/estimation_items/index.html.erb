@@ -1,5 +1,4 @@
 <h3>Project => Station => Estimation => <u>Estimation Items</u></h3>
-
   <%#= render :text => params[:estimation].to_json %>
 <div style="flaot:left;">
 <table>
@@ -15,7 +14,6 @@
   </tr>
   <%# end %>
 </table>
-</div>
 
 <%= render "remark_table_estimation" %>
 
@@ -52,7 +50,9 @@
       <tr>
         <td><%= index + 1 %></td>
         <td><%= estimation_item.part_detail rescue'-' %></td>
-        <td><%= estimation_item.material.name rescue'-' %></td>
+        <td><%= estimation_item.material.name rescue'-' %>
+          <%#= render :text => estimation_item.material_id.to_json %>
+        </td>
         <td><%= estimation_item.thk_dia rescue'-' %></td>
         <td><%= estimation_item.dimension_h rescue'-' %></td>
         <td><%= estimation_item.dimension_w rescue'-' %></td>
@@ -60,12 +60,27 @@
         <td><%= estimation_item.wt_ibs_ft rescue'-' %></td>
         <td><%= estimation_item.qty rescue'-' %></td>
         <td><%= estimation_item.uom rescue'-' %></td>
-        <td><%= Material.total_weigth rescue'-' %></td>
+
+        <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
+              <%= four_precision estimation_item.fomular_1 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
+              <%= four_precision estimation_item.fomular_2 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
+              <%= four_precision estimation_item.fomular_3 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
+              <%= four_precision estimation_item.fomular_4 %>
+            <% else %>
+              &nbsp;
+            <% end %>
+        </td>
         <td><%#= estimation_item.total_weigth %></td>
         <td></td>
         <!-- <td><%#= estimation_item.remarks rescue'-' %></td> -->
         <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item) , :class => 'btn btn-mini' %></td>
-        <td><%= link_to 'Destroy', estimation_item, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
+        <td><%= link_to 'Destroy', estimation_item , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
@@ -74,23 +89,3 @@
 <%= link_to "Back" , estimations_path , :class=>"btn" %>
 <br>
 
-<%#= link_to 'New Estimation item', new_estimation_item_path , :target=>"_blank", :class=>"btn btn-primary" %>
-<!-- 
-<tbody>
-    <tr>
-      <div class="inputs">
-        <td></td>
-        <td><%#= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20} , :label=>false %></td>
-        <td><%#= f.select :material , Material.all.map { |r| [r.name, r.id] }, :label=>false ,:size=>9 %></td>
-        <td><%#= f.input :thk_dia, :label=>false,:size=>6 %></td>
-        <td><%#= f.input :dimension_h, :label=>false,:size=> 9 %></td>
-        <td><%#= f.input :dimension_w , :label=>false ,:size=> 9 %></td>
-        <td><%#= f.input :dimension_l, :label=>false,:size=> 9  %></td>
-        <td><%#= f.input :wt_ibs_ft , :label=>false,:size=> 9 %></td>
-        <td><%#= f.input :qty , :label=>false,:size=> 9 %></td>
-        <td><%#= f.input :uom , :label=>false,:size=> 9 %></td>
-        <td><%#= f.input :weight, :label=>false,:size=> 9  %></td>
-        <td><%#= f.input :remarks , :label=>false,:size=> 9 %></td>
-      </div>
-    </tr>
-  </tbody> -->
