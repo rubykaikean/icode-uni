@@ -23,7 +23,7 @@ class EstimationItem < ActiveRecord::Base
 
 	def total_wt_ibs_ft
 		if material.type_id == 1
-			materials.wt_ibs_ft = material.plate * material.thk_dia
+			material.plate * material.thk_dia
 		elsif material.type_id == 2
 			material.thk_dia 
 		elsif material.type_id == 3
