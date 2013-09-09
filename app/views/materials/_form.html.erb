@@ -13,9 +13,14 @@
     </td>
   	</tr>
   	<tr>
-  		<td><div id="id_a" style="display:none"><%= f.input :plate , label: "Z(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div></td>
-			<td><div id="id_b" style="display:none"><%= f.input :thk_dia , label: "Thk/Dia",:size => 9 %></div></td>
-      <td><div id="id_c" style="display:none"><%= f.input :wt_ibs_ft , label: "Wt/ibs ft" , :size => 9 %></div></td>
+  		<td>
+        <div id="id_a" style="display:none"><%= f.input :plate , label: "Z(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
+      </td>
+			<td>
+        <div id="id_b" style="display:none"><%= f.input :thk_dia , label: "Thk/Dia",:size => 9 %></div></td>
+      <td>
+        <div id="id_c" style="display:none"><%= f.input :wt_ibs_ft , label: "Wt/ibs ft" , :size => 9 %></div>
+      </td>
 	</tr>
 	<tr>
 		<td>
@@ -39,17 +44,3 @@
                 materials_path, :class => 'btn' %>
   </div>
 <% end %>
-
-
-<script type="text/javascript">
-$(document).ready(function () {  
-
-
-  $("#material_thk_dia").val();
-
-
-
-
-
-)};
-</script>
