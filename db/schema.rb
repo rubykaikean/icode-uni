@@ -89,13 +89,24 @@ ActiveRecord::Schema.define(version: 20130907083909) do
     t.datetime "updated_at"
     t.integer  "category_id"
     t.integer  "type_id"
+    t.decimal  "thk_dia",     precision: 10, scale: 5
+    t.decimal  "dimension_h", precision: 10, scale: 5
+    t.decimal  "dimension_w", precision: 10, scale: 5
+    t.decimal  "plate",       precision: 10, scale: 5
+    t.decimal  "wt_ibs_ft",   precision: 10, scale: 5
+  end
 
-    t.decimal  "thk_dia",       precision: 10, scale: 5
-    t.decimal  "dimension_h",   precision: 10, scale: 5
-    t.decimal  "dimension_w",   precision: 10, scale: 5
-    t.decimal  "plate",         precision: 10, scale: 5
-    t.decimal  "wt_ibs_ft",     precision: 10, scale: 5
-
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -107,13 +118,6 @@ ActiveRecord::Schema.define(version: 20130907083909) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
-  end
-
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.integer  "staion_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "roles", force: true do |t|

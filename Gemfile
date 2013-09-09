@@ -61,14 +61,12 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem "pdfkit", "0.5.2"
 gem 'wkhtmltopdf-binary'
-<<<<<<< HEAD
 
 group :development do
   gem 'sextant'
 end
-=======
 gem "spreadsheet", "~> 0.8.9"
->>>>>>> cbffdc316d43c12e31ee8a4bba0e5b6829541772
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
