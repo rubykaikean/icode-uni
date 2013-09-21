@@ -4,23 +4,24 @@
 <table>
 	<tr>
 	  <td><%= f.input :name , :label => "Name :" %></td>
-  	  <td><%= f.label :type_id ,"Type :" %>
-        <%= f.select :type_id ,[["Thickness * Thk/Dia = WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %></td>
-    
-    <td>
-    <%= f.label :category_id , "Select a Fomular :" %>
-    <%= f.select :category_id ,[[ "W/304 * L/304 * WT" , 1], ["L/1000 * WT * 2.204" , 2], ["L/304 * WT" , 3], ["{[(W/1000) * (L/1000)] / 2.9768 } * WT * QTY * 2.20459 " , 4]], :include_blank => true  %>
+  	<td><%= f.label :category_id , "Select a Fomular :" %>
+          <%= f.select :category_id ,[[ "W/304 * L/304 * WT * Thk/Dia" , 1], ["L/1000 * WT * 2.204" , 2], ["L/304 * WT" , 3], ["{[(W/1000) * (L/1000)] / 2.9768 } * WT * QTY * 2.20459 " , 4], ["No Fomular" , 5 ] ], :include_blank => true  %>
+          <%#= f.label :type_id ,"Type :" %>
+          <%#= f.select :type_id ,[["WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
     </td>
   	</tr>
   	<tr>
   		<td>
-        <div id="id_a" style="display:none"><%= f.input :plate , label: "Z(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
+        <div id="id_a" style="display:none;">
+      <%#= f.input :wt_ibs_ft , as: :string , label:"WT", :size=>9 %>
+      <%= f.input :plate ,as: :string ,label: "WT(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
       </td>
 			<td>
-        <div id="id_b" style="display:none"><%= f.input :thk_dia , label: "Thk/Dia",:size => 9 %></div></td>
+        <div id="id_b" style="display:none;" ><%= f.input :thk_dia , as: :string , label: "Thk/Dia",:size => 9 %></div></td>
       <td>
-        <div id="id_c" style="display:none"><%= f.input :wt_ibs_ft , label: "Wt/ibs ft" , :size => 9 %></div>
+        <div id="id_c" style="display:none;" ><%= f.input :wt_ibs_ft , as: :string, label: "Wt/ibs ft" , :size => 9 %></div>
       </td>
+      <!-- style="display:none" -->
 	</tr>
 	<tr>
 		<td>
@@ -29,8 +30,8 @@
 	</tr>
 
 	<tr>
-		<td><div id="catogery_a" style="display:none"><%= f.input :dimension_w, label: "Dimension W" , :size=> 9  %></td>
-		<td><div id="catogery_b" style="display:none"><%= f.input :dimension_h, label: "Dimension H" , :size=> 9  %></td>
+		<td><div id="catogery_a" style="display:none"><%= f.input :dimension_w, as: :string, label: "Dimension W" , :size=> 9  %></td>
+		<td><div id="catogery_b" style="display:none"><%= f.input :dimension_h, as: :string, label: "Dimension H" , :size=> 9  %></td>
    <!--  <td><div id="catogery_c" style="display:none"><%#= f.input :dimension_l, label: "Dimension L" , :size=> 9  %></td> -->
 
 		</div>

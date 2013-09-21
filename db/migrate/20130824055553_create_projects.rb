@@ -1,11 +1,11 @@
 class CreateProjects < ActiveRecord::Migration
   def change
-    # create_table :projects do |t|
-    #   t.string :name
-    #   t.integer :staion_id
+    create_table :projects do |t|
+      t.string :name
+      t.integer :staion_id
 
-    #   t.timestamps
-    # end
+      t.timestamps
+    end
 
     remove_column :estimation_items , :dimension_l
 

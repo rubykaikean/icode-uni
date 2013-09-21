@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907083909) do
+ActiveRecord::Schema.define(version: 20130917080955) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -32,20 +32,18 @@ ActiveRecord::Schema.define(version: 20130907083909) do
 
   create_table "estimation_items", force: true do |t|
     t.string   "part_detail"
-    t.string   "thk_dia"
     t.float    "wt_ibs_ft"
-    t.float    "decimal"
     t.float    "qty"
     t.string   "uom"
     t.integer  "weight"
-    t.string   "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "estimation_id"
     t.integer  "material_id"
-    t.decimal  "dimension_l",   precision: 10, scale: 5
-    t.decimal  "dimension_h",   precision: 10, scale: 5
-    t.decimal  "dimension_w",   precision: 10, scale: 5
+    t.float    "dimension_l"
+    t.float    "dimension_h"
+    t.float    "dimension_w"
+    t.decimal  "thk_dia",       precision: 10, scale: 5
   end
 
   create_table "estimations", force: true do |t|
@@ -89,12 +87,11 @@ ActiveRecord::Schema.define(version: 20130907083909) do
     t.datetime "updated_at"
     t.integer  "estimation_id"
     t.integer  "category_id"
-    t.integer  "type_id"
-    t.decimal  "thk_dia",       precision: 10, scale: 5
     t.decimal  "dimension_h",   precision: 10, scale: 5
     t.decimal  "dimension_w",   precision: 10, scale: 5
     t.decimal  "plate",         precision: 10, scale: 5
     t.decimal  "wt_ibs_ft",     precision: 10, scale: 5
+    t.decimal  "thk_dia",       precision: 10, scale: 5
   end
 
   create_table "products", force: true do |t|
@@ -110,9 +107,13 @@ ActiveRecord::Schema.define(version: 20130907083909) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
-    t.integer  "staion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "client_id"
+    t.date     "date"
+    t.boolean  "standard",     default: false
+    t.boolean  "non_standard", default: false
+    t.string   "project_code"
   end
 
   create_table "roles", force: true do |t|

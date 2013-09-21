@@ -1,0 +1,52 @@
+<div class="page-header">
+<h1>Existing Non-Standard Project</h1>
+</div>
+
+<div style="float: left; ">
+<form class="form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
+</div>
+
+    <div class="pagination pagination-right">
+    <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+    </ul>
+    </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>No.<%#= sort_link(@search, :id, "No.") %></th>
+      <!-- <th>Client Name<%#= sort_link(@search, :client_id, "Client Name") %></th> -->
+      <th>Project Name<%#= sort_link(@search, :name, "Project Name") %></th>
+      <th>Date Created<%#= sort_link(@search, :date, "Date") %></th>
+      <!-- <th>Issue By</th> -->
+    </tr>
+  </thead>
+  <tbody>    
+      <tr>
+      	<td><label class="checkbox">
+			<input type="checkbox"></td>
+        <td>1</td>
+        <td>ABC Silo</td>          
+        <td>12/12/2012</td>
+        <!-- <td>Jackman</td> -->        
+      </tr>
+  
+  </tbody>
+</table>
+
+
+<div style="float: right; ">
+	<!-- <button type='' class='btn btn-info' >Finish</button> -->
+	<%= link_to "Next", show_standard_station_projects_path, :class=>"btn btn-primary" %>
+</div>

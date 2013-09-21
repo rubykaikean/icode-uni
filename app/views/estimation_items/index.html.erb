@@ -49,20 +49,42 @@
     <% estimation.estimation_item.each_with_index do |estimation_item , index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= estimation_item.part_detail rescue'-' %></td>
+        <td><% if estimation_item.part_detail.present? %>
+          <%= estimation_item.part_detail rescue'-' %>
+          <% else %>
+          -
+          <% end %>
+        </td>
         <td><%= estimation_item.material.name rescue'-' %>
-          <%#= render :text => estimation_item.material_id.to_json %>
+          <%#= render :text => p.material_id.to_json %>
         </td>
         <td><%= estimation_item.thk_dia rescue'-' %></td>
-        <td><%= estimation_item.dimension_h rescue'-' %></td>
-        <td><%= estimation_item.dimension_w rescue'-' %></td>
+        <td><% if estimation_item.dimension_h.present? %>
+            <%= estimation_item.dimension_h rescue'-' %>
+            <% else %>
+            -
+            <% end %>
+        </td>
+        <td><% if estimation_item.dimension_w.present? %>
+          <%= estimation_item.dimension_w rescue'-' %>
+          <% else %>
+          -
+          <% end %>
+        </td>
         <td><%= estimation_item.dimension_l rescue'-' %></td>
-        <td><%= estimation_item.wt_ibs_ft rescue'-' %></td>
+
+        <td><% if estimation_item.wt_ibs_ft.present? %>
+          <%= estimation_item.wt_ibs_ft rescue'-' %>
+          <% else %>
+          <%= total_wt_ibs_ft %>
+          <% end %>
+        </td>
+
         <td><%= estimation_item.qty rescue'-' %></td>
         <td><%= estimation_item.uom rescue'-' %></td>
 
         <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
-              <%= four_precision estimation_item.fomular_1 %>
+              <%= four_precision estimation_item.fomular_1 rescue'-' %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
               <%= four_precision estimation_item.fomular_2 %>

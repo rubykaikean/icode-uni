@@ -45,14 +45,11 @@ class EstimationItemsController < ApplicationController
   # POST /estimation_items.json
   def create
     # this is for replace the string material_id to integer material_id
-    # params[:estimation_item][:dimension_h] = params[:dimension_h]
-    # params[:estimation_item][:thk_dia] = params[:thk_dia]
-    # params[:estimation_item][:wt_ibs_ft] = params[:wt_ibs_ft]
-    # params[:estimation_item][:dimension_w] = params[:dimension_w]
+    @material_detail = Material.all
     params[:estimation_item][:material_id] = params[:material_id]
     @estimation_item = EstimationItem.new(estimation_item_params)
-    @estimation_item.thk_dia = params[:thk_dia]
-    @estimation_item.dimension_w = params[:dimension_w]
+    #@estimation_item.thk_dia = params[:thk_dia]
+    #@estimation_item.dimension_w = params[:dimension_w]
     @estimation_item.dimension_h = params[:dimension_h]
     @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     

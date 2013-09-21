@@ -28,17 +28,32 @@
 $(document).ready(function () {  
 
 
-	$('#jdatatable').dataTable({
+	// $('#jdatatable').dataTable({
+ //        //"sScrollY": content_height - 97,
+ //        "sPaginationType": "full_numbers",  // "bPaginate": false,
+ //        "bJQueryUI": true,
+ //        "bProcessing": true,
+ //        "oLanguage": {
+ //                "sZeroRecords":  "No Record Found.",
+ //                "sSearch": "Search All Columns:"
+ //            }
+
+ //     });
+
+
+    $('#jdatatable').dataTable({
         //"sScrollY": content_height - 97,
-        "sPaginationType": "full_numbers",  // "bPaginate": false,
+        //"sPaginationType": "full_numbers",  
+        //"bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,
         "oLanguage": {
                 "sZeroRecords":  "No Record Found.",
                 "sSearch": "Search All Columns:"
             }
-
      });
+        //"bInfo": false,   //exp :showing 1 of 15 pages 
+        //"bAutoWidth": true
 
 });
  	
