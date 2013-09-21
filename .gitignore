@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 /public/system
+/public/Materials_testing2.xls
 /config/database.yml
