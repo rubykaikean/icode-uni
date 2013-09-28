@@ -12,7 +12,11 @@ IcodeUni::Application.routes.draw do
     end
   end
 
-  resources :estimation_items
+  resources :estimation_items do
+    collection do
+      # get :report
+    end
+  end
 
   resources :stations do
 
@@ -69,8 +73,16 @@ IcodeUni::Application.routes.draw do
     resources :roles  
 
     resources :reports do
-      get :estimation, :on => :collection
+      collection do
+        get :pdf_estimation_report
+        get :list_estimation_report
+      end
     end
+
+
+    # resources :reports do
+    #   get :estimation, :on => :collection
+    # end
 
   # devise_for :admins
  

@@ -6,9 +6,11 @@ class EstimationItemsController < ApplicationController
   # GET /estimation_items
   # GET /estimation_items.json
   def index
-    @estimation_items = EstimationItem.all
+    #@estimation_items = EstimationItem.all
     session[:es_id] = params[:estimation_id]
     @info_estimation_items = Estimation.find(params[:estimation_id])
+    @search = EstimationItem.search(params[:q])
+    @estimation_item = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
     
   end
 
