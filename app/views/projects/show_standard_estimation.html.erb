@@ -1,0 +1,56 @@
+<div class="page-header">
+<h2>Existing Non-Standard(Project Name) - (Station Name) - Estimation</h2>
+</div>
+
+<div style="float: left; ">
+<form class="form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
+</div>
+
+<div class="pagination pagination-right">
+    <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+    </ul>
+</div>
+
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Title</th>
+      <!-- <th>Dimension</th> -->
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        <td>1</td>
+        <td>Estimation1</td>
+        <!-- <td></td> -->
+        <td>12/12/2012</td>
+        <td>
+            <button type='' class="btn btn-mini btn-success" >Detail Material</button>
+            <button type='' class='btn btn-mini btn-danger' >Delete</button>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+<!-- <button type='' class='btn btn-info' >Add Estimation</button> -->
+<%= link_to "Add Estimation", add_standard_estimation_projects_path, :class=>"btn btn-info" %>
+<br>
+<br>
+<br>
+<div style="float: left; ">
+<%= link_to "Back", show_standard_station_projects_path, :class=>"btn" %>
+</div>

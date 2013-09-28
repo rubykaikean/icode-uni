@@ -23,6 +23,7 @@
                 <%= link_to 'detail estimation', station_estimation_estimations_path(:station_estimation =>product_station) , :class=>"btn btn-mini btn-info" %>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                             edit_station_path(product_station), :class => 'btn btn-mini' %>
+                            
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                             station_path(product_station),
                             :method => :delete,

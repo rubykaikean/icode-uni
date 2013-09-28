@@ -1,7 +1,18 @@
 IcodeUni::Application.routes.draw do
   
-  get "report/index"
-  resources :projects
+
+  resources :projects do
+
+    get :autocomplete_product_name, :on => :collection
+    collection do
+      get "product_station"
+      get "show_standard_project"
+      get "show_standard_station"
+      get "show_standard_estimation"
+      get "add_standard_estimation"
+    end
+  end
+
 
   resources :fomulations
 
@@ -9,6 +20,13 @@ IcodeUni::Application.routes.draw do
     get :autocomplete_estimation_title, :on => :collection
     collection do
       get "station_estimation"
+    end
+  end
+  
+  resources :spreadsheets do
+    collection do
+      get "read_file"
+      post "save_file"
     end
   end
 

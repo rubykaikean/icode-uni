@@ -1,0 +1,56 @@
+<div class="page-header">
+<h1>Existing Non-Standard (Project Name) - Station</h1>
+</div>
+
+<div style="float: left; ">
+<form class="form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
+</div>
+
+<div class="pagination pagination-right">
+    <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+    </ul>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID<%#= sort_link(@search, :id, "No.") %></th>
+      <!-- <th>Client Name<%#= sort_link(@search, :client_id, "Client Name") %></th> -->
+      <th>Station Name<%#= sort_link(@search, :name, "Project Name") %></th>
+      <th>Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>    
+      <tr>
+        <td>1</td>
+        <td>Shell</td>          
+        <td>
+                <%= link_to "Detail Estimation", show_standard_estimation_projects_path, :class=>"btn btn-mini btn-success" %>
+                <!-- <button type='' class="btn btn-mini btn-info" >detail estimation</button> -->
+                <!-- <button type='' class='btn btn-mini btn-danger' >Delete</button> -->
+
+        </td>        
+      </tr>
+  
+  </tbody>
+</table>
+
+<button type='' class='btn btn-info' >Add Station</button>
+<br>
+<br>
+<br>
+<div style="float: left; ">
+<%= link_to "Back", show_standard_project_projects_path, :class=>"btn" %>
+</div>
+

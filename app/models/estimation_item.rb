@@ -5,43 +5,41 @@ class EstimationItem < ActiveRecord::Base
 
 
 	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	# validates :part_detail, :material ,:uom , :thk_dia , :weight ,  presence: :true
-
-	# def total_weight
-	# 	if category_id == 1
-	# 		fomular_1 * qty
-	# 	elsif catogery_id == 2
-	# 		fomular_2 * qty
-	# 	elsif catogery_id == 3
-	# 		fomular_3 * qty
-	# 	elsif catogery_id == 4
-	# 		fomular_4 * qty
-	# 	else
-	# 		0
-	# 	end
-	# end
+	validates :material ,:uom , :thk_dia ,  presence: :true
 
 	def total_wt_ibs_ft
-		if material.type_id == 1
-			material.plate * material.thk_dia
-		elsif material.type_id == 2
-			material.thk_dia 
-		elsif material.type_id == 3
+		if material.category_id == 1
+			plate * thk_dia
+		elsif material.category_id == 2
+			material.wt_ibs_ft
+		elsif material.category_id == 3
 			material.wt_ibs_ft 
+		elsif material.category_id == 4
+			material.wt_ibs_ft
+		elsif material.category_id == 5
+			null
+		end
+	end
+
+	def wt_ibs_ft
+		if material.category_id == 1
+			material.plate * thk_dia
+		else
+			material.wt_ibs_ft
 		end
 	end
 
 
 	def fomular_1
-		(dimension_w/304.0) * (dimension_l/304.0) * total_wt_ibs_ft * qty
+		(dimension_w / 304.0) * (dimension_l / 304.0) * total_wt_ibs_ft * qty
 	end
 
 	def fomular_2
-		(dimension_l/1000.0) * total_wt_ibs_ft * 2.204
+		(dimension_l / 1000.0) * total_wt_ibs_ft * 2.204
 	end
 
 	def fomular_3
-		(dimension_l/304.0) * total_wt_ibs_ft
+		(dimension_l / 304.0) * total_wt_ibs_ft
 	end
 
 	def fomular_4

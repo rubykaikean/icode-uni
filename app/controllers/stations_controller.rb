@@ -77,10 +77,15 @@ class StationsController < ApplicationController
   # DELETE /stations/1
   # DELETE /stations/1.json
   def destroy
-    @station.destroy
-    respond_to do |format|
-      format.html { redirect_to stations_path }
-      format.json { head :no_content }
+    estimation = Estimation.all
+    if @station = estimation.station_id.any?
+        notice: "delete all estimation before delete station"
+    else
+      @station.destroy
+        respond_to do |format|
+          format.html { redirect_to stations_path }
+          format.json { head :no_content }
+        end
     end
   end
 

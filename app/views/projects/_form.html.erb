@@ -1,12 +1,91 @@
-<%= simple_form_for(@project) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+  <%#= f.label "*Project Name" %>
 
-  <div class="inputs">
-    <%= f.input :name %>
-    <%= f.input :staion_id %>
-  </div>
+  <%= f.input :name , :label => "Project Name" %>
+  <%= f.input :project_code , :label => "Project Code" %>
+  <%#= f.label :client_id %>
+  <%#= f.input :client , :url => autocomplete_client_name_projects_path, 
+  :id_element => '#projects_client_id', :as => :autocomplete , :autocomplete => false %>
+  <%#= f.label :client %>
+  <%#= f.select :client_id ,Client.all.map{|r| [r.name, r.id]}, :class=>"chosen-select" , :include_blank => true, :placeholder=>"Choose a country..." %>
 
-  <div class="actions">
-    <%= f.button :submit %>
+  <%= f.association :client,
+                    collection: Client.all,
+                    include_blank: true,
+                    input_html: { class: 'chosen-select' }  %>
+
+  <br>
+
+<%#= f.select :role, Role.all.map { |r| [r.name, r.id, { class: r.company.id }] }, include_blank: true %>
+  <%#= f.input :date , :id=>"datetimepicker4" , :class=>"input-append" %>
+  <!-- <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i></span>
+ -->
+<%#= f.select :role, options_for_select([["Teacher", "t"], ["Student", "s"]]) %>
+ <div id="datetimepicker4" class="input-append">
+    <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
+     <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div> 
+
+   <br>
+   <br>
+   <br>
+
+  <%= f.check_box(:standard) %>
+  <%= f.label(:standard, "standard") %>
+  <%= f.check_box(:non_standard) %>
+  <%= f.label(:non_standard, "Non standard")   %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<%#= render "js_station" %>
+
+<script type="text/javascript">
+
+$(document).ready(function () {    
+  $(function() {
+    $('[data-behaviour~=datepicker]').datepicker();
+    $('#datetimepicker4').datetimepicker({
+      pickTime: false
+    });
+  });
+
+  $("input:checkbox").change(function(){
+ 
+    // total allowed to be checked.
+    var max_allowed = 1;
+    // count how many checked.
+    var checked = $("input:checked").size();
+    // perform test.
+    if ( checked > max_allowed ) {
+        // is more than the max so uncheck.
+        $(this).attr("checked", false);
+        //$(this).
+        // display error message.
+        //alert("Please select a maximum of " + max_allowed + " options."); 
+    } 
+  });
+
+  // var data = [ "<%= @client %>" ]
+
+  // $('#project_client').typeahead({
+  //       source: data,
+  //       separator: ", ",
+  //       // matcher: true,
+  //       minLenght: 1,
+  //       autocomplete: false,
+  //       items : 4
+
+  // });
+ });
+
+</script>
+

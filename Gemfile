@@ -67,6 +67,9 @@ group :development do
 end
 gem "spreadsheet", "~> 0.8.9"
 
+#gem "roo" , "~> 1.12.2"
+# gem "rubyXL", "~> 1.2.10"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
