@@ -32,21 +32,29 @@
 
 
 <body id="second-layout">
-  
-    <% if notice.present? %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-success" data-dismiss="alert">
+      <a href="#" class="alert-link">
+       <%= flash.now[:alert] %>
+       <button class="close" >&times;</button>
+      </a>
+    </div>
+  <% end %>
+
+  <% if notice.present? %>
     <div class="alert alert-success" data-dismiss="alert">
       <a href="#" class="alert-link">
         <%= notice %>
-        <button class="close" >&times;</button>
-      </a>
-        
-
+         <button class="close" >&times;</button>
+       </a>
     </div>
-    <% end %>
+  <% end %>
+
       <%# unless controller_name => "estimation_item" %>
-        <% if user_signed_in? %>    
-        <%= render "/layouts/top_menu_layout" %>
-        <% end %> 
+    <% if user_signed_in? %>    
+      <%= render "/layouts/top_menu_layout" %>
+    <% end %> 
       <%# end %>
 
     <div class="container">  <!-- this link is fix layout --> 

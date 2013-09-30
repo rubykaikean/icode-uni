@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :are_you_admin?
+  before_filter :authorization_admin
   before_action :set_user, only: [:show, :edit_user, :update_user, :destroy, :entry_user]
   autocomplete :user, :username
   ## before_action :checkboxes##, only: [:show]
@@ -18,11 +18,6 @@ class UsersController < ApplicationController
     @search = User.search(params[:q])
     @users = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
-
-  # def search
-  #   index
-  #   render :index
-  # end
 
   # GET /users/1
   # GET /users/1.json
@@ -98,5 +93,6 @@ class UsersController < ApplicationController
       # toDo
       # refactor into a class for user.roles.map ...
       @checkboxes = @user.roles.map(&:inventory_management_system_id)
+      # @checkboxes = UserRole.new(user).roles
     end
 end

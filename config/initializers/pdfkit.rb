@@ -23,7 +23,10 @@ PDFKit.configure do |config|
     :margin_right => "0.25in",
     :margin_bottom => "0.25in",
     :margin_left => "0.25in",
+    :orientation => 'Landscape',
     :disable_smart_shrinking => false
+      # :page_size => 'Legal',
+      # :print_media_type => true
   }
 end
 

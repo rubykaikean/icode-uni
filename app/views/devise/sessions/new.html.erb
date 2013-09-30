@@ -1,15 +1,5 @@
 <body id='first-layout'>
-	<% if notice.present? %>
-    <div class="alert alert-error" data-dismiss="alert">
-      <a href="#" class="alert-link">
-        <%= notice %>
-        <button class="close" >&times;</button>
-      </a>
-    
-    </div>
-	<% end %>   
-
-		<div id='login-box'>
+	<div id='login-box'>
 		<h2>Sign in</h2>
 
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -21,8 +11,8 @@
 
 		  <div><%= f.submit "Sign in" %></div><br >
 		  <div><%= link_to "Forgot your password?", new_password_path(resource_name) %><br /></div>
-		</div>  
+	  
 		<% end %>
-	
+	</div>
 <%#= render "devise/shared/links" %>
 </body>

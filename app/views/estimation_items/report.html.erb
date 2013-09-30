@@ -1,0 +1,170 @@
+<table class="table table-condensed">
+	<% estimation = @info_estimation_items %>
+<tr>
+	<th>Client:</th>
+	<th>Drawing No:</th>
+</tr>
+<tr>
+	<th>Title: <%= estimation.title rescue'-' %></th>
+	<th>Date:</th>
+</tr>
+<tr>
+	<th>Dimension: <%= estimation.dimension rescue'-' %></th>
+	<th>Issued by:</th>
+</tr>
+<tr>
+	<th></th>
+	<th>Weight: _______Ton(s)</th>
+</tr>
+</table>
+
+<table class="table table-bordered">
+<thead>
+	<tr>
+		<!-- <th rowspan="2"></th> -->
+		<th rowspan="2"><p class="text-center">No</p></th>
+		<th rowspan="2"><p class="text-center">Part/MatCode</p></th>
+		<th rowspan="2"><p class="text-center">Material</p></th>
+		<th colspan="4"><p class="text-center">Dimension(mm)</p></th>
+		<th rowspan="2"><p class="text-center">WT<br>lbs/Ft²</p></th>
+		<th rowspan="2"><p class="text-center">Qty</p></th>
+		<th rowspan="2"><p class="text-center">UOM</p></th>
+		<th rowspan="2"><p class="text-center">Weight<br>lb/kg</p></th>
+		<th rowspan="2"><p class="text-center">Unit<br>Price</p></th>
+		<th rowspan="2"><p class="text-center">Total</p></th>
+		<!-- <th rowspan="2"><p class="text-center">Remarks</p></th> -->
+	</tr>
+	<tr>
+		<th><p class="text-center"> Thk/Dia. </p></th>
+		<th><p class="text-center"> H </p></th>
+		<th><p class="text-center"> W </p></th>
+		<th><p class="text-center"> L </p></th>
+	</tr>
+</thead>
+
+<tbody>
+	<% estimation.estimation_item.each_with_index do |estimation_item , index| %>
+	<tr>
+		<td><%= index + 1 %></td>
+		<td><%= estimation_item.part_detail rescue'-' %></td>
+		<td><%= estimation_item.material.name rescue'-' %></td>
+		<td><%= estimation_item.thk_dia rescue'-' %></td>
+		<td><%= estimation_item.dimension_h rescue'-' %></td>
+		<td><%= estimation_item.dimension_w rescue'-' %></td>
+		<td><%= estimation_item.dimension_l rescue'-' %></td>
+		<td><%= estimation_item.wt_ibs_ft rescue'-' %></td>
+		<td><%= estimation_item.qty rescue'-' %></td>
+		<td><%= estimation_item.uom rescue'-' %></td>
+		<td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
+              <%= four_precision estimation_item.fomular_1 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
+              <%= four_precision estimation_item.fomular_2 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
+              <%= four_precision estimation_item.fomular_3 %>
+
+            <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
+              <%= four_precision estimation_item.fomular_4 %>
+            <% else %>
+              &nbsp;
+            <% end %></td>
+		<td>N/A</td>
+		<td>N/A</td>
+		<!-- <th>M</th> -->
+	</tr>
+	<% end %>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Total:</td>
+		<td></td>
+		<td>0</td>
+
+</tbody>
+</table>
+
+<!-- <table class="table table-bordered">
+		<tr><th>Materials :</th></tr>
+		<tr><th>Welding :</th></tr>
+		<tr><th>Oxygen & Acetylene :</th></tr>
+		<tr><th>Painting :</th></tr>
+		<tr><th>Sand Blasting :</th></tr>
+		<tr><th>Transport :</th></tr>
+		<tr><th>Crane :</th></tr>
+		<tr><th>Shipment :</th></tr>
+		<tr><th>Labour :</th></tr>
+		<tr><th>Installation :</th></tr>
+		<tr><th>Dismantle :</th></tr>
+		<tr><th>Machining :</th></tr>
+		<tr><th>Insulation :</th></tr>
+		<tr><th>Civil Work :</th></tr>
+		<tr><th>Electrik :</th></tr>
+		<tr><th>Pilling Work :</th></tr>
+		<tr><th>Forming :</th></tr>
+		<tr><th>Misc :</th></tr>
+		<tr><th>JKKP :</th></tr>
+</table> -->
+
+<!-- <table class="table table-bordered">
+		<tr><th>Materials :</th>
+		<th>Welding :</th></tr>
+		<tr><th>Oxygen & Acetylene :</th>
+	    <th>Painting :</th></tr>
+		<tr><th>Sand Blasting :</th>
+		<th>Transport :</th></tr>
+		<tr><th>Crane :</th>
+		<th>Shipment :</th></tr>
+		<tr><th>Labour :</th>
+		<th>Installation :</th></tr>
+		<tr><th>Dismantle :</th>
+		<th>Machining :</th></tr>
+		<tr><th>Insulation :</th>
+		<th>Civil Work :</th></tr>
+		<tr><th>Electrik :</th>
+		<th>Pilling Work :</th></tr>
+		<tr><th>Forming :</th>
+		<th>Misc :</th></tr>
+		<tr><th>JKKP :</th></tr>
+</table> -->
+
+<table class="table table-bordered">
+		<tr>
+			<th>Materials :</th>
+			<th>Welding :</th>
+		 	<th>Oxygen & Acetylene :</th>
+		</tr>
+		<tr>
+			<th>Painting :</th>
+			<th>Sand Blasting :</th>
+			<th>Transport :</th>
+		</tr>
+		<tr>
+			<th>Crane :</th>
+			<th>Shipment :</th>
+			<th>Labour :</th>
+		</tr>
+		<tr>
+			<th>Installation :</th>
+			<th>Dismantle :</th>
+			<th>Machining :</th>
+		</tr>
+		<tr>
+			<th>Insulation :</th>
+			<th>Civil Work :</th>
+			<th>Electrik :</th>
+		</tr>
+		<tr>
+			<th>Pilling Work :</th>
+			<th>Forming :</th>
+		 	<th>Misc :</th>
+		</tr>
+		<tr><th>JKKP :</th></tr>
+</table>

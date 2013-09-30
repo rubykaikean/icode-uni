@@ -1,0 +1,180 @@
+<%#= render :text => @estimation.to_json %>
+<head>
+<meta name="pdfkit-orientation" content="Landscape"/>
+</head>
+<table>
+	<tr>
+		<th colspan="2">
+<% counter = 0 %>
+<% @pdf_estimation_report.each_with_index do |per, index|%>
+<% array = [] %>
+<% if index == 0 %>
+      <div>
+    <% else %>
+      <div style="page-break-before: always;">
+    <% end %>
+
+<table class="text-left" width="100%">
+	<% @estimation.each do |estimation| %>
+	<tr>
+		<th width="50%" align="left">Client: <%= estimation.client.name rescue'-'%></th>
+		<th width="50%" align="left">Drawing No:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
+		<th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
+		<th width="50%" align="left">Issued by:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left"></th>
+		<th width="50%" align="left">Weight: <%#= two_precision(weight.sum) %>Ton(s)</th>
+	</tr>
+	<%# end %>
+</table>
+	<br>
+		</th>
+	</tr>
+
+	<tr>
+		<th width="90%">
+<!-- <table border="1" width="100%"> -->
+
+<table class="table table-bordered">
+
+<thead>
+	<tr>
+		<!-- <th rowspan="2"></th> -->
+		<th rowspan="2"><p class="text-center">No</p></th>
+		<th rowspan="2"><p class="text-center">Part/MatCode</p></th>
+		<th rowspan="2"><p class="text-center">Material</p></th>
+		<th colspan="4"><p class="text-center">Dimension(mm)</p></th>
+		<th rowspan="2"><p class="text-center">WT<br>lbs/Ft²</p></th>
+		<th rowspan="2"><p class="text-center">Qty</p></th>
+		<th rowspan="2"><p class="text-center">UOM</p></th>
+		<th rowspan="2"><p class="text-center">Weight<br>lb/kg</p></th>
+		<th rowspan="2"><p class="text-center">Unit<br>Price</p></th>
+		<th rowspan="2"><p class="text-center">Total</p></th>
+		<!-- <th rowspan="2"><p class="text-center">Remarks</p></th> -->
+	</tr>
+	<tr>
+		<th><p class="text-center"> Thk/Dia. </p></th>
+		<th><p class="text-center"> H </p></th>
+		<th><p class="text-center"> W </p></th>
+		<th><p class="text-center"> L </p></th>
+	</tr>
+</thead>
+
+<tbody>
+	<% estimation.estimation_item.each_with_index do |item_list , index| %>
+	
+    <tr>
+		<td><%= index + 1 %></td>
+		<td><%= item_list.part_detail %></td>
+		<td><%#= item_list.material.name %></td>
+		<td><%= item_list.thk_dia %></td>
+		<td><%= item_list.dimension_h %></td>
+		<td><%= item_list.dimension_w %></td>
+		<td><%= item_list.dimension_l %></td>
+		<td><%= item_list.wt_ibs_ft %></td>
+		<td><%= item_list.qty %></td>
+		<td><%= item_list.uom %></td>
+		<td><% if item_list.material && item_list.material.category_id == 1 %>
+              <%= four_precision item_list.fomular_1 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 2 %>
+              <%= four_precision item_list.fomular_2 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 3 %>
+              <%= four_precision item_list.fomular_3 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 4 %>
+              <%= four_precision item_list.fomular_4 %>
+            <% else %>
+              &nbsp;
+            <% end %>
+        </td>	
+		<td><%#= item_list. %></td>
+		<td><%#= item_list. %></td>	
+	</tr>
+</tbody>
+	<% end %>
+</table>
+		</th>	
+		<th width="10%">
+			<%= render "remark_estimation"%>
+<!-- <table class="table table-bordered">
+	<%# @estimation.each do |estimation| %>
+		<tr><th><p class="text-center">Remarks</p></th><tr>
+		<tr><th>Materials :</th></tr>
+		<tr><th>Welding :<%= estimation.welding rescue'-' %></th></tr>
+		<tr><th>Oxygen & Acetylene :<%= estimation.oxygen_acetylene rescue'-' %></th></tr>
+		<tr><th>Painting : <%= estimation.painting rescue'-' %></th></tr>
+		<tr><th>Sand Blasting : <%= estimation.sand_blasting rescue'-' %></th></tr>
+		<tr><th>Transport :<%= estimation.painting rescue'-' %></th></tr>
+		<tr><th>Crane : <%= estimation.crane rescue'-' %></th></tr>
+		<tr><th>Shipment : <%= estimation.shipment rescue'-' %></th></tr>
+		<tr><th>Labour : <%= estimation.labour rescue'-' %></th></tr>
+		<tr><th>Installation : <%= estimation.installation rescue'-' %></th></tr>
+		<tr><th>Dismantle : <%= estimation.dismantle rescue'-' %></th></tr>
+		<tr><th>Machining : <%= estimation.machining rescue'-' %></th></tr>
+		<tr><th>Insulation : <%= estimation.insulation rescue'-' %></th></tr>
+		<tr><th>Civil Work : <%= estimation.civil_work rescue'-' %></th></tr>
+		<tr><th>Electrik : <%= estimation.electrik rescue'-' %></th></tr>
+		<tr><th>Pilling Work : <%= estimation.piling_work rescue'-' %></th></tr>
+		<tr><th>Forming : <%= estimation.forming rescue'-' %></th></tr>
+		<tr><th>Misc : <%= estimation.misc rescue'-' %></th></tr>
+		<tr><th>JKKP : <%= estimation.jkkp rescue'-' %></th></tr>
+	<% end %>
+</table> -->
+
+<!-- <table class="table table-bordered">
+		<tr>			
+			<th>Welding : <%= estimation.welding rescue'-' %></th>
+		 	<th>Oxygen & Acetylene : <%= estimation.oxygen_acetylene rescue'-' %></th>
+		 	<th>Painting : <%= estimation.painting rescue'-' %></th>
+		 	<th>Sand Blasting : <%= estimation.sand_blasting rescue'-' %></th>
+		 	<th>Transport : <%= estimation.transport rescue'-' %></th>
+		</tr>
+		<tr>			
+			<th>Crane : <%= estimation.crane rescue'-' %></th>
+			<th>Shipment : <%= estimation.shipment rescue'-' %></th>
+			<th>Labour : <%= estimation.labour rescue'-' %></th>
+			<th>Installation : <%= estimation.installation rescue'-' %></th>
+			<th>Dismantle : <%= estimation.dismantle rescue'-' %></th>
+		</tr>
+		<tr>		
+			<th>Machining : <%= estimation.machining rescue'-' %></th>
+			<th>Insulation : <%= estimation.insulation rescue'-' %></th>
+			<th>Civil Work : <%= estimation.civil_work rescue'-' %></th>
+			<th>Electrik : <%= estimation.electrik rescue'-' %></th>
+			<th>Pilling Work : <%= estimation.piling_work rescue'-' %></th>
+		</tr>
+		<tr>			
+			<th>Forming : <%= estimation.forming rescue'-' %></th>
+		 	<th>Misc : <%= estimation.misc rescue'-' %></th>
+		 	<th>JKKP : <%= estimation.jkkp rescue'-' %></th>
+		 	<th></th>
+		 	<th></th>
+		</tr>				
+</table>  -->
+
+		</th>
+	</tr>
+</table>
+	</div>
+	<% end %>
+<style>
+th
+{
+font-family:"Times New Roman";
+font-size:12px;
+}
+
+tr
+{
+font-family:"Times New Roman";
+font-size:12px;
+}

@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 20130926084641) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "estimation_id"
     t.integer  "category_id"
     t.decimal  "dimension_h",   precision: 10, scale: 5
     t.decimal  "plate",         precision: 10, scale: 5
     t.decimal  "wt_ibs_ft",     precision: 10, scale: 5
+<<<<<<< HEAD
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
@@ -116,28 +116,35 @@ ActiveRecord::Schema.define(version: 20130926084641) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+=======
+    t.decimal  "thk_dia",       precision: 10, scale: 5
+
+>>>>>>> 52c35a481c9e1c68b24182b93b5ed0fd568adcf0
+  end
+
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
     t.string   "name"
+
     t.integer  "client_id"
     t.string   "date"
-    t.boolean  "standard"
-    t.boolean  "non_standard"
+    t.boolean  "standard",     default: false
+    t.boolean  "non_standard", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
-  end
-
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "client_id"
-    t.date     "date"
-    t.boolean  "standard",     default: false
-    t.boolean  "non_standard", default: false
-    t.string   "project_code"
   end
 
   create_table "roles", force: true do |t|

@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :check_role
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   autocomplete :client, :name
 
@@ -73,5 +74,12 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params.require(:client).permit(:name)
+    end
+
+    def check_role
+      unless role(Client::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
     end
 end

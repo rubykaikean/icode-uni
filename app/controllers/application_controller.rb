@@ -14,18 +14,31 @@ class ApplicationController < ActionController::Base
     current_user.admin == true
   end
 
+  def user_is_active?
+    current_user.status == true
+  end
+
   def roles
     # toDo
     # refactor into a class for user.roles.map ...
     @roles = current_user.roles.map(&:inventory_management_system_id)
+    # @roles = UserRole.new(user).roles
   end
 
   # toDo
   # change the below method name to something descriptive 
-  def are_you_admin?
+  def authorization_admin
     unless user_is_admin?
-      flash[:alert] = "You are not authorize!!"
+      #flash[:alert] = "Welcome!"
       redirect_to root_url
+    end
+  end
+
+  def authorization_status
+    unless user_is_active?
+      flash[:alert] = "Account inactive! Contact administrator to activate your account."
+      sign_out(current_user)
+      redirect_to new_user_session_path
     end
   end
 
@@ -34,7 +47,19 @@ class ApplicationController < ActionController::Base
     render :index
   end
 
-   protected
+  #testing
+  def role(model_array)
+      ## to check employee is allow to work on task
+      model_array.each do |role|
+        unless roles.include?(role)
+          break;
+          flash[:notice] = "You are not authorize!"
+          redirect_to root_url
+        end
+      end
+  end
+    
+  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, 

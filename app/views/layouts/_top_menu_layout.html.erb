@@ -44,18 +44,18 @@
     <ul class="nav nav-pills">
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Section Two
+              Report
             <b class="caret"></b>
             </a>
 
             <ul class="dropdown-menu">
             <li class="dropdown-submenu">
             <%# if roles.include?(InventoryManagementSystem::SALES_TAX_EXEMPTION_MENU) %>
-            <a tabindex="-1" href="#">Section Two - one</a>
+            <a tabindex="-1" href="#">Estimation</a>
             <ul class="dropdown-menu">
               
                 <%# if roles.include?(InventoryManagementSystem::SALES_TAX_EXEMPTION_TRANSACTION_VALID) %>
-                <li class="text_gray" style="width:210px;">Section selection</li><%#= link_to "Transactions - Valid", sales_tax_exemptions_path, :class => "show_without_refresh_page_1600x900", "data-fancybox-type" => "iframe" %>
+                <li class="text_gray" style="width:210px;"><%= link_to "Listing Estimation Report" , list_estimation_report_reports_path %></li><%#= link_to "Transactions - Valid", sales_tax_exemptions_path, :class => "show_without_refresh_page_1600x900", "data-fancybox-type" => "iframe" %>
                 <%# else %>
                   <!-- <li class="text_gray">Transactions - Valid</li> -->
                 <%# end %>

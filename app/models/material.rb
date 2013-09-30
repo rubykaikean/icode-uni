@@ -24,7 +24,9 @@ class Material < ActiveRecord::Base
 
 	
 
-
+	ROLE = [
+	    InventoryManagementSystem::MATERIAL
+	]
 	
 
 end

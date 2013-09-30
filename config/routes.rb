@@ -1,8 +1,10 @@
 IcodeUni::Application.routes.draw do
   
+
   resources :price_controls
 
   resources :price_control_items
+
 
   resources :projects do
 
@@ -15,6 +17,7 @@ IcodeUni::Application.routes.draw do
       get "add_standard_estimation"
     end
   end
+
 
   resources :fomulations
 
@@ -32,7 +35,11 @@ IcodeUni::Application.routes.draw do
     end
   end
 
-  resources :estimation_items
+  resources :estimation_items do
+    collection do
+      # get :report
+    end
+  end
 
   resources :stations do
 
@@ -73,9 +80,6 @@ IcodeUni::Application.routes.draw do
     get :autocomplete_client_name, :on => :collection
   end
 
-
-
-
   get "home/index"
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
@@ -90,9 +94,19 @@ IcodeUni::Application.routes.draw do
     end       
   end
 
-    resources :roles         
-     
-  
+    resources :roles  
+
+    resources :reports do
+      collection do
+        get :pdf_estimation_report
+        get :list_estimation_report
+      end
+    end
+
+
+    # resources :reports do
+    #   get :estimation, :on => :collection
+    # end
 
   # devise_for :admins
  

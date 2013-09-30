@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  before_action :check_role
   before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
 
   # GET /materials
@@ -78,5 +79,12 @@ class MaterialsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
       params.require(:material).permit(:name , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id)
+    end
+
+    def check_role
+      unless role(Material::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
     end
 end
