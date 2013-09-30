@@ -1,5 +1,9 @@
 IcodeUni::Application.routes.draw do
   
+  resources :price_controls
+
+  resources :price_control_items
+
   resources :projects do
 
     get :autocomplete_product_name, :on => :collection
@@ -36,6 +40,7 @@ IcodeUni::Application.routes.draw do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
       get "standard_project_station"
       get "standard_project_estimation"
+      
     end
   end
 

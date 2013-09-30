@@ -36,14 +36,16 @@
         <td><%= f.input :dimension_l,:as => :string, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %></td>
 
         <td><%= f.input :wt_ibs_ft, :as => :string, :disabled => true %>
-                <%= hidden_field_tag "Wt/Ibs/Ft",:id=>"wt_ibs_ft_hidden_field" %></td>
+                <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
     </tr> 
     <tr>
         
         <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
         <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
-        <td><%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
-        </td>
+        <td><%#= f.input :unit_price , label: "Unit Price" , :disabled => true %>
+            <%#= hidden_field_tag "unit_price" , nil , :id => "unit_price_hidden_field" %>
+        </td><%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
+        
     </tr>
     </div>
 </table>
@@ -65,8 +67,9 @@
         <th>Dimension H</th>
         <th>Dimension W</th>
         <th>WT</th>
-        <th>Wt/Ibs/ft</th>
         <th>Thk/Dia</th>
+        <th>Wt/Ibs/ft</th>
+        
     </tr>
     </thead>
     <tbody>
@@ -80,8 +83,10 @@
         <td id="<%= "dimension_h_#{material.id}" %>"><%= material.dimension_h rescue'-' %></td>
         <td id="<%= "dimension_w_#{material.id}" %>"><%= material.dimension_w rescue'-' %></td>
         <td id="<%= "plate_#{material.id}" %>"><%= material.plate rescue'-' %></td>
-        <td id="<%= "wt_ibs_ft_#{material.id}" %>"><%= material.wt_ibs_ft rescue'-' %></td>
         <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %></td>
+        <td id="<%= "wt_ibs_ft_#{material.id}" %>"><%= material.wt_ibs_ft rescue'-' %></td>
+
+        <!-- <td id="<%#= "unit_price_#{material_id}" %>"><%#= material.price_control_items.new_unit_price rescue'-' %></td> -->
         
     </tr>
 
@@ -118,6 +123,9 @@ $(document).ready(function(){
 
         $("#estimation_item_thk_dia").val(thk_dia);
         $("#thk_dia_hidden_field").val(thk_dia);    //hidden field for write down record and store in db
+
+        // $("#estimation_item_unit_price").val(unit_price);
+        // $("#unit_price_hidden_field").val(unit_price);
 
         $("#estimation_item_dimension_h").val(dimension_h);
         $("#dimension_h_hidden_field").val(dimension_h);

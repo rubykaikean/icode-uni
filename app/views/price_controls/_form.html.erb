@@ -1,0 +1,15 @@
+<%= simple_form_for(@price_control) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :pp_no %>
+    <%= f.input :pp_data %>
+    <%= f.input :client_id %>
+    <%= f.input :reference %>
+    <%= f.input :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

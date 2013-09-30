@@ -1,0 +1,16 @@
+<%= simple_form_for(@price_control_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :material_id %>
+    <%= f.input :old_unit_price %>
+    <%= f.input :old_eff_date %>
+    <%= f.input :new_unit_price %>
+    <%= f.input :new_eff_date %>
+    <%= f.input :price_control_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

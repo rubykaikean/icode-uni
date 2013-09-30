@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pp_no: 1
+  pp_data: 2013-09-26
+  client_id: 1
+  reference: MyString
+  user_id: 1
+
+two:
+  pp_no: 1
+  pp_data: 2013-09-26
+  client_id: 1
+  reference: MyString
+  user_id: 1

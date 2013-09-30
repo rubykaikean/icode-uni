@@ -1,0 +1,35 @@
+<h1>Listing price_controls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pp no</th>
+      <th>Pp data</th>
+      <th>Client</th>
+      <th>Reference</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_controls.each do |price_control| %>
+      <tr>
+        <td><%= price_control.pp_no %></td>
+        <td><%= price_control.pp_data %></td>
+        <td><%= price_control.client_id %></td>
+        <td><%= price_control.reference %></td>
+        <td><%= price_control.user_id %></td>
+        <td><%= link_to 'Show', price_control %></td>
+        <td><%= link_to 'Edit', edit_price_control_path(price_control) %></td>
+        <td><%= link_to 'Destroy', price_control, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Price control', new_price_control_path %>

@@ -8,10 +8,11 @@
 			<th>No</th>
 			<th></th>
 			<th>Name</th>
-			<th>Plate</th>
+			<th>Thk Dia</th>
 			<th>Dimension H</th>
 			<th>Dimension W</th>
 			<th>Wt Ibs Ft</th>
+			<th>thk_dia(category = 1)</th>
 			<th>Category Id</th>
 		</tr>
 	</thead>
@@ -22,11 +23,12 @@
 			<td><%= a = index + 1 %></td>
 			<td><%#= check_box_tag "row[#{a}][]" %></td>
 			<td><%= text_field_tag "row[#{a}][name]", '', :value => row[0] %></td>
-			<td><%= text_field_tag "row[#{a}][plate]", '', :value => row[1] %></td>
+			<td><%= text_field_tag "row[#{a}][thk_dia]", '', :value => row[1] %></td>
 			<td><%= text_field_tag "row[#{a}][dimension_h]", '', :value =>row[2] %></td>
 			<td><%= text_field_tag "row[#{a}][dimension_w]", '', :value =>row[3] %></td>
 			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>row[4] %></td>
-			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[5] %></td>
+			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value => row[5] %></td>
+			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[6] %></td>
 		</tr>
 		<% end %> <!-- end of each -->
 	</tbody>

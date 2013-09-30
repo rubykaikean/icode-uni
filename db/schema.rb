@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917080955) do
+ActiveRecord::Schema.define(version: 20130926084641) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20130917080955) do
     t.integer  "material_id"
     t.float    "dimension_l"
     t.float    "dimension_h"
-    t.float    "dimension_w"
     t.decimal  "thk_dia",       precision: 10, scale: 5
+    t.string   "dimension_w"
+    t.string   "thk_dia_um"
+    t.float    "unit_price"
   end
 
   create_table "estimations", force: true do |t|
@@ -88,10 +90,32 @@ ActiveRecord::Schema.define(version: 20130917080955) do
     t.integer  "estimation_id"
     t.integer  "category_id"
     t.decimal  "dimension_h",   precision: 10, scale: 5
-    t.decimal  "dimension_w",   precision: 10, scale: 5
     t.decimal  "plate",         precision: 10, scale: 5
     t.decimal  "wt_ibs_ft",     precision: 10, scale: 5
-    t.decimal  "thk_dia",       precision: 10, scale: 5
+    t.string   "thk_dia"
+    t.string   "dimension_w"
+    t.string   "thk_dia_um"
+  end
+
+  create_table "price_control_items", force: true do |t|
+    t.integer  "material_id"
+    t.float    "old_unit_price"
+    t.date     "old_eff_date"
+    t.float    "new_unit_price"
+    t.date     "new_eff_date"
+    t.integer  "price_control_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_controls", force: true do |t|
+    t.integer  "pp_no"
+    t.date     "pp_data"
+    t.integer  "client_id"
+    t.string   "reference"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: true do |t|
@@ -125,9 +149,9 @@ ActiveRecord::Schema.define(version: 20130917080955) do
 
   create_table "stations", force: true do |t|
     t.string   "name"
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "users", force: true do |t|

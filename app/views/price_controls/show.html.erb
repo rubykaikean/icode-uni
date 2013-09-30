@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pp no:</strong>
+  <%= @price_control.pp_no %>
+</p>
+
+<p>
+  <strong>Pp data:</strong>
+  <%= @price_control.pp_data %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @price_control.client_id %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @price_control.reference %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @price_control.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_price_control_path(@price_control) %> |
+<%= link_to 'Back', price_controls_path %>

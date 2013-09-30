@@ -1,0 +1,2 @@
+module PriceControlsHelper
+end

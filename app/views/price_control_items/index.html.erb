@@ -1,0 +1,37 @@
+<h1>Listing price_control_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Material</th>
+      <th>Old unit price</th>
+      <th>Old eff date</th>
+      <th>New unit price</th>
+      <th>New eff date</th>
+      <th>Price control</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_control_items.each do |price_control_item| %>
+      <tr>
+        <td><%= price_control_item.material_id %></td>
+        <td><%= price_control_item.old_unit_price %></td>
+        <td><%= price_control_item.old_eff_date %></td>
+        <td><%= price_control_item.new_unit_price %></td>
+        <td><%= price_control_item.new_eff_date %></td>
+        <td><%= price_control_item.price_control_id %></td>
+        <td><%= link_to 'Show', price_control_item %></td>
+        <td><%= link_to 'Edit', edit_price_control_item_path(price_control_item) %></td>
+        <td><%= link_to 'Destroy', price_control_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Price control item', new_price_control_item_path %>

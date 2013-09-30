@@ -1,8 +1,10 @@
 class Material < ActiveRecord::Base
 
 	belongs_to :estimation
+
 	has_many :estimation_items
 	has_many :spreadsheets
+	has_many :price_control_items
 
 	validates :name , :category_id ,  presence: :true
 

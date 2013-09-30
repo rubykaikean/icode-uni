@@ -39,12 +39,16 @@ $(document).ready(function () {
  //            }
 
  //     });
-
+    // check all check box
+    $('#checkall:checkbox').change(function () {
+        if($(this).attr("checked")) $('input:checkbox').attr('checked','checked');
+        else $('input:checkbox').removeAttr('checked');
+    });
 
     $('#jdatatable').dataTable({
         //"sScrollY": content_height - 97,
         //"sPaginationType": "full_numbers",  
-        //"bPaginate": false,
+        "bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,
         "oLanguage": {

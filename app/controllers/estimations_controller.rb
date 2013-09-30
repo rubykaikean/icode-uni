@@ -30,8 +30,7 @@ class EstimationsController < ApplicationController
 
   # GET /estimations/1/edit
   def edit
-    #render :text => params[:id].to_json
-    #@station = Station.find(params[:id])
+    
   end
 
   # POST /estimations
@@ -71,10 +70,15 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1
   # DELETE /estimations/1.json
   def destroy
-    @estimation.destroy
-    respond_to do |format|
-      format.html { redirect_to estimations_url }
-      format.json { head :no_content }
+    estimation_item = EstimationItem.pluck(:estimation_id)
+    if estimation_item.any? {|a| a == @estimation.id }
+        redirect_to estimations_path , notice: 'Make sure delete all Estimation Item before delete Estimation.'
+      else
+      @estimation.destroy
+      respond_to do |format|
+        format.html { redirect_to estimations_url }
+        format.json { head :no_content }
+      end
     end
   end
 

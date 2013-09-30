@@ -32,10 +32,11 @@ class SpreadsheetsController < ApplicationController
 		params[:row].each do |key, value|
 			@material = Material.new
 			@material.name = value[:name]
-			@material.plate = value[:plate]
+			@material.thk_dia = value[:thk_dia]
 			@material.dimension_h =  value[:dimension_h]
 			@material.dimension_w = value[:dimension_w]
 			@material.wt_ibs_ft = value[:wt_ibs_ft]
+			@material.plate = value[:plate_thk_dia]
 			@material.category_id = value[:category_id]
 			@material.save
 		end

@@ -1,15 +1,15 @@
 <div class="accordion" id="accordion2">
-  <% @products.each do |product| %>
+  <% @projects.each do |project| %>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= product.id %>">
-        <%= product.name %> - <%= product.client.name %>
+      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= project.id %>">
+        <%= project.name %> - <%= project.client.name %>
       </div>
     </div>
 
-    <div id="collapse<%= product.id %>" class="accordion-body collapse">
+    <div id="collapse<%= project.id %>" class="accordion-body collapse">
       <div class="accordion-inner">
-        <%= render "index_station", :product_stations => product %>
+        <%= render "index_station", :project_stations => project %>
       </div>
     </div>
   </div>

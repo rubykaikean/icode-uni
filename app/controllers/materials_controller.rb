@@ -27,6 +27,7 @@ class MaterialsController < ApplicationController
   # POST /materials
   # POST /materials.json
   def create
+    
     @material = Material.new(material_params)
 
     respond_to do |format|
@@ -76,6 +77,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name , :type_id , :semi_total_weight , :wt_ibs_ft,  :thk_dia, :dimension_h , :dimension_w , :plate , :category_id)
+      params.require(:material).permit(:name , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id)
     end
 end

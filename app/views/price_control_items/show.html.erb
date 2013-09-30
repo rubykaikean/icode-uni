@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @price_control_item.material_id %>
+</p>
+
+<p>
+  <strong>Old unit price:</strong>
+  <%= @price_control_item.old_unit_price %>
+</p>
+
+<p>
+  <strong>Old eff date:</strong>
+  <%= @price_control_item.old_eff_date %>
+</p>
+
+<p>
+  <strong>New unit price:</strong>
+  <%= @price_control_item.new_unit_price %>
+</p>
+
+<p>
+  <strong>New eff date:</strong>
+  <%= @price_control_item.new_eff_date %>
+</p>
+
+<p>
+  <strong>Price control:</strong>
+  <%= @price_control_item.price_control_id %>
+</p>
+
+<%= link_to 'Edit', edit_price_control_item_path(@price_control_item) %> |
+<%= link_to 'Back', price_control_items_path %>

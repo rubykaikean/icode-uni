@@ -104,6 +104,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w, :dimension_l, :wt_ibs_ft, :qty, :uom, :weight, :unit_price, :remarks , :estimation_id)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :weight , :estimation_id)
     end
 end

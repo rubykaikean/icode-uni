@@ -21,7 +21,7 @@
 	<tbody>
 	<tr>
 		<td><%= f.input :name , :label => false %></td>
-  		<td><%= f.select :product_id , Product.all.map { |r| [r.name, r.id] }, :include_blank=>true, :label => false %></td>
+  		<td><%= f.select :project_id , Project.all.map { |r| [r.name, r.id] }, :include_blank=>true, :label => false %></td>
 	</tr>
 	</tbody>
 </table>

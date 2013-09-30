@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-		validates :client , :product_code, :name , :date ,  presence: :true
+	validates :client , :project_code, :name , :date ,  presence: :true
 	validates :name, uniqueness: :true
 
 	belongs_to :client

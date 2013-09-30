@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  material_id: 1
+  old_unit_price: 1.5
+  old_eff_date: 2013-09-26
+  new_unit_price: 1.5
+  new_eff_date: 2013-09-26
+  price_control_id: 1
+
+two:
+  material_id: 1
+  old_unit_price: 1.5
+  old_eff_date: 2013-09-26
+  new_unit_price: 1.5
+  new_eff_date: 2013-09-26
+  price_control_id: 1

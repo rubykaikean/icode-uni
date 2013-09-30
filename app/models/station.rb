@@ -1,10 +1,17 @@
 class Station < ActiveRecord::Base
 	
-	belongs_to :product
+	belongs_to :project
 
 	has_many :estimations
 
-	validates :name , :product_id ,  presence: :true
+	validates :name , :project_id ,  presence: :true
+
+	# def station_estimation_id
+	# 	@station_estimation_id = Estimation.all
+	# 	@station_estimation_id.each do |p|
+	# 		p.id
+	# 	end
+	# end
 
 
 end

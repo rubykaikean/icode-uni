@@ -23,7 +23,7 @@
  -->
 <%#= f.select :role, options_for_select([["Teacher", "t"], ["Student", "s"]]) %>
  <div id="datetimepicker4" class="input-append">
-    <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
+    <%= f.input :date , as: :string , "data-format"=>"yyyy-MM-dd"%>
      <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>

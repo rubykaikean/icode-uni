@@ -13,8 +13,8 @@ class StationsController < ApplicationController
     # @search = Product.search(params[:search])
     # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
 
-    @search = Product.search(params[:q])
-    @products = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
+    @search = Project.search(params[:q])
+    @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
 
     # @stations = Station.all
     # @products = Product.first
@@ -77,16 +77,20 @@ class StationsController < ApplicationController
   # DELETE /stations/1
   # DELETE /stations/1.json
   def destroy
-    estimation = Estimation.all
-    if @station = estimation.station_id.any?
-        notice: "delete all estimation before delete station"
-    else
-      @station.destroy
-        respond_to do |format|
-          format.html { redirect_to stations_path }
-          format.json { head :no_content }
-        end
-    end
+    # render :text => @station.id.to_json
+    #result.any? {|c| c == 8 }  # find all record that id = 8
+    # @abc = Station.where("id > 5").pluck(:id)
+    estimation = Estimation.pluck(:station_id)
+    if estimation.any? {|a| a == @station.id }
+        redirect_to stations_path , notice: 'Make sure delete all estimation before delete station.'
+        # render :text => "true"
+       else
+        @station.destroy
+          respond_to do |format|
+            format.html { redirect_to stations_path }
+            format.json { head :no_content }
+          end
+      end
   end
 
   def standard_project_station
@@ -111,6 +115,6 @@ class StationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
-      params.require(:station).permit(:name, :product_id)
+      params.require(:station).permit(:name, :project_id)
     end
 end

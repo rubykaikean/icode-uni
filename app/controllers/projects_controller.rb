@@ -79,11 +79,17 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project.destroy
-    respond_to do |format|
-      
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
+
+    station = Station.pluck(:project_id)
+    if station.any? {|a| a == @project.id }
+        redirect_to projects_path , notice: 'Make sure delete all station before delete project.'
+        # render :text => "true"
+       else
+        @project.destroy
+          respond_to do |format|
+            format.html { redirect_to projects_url }
+            format.json { head :no_content }
+        end
     end
   end
 
@@ -101,7 +107,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = project.find(params[:id])
+      @project = Project.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
