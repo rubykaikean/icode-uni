@@ -81,6 +81,7 @@ IcodeUni::Application.routes.draw do
   end
 
   get "home/index"
+  get "home/test"
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
     get :autocomplete_user_username, :on => :collection

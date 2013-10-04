@@ -1,6 +1,6 @@
-class ReportBuilder   
+class ReportBuilding 
 
-  def report_builder
+  def self.make_report
     rb = ReportBuilder.new do
       text("2")
       section(:name=>"Section 1") do
@@ -11,7 +11,7 @@ class ReportBuilder
       preformatted("Another Text")
     end
     rb.name="Html output"
-    puts rb.to_html
+    rb.to_html
 
   end
 end

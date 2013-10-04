@@ -58,7 +58,7 @@
 		<th rowspan="2"><p class="text-center">Weight<br>lb/kg</p></th>
 		<th rowspan="2"><p class="text-center">Unit<br>Price</p></th>
 		<th rowspan="2"><p class="text-center">Total</p></th>
-		<!-- <th rowspan="2"><p class="text-center">Remarks</p></th> -->
+		<th rowspan="2"><p class="text-center">Remarks</p></th>
 	</tr>
 	<tr>
 		<th><p class="text-center"> Thk/Dia. </p></th>
@@ -69,8 +69,11 @@
 </thead>
 
 <tbody>
+	<% @remark_index = 0 %>
+	<% @finished_estimation_item_loop = true %>
 	<% estimation.estimation_item.each_with_index do |item_list , index| %>
-	
+	<% @finished_estimation_item_loop = false %>
+	<% @remark_index = index %>
     <tr>
 		<td><%= index + 1 %></td>
 		<td><%= item_list.part_detail %></td>
@@ -99,14 +102,28 @@
         </td>	
 		<td><%#= item_list. %></td>
 		<td><%#= item_list. %></td>	
+		<td><%= @estimation[index] %></td>
 	</tr>
-</tbody>
-	<% end %>	
+    <% @finished_estimation_item_loop = true %>
+	<% end %>
+
+    <% if @finished_estimation_item_loop %>
+		<% while @remark_index < (@estimation.size - 1) do %>
+		  <tr>
+		  	<td colspan="12"></td>
+		  	<td><%= @estimation[@remark_index] %></td>
+		  </tr>
+	      <% @remark_index += 1%>
+		<% end %>
+	<% end %>
+
+
+  </tbody>
 </table>
-		</th>	
+		<!-- </th>	
 		<th width="10%">
-			<%= render "remark_estimation"%>
-		</th>
+			<%#= render "remark_estimation"%>
+		</th> -->
 	</tr>
 </table>
 	</div>

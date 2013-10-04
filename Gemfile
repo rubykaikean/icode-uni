@@ -66,6 +66,7 @@ group :development do
   gem 'sextant'
 end
 gem "spreadsheet", "~> 0.8.9"
+gem 'reportbuilder'
 
 #gem "roo" , "~> 1.12.2"
 # gem "rubyXL", "~> 1.2.10"
