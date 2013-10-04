@@ -1,15 +1,33 @@
 <%= simple_form_for(@price_control) do |f| %>
   <%= f.error_notification %>
 
+
+  <%#= f.chosen-select :material_id ,  %>
+   <%#= f.select :client_id ,Client.all.map{|r| [r.name, r.id]}, :class=>"chosen-select" , :include_blank => true, :placeholder=>"Choose a country..." %>
+
   <div class="inputs">
-    <%= f.input :pp_no %>
-    <%= f.input :pp_data %>
-    <%= f.input :client_id %>
+    <%#= f.input :pp_no %>
+     <div id="datetimepicker4" class="input-append">
+    <%= f.input :pp_date , as: :string , "data-format"=>"yyyy-MM-dd"%>
+     <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+
+    
+
+    <%= f.association :client,
+                    collection: Client.all,
+                    include_blank: true,
+                    input_html: { class: 'chosen-select' }  %>
+
     <%= f.input :reference %>
-    <%= f.input :user_id %>
+
+    <%#= f.input :user_id %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit , :class=> "btn" %>
   </div>
 <% end %>

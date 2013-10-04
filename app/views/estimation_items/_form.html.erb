@@ -3,12 +3,12 @@
 <%= simple_form_for(@estimation_item) do |f| %>
   <%= f.error_notification %>
 
-    <%= f.input "estimation_id", :as => :hidden, :input_html => { :value => params[:estimation_id]} %>
+    <%= f.input "estimation_id",as: :hidden , :input_html => { :value => params[:estimation_id]} %>
 
 <table >
     <div class="inputs">
     <tr>
-        <td><%= f.input :part_detail , :input_html => {:maxlength => 15, :size => 20 } %></td>
+        <td><%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
         <td><%#= f.label :material_id %><%#= f.input :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %>
             <%= f.input :material_id, :as => :string ,:disabled => true %>
             <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->

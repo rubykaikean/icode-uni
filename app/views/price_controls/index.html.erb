@@ -1,30 +1,34 @@
-<h1>Listing price_controls</h1>
-
-<table>
-  <thead>
+<h1>Listing Price Controls</h1>
+<%#= render "search_index_price_control" %>
+<table class="table table table-bordered">
+  <thead >
     <tr>
-      <th>Pp no</th>
-      <th>Pp data</th>
+      <th>No</th>
+      <!-- <th>Material</th> -->
+      <!-- <th>Pp No</th> -->
+      <th>Material Price Date</th>
       <th>Client</th>
       <th>Reference</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <!-- <th>User</th> -->
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @price_controls.each do |price_control| %>
+    <% @price_controls.each_with_index do |pc , index| %>
       <tr>
-        <td><%= price_control.pp_no %></td>
-        <td><%= price_control.pp_data %></td>
-        <td><%= price_control.client_id %></td>
-        <td><%= price_control.reference %></td>
-        <td><%= price_control.user_id %></td>
-        <td><%= link_to 'Show', price_control %></td>
-        <td><%= link_to 'Edit', edit_price_control_path(price_control) %></td>
-        <td><%= link_to 'Destroy', price_control, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= index + 1 %></td>
+        <!-- <td><%#= pc.material.name %></td> -->
+        <td><%= pc.reference %></td>
+        <!--  <td><%#= pc.pp_no %></td> -->
+        <td><%= pc.pp_date.strftime("%d-%m-%Y") %></td>
+        <td><%= pc.client.name %></td>
+        <!-- <td><%#= pc.user_id %></td> -->
+        <td><%#= link_to 'Show', pc %>
+          <%= link_to "Add Item" , new_price_control_item_path(:price_control_id => pc) , :class=>"btn btn-mini" %>
+        <%= link_to "Detail", price_control_items_path(:price_control_id => pc) , :class=>"btn btn-mini btn-warning" %>
+        <%= link_to 'Edit', edit_price_control_path(pc) , :class=>"btn btn-mini btn-info" %>
+        <%= link_to 'Destroy', pc, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-mini btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +36,6 @@
 
 <br>
 
-<%= link_to 'New Price control', new_price_control_path %>
+<%= link_to 'New Price control', new_price_control_path , :class=>"btn" %>
+<div style="float: right; "><%= link_home_button %></div> 
+

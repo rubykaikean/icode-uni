@@ -16,7 +16,7 @@ username: <%= current_user.username %> <br>
 
 <%= link_to "New Project" , new_project_path , :class=>"btn" %>
 
-<%= link_to "Create with Existing Project" , show_standard_project_products_path , :class => "btn" %> 
+<%#= link_to "Create with Existing Project" , show_standard_project_products_path , :class => "btn" %> 
 <br>
 <br>
 
@@ -25,6 +25,9 @@ username: <%= current_user.username %> <br>
 <%= link_to "List Stations" , stations_path , :class=>"btn" %>
 &nbsp;
 <%= link_to "List Estimations" , estimations_path , :class=>"btn" %>
+<br>
+<br>
+<%= link_to "Price Control" , price_controls_path , :class=>"btn" %>
 
 <hr />
 <% if roles.include?(InventoryManagementSystem::MATERIAL) %>

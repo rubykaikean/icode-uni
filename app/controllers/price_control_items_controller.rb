@@ -5,6 +5,7 @@ class PriceControlItemsController < ApplicationController
   # GET /price_control_items.json
   def index
     @price_control_items = PriceControlItem.all
+    @price_control = PriceControl.find(params[:price_control_id])
   end
 
   # GET /price_control_items/1
@@ -14,11 +15,13 @@ class PriceControlItemsController < ApplicationController
 
   # GET /price_control_items/new
   def new
+    @price_control = PriceControl.find(params[:price_control_id])
     @price_control_item = PriceControlItem.new
   end
 
   # GET /price_control_items/1/edit
   def edit
+    @price_control = PriceControl.find(params[:price_control_id])
   end
 
   # POST /price_control_items
@@ -27,8 +30,8 @@ class PriceControlItemsController < ApplicationController
     @price_control_item = PriceControlItem.new(price_control_item_params)
 
     respond_to do |format|
-      if @price_control_item.save
-        format.html { redirect_to @price_control_item, notice: 'Price control item was successfully created.' }
+      if @price_control_item.save 
+        format.html { redirect_to new_price_control_item_path(:price_control_id => params[:price_control_id]) , notice: 'Price control item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @price_control_item }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,7 @@ class PriceControlItemsController < ApplicationController
   def update
     respond_to do |format|
       if @price_control_item.update(price_control_item_params)
-        format.html { redirect_to @price_control_item, notice: 'Price control item was successfully updated.' }
+        format.html { redirect_to edit_price_control_items(:price_control_id), notice: 'Price control item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

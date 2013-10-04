@@ -63,7 +63,7 @@ gem "pdfkit", "0.5.2"
 gem 'wkhtmltopdf-binary'
 
 group :development do
-  gem 'sextant'
+  #gem 'sextant'
 end
 gem "spreadsheet", "~> 0.8.9"
 

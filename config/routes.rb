@@ -8,9 +8,9 @@ IcodeUni::Application.routes.draw do
 
   resources :projects do
 
-    get :autocomplete_product_name, :on => :collection
+    get :autocomplete_project_name, :on => :collection
     collection do
-      get "product_station"
+      # get "project_station"
       get "show_standard_project"
       get "show_standard_station"
       get "show_standard_estimation"
