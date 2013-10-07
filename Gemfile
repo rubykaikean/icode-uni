@@ -23,7 +23,7 @@ gem 'bootstrap-will_paginate'
 
 # Chosen
 gem 'chosen-rails'
-#gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
+# gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

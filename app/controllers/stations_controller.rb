@@ -2,7 +2,7 @@ class StationsController < ApplicationController
   before_filter :authenticate_user!
   #before_filter :search
   before_action :set_station, only: [:show, :edit, :update, :destroy]
-  
+  autocomplete :project, :name
 
   # GET /stations
   # GET /stations.json

@@ -1,14 +1,20 @@
 <%= simple_form_for(@price_control_item) do |f| %>
   <%= f.error_notification %>
-
-  <%= f.input "Price Control Id" ,:input_html => {:value => params[:price_control_id] } %>
+  <%#= render :text => params[:price_control_id] %>
+  <%= f.input "Price Control Id", as: :hidden ,:input_html => {:value => params[:price_control_id] } %>
   <div class="inputs">
     <%= render "listing_price_control" %>
     <table style="width:100%;" class="table table-bordered">
       <tr>
           <td>
-          <%#= f.label :material_id, label: "Materials" %>     
-          <%= f.association :material, label: "Material" , collection: Material.all, :include_blank => true,input_html: {class: 'chosen-select' } %>
+          <%#= f.label :material_id, label: "Materials" %>
+          
+          <%= f.association :material, 
+          label: "Material Code" , 
+          collection: Material.all.map {|r| [r.material_code , r.id]} , 
+          :include_blank => true,
+          input_html: {class: 'chosen-select' } %>
+          <%#= f.select :material_code_id ,Material.all.map{|r| [r.material_code_id, r.id]}, :class=>"chosen-select" , :include_blank => true %>
           </td>
           <td>
             <%= f.input :new_unit_price , as: :string %>
@@ -45,7 +51,7 @@
 
   <div class="actions">
     <%= f.button :submit , :class => "btn" %>
-    <%= link_to "Back", price_control_path , :class=>"btn" %>
+    <%#= link_to "Back", price_control_path , :class=>"btn" %>
   </div>
 <% end %>
 <!-- 

@@ -1,5 +1,7 @@
 class PriceControlItemsController < ApplicationController
   before_action :set_price_control_item, only: [:show, :edit, :update, :destroy]
+  autocomplete :materials, :material_code
+  layout "enter_data", :only => [:new]
 
   # GET /price_control_items
   # GET /price_control_items.json
@@ -31,7 +33,7 @@ class PriceControlItemsController < ApplicationController
 
     respond_to do |format|
       if @price_control_item.save 
-        format.html { redirect_to new_price_control_item_path(:price_control_id => params[:price_control_id]) , notice: 'Price control item was successfully created.' }
+        format.html { redirect_to new_price_control_item_path(:price_control_id => params[:price_control_item][:price_control_id]) , notice: 'Price control item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @price_control_item }
       else
         format.html { render action: 'new' }

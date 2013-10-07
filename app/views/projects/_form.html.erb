@@ -10,7 +10,7 @@
   <%#= f.select :client_id ,Client.all.map{|r| [r.name, r.id]}, :class=>"chosen-select" , :include_blank => true, :placeholder=>"Choose a country..." %>
 
   <%= f.association :client,
-                    collection: Client.all,
+                    collection: Client.all ,
                     include_blank: true,
                     input_html: { class: 'chosen-select' }  %>
 

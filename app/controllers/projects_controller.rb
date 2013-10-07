@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  autocomplete :project, :name
+  autocomplete :client, :name
 
   #autocomplete :client, :name
 

@@ -25,7 +25,7 @@
         <td><%= pc.client.name %></td>
         <!-- <td><%#= pc.user_id %></td> -->
         <td><%#= link_to 'Show', pc %>
-          <%= link_to "Add Item" , new_price_control_item_path(:price_control_id => pc) , :class=>"btn btn-mini" %>
+          <%= link_to "Add Item" , new_price_control_item_path(:price_control_id => pc) , :class=>"btn btn-mini", :target => "_blank" %>
         <%= link_to "Detail", price_control_items_path(:price_control_id => pc) , :class=>"btn btn-mini btn-warning" %>
         <%= link_to 'Edit', edit_price_control_path(pc) , :class=>"btn btn-mini btn-info" %>
         <%= link_to 'Destroy', pc, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-mini btn-danger" %></td>
