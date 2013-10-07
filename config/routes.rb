@@ -3,12 +3,14 @@ IcodeUni::Application.routes.draw do
 
   resources :price_controls
 
-  resources :price_control_items
+  resources :price_control_items do
+    # get :autocomplete_materials_material_code , :on => :collection
+
+  end
 
 
   resources :projects do
-
-    get :autocomplete_project_name, :on => :collection
+    get :autocomplete_client_name, :on => :collection
     collection do
       # get "project_station"
       get "show_standard_project"
@@ -42,7 +44,7 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :stations do
-
+      get :autocomplete_project_name, :on => :collection
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
       get "standard_project_station"
@@ -53,7 +55,7 @@ IcodeUni::Application.routes.draw do
 
 
   resources :products do
-    get :autocomplete_product_name, :on => :collection
+    get :autocomplete_project_name, :on => :collection
     collection do
       get "product_station"
       get "show_standard_project"

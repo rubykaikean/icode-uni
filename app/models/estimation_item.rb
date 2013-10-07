@@ -5,7 +5,7 @@ class EstimationItem < ActiveRecord::Base
 
 
 	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	#validates :material ,:uom , :thk_dia ,  presence: :true
+	validates :material_id ,:uom , :thk_dia , :dimension_l,  presence: :true
 
 	def total_wt_ibs_ft
 		if material.category_id == 1
@@ -22,6 +22,14 @@ class EstimationItem < ActiveRecord::Base
 			material.wt_ibs_ft
 		else
 			null
+		end
+	end
+
+	def price_total
+		if material.price_fomular_id == 1
+			qty * price
+		else
+			(dimension_l / 6000) * qty * price
 		end
 	end
 

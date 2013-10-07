@@ -1,5 +1,7 @@
-<%= simple_form_for @material, :html => { :class => 'form-horizontal' } do |f| %>
 
+
+<%= simple_form_for @material, :html => { :class => 'form-horizontal' } do |f| %>
+<%= f.error_notification %>
 
 <table>
 	<tr>
@@ -15,10 +17,12 @@
           <%#= f.label :type_id ,"Type :" %>
           <%#= f.select :type_id ,[["WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
     </td>
+    <td><%= f.label :price_fomular_id , "Select a Price Fomular :" %>
+      <%= f.select :price_fomular_id , [["price x qty" , 1], ["(L/6000) x qty x price" , 2]] , :include_blank => true %></td>
   	</tr>
   	<tr>
   		<td>
-        <div id="id_a" style="display:none;"><%= f.input :plate ,as: :string ,label: "WT(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
+        <div id="id_a" style="display:none;"><%= f.input :plate ,as: :string ,label: "WT(5/3 , 5.15/3 , 5.33 / 3)", :size=> 9 %></div>
       </td>
 			<td>
         <div id="id_b" style="display:none;" ><%= f.input :thk_dia , as: :string , label: "Thk/Dia",:size => 9 %></div>

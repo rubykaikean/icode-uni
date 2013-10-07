@@ -4,10 +4,10 @@ class Material < ActiveRecord::Base
 
 	has_many :estimation_items
 	has_many :spreadsheets
-	has_many :price_control_items
+	has_many :price_control_items, :dependent => :destroy
 
-	validates :name , :category_id ,  presence: :true
-
+	validates :name , :category_id , :price_fomular_id,  presence: :true
+	validates :material_code, uniqueness: true
 	attr_accessor :row_ids
 
 	# def total_wt_ibs_ft
@@ -22,15 +22,20 @@ class Material < ActiveRecord::Base
 	# 	end
 	# end
 
-	def generate_material_code(name , dimension_w , dimension_h)
+	def generate_material_code
 		if dimension_h.blank?	
-			material_code = name << "/-" << "/" << dimension_w
+		  self.material_code = "#{name} / - / #{dimension_w.to_s}"
+		
 		elsif dimension_w.blank?
-			material_code = name << "/" << dimension_h << "/-"
+		  self.material_code = "#{name} / #{dimension_h.to_s} / -"
+		
+		elsif dimension_w.blank? && dimension_h.blank?
+		  self.material_code = "#{name} /-/- "
+		
 		else
-			material_code = name << "/" << dimension_h << "/" << dimension_w
+		  self.material_code = "#{name} / #{dimension_h.to_s} / #{dimension_w.to_s}"
 		end
-		material_code
+		# return material_params[:material_code]
 	end
 
 	

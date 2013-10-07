@@ -1,18 +1,21 @@
-<%- model_class = Material -%> <div style="float: right; "><%= link_home_button %></div>
+<%- model_class = Material -%> 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h3><u>Listing Materials</u><%#=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
 </div>
 
 <!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"></input>
  -->
 
-
+<div><%= link_to "New Material" , new_material_path , :class=>"btn btn-primary" %>
+<div style="float: right; "><%= link_home_button %></div>
+</div>
 <!-- <table class="table table-striped " , id="my_table "> -->
-<table id="jdatatable" class="display" >
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Material Code</th>
       <th><%= "Dimension H" || model_class.human_attribute_name(:dimension_h) %></th>
       <th><%= "Dimension W" || model_class.human_attribute_name(:dimension_w) %></th>
       <th>WT</th>
@@ -27,15 +30,14 @@
       <tr>
         <td><%#= link_to material.id, material_path(material) %><%= material.id %></td>
         <td><%= material.name %></td>
-        
+        <td><%= material.material_code %></td>
         <td><%= material.dimension_h %></td>
         <td><%= material.dimension_w %></td>
         <td><%#= material.total_wt_ibs_ft %><%= material.plate %></td>
         <td><%= material.thk_dia %></td>
-        <td><%=  %></td>
         <%#=l material.created_at %>
         <td>
-          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_material_path(material), :class => 'btn btn-mini' %> 
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       material_path(material),
@@ -47,12 +49,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_material_path,
-            :class => 'btn btn-primary' %>   
-
-
 
 
 
