@@ -1,0 +1,43 @@
+
+<h3>Excel File</h3>
+<%#= form_tag @profile, {:action => "save_file"} do %>
+<%= form_tag("/spreadsheets/save_price_control_file", method: "post") do %>
+<table class="table table-border">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th></th>
+			<th>Name</th>
+			<th>Thk Dia</th>
+			<th>Dimension H</th>
+			<th>Dimension W</th>
+			<th>Wt Ibs Ft</th>
+			<th>Plate</th>
+			<th>Category Id</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @sheet1.each_with_index do |row, index | %>
+		<tr>
+			<td><%= a = index + 1 %></td>
+			<td><%#= check_box_tag "row[#{a}][]" %></td>
+			<td><%= text_field_tag "row[#{a}][name]", '', :value => row[0] %></td>
+			<td><%= text_field_tag "row[#{a}][thk_dia]", '', :value => row[1] %></td>
+			<td><%= text_field_tag "row[#{a}][dimension_h]", '', :value =>row[2] %></td>
+			<td><%= text_field_tag "row[#{a}][dimension_w]", '', :value =>row[3] %></td>
+			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>row[4] %></td>
+			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value => row[5] %></td>
+			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[6] %></td>
+		</tr>
+		<% end %> <!-- end of each -->
+	</tbody>
+	
+
+		
+
+
+</table>
+<%= submit_tag "import excel" , :class => "btn" %>
+
+<% end %>   <!-- end of form for -->

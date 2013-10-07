@@ -5,11 +5,11 @@
 	<tr>
 	  <td><%= f.input :name , :label => "Name :" %></td>
   	<td><%= f.label :category_id , "Select a Fomular :" %>
-          <%= f.select :category_id ,[[ "W/304.8 x L/304 x WT x Thk/Dia x qty" , 1],
-          ["(L/1000) x (WT) x 2.20459 x qty" , 2],
-          ["L/304.8 x WT x qty" , 3],
-          ["{(W/1000) x (L/1000)} x WT x QTY x 2.20459" , 4],
-          ["{[(W/1000) x (L/1000)] / 2.9768 } x WT x QTY x 2.20459 " , 5],
+          <%= f.select :category_id ,[[ "W/304.8 x L/304.8 x Wt/ibs/ft x qty" , 1],
+          ["(L/1000) x Wt/ibs/ft x 2.20459 x qty" , 2],
+          ["(L/304.8) x Wt/ibs/ft x qty" , 3],
+          ["{(W/1000) x (L/1000)} x Wt/ibs/ft x QTY x 2.20459" , 4],
+          ["{[(W/1000) x (L/1000)] / 2.9768 } x Wt/ibs/ft x QTY x 2.20459 " , 5],
           ["No Fomular" , 6 ]
            ], :include_blank => true  %>
           <%#= f.label :type_id ,"Type :" %>
@@ -18,14 +18,16 @@
   	</tr>
   	<tr>
   		<td>
-        <div id="id_a" style="display:none;">
-      <%#= f.input :wt_ibs_ft , as: :string , label:"WT", :size=>9 %>
-      <%= f.input :plate ,as: :string ,label: "WT(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
+        <div id="id_a" style="display:none;"><%= f.input :plate ,as: :string ,label: "WT(5/3 , 5.15/3 , 5.33 / 3)", :size=>9 %></div>
       </td>
 			<td>
-        <div id="id_b" style="display:none;" ><%= f.input :thk_dia , as: :string , label: "Thk/Dia",:size => 9 %></div></td>
+        <div id="id_b" style="display:none;" ><%= f.input :thk_dia , as: :string , label: "Thk/Dia",:size => 9 %></div>
+      </td>
       <td>
-        <div id="id_c" style="display:none;" ><%= f.input :wt_ibs_ft , as: :string, label: "Wt/ibs ft" , :size => 9 %></div>
+        <div id="id_c" style="display:none"><%= f.input :thk_dia_um , as: :string , label:"Thk/Dia Unit measurement" %></td>
+        </div>
+      <td>
+        <div id="id_d" style="display:none;" ><%= f.input :wt_ibs_ft , as: :string, label: "Wt/ibs ft" , :size => 9 %></div>
       </td>
       <!-- style="display:none" -->
 	</tr>
@@ -36,9 +38,9 @@
 	</tr>
 
 	<tr>
-		<td><div id="catogery_a" style="display:none"><%= f.input :dimension_w_1, as: :string, label: "Dimension W" , :size=> 9  %></td>
-    <td><div id="catogery_c" style="display:none"></div><%= f.input :dimension_w_2 , as: :string , label:"Dimension W2" %></td>
-		<td><div id="catogery_b" style="display:none"><%= f.input :dimension_h, as: :string, label: "Dimension H" , :size=> 9  %></td>
+		<td><div id="catogery_a" style="display:none"><%= f.input :dimension_w, as: :string, label: "Dimension W" , :size=> 9  %></td></div>
+		<td><div id="catogery_b" style="display:none"><%= f.input :dimension_h, as: :string, label: "Dimension H" , :size=> 9  %></td></div>
+    
    <!--  <td><div id="catogery_c" style="display:none"><%#= f.input :dimension_l, label: "Dimension L" , :size=> 9  %></td> -->
 
 		</div>

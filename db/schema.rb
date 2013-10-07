@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926084641) do
+ActiveRecord::Schema.define(version: 20131001063703) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -87,12 +87,14 @@ ActiveRecord::Schema.define(version: 20130926084641) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.decimal  "dimension_h", precision: 10, scale: 5
-    t.decimal  "plate",       precision: 10, scale: 5
-    t.decimal  "wt_ibs_ft",   precision: 10, scale: 5
+    t.decimal  "dimension_h",            precision: 10, scale: 5
+    t.decimal  "plate",                  precision: 10, scale: 5
+    t.decimal  "wt_ibs_ft",              precision: 10, scale: 5
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
+    t.string   "material_code"
+    t.integer  "material_price_fomular"
   end
 
   create_table "price_control_items", force: true do |t|

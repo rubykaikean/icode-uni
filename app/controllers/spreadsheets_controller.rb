@@ -18,14 +18,14 @@ class SpreadsheetsController < ApplicationController
 		#render :text => "what is the hell"
 	end
 
-	def read_file
+	def read_material_file
 		book = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing2.xls"
 		@sheet1 = book.worksheet 0
 		# @spreadsheet = Material.new
 		#load_file
 	end
 
-	def save_file
+	def save_material_file
 
 		# render :text => params[:row].to_json
 
@@ -40,7 +40,15 @@ class SpreadsheetsController < ApplicationController
 			@material.category_id = value[:category_id]
 			@material.save
 		end
+	end
 
+	def read_price_control_file
+
+	end
+
+	def save_price_control_file
+
+	end
 		# render :text => @material.to_json
 
 

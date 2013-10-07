@@ -1,4 +1,6 @@
 class PriceControlsController < ApplicationController
+   before_filter :authenticate_user!
+  # autocomplate :
   before_action :set_price_control, only: [:show, :edit, :update, :destroy]
 
   # GET /price_controls
@@ -28,7 +30,7 @@ class PriceControlsController < ApplicationController
 
     respond_to do |format|
       if @price_control.save
-        format.html { redirect_to @price_control, notice: 'Price control was successfully created.' }
+        format.html { redirect_to price_controls_path, notice: 'Price control was successfully created.' }
         format.json { render action: 'show', status: :created, location: @price_control }
       else
         format.html { render action: 'new' }
@@ -69,6 +71,6 @@ class PriceControlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_control_params
-      params.require(:price_control).permit(:pp_no, :pp_data, :client_id, :reference, :user_id)
+      params.require(:price_control).permit(:pp_no, :pp_date, :client_id, :reference, :user_id)
     end
 end

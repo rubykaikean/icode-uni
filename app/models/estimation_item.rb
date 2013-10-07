@@ -9,7 +9,7 @@ class EstimationItem < ActiveRecord::Base
 
 	def total_wt_ibs_ft
 		if material.category_id == 1
-			material.plate * thk_dia
+			material.plate * thk_dia.to_f
 		elsif material.category_id == 2
 			material.wt_ibs_ft
 		elsif material.category_id == 3
@@ -17,6 +17,8 @@ class EstimationItem < ActiveRecord::Base
 		elsif material.category_id == 4
 			material.wt_ibs_ft
 		elsif material.category_id == 5
+			material.wt_ibs_ft
+		elsif material.category_id == 6
 			material.wt_ibs_ft
 		else
 			null
@@ -41,6 +43,10 @@ class EstimationItem < ActiveRecord::Base
 
 	def fomular_5
 		(((dimension_w.to_f / 1000) * (dimension_l/1000)) / 2.9768) * total_wt_ibs_ft * 2.20459 * qty
+	end
+
+	def fomular_6
+		material.thk_dia
 	end
 
 

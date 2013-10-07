@@ -1,5 +1,5 @@
 class Material < ActiveRecord::Base
-
+	# before_save :generate_material_code
 	belongs_to :estimation
 
 	has_many :estimation_items
@@ -21,6 +21,17 @@ class Material < ActiveRecord::Base
 			
 	# 	end
 	# end
+
+	def generate_material_code(name , dimension_w , dimension_h)
+		if dimension_h.blank?	
+			material_code = name << "/-" << "/" << dimension_w
+		elsif dimension_w.blank?
+			material_code = name << "/" << dimension_h << "/-"
+		else
+			material_code = name << "/" << dimension_h << "/" << dimension_w
+		end
+		material_code
+	end
 
 	
 

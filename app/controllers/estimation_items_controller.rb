@@ -23,14 +23,8 @@ class EstimationItemsController < ApplicationController
   # GET /estimation_items/new
   def new
     @estimation = Estimation.find(params[:estimation_id]) 
-    
     @estimation_item = EstimationItem.new
-
     @show_material = Material.all
-      
-    #params[:commit] == "Detail" 
-      
-    
     # @show_estimation_id = Estimation.find(params[:estimation])
     # render :text => params[:estimation_id].to_json
     # session[:es] = session[:es].present? ? session[:es] : params[:estimation_id]
@@ -38,8 +32,6 @@ class EstimationItemsController < ApplicationController
 
   # GET /estimation_items/1/edit
   def edit
-    #@params = params[:estimation]
-    #render :text => @params.to_json
     @show_material = Material.all
   end
 
@@ -73,6 +65,10 @@ class EstimationItemsController < ApplicationController
   # PATCH/PUT /estimation_items/1
   # PATCH/PUT /estimation_items/1.json
   def update
+    params[:estimation_item][:material_id] = params[:material_id]
+
+    @estimation_item.dimension_h = params[:dimension_h]
+    @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     respond_to do |format|
       if @estimation_item.update(estimation_item_params)
         format.html { redirect_to estimations_path, notice: 'Estimation item was successfully updated.' }
