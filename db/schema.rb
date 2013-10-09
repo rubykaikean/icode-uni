@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001063703) do
+ActiveRecord::Schema.define(version: 20130926084641) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -93,12 +93,10 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
-    t.string   "material_code"
     t.integer  "material_price_fomular"
   end
 
   create_table "price_control_items", force: true do |t|
-    t.integer  "material_id"
     t.float    "old_unit_price"
     t.date     "old_eff_date"
     t.float    "new_unit_price"

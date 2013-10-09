@@ -11,21 +11,21 @@
 &nbsp;
 <%= link_to "List Stations" , stations_path , :class=>"btn" %>
 &nbsp;
-<% if roles.include?(InventoryManagementSystem::ESTIMATION) %>
+<%# if roles.include?(InventoryManagementSystem::ESTIMATION) %>
 <%= link_to "List Estimations" , estimations_path , :class=>"btn" %>
-<% end %>
+<%# end %>
 
 <br>
 <br>
 <%= link_to "Price Control" , price_controls_path , :class=>"btn" %>
 
 <hr />
-<% if roles.include?(InventoryManagementSystem::MATERIAL) %>
+<%# if roles.include?(InventoryManagementSystem::MATERIAL) %>
 <%= link_to "Material" , materials_path , :class=>"btn" %><br><br>
-<% end %>
-<% if roles.include?(InventoryManagementSystem::CLIENT) %>
+<%# end %>
+<%# if roles.include?(InventoryManagementSystem::CLIENT) %>
 <%= link_to "Client" , clients_path , :class=>"btn" %><br>
-<% end %>
+<%# end %>
 
 <br>
 <hr />
