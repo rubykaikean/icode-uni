@@ -1,4 +1,5 @@
 class EstimationsController < ApplicationController
+  before_action :check_role
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
   autocomplete :estimation, :title
@@ -106,4 +107,10 @@ class EstimationsController < ApplicationController
       params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
     end
 
+    def check_role
+      unless role(Estimation::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
+    end
 end

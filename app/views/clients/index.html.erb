@@ -30,19 +30,29 @@
         <td><%= client.name %></td>
         <td><%#=l client.created_at %></td>
         <td>
+          <% if roles.include?(InventoryManagementSystem::CLIENT_EDIT) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_client_path(client), :class => 'btn btn-mini' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Edit</button>            
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::CLIENT_DELETE) %>            
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       client_path(client),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <button type="button" class="btn btn-mini btn-danger">Delete</button>           
+          <% end %>            
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% if roles.include?(InventoryManagementSystem::CLIENT_ADD) %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_client_path,
-            :class => 'btn btn-primary' %> <div style="float: right; "><%= link_home_button %></div> 
+            :class => 'btn btn-primary' %>
+<% end %>
+<div style="float: right; "><%= link_home_button %></div> 

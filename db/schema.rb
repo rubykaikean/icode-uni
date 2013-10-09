@@ -87,17 +87,18 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.decimal  "dimension_h",      precision: 10, scale: 5
-    t.decimal  "plate",            precision: 10, scale: 5
-    t.decimal  "wt_ibs_ft",        precision: 10, scale: 5
+    t.decimal  "dimension_h",            precision: 10, scale: 5
+    t.decimal  "plate",                  precision: 10, scale: 5
+    t.decimal  "wt_ibs_ft",              precision: 10, scale: 5
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
     t.string   "material_code"
-    t.integer  "price_fomular_id"
+    t.integer  "material_price_fomular"
   end
 
   create_table "price_control_items", force: true do |t|
+    t.integer  "material_id"
     t.float    "old_unit_price"
     t.date     "old_eff_date"
     t.float    "new_unit_price"
@@ -105,7 +106,6 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.integer  "price_control_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "material_id"
   end
 
   create_table "price_controls", force: true do |t|

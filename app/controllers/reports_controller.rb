@@ -1,4 +1,8 @@
 class ReportsController < ApplicationController
+
+  layout "enter_data", :only => [:pdf_estimation_report] 
+
+
   def index
   end
 

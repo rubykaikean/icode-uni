@@ -15,5 +15,10 @@ class Estimation < ActiveRecord::Base
 
 	validates :title , :dimension , :date,  presence: :true
 
+	ROLE = [
+	    InventoryManagementSystem::ESTIMATION
+
+	]
+
 
 end

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :check_role
   before_filter :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   autocomplete :client, :name
@@ -113,5 +114,12 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :project_code, :client_id, :date , :standard , :non_standard )
+    end
+
+    def check_role
+      unless role(Project::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
     end
 end

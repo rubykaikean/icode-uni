@@ -1,19 +1,6 @@
 <h2><u>Home</u></h2>
 <hr />
 
-<!-- <p>
-username: <%= current_user.username %> <br>
-
-</p> -->
-
-<!-- <p>
-<%# if user_signed_in? %>
-	Yes, signed in
-<%# else %>
-	No, not signed in
-<%# end %>
-</p> -->
-
 <%= link_to "New Project" , new_project_path , :class=>"btn" %>
 
 <%#= link_to "Create with Existing Project" , show_standard_project_products_path , :class => "btn" %> 
@@ -24,7 +11,10 @@ username: <%= current_user.username %> <br>
 &nbsp;
 <%= link_to "List Stations" , stations_path , :class=>"btn" %>
 &nbsp;
+<% if roles.include?(InventoryManagementSystem::ESTIMATION) %>
 <%= link_to "List Estimations" , estimations_path , :class=>"btn" %>
+<% end %>
+
 <br>
 <br>
 <%= link_to "Price Control" , price_controls_path , :class=>"btn" %>
@@ -39,18 +29,14 @@ username: <%= current_user.username %> <br>
 
 <br>
 <hr />
-    <!-- <footer class="footer"> -->
-      <div>
+
+<div>
+  <% if current_user.admin? %>
+    <%= link_to 'Listing User', users_path, :class=>"btn" %><br />
+  <% else %>
+    &nbsp;
+  <% end %>
+</div>
 
 
-      <% if current_user.admin? %>
 
-      <%= link_to 'Listing User', users_path, :class=>"btn" %><br />
-
-    <% else %>
-      &nbsp;
-    <% end %>
-	</div>
-
-
-<%# link_to "Product" , product_lists_path , :class=>"btn btn-info" %>

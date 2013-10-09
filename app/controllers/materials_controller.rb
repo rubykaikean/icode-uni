@@ -1,5 +1,5 @@
 class MaterialsController < ApplicationController
-  #before_action :check_role
+  before_action :check_role
   before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
 
   # GET /materials

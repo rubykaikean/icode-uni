@@ -1,4 +1,5 @@
 class DrawingsController < ApplicationController
+  before_action :check_role
   before_filter :authenticate_user!
   before_action :set_drawing, only: [:show, :edit, :update, :destroy ]
   # toDo
