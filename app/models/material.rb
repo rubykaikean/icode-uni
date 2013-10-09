@@ -31,7 +31,7 @@ class Material < ActiveRecord::Base
 		
 		elsif dimension_w.blank? && dimension_h.blank?
 		  self.material_code = "#{name} /-/- "
-		
+
 		else
 		  self.material_code = "#{name} / #{dimension_h.to_s} / #{dimension_w.to_s}"
 		end

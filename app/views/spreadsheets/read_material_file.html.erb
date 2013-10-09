@@ -14,6 +14,7 @@
 			<th>Wt Ibs Ft</th>
 			<th>Plate</th>
 			<th>Category Id</th>
+			<th>Price Fomular Id</th>
 		</tr>
 	</thead>
 	
@@ -30,6 +31,7 @@
 			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>row[5] %></td>
 			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value => row[6] %></td>
 			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[7] %></td>
+			<td><%= text_field_tag "row[#{a}][price_fomular_id]" , '' , :value => row[8] %></td>
 		</tr>
 		<% end %> <!-- end of each -->
 	</tbody>

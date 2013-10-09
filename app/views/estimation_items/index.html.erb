@@ -127,7 +127,7 @@
         <td><%= estimation_item.unit_price %></td>
         <td><%= two_precision(estimation_item.price_total) %></td>
           <% array_price_total << estimation_item.price_total %>
-          <% array_price_total_ton << estimation_item.price_total / 2204 %>
+          <%# array_price_total_ton << estimation_item.price_total / 2204 %>
         <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Destroy', estimation_item , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
       </tr>

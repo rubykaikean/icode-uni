@@ -73,7 +73,6 @@ GEM
       railties (>= 3.0)
       sass-rails (>= 3.2)
     chunky_png (1.2.8)
-    clbustos-rtf (0.4.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -133,15 +132,6 @@ GEM
     polyamorous (0.6.3)
       activerecord (>= 3.0)
     polyglot (0.3.3)
-    prawn (0.8.4)
-      prawn-core (>= 0.8.4, < 0.9)
-      prawn-layout (>= 0.8.4, < 0.9)
-      prawn-security (>= 0.8.4, < 0.9)
-    prawn-core (0.8.4)
-    prawn-layout (0.8.4)
-    prawn-security (0.8.4)
-    prawn-svg (0.9.1.11)
-      prawn (>= 0.8.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -162,11 +152,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
-    reportbuilder (1.4.2)
-      clbustos-rtf (~> 0.4.0)
-      prawn (~> 0.8.4)
-      prawn-svg (~> 0.9.1)
-      text-table (~> 1.2)
     ruby-ole (1.2.11.7)
     sass (3.2.10)
     sass-rails (4.0.0)
@@ -188,7 +173,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    text-table (1.2.3)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -236,7 +220,6 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails3-jquery-autocomplete!
   ransack!
-  reportbuilder
   sass-rails (~> 4.0.0)
   sdoc
   simple_form

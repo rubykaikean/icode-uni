@@ -19,7 +19,7 @@ class SpreadsheetsController < ApplicationController
 	end
 
 	def read_material_file
-		book = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing2.xls"
+		book = Spreadsheet.open "#{Rails.root.to_s}/public/material_data_fomuler03102013.xls"
 		@sheet1 = book.worksheet 0
 		# @spreadsheet = Material.new
 		#load_file
@@ -33,6 +33,7 @@ class SpreadsheetsController < ApplicationController
 			@material = Material.new
 			@material.name = value[:name]
 			@material.thk_dia = value[:thk_dia]
+			@material.thk_dia = value[:thk_dia_um]
 			@material.dimension_h =  value[:dimension_h]
 			@material.dimension_w = value[:dimension_w]
 			@material.wt_ibs_ft = value[:wt_ibs_ft]
@@ -48,7 +49,7 @@ class SpreadsheetsController < ApplicationController
 
 	def save_price_control_file
 
-	end
+	
 		# render :text => @material.to_json
 
 

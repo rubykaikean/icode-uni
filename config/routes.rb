@@ -32,8 +32,8 @@ IcodeUni::Application.routes.draw do
   
   resources :spreadsheets do
     collection do
-      get "read_file"
-      post "save_file"
+      get "read_material_file"
+      post "save_material_file"
     end
   end
 
