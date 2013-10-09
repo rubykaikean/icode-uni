@@ -1,11 +1,11 @@
 <table>
       <tr>
         <td>Reference : </td>
-        <td><u><%= @price_control.reference %></u></td>
+        <td><u><%= @price_control.reference rescue'-' %></u></td>
       </tr>
 
       <tr>
         <td style="align:right;">Date : </td>
-        <td><u><%= @price_control.pp_date %></u></td>
+        <td><u><%= @price_control.pp_date.strftime("%d-%m-%Y") rescue'-' %></u></td>
       </tr>
 </table>

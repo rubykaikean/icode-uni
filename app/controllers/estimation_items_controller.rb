@@ -1,7 +1,7 @@
 class EstimationItemsController < ApplicationController
   before_action :set_estimation_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  layout "enter_data", :only => [:new] 
+  layout "enter_data", :only => [:new , :edit , :update] 
 
   # GET /estimation_items
   # GET /estimation_items.json
@@ -46,7 +46,8 @@ class EstimationItemsController < ApplicationController
     #@estimation_item.dimension_w = params[:dimension_w]
     @estimation_item.dimension_h = params[:dimension_h]
     @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
-    
+    @estimation_item.unit_price = params[:unit_price]
+    # render :text => params[:estimation_item].to_json
     respond_to do |format|
       if @estimation_item.save
         # if params[:commit] == "submit_and_new"
@@ -65,13 +66,14 @@ class EstimationItemsController < ApplicationController
   # PATCH/PUT /estimation_items/1
   # PATCH/PUT /estimation_items/1.json
   def update
+    @show_material = Material.all
     params[:estimation_item][:material_id] = params[:material_id]
 
     @estimation_item.dimension_h = params[:dimension_h]
     @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     respond_to do |format|
       if @estimation_item.update(estimation_item_params)
-        format.html { redirect_to estimations_path, notice: 'Estimation item was successfully updated.' }
+        format.html { redirect_to estimation_items_path(:estimation_id => params[:estimation_item][:estimation_id]), notice: 'Estimation item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -102,6 +104,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :weight , :estimation_id)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :unit_price, :estimation_id)
     end
 end

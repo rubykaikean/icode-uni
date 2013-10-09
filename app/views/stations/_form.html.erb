@@ -21,7 +21,11 @@
 	<tbody>
 	<tr>
 		<td><%= f.input :name , :label => false %></td>
-  		<td><%= f.select :project_id , Project.all.map { |r| [r.name, r.id] }, :include_blank=>true, :label => false %></td>
+  		<td><%= f.association :project,
+                    collection: Project.all ,
+                    include_blank: true,
+                    input_html: { class: 'chosen-select' } , :label => false %>
+</td>
 	</tr>
 	</tbody>
 </table>

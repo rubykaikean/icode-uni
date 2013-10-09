@@ -10,13 +10,16 @@
     <tr>
         <td><%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
         <td><%#= f.label :material_id %><%#= f.input :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %>
-            <%= f.input :material_id, :as => :string ,:disabled => true %>
-            <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->
+            <%# if action_name == "edit" %>
+                <%#= f.input :material_id , :as => :string %>
+                <%#= hidden_field_tag "material_id" %>
+            <%# else %>
+                <%= f.input :material_id, :as => :string ,:disabled => true %>
+                <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->
+            <%# end %>
         </td>
         <!-- <td><div id="showData"></div></td> -->
     </tr>
-
-    
     <tr style="align:margin-right">
         <td><%# if @material_detail.type_id == 1 %>
             <%= f.input :thk_dia ,:as => :string %>
@@ -42,9 +45,10 @@
         
         <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
         <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
-        <td><%#= f.input :unit_price , label: "Unit Price" , :disabled => true %>
-            <%#= hidden_field_tag "unit_price" , nil , :id => "unit_price_hidden_field" %>
-        </td><%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
+
+        <td><%= f.input :unit_price ,:as => :string %>
+            <%= hidden_field_tag "unit_price" , nil , :id=>"unit_price_hidden_field" %></td>
+            <%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
         
     </tr>
     </div>
@@ -69,6 +73,7 @@
         <th>WT</th>
         <th>Thk/Dia</th>
         <th>Wt/Ibs/ft</th>
+        <th>Price</th>
         
     </tr>
     </thead>
@@ -85,9 +90,10 @@
         <td id="<%= "plate_#{material.id}" %>"><%= material.plate rescue'-' %></td>
         <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %></td>
         <td id="<%= "wt_ibs_ft_#{material.id}" %>"><%= material.wt_ibs_ft rescue'-' %></td>
-
+        <% a = material.price_control_items.last %>
+        <td id="<%= "unit_price_#{material.id}"%>"><%= a.new_unit_price rescue'-' %></td>
         <!-- <td id="<%#= "unit_price_#{material_id}" %>"><%#= material.price_control_items.new_unit_price rescue'-' %></td> -->
-        
+
     </tr>
 
     <% end %>
@@ -118,14 +124,12 @@ $(document).ready(function(){
         var dimension_h = $("#dimension_h_" + material_id ).text();
         var thk_dia = $("#thk_dia_" + material_id ).text();
         var wt_ibs_ft = $("#wt_ibs_ft_" + material_id ).text();
+        var unit_price = $("#unit_price_" + material_id ).text();
         //alert(dimension_w);
         $("#estimation_item_material_id").val(name);
 
         $("#estimation_item_thk_dia").val(thk_dia);
         $("#thk_dia_hidden_field").val(thk_dia);    //hidden field for write down record and store in db
-
-        // $("#estimation_item_unit_price").val(unit_price);
-        // $("#unit_price_hidden_field").val(unit_price);
 
         $("#estimation_item_dimension_h").val(dimension_h);
         $("#dimension_h_hidden_field").val(dimension_h);
@@ -136,7 +140,12 @@ $(document).ready(function(){
         $("#estimation_item_wt_ibs_ft").val(wt_ibs_ft);
         $("#wt_ibs_ft_hidden_field").val(wt_ibs_ft);
 
+        $("#estimation_item_unit_price").val(unit_price);
+        $("#unit_price_hidden_field").val(unit_price);
+
+
         $("#material_id").val(material_id);
+
         
     });
 });

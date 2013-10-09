@@ -20,7 +20,7 @@
       <th><%= "Dimension W" || model_class.human_attribute_name(:dimension_w) %></th>
       <th>WT</th>
       <th><%= model_class.human_attribute_name(:thk_dia) %></th>
-      
+      <th>Price</th>
       <%#= model_class.human_attribute_name(:created_at) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -35,6 +35,9 @@
         <td><%= material.dimension_w %></td>
         <td><%#= material.total_wt_ibs_ft %><%= material.plate %></td>
         <td><%= material.thk_dia %></td>
+        <% a = material.price_control_items.last %>
+          <td><%= a.new_unit_price rescue'-'%></td>
+        <%# end %>
         <%#=l material.created_at %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
