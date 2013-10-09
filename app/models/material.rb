@@ -1,5 +1,5 @@
 class Material < ActiveRecord::Base
-	before_save :generate_material_code
+	# before_save :generate_material_code
 	belongs_to :estimation
 
 	has_many :estimation_items

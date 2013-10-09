@@ -6,4 +6,12 @@ class PriceControl < ActiveRecord::Base
 	 belongs_to :trade_company
 	 belongs_to :client
 
+	ROLE = [
+	    InventoryManagementSystem::PRICE_CONTROL
+	    # InventoryManagementSystem::CLIENT_ADD,
+	    # InventoryManagementSystem::CLIENT_EDIT,
+	    # InventoryManagementSystem::CLIENT_DELETE
+
+	]
+
 end

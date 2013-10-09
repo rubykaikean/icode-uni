@@ -6,5 +6,9 @@ class HomeController < ApplicationController
   	
   end
 
+  def test
+  	@result = ReportBuilding.make_report
+  end
+
 
 end

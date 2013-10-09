@@ -1,4 +1,5 @@
 class StationsController < ApplicationController
+  before_action :check_role
   before_filter :authenticate_user!
   #before_filter :search
   before_action :set_station, only: [:show, :edit, :update, :destroy]
@@ -116,5 +117,12 @@ class StationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
       params.require(:station).permit(:name, :project_id)
+    end
+
+    def check_role
+      unless role(Station::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
     end
 end

@@ -1,5 +1,6 @@
 class PriceControlsController < ApplicationController
-   before_filter :authenticate_user!
+  before_action :check_role
+  before_filter :authenticate_user!
   # autocomplate :
   before_action :set_price_control, only: [:show, :edit, :update, :destroy]
 
@@ -78,5 +79,12 @@ class PriceControlsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_control_params
       params.require(:price_control).permit(:pp_no, :pp_date, :client_id, :reference, :user_id)
+    end
+
+    def check_role
+      unless role(PriceControl::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
     end
 end

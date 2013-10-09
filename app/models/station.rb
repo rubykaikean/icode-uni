@@ -13,5 +13,11 @@ class Station < ActiveRecord::Base
 	# 	end
 	# end
 
+	ROLE = [
+	    InventoryManagementSystem::STATION
+	    # InventoryManagementSystem::CLIENT_ADD,
+	    # InventoryManagementSystem::CLIENT_EDIT,
+	    # InventoryManagementSystem::CLIENT_DELETE
 
+	]
 end

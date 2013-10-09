@@ -3,5 +3,9 @@ class Client < ActiveRecord::Base
 
 	ROLE = [
 	    InventoryManagementSystem::CLIENT
+	    # InventoryManagementSystem::CLIENT_ADD,
+	    # InventoryManagementSystem::CLIENT_EDIT,
+	    # InventoryManagementSystem::CLIENT_DELETE
+
 	]
 end

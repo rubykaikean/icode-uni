@@ -6,25 +6,48 @@ class InventoryManagementSystem < ActiveRecord::Base
 
   #MODULE
   CLIENT                      = 1  #ok
-  MATERIAL                    = 20
+  MATERIAL                    = 2
+  PROJECT                     = 3
+  STATION                     = 4
+  ESTIMATION                  = 5
+  PRICE_CONTROL               = 6
 
-  #SUB MODULE
-  PRODUCT_STATION             = 2  #ok
-  PRODUCT_MATERIAL            = 3
+  #ACTION
+  CLIENT_ADD                  = 10
+  CLIENT_EDIT                 = 11
+  CLIENT_DELETE               = 12
 
-  #PRODUCT STATION
-  PRODUCT_STATION_ADD					= 4
-  PRODUCT_STATION_SHOW				= 5
-  PRODUCT_STATION_EDIT				= 6
-  PRODUCT_STATION_PRINTER			= 7
+  MATERIAL_ADD                = 20
+  MATERIAL_SHOW               = 21
+  MATERIAL_EDIT               = 22
+  MATERIAL_DELETE             = 23
 
-  #PRODUCT MATERIAL
-  PRODUCT_MATERIAL_ADD				= 8
-  PRODUCT_MATERIAL_SHOW				= 9	
-  PRODUCT_MATERIAL_EDIT				= 10	
-  PRODUCT_MATERIAL_PRINTER	  = 11
+  PROJECT_ADD                 = 30
+  PROJECT_SHOW                = 31
+  PROJECT_EDIT                = 32
+  PROJECT_DELETE              = 33
 
-  MATERIAL                    = 12
+  STATION_ADD                 = 40
+  STATION_SHOW                = 41
+  STATION_EDIT                = 42
+  STATION_DELETE              = 43
+
+  ESTIMATION_ADD              = 50
+  ESTIMATION_SHOW             = 51    
+  ESTIMATION_EDIT             = 52
+  ESTIMATION_DELETE           = 53
+
+  PRICE_CONTROL_ADD           = 60
+  PRICE_CONTROL_SHOW          = 61
+  PRICE_CONTROL_EDIT          = 62
+  PRICE_CONTROL_DELETE        = 63
+
+
+
+
+
+
+
 
  
 end

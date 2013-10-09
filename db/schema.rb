@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001063703) do
+ActiveRecord::Schema.define(version: 20130926084641) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "estimation_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -42,10 +41,10 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.integer  "material_id"
     t.float    "dimension_l"
     t.float    "dimension_h"
+    t.decimal  "thk_dia",       precision: 10, scale: 5
     t.string   "dimension_w"
     t.string   "thk_dia_um"
     t.float    "unit_price"
-    t.string   "thk_dia"
   end
 
   create_table "estimations", force: true do |t|
@@ -87,16 +86,14 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "estimation_id"
     t.integer  "category_id"
-    t.decimal  "dimension_h",      precision: 10, scale: 5
-    t.decimal  "plate",            precision: 10, scale: 5
-    t.decimal  "wt_ibs_ft",        precision: 10, scale: 5
+    t.decimal  "dimension_h",            precision: 10, scale: 5
+    t.decimal  "plate",                  precision: 10, scale: 5
+    t.decimal  "wt_ibs_ft",              precision: 10, scale: 5
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
-    t.string   "material_code"
-    t.integer  "price_fomular_id"
+    t.integer  "material_price_fomular"
   end
 
   create_table "price_control_items", force: true do |t|
@@ -107,15 +104,27 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.integer  "price_control_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "material_id"
   end
 
   create_table "price_controls", force: true do |t|
     t.integer  "pp_no"
-    t.date     "pp_date"
+    t.date     "pp_data"
     t.integer  "client_id"
     t.string   "reference"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_lists", force: true do |t|
+    t.string   "estimation_no"
+    t.string   "description"
+    t.integer  "qty"
+    t.string   "batch_no"
+    t.string   "issue_by"
+    t.date     "issue_date"
+    t.string   "remark"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,8 +133,8 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "name"
     t.integer  "client_id"
     t.string   "date"
-    t.boolean  "standard"
-    t.boolean  "non_standard"
+    t.boolean  "standard",     default: false
+    t.boolean  "non_standard", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
@@ -133,6 +142,7 @@ ActiveRecord::Schema.define(version: 20131001063703) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
+    t.integer  "staion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"

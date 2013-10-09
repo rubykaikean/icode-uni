@@ -1,73 +1,110 @@
 
-
 <tr>
-    <!-- Show -->
-    <td></td>
+    <!-- Module -->
     <td><%= edit_module(@checkboxes, InventoryManagementSystem::CLIENT) %> Client </td>
-
-    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> Station </td>
-
-    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_ADD) %></td>
-
-    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_SHOW) %></td>
-
-    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_EDIT) %></td>
-
-    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
-
-
-    <tr>
-        <td></td>
-        <td></td>
-
-        <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL) %> Material    </td>
-
-        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_ADD) %></td>
-
-        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_SHOW) %></td>
-
-        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_EDIT) %></td>
-
-        <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_PRINTER) %> </td>
-
-    </tr>    
-
-</tr>
-
-
-<tr>
-    <!-- Show -->
-    <td></td>
-    <td><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL) %> Material </td>
-</tr>
-<!-- 
-<tr>
-    <td></td>
-    <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Inventory</td>
-
-    <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Example 1</td>
-
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
-
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
-
-    <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
-
+    <!-- sub module -->
+    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
     
-    <tr>
-        <td></td>
-        <td></td>
-        <td><%= check_box_tag "inventory_management_system[]", :disabled => true %> Example 2</td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::CLIENT_ADD) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_SHOW) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::CLIENT_EDIT) %></td>
 
-        <td align="center"><%= check_box_tag "inventory_management_system[]", :disabled => true %> </td>
-    </tr>    
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::CLIENT_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
 
 </tr>
 
- -->
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL) %> Material </td>
+    <td> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_ADD) %></td>
 
- 
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
+</tr>
+
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT) %> Project </td>
+    <td> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_ADD) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
+</tr>
+
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::STATION) %> Station </td>
+    <td> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STATION_ADD) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STATION_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STATION_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STATION_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
+</tr>
+
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %> Estimation </td>
+    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ADD) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %></td>
+
+</tr>
+
+<tr>
+        <td></td>
+
+        <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL) %> Drawing </td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_ADD) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_SHOW) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_EDIT) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_MATERIAL_PRINTER) %> </td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
+    </tr>    
+
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL) %> Price Control </td>
+    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ADD) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL) %></td>
+
+</tr> 

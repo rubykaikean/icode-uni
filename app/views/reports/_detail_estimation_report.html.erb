@@ -1,0 +1,121 @@
+
+
+
+		
+<table class="text-left" width="100%">
+	<% @estimation.each do |estimation| %>
+	<% estimation_remarks = [] %>
+	<% estimation_remarks << "Materials :" %>
+	<% estimation_remarks << "Welding   : #{estimation.welding rescue'-'}" %>
+	<% estimation_remarks << "Oxygen & Acetylene : #{estimation.oxygen_acetylene rescue'-'}" %>
+	<% estimation_remarks << "Painting  : #{estimation.painting rescue'-'}" %>
+	<% estimation_remarks << "Sand Blasting : #{estimation.sand_blasting rescue'-'}" %>
+	<% estimation_remarks << "Transport : #{estimation.transport rescue'-'}" %>
+	<% estimation_remarks << "Crane  : #{estimation.crane rescue'-'}" %>
+	<% estimation_remarks << "Shipment  : #{estimation.shipment rescue'-'}" %>
+	<% estimation_remarks << "Labour : #{estimation.labour rescue'-'}" %>
+	<% estimation_remarks << "Installation : #{estimation.installation rescue'-'}" %>
+	<% estimation_remarks << "Dismantle : #{estimation.dismantle rescue'-'}" %>
+	<% estimation_remarks << "Machining : #{estimation.machining rescue'-'}" %>
+	<% estimation_remarks << "Insulation : #{estimation.insulation rescue'-'}" %>
+	<% estimation_remarks << "Civil Work : #{estimation.civil_work rescue'-'}" %>
+	<% estimation_remarks << "Electrik  : #{estimation.electrik rescue'-'}" %>
+	<% estimation_remarks << "Pilling Work : #{estimation.piling_work rescue'-'}" %>
+	<% estimation_remarks << "Forming   : #{estimation.forming rescue'-'}" %>
+	<% estimation_remarks << "Misc   : #{estimation.misc rescue'-'}" %>
+	<% estimation_remarks << "JKKP   : #{estimation.jkkp rescue'-'}" %>
+
+	<tr>
+		<th width="50%" align="left">Client: <%= estimation.client.name rescue'-'%></th>
+		<th width="50%" align="left">Drawing No:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
+		<th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
+		<th width="50%" align="left">Issued by:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left"></th>
+		<th width="50%" align="left">Weight: <%#= two_precision(weight.sum) %>Ton(s)</th>
+	</tr>
+	
+</table>
+	
+<table class="table table-bordered">
+<thead>
+	<tr>
+		<!-- <th rowspan="2"></th> -->
+		<th rowspan="2"><p class="text-center">No</p></th>
+		<th rowspan="2"><p class="text-center">Part/MatCode</p></th>
+		<th rowspan="2"><p class="text-center">Material</p></th>
+		<th colspan="4"><p class="text-center">Dimension(mm)</p></th>
+		<th rowspan="2"><p class="text-center">WT<br>lbs/Ft²</p></th>
+		<th rowspan="2"><p class="text-center">Qty</p></th>
+		<th rowspan="2"><p class="text-center">UOM</p></th>
+		<th rowspan="2"><p class="text-center">Weight<br>lb/kg</p></th>
+		<th rowspan="2"><p class="text-center">Unit<br>Price</p></th>
+		<th rowspan="2"><p class="text-center">Total</p></th>
+		<th rowspan="2"><p class="text-center">Remarks</p></th>
+	</tr>
+	<tr>
+		<th><p class="text-center"> Thk/Dia. </p></th>
+		<th><p class="text-center"> H </p></th>
+		<th><p class="text-center"> W </p></th>
+		<th><p class="text-center"> L </p></th>
+	</tr>
+</thead>
+
+<tbody>
+	<% @remark_index = 0 %>
+
+	<% estimation.estimation_item.each_with_index do |item_list , index| %>
+	
+	<% @remark_index = index %>
+    <tr>
+		<td><%= index + 1 %></td>
+		<td><%= item_list.part_detail %></td>
+		<td><%#= item_list.material.name %></td>
+		<td><%= item_list.thk_dia %></td>
+		<td><%= item_list.dimension_h %></td>
+		<td><%= item_list.dimension_w %></td>
+		<td><%= item_list.dimension_l %></td>
+		<td><%= item_list.wt_ibs_ft %></td>
+		<td><%= item_list.qty %></td>
+		<td><%= item_list.uom %></td>
+		<td><% if item_list.material && item_list.material.category_id == 1 %>
+              <%= four_precision item_list.fomular_1 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 2 %>
+              <%= four_precision item_list.fomular_2 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 3 %>
+              <%= four_precision item_list.fomular_3 %>
+
+            <% elsif item_list.material && item_list.material.category_id == 4 %>
+              <%= four_precision item_list.fomular_4 %>
+            <% else %>
+              &nbsp;
+            <% end %>
+        </td>	
+		<td><%#= item_list. %></td>
+		<td><%#= item_list. %></td>	
+		<td><%= estimation_remarks[index] %></td>
+	</tr>
+    
+	<% end %>
+
+		<% while @remark_index <= (estimation_remarks.size - 1) do %>
+		  <% @remark_index += 1%>
+		  <tr>
+		  	<td colspan="13"></td>
+		  	<td><%= estimation_remarks[@remark_index] %></td>
+		  </tr>
+	      
+		<% end %>
+
+</tbody>
+  	<% end %>
+
