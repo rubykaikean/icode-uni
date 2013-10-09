@@ -14,6 +14,9 @@
                 <%#= f.input :material_id , :as => :string %>
                 <%#= hidden_field_tag "material_id" %>
             <%# else %>
+            <%# if action_name => "edit" %>
+                <%#= f.input :material_id , :as => :string %>
+                <%# else %>
                 <%= f.input :material_id, :as => :string ,:disabled => true %>
                 <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->
             <%# end %>

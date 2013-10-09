@@ -54,6 +54,8 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
+    # render json: estimation_params
+    
     #@estimation.estimation_items.build(params[:estimation_items])
     #Estimation.generation_new_item(params[:estimation])
     

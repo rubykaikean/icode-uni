@@ -21,9 +21,10 @@
         <td><%= project.id %></td>
         <td><%= project.client.name %></td>
         <td><%= project.project_code rescue'-' %></td>
-        <td><%= link_to project.name , project_path(project) %></td>
+        <td><%= project.name rescue'-' %>
+          <%#= link_to project.name , project_path(project) %></td>
           <%#= link_to project.name, project_station_projects_path(project) %></td>
-        <td><%= project.date %></td>
+        <td><%= project.date.strftime("%d-%m-%Y") %></td>
         <td><%#=l project.created_at %></td>
         <td>
           <%#= link_to "Add Station", :class=>"btn" %>

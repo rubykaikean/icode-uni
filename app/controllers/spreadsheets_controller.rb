@@ -39,6 +39,7 @@ class SpreadsheetsController < ApplicationController
 			@material.wt_ibs_ft = value[:wt_ibs_ft]
 			@material.plate = value[:plate_thk_dia]
 			@material.category_id = value[:category_id]
+			Spreadsheet.generate_material_code(@material)
 			@material.save
 		end
 	end

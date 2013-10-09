@@ -52,7 +52,7 @@ var Material =
                 $("#id_b").show();
                 $('#id_c').show();
                 $('#id_d').show();
-                $('#catogery_a').show();
+                $('#catogery_a').hide();
                 $('#catogery_b').show();
             }
             else if ($('#material_category_id').val() == 4 ) {

@@ -66,11 +66,15 @@ class EstimationItemsController < ApplicationController
   # PATCH/PUT /estimation_items/1
   # PATCH/PUT /estimation_items/1.json
   def update
-    @show_material = Material.all
-    params[:estimation_item][:material_id] = params[:material_id]
+    # render json: @estimation_item
+    # render json: estimation_item_params
+    # @show_material = Material.all
+    # # params[:estimation_item][:material_id] = params[:material_id]
 
-    @estimation_item.dimension_h = params[:dimension_h]
-    @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
+    # estimation_item[material_id]
+
+    # @estimation_item.dimension_h = params[:dimension_h]
+    # @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     respond_to do |format|
       if @estimation_item.update(estimation_item_params)
         format.html { redirect_to estimation_items_path(:estimation_id => params[:estimation_item][:estimation_id]), notice: 'Estimation item was successfully updated.' }

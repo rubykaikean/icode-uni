@@ -1,4 +1,5 @@
 class Material < ActiveRecord::Base
+	before_save :generate_material_code
 	# before_save :generate_material_code
 	belongs_to :estimation
 
@@ -22,14 +23,21 @@ class Material < ActiveRecord::Base
 	# 	end
 	# end
 
+
+	
+
+	ROLE = [
+	    InventoryManagementSystem::MATERIAL
+	]
+	# private
 	def generate_material_code
-		if dimension_h.blank?	
+		if dimension_h.nil?	
 		  self.material_code = "#{name} / - / #{dimension_w.to_s}"
 		
-		elsif dimension_w.blank?
+		elsif dimension_w.nil?
 		  self.material_code = "#{name} / #{dimension_h.to_s} / -"
 		
-		elsif dimension_w.blank? && dimension_h.blank?
+		elsif dimension_w.nil? && dimension_h.nil?
 		  self.material_code = "#{name} /-/- "
 
 		else
@@ -38,11 +46,5 @@ class Material < ActiveRecord::Base
 		# return material_params[:material_code]
 	end
 
-	
-
-	ROLE = [
-	    InventoryManagementSystem::MATERIAL
-	]
-	
-
 end
+

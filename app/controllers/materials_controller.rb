@@ -30,7 +30,7 @@ class MaterialsController < ApplicationController
   def create
     
     @material = Material.new(material_params)
-    
+    # render :text => @material.to_json
     respond_to do |format|
       if @material.save
         format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
@@ -78,7 +78,7 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name , :price_fomular_id,:material_code , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id)
+      params.require(:material).permit(:name,:created_at , :updated_at , :price_fomular_id,:material_code , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id)
     end
 
     def check_role
