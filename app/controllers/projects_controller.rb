@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :check_role
   before_filter :authenticate_user!
+  before_action :check_role
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   autocomplete :client, :name
 

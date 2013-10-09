@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
-  before_action :check_role
   before_filter :authenticate_user!
+  before_action :check_role
   #before_filter :search
   before_action :set_station, only: [:show, :edit, :update, :destroy]
   autocomplete :project, :name

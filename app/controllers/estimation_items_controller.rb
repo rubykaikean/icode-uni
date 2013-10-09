@@ -1,6 +1,6 @@
 class EstimationItemsController < ApplicationController
-  before_action :set_estimation_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  before_action :set_estimation_item, only: [:show, :edit, :update, :destroy]
   layout "enter_data", :only => [:new , :edit , :update] 
 
   # GET /estimation_items

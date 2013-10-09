@@ -1,7 +1,7 @@
 class EstimationsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :check_role
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
   autocomplete :estimation, :title
 
 
