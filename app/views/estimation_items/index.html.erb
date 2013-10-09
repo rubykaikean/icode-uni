@@ -125,6 +125,7 @@
             <% end %>
         </td>
         <td><%= estimation_item.unit_price %></td>
+
         <td><%#= two_precision(estimation_item.price_total) %></td>
           <%# array_price_total << estimation_item.price_total %>
           <%# array_price_total_ton << estimation_item.price_total / 2204 %>
@@ -140,6 +141,7 @@
           <% else %>
           <button type="button" class="btn btn-mini">Destroy</button>
           <% end %></td>
+
       </tr>
       
     <% end %>
