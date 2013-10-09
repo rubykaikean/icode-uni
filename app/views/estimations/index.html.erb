@@ -35,13 +35,28 @@
         <td><%= estimation.date %></td>
         <td><%#= estimation.issued_by %></td>
         <td><%= link_to 'Drawing Detail', drawings_path(:estimation_id => estimation) , :class=>"btn btn-mini" %></td>
-        <td><%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
-
+        <td>
+          <% if roles.include?(InventoryManagementSystem::ESTIMATION_ADD) %>
+          <%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => estimation) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Add Item</button>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::ESTIMATION_SHOW) %>
           <%= link_to 'Detail' , estimation_items_path(:estimation_id => estimation) ,:class=>
           " btn btn-mini btn-success" %>
-
+          <% else %>
+          <button type="button" class="btn btn-mini">Detail</button>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
           <%= link_to 'Edit', edit_estimation_path(estimation),:class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %></td>
+          <% else %>
+          <button type="button" class="btn btn-mini">Edit</button>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::ESTIMATION_DELETE) %>
+          <%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Destroy</button>
+          <% end %></td>
       </tr>
     <% end %>
   </tbody>

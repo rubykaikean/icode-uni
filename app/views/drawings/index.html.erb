@@ -48,16 +48,25 @@
       <tr>
         <td><%= index + 1 %><%#= link_to drawing.id, drawing_path(drawing) %></td>
         <td><%= drawing.name %></td>
-        <td><%= image_tag drawing.photo.url %></td>
-        <td><%= link_to "Print PDF" , pdf_drawing_pic_drawings_path(:drawing => drawing,:format => "pdf") , :class=>"btn btn-info", :target =>"_blank" %></td>
+        <td><%= image_tag drawing.photo.url %></td> 
+        <td>
+          <% if roles.include?(InventoryManagementSystem::DRAWING_PRINT) %>
+          <%= link_to "Print PDF" , pdf_drawing_pic_drawings_path(:drawing => drawing,:format => "pdf") , :class=>"btn btn-info", :target =>"_blank" %></td>
+          <% else %>
+          <button type="button" class="btn">Print PDF</button>
+          <% end %>
         <td>
           <%#= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_drawing_path(drawing), :class => 'btn btn-mini' %>
+          <% if roles.include?(InventoryManagementSystem::DRAWING_DELETE) %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       drawing_path(drawing),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Delete</button>
+          <% end %>
         </td>
       </tr>
     <% end %>

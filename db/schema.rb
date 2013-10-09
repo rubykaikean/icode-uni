@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926084641) do
+ActiveRecord::Schema.define(version: 20131001063703) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20130926084641) do
     t.string   "dimension_w"
     t.string   "thk_dia_um"
     t.integer  "material_price_fomular"
+    t.string   "material_code"
+    t.integer  "price_fomular_id"
   end
 
   create_table "price_control_items", force: true do |t|
@@ -104,11 +106,12 @@ ActiveRecord::Schema.define(version: 20130926084641) do
     t.integer  "price_control_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "material_id"
   end
 
   create_table "price_controls", force: true do |t|
     t.integer  "pp_no"
-    t.date     "pp_data"
+    t.date     "pp_date"
     t.integer  "client_id"
     t.string   "reference"
     t.integer  "user_id"

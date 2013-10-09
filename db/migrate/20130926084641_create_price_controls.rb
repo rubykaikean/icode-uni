@@ -15,7 +15,7 @@ class CreatePriceControls < ActiveRecord::Migration
     #add_column :stations , :project_id , :integer
 
     #remove_column :estimation_items , :thk_dia
-    add_column :estimation_items , :thk_dia , :string
+    #add_column :estimation_items , :thk_dia , :string
 
   end
 end

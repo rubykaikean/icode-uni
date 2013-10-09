@@ -6,7 +6,12 @@
 <!-- <input class="append_row" type="button" onclick="javascript:appendRow()" value="Add row"></input>
  -->
 
-<div><%= link_to "New Material" , new_material_path , :class=>"btn btn-primary" %>
+<div>
+  <% if roles.include?(InventoryManagementSystem::MATERIAL_ADD) %>
+  <%= link_to "New Material" , new_material_path , :class=>"btn btn-primary" %>
+  <% else %>
+  <button type="button" class="btn">New Material</button>            
+  <% end %>
 <div style="float: right; "><%= link_home_button %></div>
 </div>
 <!-- <table class="table table-striped " , id="my_table "> -->
@@ -40,13 +45,21 @@
         <%# end %>
         <%#=l material.created_at %>
         <td>
+          <% if roles.include?(InventoryManagementSystem::MATERIAL_EDIT) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_material_path(material), :class => 'btn btn-mini' %> 
+                      edit_material_path(material), :class => 'btn btn-mini' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Edit</button>            
+          <% end %>             
+          <% if roles.include?(InventoryManagementSystem::MATERIAL_DELETE) %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       material_path(material),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Delete</button>            
+          <% end %>            
         </td>
       </tr>
     <% end %>

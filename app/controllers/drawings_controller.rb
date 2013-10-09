@@ -103,6 +103,13 @@ class DrawingsController < ApplicationController
     def drawing_params
       params.require(:drawing).permit(:name  , :estimation_id )
     end
+
+    def check_role
+      unless role(Station::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
+    end
 end
 
 

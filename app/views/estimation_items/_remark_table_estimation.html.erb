@@ -15,12 +15,12 @@
     <table class="table">
         <tr>
             <td align="center">Materails</td>
-            <% estimation.estimation_item.each do |estimation_item| %>
-                <% two_precision(estimation_item.price_total) %>
-                <%  %>
-                <% array_price_total << estimation_item.price_total %>
-                <td align="right"><%= two_precision(array_price_total.sum) %></td>
-            <% end %>
+            <%# estimation.estimation_item.each do |estimation_item| %>
+                <%# two_precision(estimation_item.price_total) %>
+                <%#  %>
+                <%# array_price_total << estimation_item.price_total %>
+                <td align="right"><%#= two_precision(array_price_total.sum) %></td>
+            <%# end %>
             <td align="center">Welding</td>
             <td align="right"><%= estimation.welding rescue'-' %></td>
         </tr>

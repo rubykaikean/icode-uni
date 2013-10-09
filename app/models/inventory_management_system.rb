@@ -11,6 +11,7 @@ class InventoryManagementSystem < ActiveRecord::Base
   STATION                     = 4
   ESTIMATION                  = 5
   PRICE_CONTROL               = 6
+  DRAWING                     = 7
 
   #ACTION
   CLIENT_ADD                  = 10
@@ -41,6 +42,10 @@ class InventoryManagementSystem < ActiveRecord::Base
   PRICE_CONTROL_SHOW          = 61
   PRICE_CONTROL_EDIT          = 62
   PRICE_CONTROL_DELETE        = 63
+
+  DRAWING_ADD                 = 70
+  DRAWING_DELETE              = 71
+  DRAWING_PRINT               = 72
 
 
 
