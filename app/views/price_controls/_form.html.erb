@@ -1,5 +1,5 @@
 <%= simple_form_for(@price_control) do |f| %>
-  <%= f.error_notification %>
+  <%#= f.error_notification %>
 
 
   <%#= f.chosen-select :material_id ,  %>
@@ -29,5 +29,6 @@
 
   <div class="actions">
     <%= f.button :submit , :class=> "btn" %>
+    <%= link_to 'Back', price_controls_path , :class=> "btn"%>
   </div>
 <% end %>
