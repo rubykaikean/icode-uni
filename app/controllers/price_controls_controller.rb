@@ -31,7 +31,7 @@ class PriceControlsController < ApplicationController
     respond_to do |format|
       if @price_control.save
         format.html { redirect_to price_controls_path, notice: 'Price control was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @price_control }
+        format.json { render action: 'index', status: :created, location: @price_control }
       else
         format.html { render action: 'new' }
         format.json { render json: @price_control.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class PriceControlsController < ApplicationController
   def update
     respond_to do |format|
       if @price_control.update(price_control_params)
-        format.html { redirect_to @price_control, notice: 'Price control was successfully updated.' }
+        format.html { redirect_to price_controls_path, notice: 'Price control was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,11 +56,17 @@ class PriceControlsController < ApplicationController
   # DELETE /price_controls/1
   # DELETE /price_controls/1.json
   def destroy
+    price_control = PriceControlItem.pluck(:price_control_id)
+    if price_control.any? {|a| a == @price_control.id }
+        redirect_to price_controls_path , notice: 'Make sure delete all price control item before delete price control.'
+        # render :text => "true"
+       else
     @price_control.destroy
     respond_to do |format|
       format.html { redirect_to price_controls_url }
       format.json { head :no_content }
     end
+  end
   end
 
   private

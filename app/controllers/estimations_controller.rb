@@ -41,7 +41,7 @@ class EstimationsController < ApplicationController
     #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.save
-        format.html { redirect_to estimations_url, notice: 'Estimation was successfully created.' }
+        format.html { redirect_to estimations_path, notice: 'Estimation was successfully created.' }
         format.json { render action: 'show', status: :created, location: @estimation }
       else
         format.html { render action: 'new' }

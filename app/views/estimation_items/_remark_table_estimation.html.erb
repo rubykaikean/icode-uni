@@ -1,5 +1,5 @@
 <!--  -->
-
+<% array_price_total = [] %>
 <a href="#myModal" role="button" class="btn" data-toggle="modal">Show Other Expenses</a>
  
 <!-- Modal -->
@@ -15,7 +15,12 @@
     <table class="table">
         <tr>
             <td align="center">Materails</td>
-            <td align="right"></td>
+            <% estimation.estimation_item.each do |estimation_item| %>
+                <% two_precision(estimation_item.price_total) %>
+                <%  %>
+                <% array_price_total << estimation_item.price_total %>
+                <td align="right"><%= two_precision(array_price_total.sum) %></td>
+            <% end %>
             <td align="center">Welding</td>
             <td align="right"><%= estimation.welding rescue'-' %></td>
         </tr>
@@ -80,65 +85,3 @@
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
-
-<!-- <table class="table" style="size:50%;">
-  <thead>
-  <tr>
-    <th colspan="19" align="center">Remark</th>
-  </tr>
-  <tr>
-    <th align="center">Materails</th>
-    <th align="center">Welding</th>
-    <th align="center">Oxygen & Acetylne</th>
-    <th align="center">Painting</th>
-    <th align="center">Sand Blasting</th>
-    <th align="center">Transport</th>
-    <th align="center">Crane</th>
-    <th align="center">Shipment</th>
-    <th align="center">Labour</th>
-    <th align="center">Installation</th>
-    
-  </tr>
-  </thead>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td>10</td>
-  </tr>
-</table>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th align="center">Dismantle</th>
-        <th align="center">Machining</th>
-        <th align="center">Insulation</th>
-        <th align="center">Civil Work</th>
-        <th align="center">Electrik</th>
-        <th align="center">Piling Work</th>
-        <th align="center">Forming</th>
-        <th align="center">Misc</th>
-        <th align="center">JKKP</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-    </tr>
-</tbody>
-</table> -->

@@ -1,8 +1,9 @@
-<h3><u>Listing Price Control Items</u></h3>
+<h3><u>History Price Control Items</u></h3>
 
 
 <%#= render "listing_price_control" %>
-<%= render :text => params[:price_control_id].to_json %>
+<%#= render :text => params[:price_control_id].to_json %>
+<%= render "listing_price_control" %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -18,17 +19,17 @@
   </thead>
 
   <tbody>
-    <% @price_control_items.each do |price_control_item| %>
+    <% @price_control.price_control_items.each do |price_control_item| %>
       <tr>
         <td><%= price_control_item.material.name %></td>
-        <td><%= price_control_item.old_unit_price %></td>
+        <td><%= price_control_item.old_unit_price rescue'-'%></td>
         <td><%= price_control_item.old_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
         <td><%= price_control_item.new_unit_price %></td>
         <td><%= price_control_item.new_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
         <!-- <td><%#= price_control_item.price_control_id %></td> -->
         <td><%#= link_to 'Show', price_control_item , :class=>"btn" %>
-        <%= link_to 'Edit', edit_price_control_item_path(price_control_item), :class=>"btn btn-mini btn-info" %>
-        <%= link_to 'Destroy', price_control_item, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-mini btn-danger"%></td>
+        <%#= link_to 'Edit', edit_price_control_item_path(price_control_item), :class=>"btn btn-mini btn-info" %>
+        <%= link_to 'Destroy', (price_control_item), method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-mini btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>

@@ -29,11 +29,15 @@ class PriceControlItemsController < ApplicationController
   # POST /price_control_items
   # POST /price_control_items.json
   def create
-    @price_control_item = PriceControlItem.new(price_control_item_params)
+    #render :text => params[:price_control_item].to_json
+    #  render :text => params[:price_control_id].to_json
 
+    @price_control_item = PriceControlItem.new(price_control_item_params)
+    # render :text => params[:price_control_item].to_json
     respond_to do |format|
       if @price_control_item.save 
-        format.html { redirect_to new_price_control_item_path(:price_control_id => params[:price_control_item][:price_control_id]) , notice: 'Price control item was successfully created.' }
+        format.html { 
+        redirect_to new_price_control_item_path(:price_control_id => params[:price_control_item][:price_control_id]) , notice: 'Price control item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @price_control_item }
       else
         format.html { render action: 'new' }

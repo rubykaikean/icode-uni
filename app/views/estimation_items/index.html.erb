@@ -2,6 +2,9 @@
   <%#= render :text => params[:estimation_id].to_json %>
 <% array = [] %>
 <% array_total = [] %>
+<% array_price_total = [] %>
+<% final_total = [] %>
+<% array_price_total_ton = [] %>
 <!-- <div style="flaot:left;"> -->
 <table style="width:100%;">
   <% estimation = @info_estimation_items %>
@@ -12,7 +15,7 @@
 
   <tr>
     <td>Dimension :     <u><%= estimation.dimension rescue'-' %></u></td>
-    <td>Weight :        <u><%#= four_precision(array.sum) %></u></td>
+    <td>Weight :        <u><%= four_precision(array_price_total_ton.sum) %></u></td>
   </tr>
   <%# end %>
 </table>
@@ -96,35 +99,35 @@
         <td><%= estimation_item.uom rescue'-' %></td>
 
         <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
-              <%= four_precision estimation_item.fomular_1 rescue'-' %>
-              <% array << estimation_item.fomular_1 %>
+              <%= four_precision estimation_item.weight_fomular_1 rescue'-' %>
+              <% array << estimation_item.weight_fomular_1 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
-              <%= four_precision estimation_item.fomular_2 rescue'-' %>
-              <% array << estimation_item.fomular_2 %>
+              <%= four_precision estimation_item.weight_fomular_2 rescue'-' %>
+              <% array << estimation_item.weight_fomular_2 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
-              <%= four_precision estimation_item.fomular_3 rescue'-' %>
-              <% array << estimation_item.fomular_3 %>
+              <%= four_precision estimation_item.weight_fomular_3 rescue'-' %>
+              <% array << estimation_item.weight_fomular_3 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
-              <%= four_precision estimation_item.fomular_4 rescue'-' %>
-              <% array << estimation_item.fomular_4 %>
+              <%= four_precision estimation_item.weight_fomular_4 rescue'-' %>
+              <% array << estimation_item.weight_fomular_4 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 5 %>
-              <%= four_precision estimation_item.fomular_5 rescue'-' %>
-              <% array << estimation_item.fomular_5 %>
+              <%= four_precision estimation_item.weight_fomular_5 rescue'-' %>
+              <% array << estimation_item.weight_fomular_5 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 6 %>
               -
-              
             <% else %>
               &nbsp;
             <% end %>
         </td>
-        <td><%#= estimation_item.total_weigth %></td>
-        <td><%#= estimation_item => params[:estimation_id] %><%#= render :text => estimation_item.to_json %></td>
-        <!-- <td><%#= estimation_item.remarks rescue'-' %></td> -->
+        <td><%= estimation_item.unit_price %></td>
+        <td><%= two_precision(estimation_item.price_total) %></td>
+          <% array_price_total << estimation_item.price_total %>
+          <% array_price_total_ton << estimation_item.price_total / 2204 %>
         <td><%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Destroy', estimation_item , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
       </tr>
@@ -134,9 +137,8 @@
         <td colspan="9"></td>
         <td style="align:left;">Total : </td>
         <td><%= four_precision(array.sum) %></td>
-        <% array_total << array %>
         <td></td>
-        <td></td>
+        <td><%= two_precision(array_price_total.sum) %></td>
         <td></td>
         <td></td>
       </tr>

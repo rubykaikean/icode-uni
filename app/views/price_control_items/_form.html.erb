@@ -1,27 +1,27 @@
 <%= simple_form_for(@price_control_item) do |f| %>
   <%= f.error_notification %>
+  <%#= f.notice %>
   <%#= render :text => params[:price_control_id] %>
-  <%= f.input "Price Control Id", as: :hidden ,:input_html => {:value => params[:price_control_id] } %>
+  <%= f.input "price_control_id", as: :hidden ,:input_html => {:value => params[:price_control_id]} %>
+
+
   <div class="inputs">
     <%= render "listing_price_control" %>
     <table style="width:100%;" class="table table-bordered">
       <tr>
           <td>
-          <%#= f.label :material_id, label: "Materials" %>
           
-          <%= f.association :material, 
-          label: "Material Code" , 
-          collection: Material.all.map {|r| [r.material_code , r.id]} , 
-          :include_blank => true,
-          input_html: {class: 'chosen-select' } %>
-          <%#= f.select :material_code_id ,Material.all.map{|r| [r.material_code_id, r.id]}, :class=>"chosen-select" , :include_blank => true %>
+          
+          <%= f.association :material, label: "Material Code" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+       
           </td>
+
           <td>
             <%= f.input :new_unit_price , as: :string %>
           </td>
           <td>
             <div id="datetimepicker5" class="input-append">
-          <%= f.input :new_eff_date , as: :string , "data-format"=>"dd-MM-yyyy" %>
+          <%= f.input :new_eff_date , "data-format"=>"dd/MM/yyyy",as: :string  %>
            <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar">
             </i></span></div>
@@ -30,7 +30,9 @@
       <tr>
         <td>
           <% if action_name == "edit" %>
-            <%= f.input :old_unit_price, as: :string %>
+          <% @price_control_item.each do |p| %>
+            <%#= p.new_unit_pric %>
+            <% end %>
           <% else %>
             <%= f.input :old_unit_price, as: :string ,:disabled => true %>
           <% end %>
