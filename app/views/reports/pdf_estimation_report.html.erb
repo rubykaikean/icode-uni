@@ -8,17 +8,15 @@
 	<% @estimation.each do |estimation| %>
 	<% if index == 0 %>
 	  <div></div>
-
 	<% else %>
-	  <div style="page-break-before: always;">
-	     	
+	  <div style="page-break-before: always;">	     	
 	<% end %>
 
 <table class="text-left" width="100%">
 	<%# @estimation.each do |estimation| %>
 
 	<tr>
-		<th width="50%" align="left">Client: <%= estimation.client.name rescue'-'%></th>
+		<th width="50%" align="left">Client: <%= estimation.project.client.name rescue'-'%></th>
 		<th width="50%" align="left">Drawing No:</th>
 	</tr>
 	<tr>
@@ -116,7 +114,16 @@
 			<td><%#= item_list. %></td>	
 			<td><%#= estimation_remarks[index] %>
 				<%= my_helper(estimation)[index] %></td>
+
+	</tr>
 	
+	<tr>
+	<td colspan="9"></td>
+	<td>Total:</td>
+	<td></td>
+	<td colspan="3"></td>
+	</tr>			
+
 <% counter = 1 %>
 
 

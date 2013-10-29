@@ -2,13 +2,14 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
+<% counter = 0 %>
+<% index = 0 %>
 
 <% if @estimation.present? %>
-<% counter = 0 %>
 
 <% @estimation.each_with_index do | estimation, index | %>
 	<% if index == 0 %>
-		<div>
+		<div></div>
 	<% else %>
 		<div style="page-break-before: always;">
 	<% end %>
