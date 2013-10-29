@@ -1,7 +1,7 @@
 class EstimationsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :check_role
   before_action :set_estimation, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
   autocomplete :estimation, :title
 
 
@@ -93,8 +93,18 @@ class EstimationsController < ApplicationController
   end
 
   def standard_project_estimation
-    @search = Estimation.search(params[:q])
-    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    if params[:commit] == "Submit Station"
+      # Station.new
+      # Station.save!
+      if params[:station_ids].present?
+        @standard_station_estimation = Estimation.where("station_id = ?" , params[:station_ids])
+        # @standard_station_estimation = Estimation.where("station_id = #{params[:station_ids]}")
+        # @detail_sales_tax_exemption_report = SalesTaxExemption.find(params[:ste_ids])
+        # @search = Estimation.search(params[:q])
+        # @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+        # render :text => params[:station_ids].to_json
+      end
+    end
   end
 
 

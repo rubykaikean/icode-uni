@@ -23,25 +23,25 @@ class Material < ActiveRecord::Base
 	# 	end
 	# end
 
-
-	
-
 	ROLE = [
 	    InventoryManagementSystem::MATERIAL
 	]
 	# private
 	def generate_material_code
 		if dimension_h.nil?	
-		  self.material_code = "#{name} / - / #{dimension_w.to_s}"
+		  	self.material_code = "#{name} / - / #{dimension_w.to_s} / #{wt_ibs_ft.to_s}"
 		
 		elsif dimension_w.nil?
-		  self.material_code = "#{name} / #{dimension_h.to_s} / -"
+		  	self.material_code = "#{name} / #{dimension_h.to_s} / - / #{wt_ibs_ft.to_s}"
 		
-		elsif dimension_w.nil? && dimension_h.nil?
-		  self.material_code = "#{name} /-/- "
+		elsif dimension_w.nil? && dimension_h.nil? && wt_ibs_ft.nil?
+		  	self.material_code = "#{name} /-/-/- "
 
+		elsif wt_ibs_ft.nil?
+			self.material_code = "#{name} / #{dimension_h.to_s} / #{dimension_w.to_w} / -"
+			
 		else
-		  self.material_code = "#{name} / #{dimension_h.to_s} / #{dimension_w.to_s}"
+		  	self.material_code = "#{name} / #{dimension_h.to_s} / #{dimension_w.to_s} / #{wt_ibs_ft.to_s}"
 		end
 		# return material_params[:material_code]
 	end

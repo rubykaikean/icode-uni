@@ -25,6 +25,12 @@ class EstimationItem < ActiveRecord::Base
 		end
 	end
 
+	def unit_measurement
+		if material.thk_dia_um.present?
+			material.thk_dia_um
+		end
+	end
+
 	def price_total
 		if material.price_fomular_id == 1
 			if material.category_id == 1

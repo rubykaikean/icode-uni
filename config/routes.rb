@@ -10,13 +10,16 @@ IcodeUni::Application.routes.draw do
 
 
   resources :projects do
-    get :autocomplete_client_name, :on => :collection
+      get :autocomplete_project_name, :on => :collection
+    member do
+      get "project_station"
+    end
     collection do
-      # get "project_station"
       get "show_standard_project"
       get "show_standard_station"
       get "show_standard_estimation"
       get "add_standard_estimation"
+      get "list_standard_project"
     end
   end
 
@@ -27,6 +30,7 @@ IcodeUni::Application.routes.draw do
     get :autocomplete_estimation_title, :on => :collection
     collection do
       get "station_estimation"
+      get "standard_project_estimation"
     end
   end
   
@@ -34,6 +38,8 @@ IcodeUni::Application.routes.draw do
     collection do
       get "read_material_file"
       post "save_material_file"
+      get "read_price_control_file"
+      post "save_price_control_file"
     end
   end
 
@@ -45,11 +51,12 @@ IcodeUni::Application.routes.draw do
 
   resources :stations do
       get :autocomplete_project_name, :on => :collection
+    member do
+      get "standard_project_station"
+    end
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
-      get "standard_project_station"
-      get "standard_project_estimation"
-      
+      get "standard_project_station"      
     end
   end
 

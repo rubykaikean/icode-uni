@@ -12,7 +12,7 @@
           <td>
           
           
-          <%= f.association :material, label: "Material Code" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+          <%= f.association :material, label: "Material Code (Name/H/W/WT)" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
        
           </td>
 

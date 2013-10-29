@@ -1,0 +1,29 @@
+
+<% if @standard_station_estimation.present? %>
+<table class="table">
+	</thead>
+		<tr>
+			<th>title</th>
+			<th>Dimension</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+		<% @standard_station_estimation.each do |p , index| %>	
+	<tbody>
+		<tr>
+			<td><%= p.title rescue'-' %></td>
+			<td><%= p.dimension rescue'-' %></td>
+			<td><%= p.date rescue'-' %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+
+<% else %>
+
+no record found
+
+<% end %>
+<%#= render :text => @standard_station_estimation.to_json %>
+<%#= render :text => params[:estimation_id].to_json %>

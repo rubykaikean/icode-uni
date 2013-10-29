@@ -10,12 +10,12 @@ class CreatePriceControls < ActiveRecord::Migration
       t.timestamps
     end
 
-    #remove_column :stations , :product_id
+    remove_column :stations , :product_id
 
-    #add_column :stations , :project_id , :integer
+    add_column :stations , :project_id , :integer
 
-    #remove_column :estimation_items , :thk_dia
-    #add_column :estimation_items , :thk_dia , :string
+    remove_column :estimation_items , :thk_dia
+    add_column :estimation_items , :thk_dia , :string
 
   end
 end

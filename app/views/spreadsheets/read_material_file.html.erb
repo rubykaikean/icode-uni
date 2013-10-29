@@ -1,6 +1,7 @@
 <h3>Excel File</h3>
 <%#= form_tag @profile, {:action => "save_file"} do %>
-<%= form_tag("/spreadsheets/material_data_fomuler03102013", method: "post") do %>
+<!-- below link is take record to where -->
+<%= form_tag("/spreadsheets/save_material_file", method: "post") do %>
 <table class="table table-border">
 	<thead>
 		<tr>

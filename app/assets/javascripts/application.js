@@ -27,23 +27,11 @@
 
 $(document).ready(function () {  
 
-
-	// $('#jdatatable').dataTable({
- //        //"sScrollY": content_height - 97,
- //        "sPaginationType": "full_numbers",  // "bPaginate": false,
- //        "bJQueryUI": true,
- //        "bProcessing": true,
- //        "oLanguage": {
- //                "sZeroRecords":  "No Record Found.",
- //                "sSearch": "Search All Columns:"
- //            }
-
- //     });
     // check all check box
-    $('#checkall:checkbox').change(function () {
-        if($(this).attr("checked")) $('input:checkbox').attr('checked','checked');
-        else $('input:checkbox').removeAttr('checked');
-    });
+    // $('#checkall:checkbox').change(function () {
+    //     if($(this).attr("checked")) $('input:checkbox').attr('checked','checked');
+    //     else $('input:checkbox').removeAttr('checked');
+    // });
 
     $('#jdatatable').dataTable({
         //"sScrollY": content_height - 97,
@@ -51,24 +39,27 @@ $(document).ready(function () {
         "bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,
+        //"oSearch": {"sSearch": "Search here..."},
+        //"bServerSide": true,
+        //"sAjaxSource": $('#jdatatable').data('source')
         "oLanguage": {
-                "sZeroRecords":  "No Record Found.",
+                "sZeroRecords":  "No Record Found...",
                 "sSearch": "Search All Columns:"
-            }
+                
+        },
+        //"bAutoWidth": true    
      });
         //"bInfo": false,   //exp :showing 1 of 15 pages 
-        //"bAutoWidth": true
+    
 
     $(function() {
-    $('[data-behaviour~=datepicker]').datepicker();
-    $('#datetimepicker4').datetimepicker({
-      pickTime: false
+        $('[data-behaviour~=datepicker]').datepicker();
+        $('#datetimepicker4').datetimepicker({
+          pickTime: false
+        });
+        $('#datetimepicker5').datetimepicker({
+            pickTime: false
+        });
     });
-    $('#datetimepicker5').datetimepicker({
-        pickTime: false
-    });
-  });
 
 });
- 	
- 	

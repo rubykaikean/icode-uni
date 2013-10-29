@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Datatables railscasts #340
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-rails'
-
+gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 # Chosen
