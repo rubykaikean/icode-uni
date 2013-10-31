@@ -1,0 +1,38 @@
+<% if @standard_project.present? %>
+
+
+<div><u><h3>Listing Standard Project</h3></u></div>
+<hr>
+<div align="right"><%= link_home_button %></div>
+<%#= render :text => @standard_project.to_json %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Project Name</th>
+      <th>Project Code</th>
+      <th>Project Client</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @standard_project.each_with_index do |standard ,  index| %>
+  <tbody>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= standard.name %></td>
+      <td><%= standard.project_code %></td>
+      <td><%= standard.client.name %></td>
+      <td><%= standard.date.strftime("%d-%m-%Y") %></td>
+      <td><%= link_to 'Destroy Standard Project', standard , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
+<% else %>
+no standard record found
+<% end %>

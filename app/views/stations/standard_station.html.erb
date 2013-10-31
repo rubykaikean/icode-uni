@@ -1,0 +1,27 @@
+<%#= render :text => @project.to_json %>
+<div><h3>Create Standard Project => <u>Select Standard Station</u></h3></div>
+<%#= form_tag standard_project_estimation_estimations_path ,:method =>"get" do %>
+
+<hr>
+<div><h4><u>Select Station</u></h4></div>
+<div class="accordion" id="accordion2">
+  <% @projects.each do |project| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= project.id %>">
+      
+        <%#= check_box_tag 'project_ids[]', project.id %> <%= project.name %> - <%= project.client.name %>
+      </div>
+      
+    </div>
+
+    <div id="collapse<%= project.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render "standard_project_station", :standard_stations => project %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%# end %>

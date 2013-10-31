@@ -19,56 +19,47 @@ class SpreadsheetsController < ApplicationController
 	end
 
 	def read_material_file
-		book = Spreadsheet.open "#{Rails.root.to_s}/public/material_data_fomuler03102013.xls"
-		@sheet1 = book.worksheet 0
+		material = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing2.xls"
+		@sheet1 = material.worksheet 0
 		# @spreadsheet = Material.new
 		#load_file
 	end
 
 	def save_material_file
 
-		# render :text => params[:row].to_json
+		#render :text => params[:row].to_json
 
 		params[:row].each do |key, value|
-			@material = Material.new
-			@material.name = value[:name]
-			@material.thk_dia = value[:thk_dia]
-			@material.thk_dia = value[:thk_dia_um]
-			@material.dimension_h =  value[:dimension_h]
-			@material.dimension_w = value[:dimension_w]
-			@material.wt_ibs_ft = value[:wt_ibs_ft]
-			@material.plate = value[:plate_thk_dia]
-			@material.category_id = value[:category_id]
-			Spreadsheet.generate_material_code(@material)
-			@material.save
+			m = Material.new
+			m.name = value[:name]
+			m.thk_dia = value[:thk_dia]
+			m.thk_dia = value[:thk_dia_um]
+			m.dimension_h =  value[:dimension_h]
+			m.dimension_w = value[:dimension_w]
+			m.wt_ibs_ft = value[:wt_ibs_ft]
+			m.plate = value[:plate_thk_dia]
+			m.category_id = value[:category_id]
+			m.price_fomular_id = value[:price_fomular_id]
+			m.save!
 		end
 	end
 
 	def read_price_control_file
-
+		price_control = Spreadsheet.open "#{Rails.root.to_s}/public/Price_control.xls"
+		@sheet2 = price_control.worksheet 0
 	end
 
 	def save_price_control_file
 
-	
-		# render :text => @material.to_json
-
-
-		# render :text => params[:row_one].to_json
-		# params[:row_one] = params[:name][:spreadsheet]
-		# params[:row_two] = params[:plate][:spreadsheet]
-		# params[:row_three] = params[:dimension_h]
-		# params[:row_four] = params[:dimension_w]
-		# params[:row_five] = params[:wt_ibs_ft]
-		# params[:row_six] = params[:category_id]
-
-		# Material.new(spreadsheet_params)
-		# if params[:row_ids].present?
-		# 	render :text => "abc"
-		# 	# @spreadsheet = Material.new(spreadsheet_params)
-		# 	# render :text => params[:row_ids].to_json
-		#  end
+		params[:row].each do |key , value|
+			p.PriceControlItem.new
+			p.new_unit_price = value[:new_unit_price]
+			p.save!
+		end
+		
 	end
+
+
 	def load_file
 		 # name = []
 		# wt_ibs_ft = []

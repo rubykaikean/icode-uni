@@ -116,10 +116,10 @@ $(document).ready(function(){
         // count how many checked.
         var checked = $("input:checked").size();
         // perform test.
-        if ( checked > max_allowed ) {
-            // is more than the max so uncheck.
-            $(this).attr("checked", false);
-        }
+            if ( checked > max_allowed ) {
+                // is more than the max so uncheck.
+                $(this).attr("checked", false);
+            }
 
         // down 5 line is to bring up from datatable to field 
         var name = $("#name_"+ material_id).text();

@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
 
+	# scope :type,where(non_standard: '1')
+
 	validates :client , :project_code, :name , :date ,  presence: :true
 	validates :name, uniqueness: :true
 

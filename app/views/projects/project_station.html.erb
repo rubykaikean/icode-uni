@@ -1,0 +1,31 @@
+
+<%#= render :text => params[:id].to_json %>
+<%#= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+
+
+ 
+<h3>Project - Station</h3>
+
+<table>
+	<tr>
+		<td>Project Name :</td>
+		<td style="align:right;"><%= @standard_project.name %></td>
+	</tr>
+	<tr>
+		<td>Project Code :</td>
+		<td style="align:right;"><%= @standard_project.project_code %></td>
+	</tr>
+</table>
+<hr>
+<% if @standard_project.present? %>
+
+	<%= render "project_station" %>
+
+<% else %>
+
+<h3>No Station </h3>
+
+<% end %>
+
+<%# end %>  <!-- end of simple form  -->
+

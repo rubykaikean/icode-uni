@@ -2,15 +2,15 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :check_role
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  autocomplete :client, :name
+  autocomplete :project, :name
 
   #autocomplete :client, :name
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-
+    @search = Project.search(params[:q])
+    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
     # @search = project.search(params[:q])
     # @projects = @search.result(distinct: true)
 
@@ -22,13 +22,21 @@ class ProjectsController < ApplicationController
     # @articles = @search.all
   end
 
+  def list_standard_project
+    @standard_project = Project.where("standard = 1")
+  end
+
+  # def list_non_project
+  #   @non_standard = Project.where("non_standard = 1")
+  # end
+
   # GET /projects/1
   # GET /projects/1.json
   def show
     # toDo
     # remove the duplicated code
-    a = Station.where(:project_id => params[:id])
-    @show_project = a.all
+    # a = Station.where(:project_id => params[:id])
+    # @show_project = a.all
   end
 
   # GET /projects/new
@@ -45,22 +53,24 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
+    #render :text => project_params.to_json
     respond_to do |format|
       # toDo
       # use ? to request the true/false value
-      if @project.standard ==  true
+      if @project.standard.present?
           @project.save
-          format.html { redirect_to show_standard_project_projects_path , notice: 'project was successfully created Standard.' }
+          format.html { redirect_to project_station_project_path(@project) , notice: 'project was successfully created Standard.' }
           format.json { render action: 'show', status: :created, location: @project }
-        elsif @project.non_standard == true
+
+      elsif @project.non_standard.present?
           @project.save
           format.html { redirect_to stations_path, notice: 'project Was successfully created with Non Standard' }
-         else 
+      
+      else 
            format.html { render action: 'new'}
            format.json { render json: @project.errors, status: :unprocessable_entity }
         end
-      end
+    end
   end
 
   # PATCH/PUT /projects/1
@@ -80,30 +90,34 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+  #   if @project.non_standard = false
+  #   # render :text => @project.to_json 
+  #   render :text => "123"
+  # else
+  #   render :text => "456"
+  # end
+      station = Station.pluck(:project_id)
+      if station.any? {|a| a == @project.id }
+          redirect_to projects_path , notice: 'Make sure delete all station before delete project.'
+          # render :text => "true"
+         else
+          @project.destroy
+            respond_to do |format|
 
-    station = Station.pluck(:project_id)
-    if station.any? {|a| a == @project.id }
-        redirect_to projects_path , notice: 'Make sure delete all station before delete project.'
-        # render :text => "true"
-       else
-        @project.destroy
-          respond_to do |format|
-            format.html { redirect_to projects_url }
-            format.json { head :no_content }
-        end
-    end
+              format.html { redirect_to projects_url }
+              format.json { head :no_content }
+          end
+      end
   end
 
   def project_station
-    #@project_station = project.find(params[:id])
-    @project_station = Station.where(:project_id => 11)
-    @show_project_station = @project_station.all
-  end 
+    
+    #render :text => params[:id].to_json    #this link can take from (def create) @project 
+    @standard_project = Project.find(params[:id])
+    @projects = Project.where("non_standard = 1", params[:id])
 
-  def standard_project
-    @search = project.search(params[:q])
-    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-  end  
+    @standard_station = Station.new
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

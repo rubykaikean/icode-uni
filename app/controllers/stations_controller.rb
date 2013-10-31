@@ -13,21 +13,9 @@ class StationsController < ApplicationController
 
     # @search = Product.search(params[:search])
     # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-
     @search = Project.search(params[:q])
     @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
 
-    # @stations = Station.all
-    # @products = Product.first
-    #@detail_inventory_report = InventoryHistory.find(params[:in_ids])
-    # @station = Station.new
-    # @search = Station.search(params[:q])
-    # #render :text => @search.result(:distinct => true).to_json
-    # @search_index_station = @search.result(:distinct => true)
-
-    # @products = Product.all
-    # a = Station.all
-    # @show_product_station = a.all
     
   end
 
@@ -94,11 +82,23 @@ class StationsController < ApplicationController
       end
   end
 
-  def standard_project_station
-    @search = Station.search(params[:q])
-    @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-    #@product = Product.find(params[:id])
-    #@stations = Station.where("product_id = ?", params[:id])
+  # def standard_project_station
+  #   render :text => params[:project_id].to_json
+  #   # @search = Station.search(params[:q])
+  #   # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+  #   # #@product = Product.find(params[:id])
+  #   # #@stations = Station.where("product_id = ?", params[:id])
+
+  #   # @project = Project.all
+
+  # end
+
+
+  def standard_station
+    # render :text => @project.to_json
+    @standard_project = Project.find(params[:id])
+    @projects = Project.where("non_standard = 1", params[:id])
+    
   end
 
 
