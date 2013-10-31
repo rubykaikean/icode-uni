@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "estimation_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -41,10 +42,10 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.integer  "material_id"
     t.float    "dimension_l"
     t.float    "dimension_h"
-    t.decimal  "thk_dia",       precision: 10, scale: 5
     t.string   "dimension_w"
     t.string   "thk_dia_um"
     t.float    "unit_price"
+    t.string   "thk_dia"
   end
 
   create_table "estimations", force: true do |t|
@@ -86,14 +87,13 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
+    t.integer  "material_price_fomular"
     t.decimal  "dimension_h",            precision: 10, scale: 5
     t.decimal  "plate",                  precision: 10, scale: 5
     t.decimal  "wt_ibs_ft",              precision: 10, scale: 5
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
-    t.integer  "material_price_fomular"
     t.string   "material_code"
     t.integer  "price_fomular_id"
   end
