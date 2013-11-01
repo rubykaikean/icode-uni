@@ -52,7 +52,7 @@ IcodeUni::Application.routes.draw do
   resources :stations do
       get :autocomplete_project_name, :on => :collection
     member do
-      get "standard_project_station"
+      get "standard_station" 
     end
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search

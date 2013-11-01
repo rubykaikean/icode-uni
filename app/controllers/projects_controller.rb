@@ -111,12 +111,11 @@ class ProjectsController < ApplicationController
   end
 
   def project_station
-    
     #render :text => params[:id].to_json    #this link can take from (def create) @project 
     @standard_project = Project.find(params[:id])
     @projects = Project.where("non_standard = 1", params[:id])
 
-    @standard_station = Station.new
+    @station = Station.new
   end 
 
   private

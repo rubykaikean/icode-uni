@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
 	belongs_to :client
 
 	has_many :stations
+
+	
 	#has_many :estimations , :through => :stations  << use this when need to see estimation infro trough product
 
 	ROLE = [

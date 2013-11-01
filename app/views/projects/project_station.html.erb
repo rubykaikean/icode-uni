@@ -17,6 +17,7 @@
 	</tr>
 </table>
 <hr>
+<h3>Non-standard Project - Station</h3>
 <% if @standard_project.present? %>
 
 	<%= render "project_station" %>
@@ -28,4 +29,31 @@
 <% end %>
 
 <%# end %>  <!-- end of simple form  -->
+
+
+<script type="text/javascript">
+
+$(document).ready(function () { 
+
+
+	if("#standard_station_id").checked){
+		alert("testing");
+	}
+
+
+	$("#standard_station_id input:checkbox").change(function(sel){
+		
+		var station_id = $(this).attr("sta_name");
+
+		var station_name = $("#standard_station_name_" + station_id ).text();
+
+		$("#standard_name_field").val(station_name);
+
+	});
+
+
+
+});
+
+</script>
 

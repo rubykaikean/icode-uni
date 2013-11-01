@@ -40,11 +40,6 @@ class EstimationItemsController < ApplicationController
   def create
     # this is for replace the string material_id to integer material_id
     @material_detail = Material.all
-    # respond_to do |format|
-    #   format.json { render json: EstimationItemsDatatables.new(view_context) }
-    # end
-
-
     params[:estimation_item][:material_id] = params[:material_id]
     @estimation_item = EstimationItem.new(estimation_item_params)
     #@estimation_item.thk_dia = params[:thk_dia]
@@ -52,7 +47,9 @@ class EstimationItemsController < ApplicationController
     @estimation_item.dimension_h = params[:dimension_h]
     @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     @estimation_item.unit_price = params[:unit_price]
-    # render :text => params[:estimation_item].to_json
+
+    # render :text => estimation_item_params.to_json
+    # # render :text => params[:estimation_item].to_json
     respond_to do |format|
       if @estimation_item.save
         # if params[:commit] == "submit_and_new"

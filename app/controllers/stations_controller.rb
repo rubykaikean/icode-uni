@@ -36,17 +36,23 @@ class StationsController < ApplicationController
   # POST /stations
   # POST /stations.json
   def create
-    @station = Station.new(station_params)
-    #Station.generation_new_item(params[:station])
-    respond_to do |format|
-      if @station.save
-        format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @station }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
-    end
+
+    #render :json => params[:station_name]
+    render :text => params.to_json
+    #station_params[:name] = params[:station_name] 
+    # @standard_station.station_name = params[:name]
+
+    # @station = Station.new(station_params)
+    # #Station.generation_new_item(params[:station])
+    # respond_to do |format|
+    #   if @station.save
+    #     format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
+    #     #format.json { render action: 'show', status: :created, location: @station }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @station.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /stations/1
@@ -83,7 +89,10 @@ class StationsController < ApplicationController
   end
 
   # def standard_project_station
-  #   render :text => params[:project_id].to_json
+
+  #   render :json => params
+    
+  #   # render :text => params[:project_id].to_json
   #   # @search = Station.search(params[:q])
   #   # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   #   # #@product = Product.find(params[:id])
@@ -95,9 +104,16 @@ class StationsController < ApplicationController
 
 
   def standard_station
+
+
+    #render :text => params[:id].to_json
+    render :json => params
+
+    # @standard_station = Station.new(station_params)
+
     # render :text => @project.to_json
-    @standard_project = Project.find(params[:id])
-    @projects = Project.where("non_standard = 1", params[:id])
+    # @standard_project = Project.find(params[:id])
+    # @projects = Project.where("non_standard = 1", params[:id])
     
   end
 
