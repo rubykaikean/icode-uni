@@ -1,15 +1,18 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
+<!-- <link rel="stylesheet" type="text/css" href="print.css" media="print"> -->
 </head>
+
 
 <% index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
 	<% @estimation.each do |estimation| %>
 	<% if index == 0 %>
-	  <div></div>
+	  <div>
 	<% else %>
-	  <div style="page-break-before: always;">	     	
+	  <div style="page-break-before: always;"> 	
+	<!-- <div class="page-break"> -->
 	<% end %>
 
 <table class="text-left" width="100%">
@@ -62,7 +65,7 @@
 			<td><%#= estimation_remarks[index] %>
 				<%= my_helper(estimation)[index] %></td>
 	</tr>
-
+<!-- <div style="page-break-before: always;"> -->
 	<!-- </tbody>	 -->
 	<% else %>
 <!-- </table> -->
@@ -115,13 +118,6 @@
 			<td><%#= estimation_remarks[index] %>
 				<%= my_helper(estimation)[index] %></td>
 
-	</tr>
-	
-	<tr>
-	<td colspan="9"></td>
-	<td>Total:</td>
-	<td></td>
-	<td colspan="3"></td>
 	</tr>			
 
 <% counter = 1 %>
@@ -130,8 +126,16 @@
 	<% end %> <!-- counter -->	
 	<% end %> <!-- second each do -->
 
+	<tr>
+		<td colspan="9"></td>
+		<td>Total:</td>
+		<td></td>
+		<td colspan="3"></td>
+	</tr>	
+
 </tbody>
 </table>
+</div> <!-- page break counter -->
 
 <% end %>
 </div>

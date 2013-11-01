@@ -1,5 +1,5 @@
 class DrawingsController < ApplicationController
-  #before_action :check_role
+  before_action :check_role
   before_filter :authenticate_user!
   before_action :set_drawing, only: [:show, :edit, :update, :destroy ]
   # toDo
@@ -105,7 +105,7 @@ class DrawingsController < ApplicationController
     end
 
     def check_role
-      unless role(Station::ROLE)
+      unless role(Drawing::ROLE)
         flash[:notice] = "You are not authorize!"
         redirect_to root_url
       end
