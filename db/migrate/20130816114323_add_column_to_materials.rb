@@ -1,7 +1,7 @@
 class AddColumnToMaterials < ActiveRecord::Migration
   def change
 
-  	# add_column :materials , :category_id , :integer
+  	add_column :materials , :category_id , :integer
 
   	add_column :materials , :type_id , :integer
 

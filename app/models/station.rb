@@ -4,7 +4,7 @@ class Station < ActiveRecord::Base
 
 	has_many :estimations
 
-	# validates :name , :project_id ,  presence: :true
+	validates :name , :project_id ,  presence: :true
 
 	# def station_estimation_id
 	# 	@station_estimation_id = Estimation.all

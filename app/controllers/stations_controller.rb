@@ -38,21 +38,21 @@ class StationsController < ApplicationController
   def create
 
     #render :json => params[:station_name]
-    render :text => params.to_json
+    #render :text => params.to_json
     #station_params[:name] = params[:station_name] 
     # @standard_station.station_name = params[:name]
 
-    # @station = Station.new(station_params)
-    # #Station.generation_new_item(params[:station])
-    # respond_to do |format|
-    #   if @station.save
-    #     format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
-    #     #format.json { render action: 'show', status: :created, location: @station }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @station.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    @station = Station.new(station_params)
+    #Station.generation_new_item(params[:station])
+    respond_to do |format|
+      if @station.save
+        format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @station }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @station.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /stations/1
