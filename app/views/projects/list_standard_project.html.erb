@@ -1,10 +1,12 @@
-<% if @standard_project.present? %>
+<% if @list_standard_projects.present? %>
 
 
 <div><u><h3>Listing Standard Project</h3></u></div>
 <hr>
+
+<div style="float: right;"><%= will_paginate @list_standard_projects, :class => "pagination" %></div>
 <div align="right"><%= link_home_button %></div>
-<%#= render :text => @standard_project.to_json %>
+<%#= render :text => @list_standard_projects.to_json %>
 
 <table class="table table-bordered">
   <thead>
@@ -18,7 +20,7 @@
     </tr>
   </thead>
 
-  <% @standard_project.each_with_index do |standard ,  index| %>
+  <% @list_standard_projects.each_with_index do |standard ,  index| %>
   <tbody>
     <tr>
       <td><%= index + 1 %></td>

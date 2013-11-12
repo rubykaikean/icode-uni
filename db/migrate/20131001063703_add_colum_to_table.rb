@@ -1,7 +1,7 @@
 class AddColumToTable < ActiveRecord::Migration
   def change
 
-  	add_column :materials , :material_code , :string
+  	add_column :materials , :material_code , :string ,:unique => true
 
   	add_column :materials , :price_fomular_id , :integer
 

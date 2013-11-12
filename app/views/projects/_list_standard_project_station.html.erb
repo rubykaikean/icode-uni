@@ -1,5 +1,7 @@
-<%= simple_form_for @station do |f| %>
-<%= f.input "project_id",:label => false, as: :string, :input_html => { :value => params[:id]} %>
+<%= form_tag standard_station_estimation_stations_path , :method => "get" do %>
+
+<div ><%= text_field_tag "project_id",params[:id] %></div>
+ <%#= render :text => params[:id] %>
 <table class="table">
 	<thead>
 	<tr>
@@ -15,17 +17,10 @@
 		<% list_standard_stations.stations.each_with_index do |station , index| %>
 		<tr>
 			<td></td>
-
-			<%#= check_box_tag "estimation_material", {},false,{:id=>"estimation_item_checkbox", :es_ma => material.id}  %>
-
-			<td><%= check_box_tag "station_name[]", "#{station.name}" , false , {:id=>"standard_station_id", :sta_name => station.id} %>
-
-			</td>
+			<td><%= check_box_tag "station_check_box[#{station.id}]" %></td>
 			<td><%= index + 1 %></td>
-			<td id="<%="standard_station_name_#{station.id}"%>"><%= station.name %></td>
-			<td><%#= f.input :name , :value => station.name , :label => false  %>
-				<%#= hidden_field_tag "name" , nil, :id => "standard_name_field" %>
-			</td>
+			<td><%= station.name %></td>
+			<td></td>
 		</tr>
 	</tbody>
 	<% end %> <!-- form tag each do -->
@@ -33,8 +28,5 @@
 </table>
 	<%#= submit_tag "Submit Station" , :class=>"button" %>
 
+
 <% end %> <!-- simple form end -->
-
-
-
-

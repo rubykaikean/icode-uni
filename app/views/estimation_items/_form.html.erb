@@ -45,7 +45,6 @@
             <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
     </tr> 
     <tr>
-        
         <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
         <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
 
@@ -74,7 +73,7 @@ $(document).ready(function(){
 
     $("input:checkbox").change(function(sel){
 
-        var material_id = $(this).attr("es_ma");
+        
         //alert(material_id);
         // total allowed to be checked.
         var max_allowed = 0;
@@ -86,6 +85,8 @@ $(document).ready(function(){
                 $(this).attr("checked", false);
             }
 
+        //check box button
+        var material_id = $(this).attr("es_ma");
         // down 5 line is to bring up from datatable to field 
         var name = $("#name_"+ material_id).text();
         var dimension_w = $("#dimension_w_" + material_id ).text();

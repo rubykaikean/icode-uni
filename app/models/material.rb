@@ -8,7 +8,7 @@ class Material < ActiveRecord::Base
 	has_many :price_control_items, :dependent => :destroy
 
 	validates :name , :category_id , :price_fomular_id,  presence: :true
-	validates :material_code, uniqueness: true
+	validates :material_code, uniqueness: { :message => "material code had been ."}
 	attr_accessor :row_ids
 
 	# def total_wt_ibs_ft
