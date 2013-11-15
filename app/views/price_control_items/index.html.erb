@@ -21,8 +21,8 @@
   <tbody>
     <% @price_control.price_control_items.each do |price_control_item| %>
       <tr>
-        <td><%= price_control_item.material.name %></td>
-        <td><%= price_control_item.old_unit_price rescue'-'%></td>
+        <td><%= price_control_item.material.name rescue'-' %></td>
+        <td><%= price_control_item.old_unit_price rescue'-' %></td>
         <td><%= price_control_item.old_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
         <td><%= price_control_item.new_unit_price %></td>
         <td><%= price_control_item.new_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>

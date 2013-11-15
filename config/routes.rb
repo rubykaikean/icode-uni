@@ -16,10 +16,6 @@ IcodeUni::Application.routes.draw do
     end
     collection do
       get "list_non_standard_project"
-      # get "show_standard_project"
-      # get "show_standard_station"
-      # get "show_standard_estimation"
-      # get "add_standard_estimation"
       get "list_standard_project"
     end
   end
@@ -32,6 +28,7 @@ IcodeUni::Application.routes.draw do
     collection do
       get "station_estimation"
       get "standard_project_estimation"
+      get "standard_estimation"
     end
   end
   
@@ -47,6 +44,7 @@ IcodeUni::Application.routes.draw do
   resources :estimation_items do
     collection do
       # get :report
+      get "standard_estimation_item"
     end
   end
 

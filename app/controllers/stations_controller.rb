@@ -87,38 +87,27 @@ class StationsController < ApplicationController
   end
 
   def standard_station_estimation
+
     if params[:commit] == "Submit Station"
-      #render :text => params.to_json
-      params[:station_check_box].each do |k , v|
-        station = Station.find(k)
+      #render :text => params[:station_check_box].to_json
+      #redirect_to standard_estimation_estimations_path(:testing_id => params[:station_check_box])
+       params[:station_check_box].each do |k , v|
+         station = Station.find(k)
+         new_station = Station.new
 
-        new_station = Station.new
-        new_station.name = station.name
-        # new_station.age = station.age
+         new_station.name = station.name
+         # new_station.age = station.age
+         # if pass by form_for @station , after "=" become >> params[:station][:project_id]
+         
+         new_station.project_id = params[:project_id]
 
-        # if pass by form_for @station , after "=" become >> params[:station][:project_id]
-        new_station.project_id = params[:project_id]
-        new_station.save!
-      end 
-      redirect_to estimations_path , notice: 'Standard Station was successfully created'
-    end
+         new_station.save!
+         #@station_estimation = Estimation.where("station_id = ?" , k)
+       end 
+       #redirect_to standard_estimation_estimations_path , notice: 'Standard Station was successfully created'
+     end
 
   end
-
-  # def standard_project_station
-
-  #   render :json => params
-    
-  #   # render :text => params[:project_id].to_json
-  #   # @search = Station.search(params[:q])
-  #   # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-  #   # #@product = Product.find(params[:id])
-  #   # #@stations = Station.where("product_id = ?", params[:id])
-
-  #   # @project = Project.all
-
-  # end
-
 
   def standard_station
 

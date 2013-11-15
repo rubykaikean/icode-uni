@@ -1,0 +1,38 @@
+<table id="jdatatable" class="display" >
+    <thead>
+    <tr>
+        <th>No</th>
+        <th></th>
+        <th>Materials</th>
+        <th>Dimension H</th>
+        <th>Dimension W</th>
+        <th>WT</th>
+        <th>Thk/Dia</th>
+        <th>Wt/Ibs/ft</th>
+        <th>Price</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    <% @show_material.each_with_index do |material , index| %>
+    <tr>
+        
+        <td><%= index + 1 %></td>
+        <!-- (name, value = "1", checked = false, options = {}) -->
+        <td><%= check_box_tag "estimation_material", {},false,{:id=>"estimation_item_checkbox", :es_ma => material.id} %></td>
+        <td id="<%= "name_#{material.id}" %>"><%= material.name rescue'-' %></td>
+        <td id="<%= "dimension_h_#{material.id}" %>"><%= material.dimension_h rescue'-' %></td>
+        <td id="<%= "dimension_w_#{material.id}" %>"><%= material.dimension_w rescue'-' %></td>
+        <td id="<%= "plate_#{material.id}" %>"><%= material.plate rescue'-' %></td>
+        <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %></td>
+        <td id="<%= "wt_ibs_ft_#{material.id}" %>"><%= material.wt_ibs_ft rescue'-' %></td>
+        <% a = material.price_control_items.last %>
+        <td id="<%= "unit_price_#{material.id}"%>"><%= a.new_unit_price rescue'-' %></td>
+        <!-- <td id="<%#= "unit_price_#{material_id}" %>"><%#= material.price_control_items.new_unit_price rescue'-' %></td> -->
+
+    </tr>
+
+    <% end %>
+    </tbody>
+
+</table>

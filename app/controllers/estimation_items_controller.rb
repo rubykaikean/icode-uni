@@ -100,6 +100,11 @@ class EstimationItemsController < ApplicationController
   end
 
 
+  def standard_estimation_item
+
+  end
+
+
  
 
   private

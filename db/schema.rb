@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.integer  "price_fomular_id"
   end
 
+  add_index "materials", ["material_code"], name: "index_materials_on_material_code", unique: true, using: :btree
+
   create_table "price_control_items", force: true do |t|
     t.float    "old_unit_price"
     t.date     "old_eff_date"

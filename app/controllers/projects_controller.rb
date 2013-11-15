@@ -26,10 +26,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    # toDo
-    # remove the duplicated code
-    # a = Station.where(:project_id => params[:id])
-    # @show_project = a.all
   end
 
   # GET /projects/new
@@ -95,7 +91,6 @@ class ProjectsController < ApplicationController
          else
           @project.destroy
             respond_to do |format|
-
               format.html { redirect_to projects_url }
               format.json { head :no_content }
           end
