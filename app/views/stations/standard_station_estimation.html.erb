@@ -1,16 +1,17 @@
-<%  params[:station_check_box].each do |k , v| %>
-  <% estimations = Estimation.where(:station_id => k) %>
-  <hr>
+<%#  params[:station_check_box].each do |k , v| %>
+  <%# estimations = Estimation.where(:station_id => k) %>
+  <!-- <hr> -->
 
 
-  <%= form_tag standard_estimation_item_estimation_items_path , :method => "get" do %>
-  	<%= text_field_tag "station id", {:value =>params[:id]} %>
-    <% estimations.each do |estimation| %>
-    <h3><%= estimation.station.name %></h3>
-    <p><%= estimation.id %></p>
+  <%#= form_tag standard_estimation_item_estimation_items_path , :method => "get" do %>
+  	<%#= text_field_tag "station id", {:value =>params[:id]} %>
+    <%# estimations.each do |estimation| %>
+    <!-- <h3><%#= estimation.station.name %></h3> -->
+    <!-- <p><%#= estimation.id %></p> -->
  
 
-  <% end %>
+  <%# end %>
 
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %>
+

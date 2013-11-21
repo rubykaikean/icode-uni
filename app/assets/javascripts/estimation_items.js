@@ -52,9 +52,9 @@ $(document).ready(function() {
 
 		var estimation_item_total = $("#estimation_item_total_weight").text().replace(/\,/g,'');
         var estimation_item_total_weight = parseFloat(estimation_item_total);
-		var estimation_item_title_weight = estimaton_item_total_weight / 2204;
+		var estimation_item_title_weight = estimation_item_total_weight / 2204;
 
-		$("#total_weight").text(estimtaion_item_title_weight.toFixed(2));	
+		$("#total_weight").text(estimation_item_title_weight.toFixed(2));	
 
 	// $("#estimation_item_total").val();
 	// add class will let datatable lost css

@@ -85,7 +85,6 @@
 
         <td><%= two_precision(estimation_item.price_total) rescue'-' %></td>
           <% array_price_total << estimation_item.price_total rescue'-'%>
-          <%# array_price_total_ton << estimation_item.price_total / 2204 %>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
           <%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %>

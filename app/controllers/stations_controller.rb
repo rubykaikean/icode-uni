@@ -87,41 +87,33 @@ class StationsController < ApplicationController
   end
 
   def standard_station_estimation
+      #render :text => params.to_json
 
-    if params[:commit] == "Submit Station"
-      #render :text => params[:station_check_box].to_json
-      #redirect_to standard_estimation_estimations_path(:testing_id => params[:station_check_box])
-       params[:station_check_box].each do |k , v|
-         station = Station.find(k)
-         new_station = Station.new
+      if params[:estimation_id].present?
+        params[:estimation_id].each do |station_key , station_value|
+          station = Station.find(station_key)
+          new_station = Station.new
 
-         new_station.name = station.name
-         # new_station.age = station.age
-         # if pass by form_for @station , after "=" become >> params[:station][:project_id]
-         
-         new_station.project_id = params[:project_id]
+          new_station.name = station.name
+          new_station.project_id = params[:project_id]
+          new_station.save!
 
-         new_station.save!
-         #@station_estimation = Estimation.where("station_id = ?" , k)
-       end 
-       #redirect_to standard_estimation_estimations_path , notice: 'Standard Station was successfully created'
-     end
+          # Running Estimation duplication
+          # logger.debug 
+          StationService.new(station_value).create_estimation
+
+
+          
+        end  #end of station
+      end  #end estimation_id
 
   end
 
-  def standard_station
+  def create_new_estimation
+              
+  end 
 
 
-    #render :text => params[:id].to_json
-    render :json => params
-
-    # @standard_station = Station.new(station_params)
-
-    # render :text => @project.to_json
-    # @standard_project = Project.find(params[:id])
-    # @projects = Project.where("non_standard = 1", params[:id])
-    
-  end
 
 
 
@@ -148,3 +140,24 @@ class StationsController < ApplicationController
       end
     end
 end
+
+
+
+ # if params[:commit] == "Submit Station"
+    #   #render :text => params[:station_check_box].to_json
+    #   #redirect_to standard_estimation_estimations_path(:testing_id => params[:station_check_box])
+    #    params[:station_check_box].each do |k , v|
+    #      station = Station.find(k)
+    #      new_station = Station.new
+
+    #      new_station.name = station.name
+    #      # new_station.age = station.age
+    #      # if pass by form_for @station , after "=" become >> params[:station][:project_id]
+         
+    #      new_station.project_id = params[:project_id]
+
+    #      new_station.save!
+    #      #@station_estimation = Estimation.where("station_id = ?" , k)
+    #    end 
+    #    #redirect_to standard_estimation_estimations_path , notice: 'Standard Station was successfully created'
+    #  end
