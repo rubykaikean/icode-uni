@@ -99,13 +99,13 @@ class StationsController < ApplicationController
           new_station.save!
 
           # Running Estimation duplication
-          # logger.debug 
+          # logger.debug
+          # use for create  
           StationService.new(station_value).create_estimation
 
-
-          
         end  #end of station
       end  #end estimation_id
+      redirect_to list_standard_project_projects_path
 
   end
 

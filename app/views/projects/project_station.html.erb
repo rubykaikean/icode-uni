@@ -8,15 +8,21 @@
 
 <table>
 	<tr>
+		<td><%= check_box_tag "checkbox" , :id=>"checkbox" %></td>
 		<td>Project Name :</td>
 		<td style="align:right;"><%= @standard_project.name %></td>
 	</tr>
 	<tr>
+		<td><%= check_box_tag "checkbox" %></td>
 		<td>Project Code :</td>
 		<td style="align:right;"><%= @standard_project.project_code %></td>
 	</tr>
 </table>
 <hr>
+
+
+
+
 <h3>Non-standard Project - Station</h3>
 <% if @standard_project.present? %>
 
@@ -29,5 +35,26 @@
 <% end %>
 
 <%# end %>  <!-- end of simple form  -->
+
+
+<script type="text/javascript">
+
+$(document).ready(function (){
+
+	$('#checkbox').change(function () {
+		//console.log("Working here??");
+		//alert("abc");
+        if($('#checkbox:checkbox').attr("checked")) 
+        	alert("testing")
+        	//$('#check_box_#{station.id}').attr('checked','checked');
+        else 
+        	$('#check_box_#{station.id}').removeAttr('checked');
+   	});
+
+
+});	
+
+
+</script>
 
 

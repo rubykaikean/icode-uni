@@ -5,7 +5,7 @@ class EstimationItem < ActiveRecord::Base
 
 
 	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	validates :material_id ,:uom , :dimension_l,  presence: :true
+	validates :material_id ,:uom , :material_id,:dimension_l,:unit_price,  presence: :true
 
 	def total_wt_ibs_ft
 		if material.category_id == 1
