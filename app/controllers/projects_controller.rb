@@ -11,32 +11,21 @@ class ProjectsController < ApplicationController
   def index
     @search = Project.search(params[:q])
     @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-    # @search = project.search(params[:q])
-    # @projects = @search.result(distinct: true)
+  end
 
-    # @search = project.search(params[:q])
-    # @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>100)
-    
-    #@project = project.new  
-    # @search = Article.search(params[:search])
-    # @articles = @search.all
+  def list_non_standard_project
+    @search = Project.non_standard_type.search(params[:q])
+    @list_non_standard_projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   def list_standard_project
-    @standard_project = Project.where("standard = 1")
+    @search = Project.standard_type.search(params[:q])
+    @list_standard_projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
-
-  # def list_non_project
-  #   @non_standard = Project.where("non_standard = 1")
-  # end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    # toDo
-    # remove the duplicated code
-    # a = Station.where(:project_id => params[:id])
-    # @show_project = a.all
   end
 
   # GET /projects/new
@@ -90,12 +79,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-  #   if @project.non_standard = false
-  #   # render :text => @project.to_json 
-  #   render :text => "123"
-  # else
-  #   render :text => "456"
-  # end
+    # if @project.non_standard = false
+    #   render :text => "123"
+    # else
+    #   render :text => "456"
+    # end
       station = Station.pluck(:project_id)
       if station.any? {|a| a == @project.id }
           redirect_to projects_path , notice: 'Make sure delete all station before delete project.'
@@ -103,20 +91,18 @@ class ProjectsController < ApplicationController
          else
           @project.destroy
             respond_to do |format|
-
               format.html { redirect_to projects_url }
               format.json { head :no_content }
           end
       end
   end
 
+ 
+
   def project_station
-    
     #render :text => params[:id].to_json    #this link can take from (def create) @project 
     @standard_project = Project.find(params[:id])
     @projects = Project.where("non_standard = 1", params[:id])
-
-    @standard_station = Station.new
   end 
 
   private

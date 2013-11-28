@@ -1,7 +1,7 @@
 <table style="width:100%;">
   <% estimation = @info_estimation_items %>
   <tr>
-    <td>Client :       <u><%#= estimation.client.name %></u></td>
+    <td>Client :       <u><%= estimation.station.project.name rescue'-'%></u></td>
     <td>Drawing No:    </td>
   </tr>
   <tr>
@@ -11,14 +11,7 @@
 
   <tr>
     <td>Dimension :     <u><%= estimation.dimension rescue'-' %></u></td>
-    <td id="total_weight"></td>
+    <td>Total :         <u id="total_weight"></u></td>
   </tr>
   <%# end %>
 </table>
-
-<!-- 
-<script type="text/javascript">
-
-
-  
-</script> -->

@@ -23,7 +23,7 @@
             <% else %>
               
               <%= estimation_item.thk_dia.to_f rescue'-' %>
-              <%= estimation_item.unit_measurement %>
+              <%= estimation_item.unit_measurement rescue'-' %>
             <% end %>
         </td>
 
@@ -85,7 +85,6 @@
 
         <td><%= two_precision(estimation_item.price_total) rescue'-' %></td>
           <% array_price_total << estimation_item.price_total rescue'-'%>
-          <%# array_price_total_ton << estimation_item.price_total / 2204 %>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
           <%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %>
@@ -105,10 +104,10 @@
       <tr>
         <td colspan="9"></td>
         <td style="align:left;">Total : </td>
-        <td><%= four_precision(array.sum) %></td>
+        <td id="estimation_item_total_weight"><%= four_precision(array.sum) %></td>
 
         <td></td>
-        <td><%= two_precision(array_price_total.sum) %></td>
+        <td><%= two_precision(array_price_total.sum)%></td>
         <td></td>
         <td></td>
       </tr>

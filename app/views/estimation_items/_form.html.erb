@@ -42,10 +42,9 @@
         <td><%= f.input :dimension_l,:as => :string, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %></td>
 
         <td><%= f.input :wt_ibs_ft, :as => :string, :disabled => true %>
-                <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
+            <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
     </tr> 
     <tr>
-        
         <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
         <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
 
@@ -65,51 +64,16 @@
 <% end %>
 
 <%#= render "show_material" %>
-<table id="jdatatable" class="display" >
-    <thead>
-    <tr>
-        <th>No</th>
-        <th></th>
-        <th>Materials</th>
-        <th>Dimension H</th>
-        <th>Dimension W</th>
-        <th>WT</th>
-        <th>Thk/Dia</th>
-        <th>Wt/Ibs/ft</th>
-        <th>Price</th>
-        
-    </tr>
-    </thead>
-    <tbody>
-    <% @show_material.each_with_index do |material , index| %>
-    <tr>
-        
-        <td><%= index + 1 %></td>
-        <!-- (name, value = "1", checked = false, options = {}) -->
-        <td><%= check_box_tag "estimation_material", {},false,{:id=>"estimation_item_checkbox", :es_ma => material.id}  %></td>
-        <td id="<%= "name_#{material.id}" %>"><%= material.name rescue'-' %></td>
-        <td id="<%= "dimension_h_#{material.id}" %>"><%= material.dimension_h rescue'-' %></td>
-        <td id="<%= "dimension_w_#{material.id}" %>"><%= material.dimension_w rescue'-' %></td>
-        <td id="<%= "plate_#{material.id}" %>"><%= material.plate rescue'-' %></td>
-        <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %></td>
-        <td id="<%= "wt_ibs_ft_#{material.id}" %>"><%= material.wt_ibs_ft rescue'-' %></td>
-        <% a = material.price_control_items.last %>
-        <td id="<%= "unit_price_#{material.id}"%>"><%= a.new_unit_price rescue'-' %></td>
-        <!-- <td id="<%#= "unit_price_#{material_id}" %>"><%#= material.price_control_items.new_unit_price rescue'-' %></td> -->
+<%= render "input_estimation_material_table" %>
 
-    </tr>
 
-    <% end %>
-    </tbody>
-
-</table>
 <script type="text/javascript">
 
 $(document).ready(function(){
 
     $("input:checkbox").change(function(sel){
 
-        var material_id = $(this).attr("es_ma");
+        
         //alert(material_id);
         // total allowed to be checked.
         var max_allowed = 0;
@@ -121,6 +85,8 @@ $(document).ready(function(){
                 $(this).attr("checked", false);
             }
 
+        //check box button
+        var material_id = $(this).attr("es_ma");
         // down 5 line is to bring up from datatable to field 
         var name = $("#name_"+ material_id).text();
         var dimension_w = $("#dimension_w_" + material_id ).text();

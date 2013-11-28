@@ -16,7 +16,9 @@ class ReportsController < ApplicationController
     
     if params[:commit] == "PDF Report"
       if params[:estimation_ids].present?
+        # render :text => params[:estimation_ids].to_json
         @estimation = Estimation.find(params[:estimation_ids])
+        #render :text => @estimation.to_json
         html = render_to_string(:layout => false , :action => "pdf_estimation_report.html.erb")
           @kit = PDFKit.new(html)
           @kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/bootstrap.css"
@@ -37,6 +39,15 @@ class ReportsController < ApplicationController
       redirect_to estimation_report_reports_path
     end
   end  
+
+
+  def testing_page
+      html = render_to_string(:layout => false , :action => "testing_page.html.erb")
+          @kit = PDFKit.new(html)
+          send_data(@kit.to_pdf ,:filename => "testing_page.pdf",
+                                :type => 'application/pdf' , 
+                                :disposition => "attachement" )
+  end
 
 
 

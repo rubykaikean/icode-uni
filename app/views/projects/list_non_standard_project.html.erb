@@ -1,0 +1,88 @@
+<%- model_class = Project -%>
+<div class="page-header">
+  <h2>Non-Project Listing</h2>
+</div>
+
+<div style="float: left;">
+<%#= search_form_for @search do |f| %> 
+
+  <%#= f.text_field :name_cont, "data-autocomplete" => autocomplete_project_name_projects_path, :class => "input-medium search-query", :placeholder => "Project Name" %>
+  <%#= f.submit "Search", :class => "btn"%>
+<%# end %>
+</div>
+
+<div style="float: right;"><%= will_paginate @list_non_standard_projects, :class => "pagination" %></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= "No." || model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:client_id) %></th>
+      <th><%= "Project Name" || model_class.human_attribute_name(:name) %></th>
+      <th><%= "Project Code" || model_class.human_attribute_name(:project_code) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%#= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list_non_standard_projects.each do |project| %>
+      <tr>
+        <td><%= project.id %></td>
+        <td><%= project.client.name %></td>
+        <td><%= project.name %><%#= link_to project.name, project_station_projects_path(:project_id => project) rescue'-' %></td>
+        <td><%= project.project_code rescue'-' %>
+          <%#= link_to project.name , project_path(project) %></td>
+          <%#= link_to project.name, project_station_projects_path(project) %></td>
+        <td><%= project.date.strftime("%d-%m-%Y") %></td>
+        <td><%#=l project.created_at %></td>
+        <td>
+          <%#= link_to "Add Station", :class=>"btn" %>
+          <% if roles.include?(InventoryManagementSystem::PROJECT_EDIT) %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_project_path(project), :class => 'btn btn-mini' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Edit</button>            
+          <% end %>
+          <%# if  %>
+            <%# link_delete_button %>
+          <%# else %>
+          <% if roles.include?(InventoryManagementSystem::PROJECT_DELETE) %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          project_path(project),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <button type="button" class="btn btn-mini">Delete</button>            
+          <% end %>
+          <%# end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if roles.include?(InventoryManagementSystem::PROJECT_ADD) %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_project_path,
+            :class => 'btn btn-primary' %> 
+<% else %>
+<button type="button" class="btn">New</button>            
+<% end %>
+<div style="float: right; "><%= link_home_button %></div> 
+
+<!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 id="myModalLabel">Modal header</h3>
+</div>
+<div class="modal-body">
+<%#= render "form" %>
+</div>
+<div class="modal-footer">
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+<button class="btn btn-primary">Save changes</button>
+</div>
+</div>
+ -->

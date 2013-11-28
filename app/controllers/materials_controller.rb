@@ -30,13 +30,15 @@ class MaterialsController < ApplicationController
   def create
     
     @material = Material.new(material_params)
+    # @material.save!
+    # redirect_to materials_path, notice: 'Material was successfully created'
     # render :text => @material.to_json
     respond_to do |format|
       if @material.save
         format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
         format.json { render action: 'show', status: :created, location: @material }
       else
-        format.html { redirect_to new_material_path }
+        format.html { redirect_to new_material_path, notice: 'Material cannot save..' }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end

@@ -1,6 +1,8 @@
+<%= form_tag standard_station_estimation_stations_path , :method => "get" do %>
 
-<%= simple_form_for @standard_station do |f| %>
-<%= f.input "project_id",:label => false, :input_html => { :value => params[:id]} %>
+<div style="display:none;"><%= text_field_tag "project_id",params[:id] %></div>
+
+ <%#= render :text => params[:id] %>
 <table class="table">
 	<thead>
 	<tr>
@@ -11,35 +13,43 @@
 		<th></th>
 	</tr>
 	</thead>
-	
+
 	<tbody>
 		<% list_standard_stations.stations.each_with_index do |station , index| %>
 		<tr>
 			<td></td>
-			<td><%= check_box_tag 'station_ids[]', station.id %></td>
+			<td><%= check_box_tag "checkall",:id =>"checkall" %></td>
 			<td><%= index + 1 %></td>
 			<td><%= station.name %></td>
-			<td><%= f.input :name , :label => false , :id => "" %></td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+			<td colspan="4">
+			<table class="table table-bordered">
+					<tr>
+						<th>Estimation List</th>
+						<th>ID</th>
+						<th>Title</th>
+						<th>Dimension</th>
+					</tr>
+					<% station.estimations.each do |estimation| %>
+					
+					<tr>
+						<td><%= check_box_tag "estimation_id[#{station.id}][#{estimation.id}]" , estimation.id ,false, :id=>"check_box_#{station.id}" %></td>
+						<td><%= estimation.id %></td>
+						<td><%= estimation.title %></td>
+						<td><%= estimation.dimension %></td>
+					<tr>
+				<% end %>
+			</table>
+			</td>
 		</tr>
 	</tbody>
 	<% end %> <!-- form tag each do -->
-	
 </table>
-	<%#= submit_tag "Submit Station" , :class=>"button" %>
-
 <% end %> <!-- simple form end -->
 
-<script type="text/javascript">
 
- $(document).ready(function () { 
-
-// 	$('#checkall:checkbox').onchange(function () {
-//         if($(this).attr("checked")) 
-//         	$('input:checkbox').attr('checked','checked');
-//         else 
-//         	$('input:checkbox').removeAttr('checked');
-//     });
-
-});
-
-</script>

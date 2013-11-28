@@ -43,9 +43,8 @@ $(document).ready(function () {
         //"bServerSide": true,
         //"sAjaxSource": $('#jdatatable').data('source')
         "oLanguage": {
-                "sZeroRecords":  "No Record Found...",
-                "sSearch": "Search All Columns:"
-                
+            "sZeroRecords":  "No Record Found...",
+            "sSearch": "Search All Columns:"
         },
         //"bAutoWidth": true    
      });

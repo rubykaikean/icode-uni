@@ -1,17 +1,20 @@
+<div style="float: right;"><%#= will_paginate @projects, :class =>"pagination"%></div>
+
 <div class="accordion" id="accordion2">
   <% @projects.each do |project| %>
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="accordion-heading" style="background-color:lightblue;" >
       <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= project.id %>">
         <%= project.name %> - <%= project.client.name %>
       </div>
     </div>
 
     <div id="collapse<%= project.id %>" class="accordion-body collapse">
-      <div class="accordion-inner">
+      <div class="accordion-inner" style="background-color:#01FCC2;">
         <%= render "list_standard_project_station", :list_standard_stations => project %>
       </div>
     </div>
   </div>
   <% end %>
 </div>
+

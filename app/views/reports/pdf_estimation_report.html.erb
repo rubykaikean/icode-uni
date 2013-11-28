@@ -2,15 +2,18 @@
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
 
+
 <%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
 	<% @estimation.each_with_index do |estimation, index| %>
 	<% if index == 0 %>
+
 	  <div></div>
 	<% else %>
 	  <div style="page-break-before: always;"> 	
 	<% end %>
+
 
 <table class="text-left" width="100%">
 	<%# @estimation.each do |estimation| %>
@@ -142,12 +145,14 @@
 	<% end %>
 		
 <!-- </div> -->
+
 <% else %>
 no record found
 <% end %>
 
 
 <style>
+<<<<<<< HEAD
 th
 {
 font-family:"Times New Roman";
@@ -165,4 +170,54 @@ tr
 font-family:"Times New Roman";
 font-size:12px;
 }
+=======
+
+  table{
+    width:100%;
+  }
+  
+  body {
+    width:100%;
+    background-color: white;
+    color: #333;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 11px;
+    line-height: 18px; 
+    
+  }
+
+  p, div { margin: 0; }
+
+  p, ol, ul, td {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 11px; }
+
+    table.black-line-table {
+      border-width: 1px;
+      <%#*border-spacing: 0px;%>
+      border-style: none;
+      border-color: black;
+      border-collapse: collapse;
+      background-color: transparent; }
+
+  table.black-line-table thead th {
+  		border-style:solid;
+		border-width:3px;
+        padding: 1px;
+        border-style: solid;
+        border-color: black;
+        background-color: transparent; }
+
+  table.black-line-table tbody td {
+  		border-style:solid;
+        border-width: 0px;
+        padding: 1px;
+        border-style: solid;
+        border-color: black;
+
+        }
+  tbody tr {
+    border-top:2pt solid white;
+ }
+>>>>>>> aca98822571c809595525115c68abc1e7180d1d7
 </style>

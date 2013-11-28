@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
-	# scope :type,where(non_standard: '1')
+	scope :non_standard_type , where(non_standard: '1')
+	scope :standard_type , where(standard: '1')
 
 	validates :client , :project_code, :name , :date ,  presence: :true
 	validates :name, uniqueness: :true
@@ -8,6 +9,8 @@ class Project < ActiveRecord::Base
 	belongs_to :client
 
 	has_many :stations
+
+	
 	#has_many :estimations , :through => :stations  << use this when need to see estimation infro trough product
 
 	ROLE = [

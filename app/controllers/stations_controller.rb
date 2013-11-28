@@ -15,8 +15,6 @@ class StationsController < ApplicationController
     # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
     @search = Project.search(params[:q])
     @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
-
-    
   end
 
   # GET /stations/1
@@ -36,16 +34,22 @@ class StationsController < ApplicationController
   # POST /stations
   # POST /stations.json
   def create
-    @station = Station.new(station_params)
-    #Station.generation_new_item(params[:station])
-    respond_to do |format|
-      if @station.save
-        format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @station }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
+
+    #render :json => params[:station_name]
+    #render :text => params.to_json
+    
+    if params[:commit] == "Create"
+        @station = Station.new(station_params)
+        #Station.generation_new_item(params[:station])
+        respond_to do |format|
+          if @station.save
+            format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
+            #format.json { render action: 'show', status: :created, location: @station }
+          else
+            format.html { render action: 'new' }
+            format.json { render json: @station.errors, status: :unprocessable_entity }
+          end
+        end
     end
   end
 
@@ -82,24 +86,34 @@ class StationsController < ApplicationController
       end
   end
 
-  # def standard_project_station
-  #   render :text => params[:project_id].to_json
-  #   # @search = Station.search(params[:q])
-  #   # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-  #   # #@product = Product.find(params[:id])
-  #   # #@stations = Station.where("product_id = ?", params[:id])
+  def standard_station_estimation
+      #render :text => params.to_json
 
-  #   # @project = Project.all
+      if params[:estimation_id].present?
+        params[:estimation_id].each do |station_key , station_value|
+          station = Station.find(station_key)
+          new_station = Station.new
 
-  # end
+          new_station.name = station.name
+          new_station.project_id = params[:project_id]
+          new_station.save!
 
+          # Running Estimation duplication
+          # logger.debug
+          # use for create  
+          StationService.new(station_value).create_estimation
 
-  def standard_station
-    # render :text => @project.to_json
-    @standard_project = Project.find(params[:id])
-    @projects = Project.where("non_standard = 1", params[:id])
-    
+        end  #end of station
+      end  #end estimation_id
+      redirect_to list_standard_project_projects_path
+
   end
+
+  def create_new_estimation
+              
+  end 
+
+
 
 
 
@@ -126,3 +140,24 @@ class StationsController < ApplicationController
       end
     end
 end
+
+
+
+ # if params[:commit] == "Submit Station"
+    #   #render :text => params[:station_check_box].to_json
+    #   #redirect_to standard_estimation_estimations_path(:testing_id => params[:station_check_box])
+    #    params[:station_check_box].each do |k , v|
+    #      station = Station.find(k)
+    #      new_station = Station.new
+
+    #      new_station.name = station.name
+    #      # new_station.age = station.age
+    #      # if pass by form_for @station , after "=" become >> params[:station][:project_id]
+         
+    #      new_station.project_id = params[:project_id]
+
+    #      new_station.save!
+    #      #@station_estimation = Estimation.where("station_id = ?" , k)
+    #    end 
+    #    #redirect_to standard_estimation_estimations_path , notice: 'Standard Station was successfully created'
+    #  end

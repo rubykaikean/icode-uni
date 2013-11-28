@@ -10,6 +10,8 @@ class ChangeProjectColumn < ActiveRecord::Migration
 
   	add_column :projects , :project_code, :string
 
+    remove_column :projects , :staion_id
+
   	remove_column :materials , :thk_dia
 
   	add_column :materials , :thk_dia , :string
