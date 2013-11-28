@@ -14,8 +14,8 @@ PDFKit.configure do |config|
 #     :disable_smart_shrinking => false
 #   }
    
-  config.wkhtmltopdf = '/usr/bin/wkhtmltopdf'
-  config.root_url = 
+  config.wkhtmltopdf = '/home/cclim/.rvm/gems/ruby-2.0.0-p247@icode-uni/bin/wkhtmltopdf'
+  config.root_url = "http://localhost:3000/"
   config.default_options = {
     :encoding => "UTF-8",
     :page_size => "A4",

@@ -1,18 +1,15 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
-<!-- <link rel="stylesheet" type="text/css" href="print.css" media="print"> -->
 </head>
 
-
-<% index = 0 %>
+<%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
-	<% @estimation.each do |estimation| %>
+	<% @estimation.each_with_index do |estimation, index| %>
 	<% if index == 0 %>
-	  <div>
+	  <div></div>
 	<% else %>
 	  <div style="page-break-before: always;"> 	
-	<!-- <div class="page-break"> -->
 	<% end %>
 
 <table class="text-left" width="100%">
@@ -36,17 +33,19 @@
 	</tr>
 	
 </table>
-
-<table class="table table-bordered">
+<br>
+<table border="1">
 	<thead>
 	<%= render "estimation_table" %>	
 	</thead>
 	<tbody>
-		<% @remark_index = 0 %>
+		<%# @remark_index = 0 %>
 	<% estimation.estimation_item.each_with_index do |item_list , index| %>
-		<% @remark_index = index %>
+		
 		<% counter += 1 %>
-		<% if counter < 21 %>
+		<% if counter < 31 %>
+		<%# @remark_index = index %>
+		
 	<tr>
 			<td><%= index + 1 %></td>
 			<td><%= item_list.part_detail %></td>
@@ -62,17 +61,21 @@
 	        </td>	
 			<td><%#= item_list. %></td>
 			<td><%#= item_list. %></td>	
-			<td><%#= estimation_remarks[index] %>
-				<%= my_helper(estimation)[index] %></td>
+			<%#= estimation_remarks[index] %>
+			<%#= estimation.estimation_item.count  %>
+				<% if index == 0 %>
+					<td rowspan="<%= 30  %>">
+						<%#= my_helper(estimation)[index] %>
+						<%= my_helper(estimation).html_safe %>					
+					</td>		
+				<% end %>	
+			
 	</tr>
-<!-- <div style="page-break-before: always;"> -->
-	<!-- </tbody>	 -->
+		
 	<% else %>
-<!-- </table> -->
-<div style="page-break-before: always;">
-
+</table>
+<div style="page-break-before: always;"></div>
 <table class="text-left" width="100%">
-	<%# @estimation.each do |estimation| %>
 
 	<tr>
 		<th width="50%" align="left">Client: <%= estimation.client.name rescue'-'%></th>
@@ -92,9 +95,8 @@
 	</tr>
 	
 </table>
-
-
-<table class="table table-bordered">
+<br>
+<table border="1">
 	<thead>
 	<%= render "estimation_table" %>
 	</thead>
@@ -115,30 +117,52 @@
 	        </td>	
 			<td><%#= item_list. %></td>
 			<td><%#= item_list. %></td>	
-			<td><%#= estimation_remarks[index] %>
-				<%= my_helper(estimation)[index] %></td>
+			<td rowspan="<%= estimation.estimation_item.count - 29  %>">
+			<%#= estimation_remarks[index] %>
+				<%#= my_helper(estimation)[index] %></td>
 
 	</tr>			
 
-<% counter = 1 %>
+		<% counter = 1 %>
 
-
-	<% end %> <!-- counter -->	
+		<% end %> <!-- counter -->	
 	<% end %> <!-- second each do -->
 
 	<tr>
 		<td colspan="9"></td>
 		<td>Total:</td>
 		<td></td>
-		<td colspan="3"></td>
+		<td colspan="2"></td>
 	</tr>	
 
 </tbody>
 </table>
-</div> <!-- page break counter -->
+<!-- </div> page break counter -->
 
-<% end %>
-</div>
+	<% end %>
+		
+<!-- </div> -->
 <% else %>
 no record found
 <% end %>
+
+
+<style>
+th
+{
+font-family:"Times New Roman";
+font-size:12px;
+}
+
+td
+{
+font-family:"Times New Roman";
+font-size:12px;
+}
+
+tr
+{
+font-family:"Times New Roman";
+font-size:12px;
+}
+</style>
