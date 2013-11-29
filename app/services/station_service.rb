@@ -16,7 +16,6 @@ class StationService
             new_estimation = estimation.dup  #duplicate
             new_estimation.station_id = estimation_key
             new_estimation.save!
-            # @estimation_key << estimation_key
             @estimation_item = EstimationItem.where("estimation_id = ?" , estimation_key)
             create_estimation_item
         end
@@ -30,6 +29,7 @@ class StationService
 			
 			new_estimation_item = item.dup
 			new_estimation_item.estimation_id = item.id
+			
 			new_unit_price_control = new_estimation_item.material.price_control_items.where("new_eff_date >= ?" , Date.today).order("new_eff_date").first
 			
 			new_estimation_item.unit_price = new_unit_price_control.new_unit_price if new_unit_price_control

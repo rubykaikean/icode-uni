@@ -3,13 +3,11 @@
 
 <%#= render "listing_price_control" %>
 <%#= render :text => params[:price_control_id].to_json %>
-<%= render "listing_price_control" %>
+<%#= render "listing_price_control" %>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>Material</th>
-      <th>Old unit price</th>
-      <th>Old eff date</th>
       <th>New unit price</th>
       <th>New eff date</th>
       <!-- <th>Price control</th> -->
@@ -19,11 +17,11 @@
   </thead>
 
   <tbody>
-    <% @price_control.price_control_items.each do |price_control_item| %>
+    <% @price_control.each do |price_control_item| %>
       <tr>
         <td><%= price_control_item.material.name rescue'-' %></td>
-        <td><%= price_control_item.old_unit_price rescue'-' %></td>
-        <td><%= price_control_item.old_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
+        <!-- <td><%#= price_control_item.old_unit_price rescue'-' %></td>
+        <td><%#= price_control_item.old_eff_date.strftime("%d-%m-%Y") rescue'-' %></td> -->
         <td><%= price_control_item.new_unit_price %></td>
         <td><%= price_control_item.new_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
         <!-- <td><%#= price_control_item.price_control_id %></td> -->
@@ -34,9 +32,11 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-<%= link_to 'Back' , price_controls_path , :class=>"btn" %>
-<div style="float: right; "><%= link_home_button %></div> 
+<%= link_to "Add Item Price" , new_price_control_item_path , :class=>"btn ", :target => "_blank" %>
+<div style="float: right; ">
+<%#= link_to 'Back' , price_controls_path , :class=>"btn" %>
+<%= link_home_button %>
+</div> 
 
 <%#= link_to 'New Price control item', new_price_control_item_path %>

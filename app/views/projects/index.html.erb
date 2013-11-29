@@ -16,36 +16,30 @@
   <thead>
     <tr>
       <th><%= "No." || model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= "Project Name" || model_class.human_attribute_name(:name) %></th>
       <th><%= "Project Code" || model_class.human_attribute_name(:project_code) %></th>
+      <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
       <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
+    <% @projects.each_with_index do |project , index| %>
       <tr>
-        <td><%= project.id %></td>
+        <td><%= index + 1 %></td>
+        <td><%= project.name %></td>
+        <td><%= project.project_code rescue'-' %></td>
         <td><%= project.client.name %></td>
-        <td><%= project.name %><%#= link_to project.name, project_station_projects_path(:project_id => project) rescue'-' %></td>
-        <td><%= project.project_code rescue'-' %>
-          <%#= link_to project.name , project_path(project) %></td>
-          <%#= link_to project.name, project_station_projects_path(project) %></td>
         <td><%= project.date.strftime("%d-%m-%Y") %></td>
-        <td><%#=l project.created_at %></td>
+        <td></td>
         <td>
-          <%#= link_to "Add Station", :class=>"btn" %>
           <% if roles.include?(InventoryManagementSystem::PROJECT_EDIT) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_project_path(project), :class => 'btn btn-mini' %>
           <% else %>
           <button type="button" class="btn btn-mini">Edit</button>            
           <% end %>
-          <%# if  %>
-            <%# link_delete_button %>
-          <%# else %>
           <% if roles.include?(InventoryManagementSystem::PROJECT_DELETE) %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
           project_path(project),
@@ -55,7 +49,7 @@
           <% else %>
           <button type="button" class="btn btn-mini">Delete</button>            
           <% end %>
-          <%# end %>
+
         </td>
       </tr>
     <% end %>

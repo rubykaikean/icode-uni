@@ -6,7 +6,7 @@
 
 
   <div class="inputs">
-    <%= render "listing_price_control" %>
+    <%#= render "listing_price_control" %>
     <table style="width:100%;" class="table table-bordered">
       <tr>
           <td>
@@ -29,22 +29,22 @@
       </tr>
       <tr>
         <td>
-          <% if action_name == "edit" %>
-          <% @price_control_item.each do |p| %>
+          <%# if action_name == "edit" %>
+          <%# @price_control_item.each do |p| %>
             <%#= p.new_unit_pric %>
-            <% end %>
-          <% else %>
-            <%= f.input :old_unit_price, as: :string ,:disabled => true %>
-          <% end %>
+            <%# end %>
+          <%# else %>
+            <%#= f.input :old_unit_price, as: :string ,:disabled => true %>
+          <%# end %>
         </td>
         <td>
-          <% if action_name == "edit" %>
-              <div id="datetimepicker4" class="input-append">
-              <%= f.input :old_eff_date , as: :string , "data-format"=>"dd-MM-yyyy"%>
-              <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span></div>
-          <% else %>
-              <%= f.input :old_eff_date , as: :string, :disabled => true %>
-          <% end %>
+          <%# if action_name == "edit" %>
+              <!-- <div id="datetimepicker4" class="input-append">
+              <%#= f.input :old_eff_date , as: :string , "data-format"=>"dd-MM-yyyy"%>
+              <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span></div> -->
+          <%# else %>
+              <%#= f.input :old_eff_date , as: :string, :disabled => true %>
+          <%# end %>
          </td>
         <td></td>
       </tr>

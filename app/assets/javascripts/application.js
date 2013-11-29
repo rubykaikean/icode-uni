@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery.ui.all
+// require jquery.ui.all
 //= require dataTables/jquery.dataTables
 //= require autocomplete-rails
 //= require bootstrap
