@@ -19,7 +19,7 @@ class SpreadsheetsController < ApplicationController
 	end
 
 	def read_material_file
-		material = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing2.xls"
+		material = Spreadsheet.open "#{Rails.root.to_s}/public/material_data_fomuler03102013.xls"
 		@sheet1 = material.worksheet 0
 		# @spreadsheet = Material.new
 		#load_file
@@ -36,7 +36,7 @@ class SpreadsheetsController < ApplicationController
 			m.thk_dia = value[:thk_dia_um]
 			m.dimension_h =  value[:dimension_h]
 			m.dimension_w = value[:dimension_w]
-			m.wt_ibs_ft = value[:wt_ibs_ft].to_f
+			m.wt_ibs_ft = value[:wt_ibs_ft]
 			m.plate = value[:plate_thk_dia]
 			m.category_id = value[:category_id]
 			m.price_fomular_id = value[:price_fomular_id]

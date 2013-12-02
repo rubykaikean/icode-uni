@@ -2,6 +2,7 @@
 <%#= form_tag @profile, {:action => "save_file"} do %>
 <!-- below link is take record to where -->
 <%= form_tag("/spreadsheets/save_material_file", method: "post") do %>
+<%= submit_tag "import excel" , :class => "btn" %>
 <table class="table table-border">
 	<thead>
 		<tr>
@@ -25,12 +26,13 @@
 			<td><%= a = index + 1 %></td>
 			<td><%#= check_box_tag "row[#{a}][]" %></td>
 			<td><%= text_field_tag "row[#{a}][name]", '', :value => row[0] %></td>
-			<td><%= text_field_tag "row[#{a}][thk_dia]", '', :value => row[1] %></td>
+			<td><%= text_field_tag "row[#{a}][thk_dia]", '', :value => number_with_precision(row[1], :precision => 2 ) %></td>
 			<td><%= text_field_tag "row[#{a}][thk_dia_um]", '' , :value => row[2] %></td>
 			<td><%= text_field_tag "row[#{a}][dimension_h]", '', :value =>row[3] %></td>
 			<td><%= text_field_tag "row[#{a}][dimension_w]", '', :value =>row[4] %></td>
-			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>row[5] %></td>
-			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value => row[6] %></td>
+			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>
+			number_with_precision(row[5], :precision => 2 ) %></td>
+			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value =>number_with_precision(row[6], :precision => 5) %></td>
 			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[7] %></td>
 			<td><%= text_field_tag "row[#{a}][price_fomular_id]" , '' , :value => row[8] %></td>
 		</tr>
@@ -42,6 +44,5 @@
 
 
 </table>
-<%= submit_tag "import excel" , :class => "btn" %>
 
 <% end %>   <!-- end of form for -->

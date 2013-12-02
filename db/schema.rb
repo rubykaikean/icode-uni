@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202033557) do
+ActiveRecord::Schema.define(version: 20131001063703) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -92,10 +92,8 @@ ActiveRecord::Schema.define(version: 20131202033557) do
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"
-    t.decimal  "wt_ibs_ft",        precision: 10, scale: 2
     t.string   "material_code"
     t.integer  "price_fomular_id"
-    t.decimal  "dimension_h",      precision: 10, scale: 2
   end
 
   add_index "materials", ["material_code"], name: "index_materials_on_material_code", unique: true, using: :btree
