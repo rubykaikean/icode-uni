@@ -1,24 +1,31 @@
-
-
 <%= simple_form_for @material, :html => { :class => 'form-horizontal' } do |f| %>
-<%= f.error_notification %>
-
+<%#= f.error_notification %>
+<% if @material.errors.any? %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <ul>
+      <% @material.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
 <table>
 	<tr>
 	  <td><%= f.input :name , :label => "Name :" %></td>
   	<td><%= f.label :category_id , "Select a Fomular :" %>
-          <%= f.select :category_id ,[[ "1.) W/304.8 x L/304.8 x Wt/ibs/ft x qty" , 1],
-          ["2.) (L/1000) x Wt/ibs/ft x 2.20459 x qty" , 2],
-          ["3.) (L/304.8) x Wt/ibs/ft x qty" , 3],
-          ["4.) {(W/1000) x (L/1000)} x Wt/ibs/ft x QTY x 2.20459" , 4],
-          ["5.) {[(W/1000) x (L/1000)] / 2.9768 } x Wt/ibs/ft x QTY x 2.20459 " , 5],
+          <%= f.select :category_id ,[[ "1.) W/304.8 x L/304.8 x WT/IBS/FT x qty" , 1],
+          ["2.) (L/1000) x WT/IBS/FT x 2.20459 x qty" , 2],
+          ["3.) (L/304.8) x WT/IBS/FT x qty" , 3],
+          ["4.) {(W/1000) x (L/1000)} x WT/IBS/FT x QTY x 2.20459" , 4],
+          ["5.) {[(W/1000) x (L/1000)] / 2.9768 } x WT/IBS/FT x QTY x 2.20459 " , 5],
           ["6.) No Fomular" , 6 ]
            ], :include_blank => true  %>
           <%#= f.label :type_id ,"Type :" %>
           <%#= f.select :type_id ,[["WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
     </td>
     <td><%= f.label :price_fomular_id , "Select a Price Fomular :" %>
-      <%= f.select :price_fomular_id , [["price x weight" , 1], ["(L/6000) x qty x price" , 2]] , :include_blank => true %></td>
+      <%= f.select :price_fomular_id , [["1.) Price x weight" , 1], ["2.) (L/6000) x qty x price" , 2]] , :include_blank => true %></td>
   	</tr>
   	<tr>
   		<td>
@@ -31,7 +38,7 @@
         <div id="id_c" style="display:none"><%= f.input :thk_dia_um , as: :string , label:"Thk/Dia Unit measurement" %></td>
         </div>
       <td>
-        <div id="id_d" style="display:none;" ><%= f.input :wt_ibs_ft , as: :string, label: "Wt/ibs ft" , :size => 9 %></div>
+        <div id="id_d" style="display:none;" ><%= f.input :wt_ibs_ft ,as: :string, label: "Wt/ibs ft" , :size => 9 %></div>
       </td>
       <!-- style="display:none" -->
 	</tr>

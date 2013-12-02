@@ -38,7 +38,8 @@ class MaterialsController < ApplicationController
         format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
         format.json { render action: 'show', status: :created, location: @material }
       else
-        format.html { redirect_to new_material_path, notice: 'Material cannot save..' }
+        format.html { render action: 'new' 
+          flash.now[:alert] = 'Material cannot save..' }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end

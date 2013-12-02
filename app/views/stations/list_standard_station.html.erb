@@ -1,0 +1,44 @@
+<%#= render :text => @standard_project.to_json %>
+<div>Project Name : <a style="align:right;"><%= @standard_project.name %></a></div>
+<div>Project Code : <a style="align:right;"><%= @standard_project.project_code %></a></div>
+<div>Project Date : <a style="align:right;"><%= @standard_project.date.strftime("%d/%m/%Y") %></a></div>
+
+<hr>
+<table class="table table-bordered">
+	<% @standard_project.stations.each do |sp| %>
+	<thead>
+		<tr>
+			<th>Station Name : <u><%= sp.name %></u></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<table class="table table-bordered" >
+					<thead>
+						<tr>
+							<th></th>
+							<th>Title</th>
+							<th>Dimension</th>
+							<th>Date</th>
+							<th></th>
+						</tr>
+					</thead>
+					
+					</tbody>
+					<% sp.estimations.each do |estimation| %>
+						<tr>
+							<td><%= estimation.id %></td>
+							<td><%= estimation.title %></td>
+							<td><%= estimation.dimension %></td>
+							<td><%= estimation.date %></td>
+							<td><%= render "standard_remark_estimation" %></td>
+						</tr>
+					</tbody>
+					<% end %>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>

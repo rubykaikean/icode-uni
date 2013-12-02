@@ -5,7 +5,7 @@
   <title>IcodeUni</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "autocomplete-rails.js" %>
+  <%# `= javascript_include_tag "autocomplete-rails.js" %>
   <%= csrf_meta_tags %>
   <%= yield(:jquery_script) %>
 
@@ -35,7 +35,7 @@
 <body id="second-layout">
 
   <% if flash[:alert] %>
-    <div class="alert alert-success" data-dismiss="alert">
+    <div class="alert alert-error" data-dismiss="alert">
       <a href="#" class="alert-link">
        <%= flash.now[:alert] %>
        <button class="close" >&times;</button>

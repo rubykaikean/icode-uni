@@ -18,7 +18,7 @@
 		<% list_standard_stations.stations.each_with_index do |station , index| %>
 		<tr>
 			<td></td>
-			<td><%= check_box_tag "checkall",:id =>"checkall" %></td>
+			<td><%#= check_box_tag "checkall",:id =>"checkall" %></td>
 			<td><%= index + 1 %></td>
 			<td><%= station.name %></td>
 			<td></td>
@@ -30,7 +30,7 @@
 			<td colspan="4">
 			<table class="table table-bordered">
 					<tr>
-						<th>Estimation List</th>
+						<th>Estimation List<%= check_box_tag "checkall",:id =>"checkall" %></th>
 						<th>ID</th>
 						<th>Title</th>
 						<th>Dimension</th>
@@ -38,7 +38,7 @@
 					<% station.estimations.each do |estimation| %>
 					
 					<tr>
-						<td><%= check_box_tag "estimation_id[#{station.id}][#{estimation.id}]" , estimation.id ,false, :id=>"check_box_#{station.id}" %></td>
+						<td><%= check_box_tag "estimation_id[#{station.id}][#{estimation.id}]" , estimation.id ,false %></td>
 						<td><%= estimation.id %></td>
 						<td><%= estimation.title %></td>
 						<td><%= estimation.dimension %></td>
@@ -52,4 +52,20 @@
 </table>
 <% end %> <!-- simple form end -->
 
+<script type="text/javascript">
 
+$(document).ready(function (){
+
+$('#checkall').click(function(){
+  var checked_status = this.checked;
+  console.log(checked_status);
+  $(this).closest('table').find('input:checkbox').each(function(){
+    this.checked = checked_status;
+  });
+})
+
+
+});	
+
+
+</script>

@@ -88,9 +88,7 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.decimal  "dimension_h",      precision: 10, scale: 5
     t.decimal  "plate",            precision: 10, scale: 5
-    t.decimal  "wt_ibs_ft",        precision: 10, scale: 5
     t.string   "thk_dia"
     t.string   "dimension_w"
     t.string   "thk_dia_um"

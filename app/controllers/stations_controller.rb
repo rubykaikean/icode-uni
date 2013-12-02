@@ -88,7 +88,6 @@ class StationsController < ApplicationController
 
   def standard_station_estimation
       #render :text => params.to_json
-
       if params[:estimation_id].present?
         params[:estimation_id].each do |station_key , station_value|
           station = Station.find(station_key)
@@ -109,9 +108,10 @@ class StationsController < ApplicationController
 
   end
 
-  def create_new_estimation
-              
-  end 
+  def list_standard_station
+      #render :text => params[:standard_station_id]
+      @standard_project = Project.find(params[:standard_station_id])
+  end
 
 
 

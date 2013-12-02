@@ -55,8 +55,8 @@ IcodeUni::Application.routes.draw do
     end
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
-      get "standard_project_station"  
-      get "standard_station_estimation"    
+      get "list_standard_station"  
+      get "standard_station_estimation"
     end
   end
 

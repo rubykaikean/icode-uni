@@ -6,8 +6,8 @@ class PriceControlItemsController < ApplicationController
   # GET /price_control_items
   # GET /price_control_items.json
   def index
-    @price_control_items = PriceControlItem.all
-    @price_control = PriceControl.find(params[:price_control_id])
+    @price_control = PriceControlItem.all
+    #@price_control_items = PriceControl.find(params[:price_control_id])
   end
 
   # GET /price_control_items/1
@@ -17,7 +17,7 @@ class PriceControlItemsController < ApplicationController
 
   # GET /price_control_items/new
   def new
-    @price_control = PriceControl.find(params[:price_control_id])
+    #@price_control = PriceControl.find(params[:price_control_id])
     @price_control_item = PriceControlItem.new
   end
 

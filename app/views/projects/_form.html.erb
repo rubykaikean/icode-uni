@@ -32,13 +32,14 @@
 
    <br>
    <br>
-   <br>
-
-  <%= f.check_box(:standard) %>
-  <%= f.label(:standard, "standard") %>
-  <%= f.check_box(:non_standard) %>
-  <%= f.label(:non_standard, "Non standard")   %>
-
+  <% if action_name == "edit" %>
+      ***Type Cannot Change***
+  <% else %>
+    <%= f.check_box(:standard) %>
+    <%= f.label(:standard, "standard") %>
+    <%= f.check_box(:non_standard) %>
+    <%= f.label(:non_standard, "Non standard") %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
