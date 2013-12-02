@@ -14,7 +14,7 @@ PDFKit.configure do |config|
 #     :disable_smart_shrinking => false
 #   }
 
-  config.wkhtmltopdf = '/home/khong/.rvm/gems/ruby-2.0.0-p247@icode-uni/bin/wkhtmltopdf'
+  #config.wkhtmltopdf = '/home/khong/.rvm/gems/ruby-2.0.0-p247@icode-uni/bin/wkhtmltopdf'
   config.root_url = "http://localhost:3000/"
 
   config.default_options = {
