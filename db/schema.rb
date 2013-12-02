@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "thk_dia_um"
     t.string   "material_code"
     t.integer  "price_fomular_id"
+    t.decimal  "dimension_h",      precision: 10, scale: 5
+    t.decimal  "wt_ibs_ft",        precision: 10, scale: 5
   end
 
   add_index "materials", ["material_code"], name: "index_materials_on_material_code", unique: true, using: :btree
