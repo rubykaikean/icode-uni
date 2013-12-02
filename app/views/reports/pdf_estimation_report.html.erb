@@ -1,6 +1,11 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
+<% array = [] %>
+<% array_total = [] %>
+<% array_price_total = [] %>
+<% final_total = [] %>
+<% array_price_total_ton = [] %>
 
 
 <%# index = 0 %>
@@ -19,7 +24,7 @@
 	<%# @estimation.each do |estimation| %>
 
 	<tr>
-		<th width="50%" align="left">Client: <%= estimation.project.client.name rescue'-'%></th>
+		<th width="50%" align="left">Client: <%#= estimation.project.client.name rescue'-'%><%= estimation.station.project.name rescue'-'%></th>
 		<th width="50%" align="left">Drawing No:</th>
 	</tr>
 	<tr>
@@ -118,8 +123,8 @@
 			<td><%= item_list.uom %></td>
 			<td>
 	        </td>	
-			<td><%#= item_list. %></td>
-			<td><%#= item_list. %></td>	
+			<td><%= item_list.unit_price %></td>
+			<td><%= two_precision(estimation_item.price_total) rescue'-' %></td>	
 			<td rowspan="<%= estimation.estimation_item.count - 29  %>">
 			<%#= estimation_remarks[index] %>
 				<%#= my_helper(estimation)[index] %></td>
