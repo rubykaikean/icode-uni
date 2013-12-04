@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <%#= f.notice %>
   <%#= render :text => params[:price_control_id] %>
-  <%= f.input "price_control_id", as: :hidden ,:input_html => {:value => params[:price_control_id]} %>
+  <%#= f.input "price_control_id", as: :hidden ,:input_html => {:value => params[:price_control_id]} %>
 
 
   <div class="inputs">
@@ -10,9 +10,9 @@
     <table style="width:100%;" class="table table-bordered">
       <tr>
           <td>
+          <%#= f.association :material, label: "Name/H/W/WT)" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
           
-          
-          <%= f.association :material, label: "Material Code (Name/H/W/WT)" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+          <%= f.association :material, label: "Name" , collection: Material.all.map {|r| [r.custom_name , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
        
           </td>
 
@@ -20,8 +20,8 @@
             <%= f.input :new_unit_price , as: :string %>
           </td>
           <td>
-            <div id="datetimepicker5" class="input-append">
-          <%= f.input :new_eff_date , "data-format"=>"dd/MM/yyyy",as: :string  %>
+            <div id="datetimepicker4" class="input-append">
+          <%= f.input :new_eff_date , "data-format"=>"dd-MM-yyyy",as: :string  %>
            <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar">
             </i></span></div>

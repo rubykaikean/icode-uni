@@ -20,6 +20,7 @@ class SpreadsheetsController < ApplicationController
 
 	def read_material_file
 		material = Spreadsheet.open "#{Rails.root.to_s}/public/material_data_fomuler03102013.xls"
+		# material = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing2.xls"
 		@sheet1 = material.worksheet 0
 		# @spreadsheet = Material.new
 		#load_file
