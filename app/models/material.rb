@@ -8,7 +8,7 @@ class Material < ActiveRecord::Base
 	has_many :price_control_items, :dependent => :destroy
 
 	validates :name , :category_id , :price_fomular_id,  presence: :true
-	validates :material_code , uniqueness: { case_sensitive: true, message: "must be unique "}
+	# validates :material_code , uniqueness: { case_sensitive: false, message: "must be unique "}
 
 	# validates :name, uniqueness: { case_sensitive: false }
 	# validates_uniqueness_of :material_code

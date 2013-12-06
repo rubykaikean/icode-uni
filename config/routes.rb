@@ -74,6 +74,7 @@ IcodeUni::Application.routes.draw do
   
 
   resources :materials do
+    get :autocomplete_material_name, :on => :collection
     member do
       get "estimation_item"
     end

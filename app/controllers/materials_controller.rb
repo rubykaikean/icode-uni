@@ -1,13 +1,14 @@
 class MaterialsController < ApplicationController
   before_action :check_role
   before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
+  autocomplete :material, :name
 
   # GET /materials
   # GET /materials.json
   def index
-    #@search = Material.search(params[:q])
-    #@materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-    @materials = Material.all
+    @search = Material.search(params[:q])
+    @materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    #@materials = Material.all
     @create_material = Material.new
   end
 
