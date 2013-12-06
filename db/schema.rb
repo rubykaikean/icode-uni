@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20131001063703) do
     t.string   "material_code"
     t.integer  "price_fomular_id"
     t.integer  "category_id"
+
   end
 
   add_index "materials", ["material_code"], name: "index_materials_on_material_code", unique: true, using: :btree

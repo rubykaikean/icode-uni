@@ -1,5 +1,4 @@
 class Material < ActiveRecord::Base
-	before_save :generate_material_code
 	# before_save :generate_material_code
 	belongs_to :estimation
 
@@ -8,7 +7,10 @@ class Material < ActiveRecord::Base
 	has_many :price_control_items, :dependent => :destroy
 
 	validates :name , :category_id , :price_fomular_id,  presence: :true
-	# validates :material_code , uniqueness: { case_sensitive: false, message: "must be unique "}
+
+	#validates :material_code , uniqueness: { case_sensitive: true, message: "must be unique "}
+
+	# { case_sensitive: true, message: "must be unique "}
 
 	# validates :name, uniqueness: { case_sensitive: false }
 	# validates_uniqueness_of :material_code
@@ -30,32 +32,36 @@ class Material < ActiveRecord::Base
 	ROLE = [
 	    InventoryManagementSystem::MATERIAL
 	]
-	# private
-	# material_code = name / H / W / WT
-	def generate_material_code
-		if dimension_h.nil?	#name / - / W / WT
-		  	self.material_code = "#{name} - #{dimension_w.to_s} - #{wt_ibs_ft.to_s}"
-			
-		elsif dimension_w.nil? #name / H / - / WT
-		  	self.material_code = "#{name} - #{dimension_h.to_s} --- #{wt_ibs_ft.to_s}"
 
-		elsif wt_ibs_ft.nil? && dimension_h.nil? #name / - / W / -
-			self.material_code = "#{name} - - - #{dimension_w.to_s} - -"
-			
-		elsif wt_ibs_ft.nil? && dimension_w.nil? #name / h / - / -
-			self.material_code = "#{name} - #{dimension_h.to_s} - - - - "
-
-		elsif dimension_h.nil? && dimension_w.nil?
-			self.material_code = "#{name} - - - - - #{wt_ibs_ft.to_s} "
-
-		elsif dimension_w.nil? && dimension_h.nil? && wt_ibs_ft.nil?
-		  	self.material_code = "#{name} - - - - - - "			
-
-		else
-		  	self.material_code = "#{name} - #{dimension_h.to_s} - #{dimension_w.to_s} - #{wt_ibs_ft.to_s}"
-		end
-		# return material_params[:material_code]
+	def custom_name 
+	  "#{name} - #{dimension_h} - #{dimension_w} - #{wt_ibs_ft}"
 	end
+	# private
+	# material_code = name - H - W - WT
+	# def generate_material_code
+	# 	if dimension_h.nil?	#name / - / W / WT
+	# 	  	self.material_code = "#{name} _ #{dimension_w.to_s} _ #{wt_ibs_ft.to_s}"
+			
+	# 	elsif dimension_w.nil? #name / H / - / WT
+	# 	  	self.material_code = "#{name} _ #{dimension_h.to_s} _-_ #{wt_ibs_ft.to_s}"
+
+	# 	elsif wt_ibs_ft.nil? && dimension_h.nil? #name / - / W / -
+	# 		self.material_code = "#{name} _ - _ #{dimension_w.to_s} _ -"
+			
+	# 	elsif wt_ibs_ft.nil? && dimension_w.nil? #name / h / - / -
+	# 		self.material_code = "#{name} _ #{dimension_h.to_s} _ - _ - "
+
+	# 	elsif dimension_h.nil? && dimension_w.nil? #name / - / - / WT
+	# 		self.material_code = "#{name} _ - _ - _ #{wt_ibs_ft.to_s} "
+
+	# 	elsif dimension_w.nil? && dimension_h.nil? && wt_ibs_ft.nil? #name / - / - / -
+	# 	  	self.material_code = "#{name} _ - _ - _ - "			
+
+	# 	else
+	# 	  	self.material_code = "#{name} _ #{dimension_h.to_s} _ #{dimension_w.to_s} _ #{wt_ibs_ft.to_s}"
+	# 	end
+	# 	# return material_params[:material_code]
+	# end
 
 end
 
