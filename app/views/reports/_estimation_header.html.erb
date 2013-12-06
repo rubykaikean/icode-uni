@@ -1,0 +1,22 @@
+<table class="text-left" width="100%">
+	<%# @estimation.each do |estimation| %>
+	<% estimation = @estimation %>
+
+	<tr>
+		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
+		<th width="50%" align="left">Drawing No:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
+		<th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
+	</tr>
+	<tr>
+		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
+		<th width="50%" align="left">Issued by:</th>
+	</tr>
+	<tr>
+		<th width="50%" align="left"></th>
+		<th width="50%" align="left">Weight: <u id="total_weight"></u>Ton(s)</th>
+	</tr>
+	
+</table>

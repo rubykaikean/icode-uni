@@ -8,8 +8,6 @@ class ReportsController < ApplicationController
 
   def list_estimation_report
     @estimation_item = Estimation.all
-    @search = Estimation.search(params[:q])
-    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   def pdf_estimation_report
