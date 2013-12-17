@@ -1,13 +1,15 @@
 class PriceControlsController < ApplicationController
   before_filter :authenticate_user!
   before_action :check_role
-  # autocomplate :
   before_action :set_price_control, only: [:show, :edit, :update, :destroy]
+  autocomplete :price_control, :reference
 
   # GET /price_controls
   # GET /price_controls.json
   def index
-    @price_controls = PriceControl.all
+    # @price_controls = PriceControl.all
+    @search = PriceControl.search(params[:q])
+    @price_controls = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /price_controls/1

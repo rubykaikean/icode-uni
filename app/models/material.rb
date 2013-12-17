@@ -7,7 +7,7 @@ class Material < ActiveRecord::Base
 	has_many :price_control_items, :dependent => :destroy
 
 	validates :name , :category_id , :price_fomular_id,  presence: :true
-	validates :material_code , uniqueness: true
+	#validates :material_code , uniqueness: { case_sensitive: true, message: "must be unique "}
 	# { case_sensitive: true, message: "must be unique "}
 	before_save :generate_material_code
 

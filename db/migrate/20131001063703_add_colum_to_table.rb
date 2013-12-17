@@ -11,5 +11,7 @@ class AddColumToTable < ActiveRecord::Migration
 
   	add_column :price_control_items , :material_id , :integer
 
+  	add_column :materials , :category_id , :integer
+
   end
 end

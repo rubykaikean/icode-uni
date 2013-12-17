@@ -2,7 +2,6 @@
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
 
-
 <%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
@@ -14,12 +13,11 @@
 	  <div style="page-break-before: always;"> 	
 	<% end %>
 
-
 <table class="text-left" width="100%">
 	<%# @estimation.each do |estimation| %>
 
 	<tr>
-		<th width="50%" align="left">Client: <%= estimation.project.client.name rescue'-'%></th>
+		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
 		<th width="50%" align="left">Drawing No:</th>
 	</tr>
 	<tr>
@@ -32,7 +30,7 @@
 	</tr>
 	<tr>
 		<th width="50%" align="left"></th>
-		<th width="50%" align="left">Weight: <%#= two_precision(weight.sum) %>Ton(s)</th>
+		<th width="50%" align="left">Weight: <u id="total_weight"></u>Ton(s)</th>
 	</tr>
 	
 </table>
@@ -81,7 +79,7 @@
 <table class="text-left" width="100%">
 
 	<tr>
-		<th width="50%" align="left">Client: <%= estimation.client.name rescue'-'%></th>
+		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
 		<th width="50%" align="left">Drawing No:</th>
 	</tr>
 	<tr>
@@ -118,8 +116,8 @@
 			<td><%= item_list.uom %></td>
 			<td>
 	        </td>	
-			<td><%#= item_list. %></td>
-			<td><%#= item_list. %></td>	
+			<td><%#= item_list.unit_price %></td>
+			<td><%#= two_precision(estimation_item.price_total) rescue'-' %></td>	
 			<td rowspan="<%= estimation.estimation_item.count - 29  %>">
 			<%#= estimation_remarks[index] %>
 				<%#= my_helper(estimation)[index] %></td>
@@ -152,27 +150,8 @@ no record found
 
 
 <style>
-<<<<<<< HEAD
-th
-{
-font-family:"Times New Roman";
-font-size:12px;
-}
 
-td
-{
-font-family:"Times New Roman";
-font-size:12px;
-}
-
-tr
-{
-font-family:"Times New Roman";
-font-size:12px;
-}
-=======
-
-  table{
+ table{
     width:100%;
   }
   
@@ -219,5 +198,5 @@ font-size:12px;
   tbody tr {
     border-top:2pt solid white;
  }
->>>>>>> aca98822571c809595525115c68abc1e7180d1d7
+
 </style>

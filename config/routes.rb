@@ -1,7 +1,9 @@
 IcodeUni::Application.routes.draw do
   
 
-  resources :price_controls
+  resources :price_controls do
+    get :autocomplete_price_control_reference, :on => :collection
+  end
 
   resources :price_control_items do
     # get :autocomplete_materials_material_code , :on => :collection
@@ -75,7 +77,7 @@ IcodeUni::Application.routes.draw do
   
 
   resources :materials do
-    get :autocomplete_name, :on => :collection
+    get :autocomplete_material_name, :on => :collection
     member do
       get "estimation_item"
     end
