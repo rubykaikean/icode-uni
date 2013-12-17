@@ -1,6 +1,5 @@
 class Station < ActiveRecord::Base
 
-	
 	belongs_to :project
 
 	has_many :estimations
@@ -21,7 +20,7 @@ class Station < ActiveRecord::Base
             @new_estimation = Estimation.new
 
             @new_estimation = @estimation.dup  #duplicate
-
+            @new_estimation.save!
             # logger.debug @estimation.title
 			# logger.debug @new_estimation
 			# logger.debug @estimation
@@ -48,7 +47,7 @@ class Station < ActiveRecord::Base
 	   #    @new_estimation.forming = @estimation.forming
 	   #    @new_estimation.misc = @estimation.misc
 	   #    @new_estimation.jkkp = @estimation.jkkp
-	      	@new_estimation.save!
+	      	
 			# return @new_estimation
 	end
 

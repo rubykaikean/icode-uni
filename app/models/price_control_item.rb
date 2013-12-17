@@ -1,9 +1,11 @@
 class PriceControlItem < ActiveRecord::Base
 
+	scope :desc , order("created_at DESC")
+
 	belongs_to :material
 	belongs_to :price_control
 
-	validates :material , presence: :true
+	validates :material ,:new_unit_price , :new_eff_date, presence: :true
 	validates :new_unit_price , numericality: :true
 	
 	
@@ -14,6 +16,13 @@ class PriceControlItem < ActiveRecord::Base
 	# 	end
 	# end
 
+	ROLE = [
+	    InventoryManagementSystem::PRICE_CONTROL_ITEM
+	    # InventoryManagementSystem::CLIENT_ADD,
+	    # InventoryManagementSystem::CLIENT_EDIT,
+	    # InventoryManagementSystem::CLIENT_DELETE
+
+	]
 
 
 

@@ -38,38 +38,9 @@
         </ul>
       
     </ul>
-
-
-
-    <ul class="nav nav-pills">
-      <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Section Two
-            <b class="caret"></b>
-            </a>
-
-            <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-            <%# if roles.include?(InventoryManagementSystem::SALES_TAX_EXEMPTION_MENU) %>
-            <a tabindex="-1" href="#">-</a>
-            <ul class="dropdown-menu">
-              
-                <%# if roles.include?(InventoryManagementSystem::SALES_TAX_EXEMPTION_TRANSACTION_VALID) %>
-                <li class="text_gray" style="width:210px;">Section selection</li><%#= link_to "Transactions - Valid", sales_tax_exemptions_path, :class => "show_without_refresh_page_1600x900", "data-fancybox-type" => "iframe" %>
-                <%# else %>
-                  <!-- <li class="text_gray">Transactions - Valid</li> -->
-                <%# end %>
-                <li class="text_gray" style="width:210px;">Section selection</li>
-            </li>
-          <%# end %>
-            </ul>
-            <!-- end of submenu -->
-        </ul>
-      </li>
-    </ul>
     <!-- end of menu -->
 
-     <ul class="nav nav-pills">
+    <ul class="nav nav-pills">
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               Price Control
@@ -80,34 +51,8 @@
         </ul>
       </li>
     </ul>
-
-      <ul class="nav nav-pills">
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Section Four
-              <b class="caret"></b>
-              </a>
-          <ul class="dropdown-menu">
-              <%# if roles.include?(InventoryManagementSystem::PR_MENU) %>
-                <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Section Four - One</a>
-                 <ul class="dropdown-menu">
-                  <%# if roles.include?(InventoryManagementSystem::INVENTORY_TRANSACTION) %>
-                   <li class="text_gray" style="width:210px;">Section selection</li>
-                   <li class="text_gray" style="width:210px;">Section selection</li><%#= link_to "Inventory Transactions & Histories", inventory_histories_path, :class => "show_without_refresh_page_1600x900", "data-fancybox-type" => "iframe" %>
-                  <%# else %>
-                    <!-- <li class="text_gray" style="width:210px;">Inventory Transactions & Histories</li> -->
-                  <%# end %>
-                
-                </li>
-                <%# end %>
-                </ul>
-            </ul>
-          </li>
-        </ul>
-
-
-      <ul class="nav nav-pills">
+    
+    <ul class="nav nav-pills">
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               Report

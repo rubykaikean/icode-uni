@@ -37,7 +37,7 @@
     <td> - </td>
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_ADD) %></td>
 
-    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_SHOW) %></td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_SHOW) %></td>
 
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT_EDIT) %></td>
 
@@ -92,12 +92,29 @@
 
         <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::DRAWING_PRINT) %></td>
 
-    </tr>    
+</tr>    
+
+<!--<tr>
+         <td></td>
+
+        <td><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_ADD) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_SHOW) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_EDIT) %></td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_DELETE) %> </td>
+
+        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::DRAWING_PRINT) %></td>
+
+</tr> -->
 
 <tr>
-    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL) %> Price Control </td>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ITEM) %> Price Control </td>
     <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
-    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ADD) %></td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %></td>
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_SHOW) %></td>
 

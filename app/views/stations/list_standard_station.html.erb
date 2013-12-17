@@ -1,9 +1,14 @@
 <%#= render :text => @standard_project.to_json %>
+
 <div>Project Name : <a style="align:right;"><%= @standard_project.name %></a></div>
 <div>Project Code : <a style="align:right;"><%= @standard_project.project_code %></a></div>
 <div>Project Date : <a style="align:right;"><%= @standard_project.date.strftime("%d/%m/%Y") %></a></div>
-
+<div><%= link_to "Back" , list_standard_project_projects_path , :class=> "btn" %>
+<div style="float: right;"><%= link_home_button %></div>
+</div>
 <hr>
+
+<% if @standard_project.present? %>
 <table class="table table-bordered">
 	<% @standard_project.stations.each do |sp| %>
 	<thead>
@@ -14,26 +19,37 @@
 	<tbody>
 		<tr>
 			<td>
-				<table class="table table-bordered" >
+				<table class="table table-bordered">
 					<thead>
-						<tr>
-							<th></th>
-							<th>Title</th>
-							<th>Dimension</th>
-							<th>Date</th>
-							<th></th>
-						</tr>
+					<tr>
+						<th>No.</th>
+						<th>Title</th>
+						<th>Dimension</th>
+						<th>Date</th>
+						<th></th>
+					</tr>
 					</thead>
-					
-					</tbody>
-					<% sp.estimations.each do |estimation| %>
-						<tr>
-							<td><%= estimation.id %></td>
-							<td><%= estimation.title %></td>
-							<td><%= estimation.dimension %></td>
-							<td><%= estimation.date %></td>
-							<td><%= render "standard_remark_estimation" %></td>
-						</tr>
+					<% sp.estimations.each_with_index do |estimations , index| %>
+					<tbody>
+					<tr>
+						<td><%= index + 1 %></td>
+						<td><%= estimations.title rescue'-' %></td>
+						<td><%= estimations.dimension rescue'-' %></td>
+						<td><%= estimations.date rescue'-' %></td>
+						<td><%= render "standard_remark_estimation" %>
+							<% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
+							<%= link_to "Edit Estimation" ,  edit_estimation_path(estimations , :station_id => estimations.station_id), :class=>"btn" %>
+							<% else %>
+							<button class="btn">Edit Estimation</button>
+							<% end %>
+
+							<%= link_to "Estimations Item Detail" , estimation_items_path(:estimation_id => estimations ) , :class=>"btn" %>
+							<% if roles.include?(InventoryManagementSystem::DRAWING) %>
+							<%= link_to "Drawing" , drawings_path(:estimation_id => estimations) , :class=>"btn" %></td>
+							<% else %>
+							<button class="btn">Drawing</button>
+							<% end %>
+					</tr>
 					</tbody>
 					<% end %>
 				</table>
@@ -42,3 +58,10 @@
 	</tbody>
 	<% end %>
 </table>
+
+<% else %>
+
+no station record found
+
+<% end %>
+

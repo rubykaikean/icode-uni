@@ -1,33 +1,29 @@
-
-
+<%= render :text => params.to_json %>
 <%#= render :text => params[:estimation].to_json %>
 
 <!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
-  <%= f.input "station_id" , :as => :hidden , :input_html=>{:value => params[:estimation]}, :label => false %>
-  <%#= f.input_field "estimation_id", :type => "hidden", :input_html => { :value => params[:estimation_id]} %>
+  <%= f.input "station_id" , as: :hidden ,:input_html=>{:value => params[:station_id]}, :label => false %>
+
+  <% if action_name == "Edit Estimation" %>
+    <%= f.input_field "station_id", :type => "hidden", :input_html => { :value => params[:station_id]} %>
+  <% end %>
+  
   <div class="inputs">
   <table class="table table-striped">
     <th>
       <td>
-          <%#= f.label :client %><%#= f.select :client_id , Client.all.map {|r| [r.name ,r.id]} , :include_blank=>true %>
           <%= f.input :title %>
-        
       </td>
       <td>
           <%= f.input :dimension %>
           <%#= f.input :drawing_no_id %>
       </td>
       <td>
-          <div id="datetimepicker4" class="input-append">
-          <%= f.input :date , "data-format"=>"yyyy-MM-dd"%>
-           <span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-            </i>
-          </span>
-          </div> 
-          <%#= f.input :issued_by %>
+            <div class="dp2 date">
+            <%= f.input :date , as: :string %><span class="add-on"></span>
+            </div>
       </td>
     </th>
   </table>

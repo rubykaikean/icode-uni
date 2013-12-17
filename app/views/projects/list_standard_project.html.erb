@@ -1,11 +1,29 @@
 <% if @list_standard_projects.present? %>
 
 
-<div><u><h3>Listing Standard Project</h3></u></div>
-<hr>
+<div class="page-header">
+  <h3>Standard Project Listing</h3>
+
+<% if roles.include?(InventoryManagementSystem::PROJECT_ADD) %>
+  <%= link_to "New", new_project_path, :class => 'btn btn-primary' %> 
+<% else %>
+  <button type="button" class="btn">New</button>            
+<% end %>
+<div style="float: right; "><%= link_home_button %></div> 
+</div>
+
+
+
+<div style="float: left;">
+<%= search_form_for @list_standard_projects_search do |f| %> 
+
+  <%= f.text_field :name_cont, "data-autocomplete" => autocomplete_project_name_projects_path, :class => "input-medium search-query", :placeholder => "Project Name" %>
+  <%= f.submit "Search", :class => "btn"%>
+<% end %> 
+</div>
 
 <div style="float: right;"><%= will_paginate @list_standard_projects, :class => "pagination" %></div>
-<div align="right"><%= link_home_button %></div>
+
 <%#= render :text => @list_standard_projects.to_json %>
 
 <table class="table table-bordered">
@@ -28,13 +46,29 @@
       <td><%= standard.project_code %></td>
       <td><%= standard.client.name %></td>
       <td><%= standard.date.strftime("%d-%m-%Y") %></td>
-      <td><%= link_to "Detail", list_standard_station_stations_path(:standard_station_id => standard) ,  :class=>'btn btn-mini btn-success' %>
-        <%= link_to 'Destroy', standard , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
+      <td>
+
+        <% if roles.include?(InventoryManagementSystem::PROJECT_SHOW) %>
+        <%= link_to "Detail", list_standard_station_stations_path(:standard_station_id => standard) ,  :class=>'btn btn-mini btn-success' %>
+        <% else %>
+          <button type="button" class="btn btn-mini">Detail</button>
+        <% end %>
+
+        <% if roles.include?(InventoryManagementSystem::PROJECT_EDIT) %>
+          <%= link_to "Edit", edit_project_path(standard), :class=> "btn btn-mini" %>
+        <% else %>
+          <button class="btn btn-mini">Edit</button>
+        <% end %>        
+
+        <% if roles.include?(InventoryManagementSystem::PROJECT_DELETE) %>
+          <%= link_to 'Destroy', project_path(standard) , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%></td>
+        <% else %>
+          <button type="button" class="btn btn-mini">Delete</button>
+        <% end %>
     </tr>
   </tbody>
   <% end %>
 </table>
-
 
 <% else %>
 no standard record found

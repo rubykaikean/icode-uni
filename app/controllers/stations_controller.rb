@@ -87,7 +87,7 @@ class StationsController < ApplicationController
   end
 
   def standard_station_estimation
-      #render :text => params.to_json
+       # render :text => params.to_json
       if params[:estimation_id].present?
         params[:estimation_id].each do |station_key , station_value|
           station = Station.find(station_key)
@@ -96,14 +96,17 @@ class StationsController < ApplicationController
           new_station.name = station.name
           new_station.project_id = params[:project_id]
           new_station.save!
-
+          station_id = new_station.id
           # Running Estimation duplication
           # logger.debug
           # use for create  
-          StationService.new(station_value).create_estimation
+          StationService.new(station_value , station_id).create_estimation
 
-        end  #end of station
+          end  #end of station
+      else
+          no record found
       end  #end estimation_id
+      
       redirect_to list_standard_project_projects_path
 
   end
@@ -111,6 +114,7 @@ class StationsController < ApplicationController
   def list_standard_station
       #render :text => params[:standard_station_id]
       @standard_project = Project.find(params[:standard_station_id])
+      
   end
 
 

@@ -51,7 +51,7 @@ class EstimationItemsController < ApplicationController
     # render :text => estimation_item_params.to_json
     # # render :text => params[:estimation_item].to_json
     respond_to do |format|
-      if @estimation_item.save
+      if @estimation_item.save!
         # if params[:commit] == "submit_and_new"
         format.html { 
           redirect_to new_estimation_item_path(:estimation_id => params[:estimation_item][:estimation_id]), notice: 'Estimation item #{:estimation_id}was successfully created.' 

@@ -51,7 +51,8 @@ IcodeUni::Application.routes.draw do
   resources :stations do
       get :autocomplete_project_name, :on => :collection
     member do
-      get "standard_station" 
+      get "standard_station"
+      get "edit_estimation"
     end
     collection do
       match 'search' => 'stations#search', :via => [:get, :post], :as => :search
@@ -61,19 +62,20 @@ IcodeUni::Application.routes.draw do
   end
 
 
-  resources :products do
-    get :autocomplete_project_name, :on => :collection
-    collection do
-      get "product_station"
-      get "show_standard_project"
-      get "show_standard_station"
-      get "show_standard_estimation"
-      get "add_standard_estimation"
-    end
-  end
+  # resources :products do
+  #   get :autocomplete_project_name, :on => :collection
+  #   collection do
+  #     get "product_station"
+  #     get "show_standard_project"
+  #     get "show_standard_station"
+  #     get "show_standard_estimation"
+  #     get "add_standard_estimation"
+  #   end
+  # end
   
 
   resources :materials do
+    get :autocomplete_name, :on => :collection
     member do
       get "estimation_item"
     end

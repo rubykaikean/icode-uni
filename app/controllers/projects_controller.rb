@@ -10,17 +10,17 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @search = Project.search(params[:q])
-    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5).order("name DESC")
   end
 
   def list_non_standard_project
-    @search = Project.non_standard_type.search(params[:q])
-    @list_non_standard_projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    @list_non_standard_project_search = Project.non_standard_type.search(params[:q])
+    @list_non_standard_projects = @list_non_standard_project_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   def list_standard_project
-    @search = Project.standard_type.search(params[:q])
-    @list_standard_projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    @list_standard_projects_search = Project.standard_type.search(params[:q])
+    @list_standard_projects = @list_standard_projects_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /projects/1
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'project was successfully updated.' }
+        format.html { redirect_to projects_path, notice: 'project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

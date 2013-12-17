@@ -9,12 +9,7 @@ class EstimationsController < ApplicationController
   # GET /estimations.json
   def index
     @search = Estimation.search(params[:q])
-    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-    # @estimations = Estimation.all
-
-    # a = Estimation.where(:station_id => params[:id])
-    # @show_station = a.all
-    #@estimation_station = Station.find(params[:id]) 
+    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5).order('title DESC')
   end
 
   # GET /estimations/1
@@ -57,8 +52,7 @@ class EstimationsController < ApplicationController
     # render json: estimation_params
     
     #@estimation.estimation_items.build(params[:estimation_items])
-    #Estimation.generation_new_item(params[:estimation])
-    
+    #Estimation.generation_new_item(params[:estimation])  
     respond_to do |format|
       if @estimation.update(estimation_params)
         format.html { redirect_to estimations_path, notice: 'Estimation was successfully updated.' }

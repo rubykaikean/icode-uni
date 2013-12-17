@@ -10,7 +10,8 @@ class InventoryManagementSystem < ActiveRecord::Base
   PROJECT                     = 3
   STATION                     = 4
   ESTIMATION                  = 5
-  PRICE_CONTROL               = 6
+  ESTIMATION_ITEM             = 76  
+  PRICE_CONTROL_ITEM          = 6
   DRAWING                     = 7
 
   #ACTION
@@ -38,14 +39,19 @@ class InventoryManagementSystem < ActiveRecord::Base
   ESTIMATION_EDIT             = 52
   ESTIMATION_DELETE           = 53
 
-  PRICE_CONTROL_ADD           = 60
-  PRICE_CONTROL_SHOW          = 61
-  PRICE_CONTROL_EDIT          = 62
-  PRICE_CONTROL_DELETE        = 63
+  PRICE_CONTROL_ITEM_ADD      = 60
+  PRICE_CONTROL_ITEM_SHOW     = 61
+  PRICE_CONTROL_ITEM_EDIT     = 62
+  PRICE_CONTROL_ITEM_DELETE   = 63
 
   DRAWING_ADD                 = 70
   DRAWING_DELETE              = 71
   DRAWING_PRINT               = 72
+
+  ESTIMATION_ITEM_ADD         = 73
+  ESTIMATION_ITEM_SHOW        = 74
+  ESTIMATION_ITEM_EDIT        = 77 #until this number
+  ESTIMATION_ITEM_DELETE      = 75
 
 
 

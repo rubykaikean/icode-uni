@@ -83,7 +83,7 @@ class DrawingsController < ApplicationController
     # #if params[:pr_ids].present?
     # #@drawing.photo = params[:drawing][:photo]
 
-       @pdf_drawing_picture = Drawing.find(params[:drawing])
+      @pdf_drawing_picture = Drawing.find(params[:drawing])
       html = render_to_string(:layout => false , :action => "pdf_drawing_pic.html.erb")
           @kit = PDFKit.new(html)
           send_data(@kit.to_pdf, :filename => "pdf_#{@pdf_drawing_picture.name}.pdf", 

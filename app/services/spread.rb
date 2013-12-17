@@ -1,38 +1,43 @@
-class Spread
+class SpreadSheetsService
 	#include Roo
 
 # 	def location
 # 		book = Spreadsheet.open "#{Rails.root.to_s}/public/Materials.xls"
 # 	end
 
-	def initialize
-		book = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing.xls"
-		# open_spreadsheet(book)
-		read_file(book)
+	def initialize(value)
+		@value = value
+		# book = Spreadsheet.open "#{Rails.root.to_s}/public/Materials_testing.xls"
+		# # open_spreadsheet(book)
+		# create_spreadsheets(book)
 	end
 
-	def read_file(book)
-		book = book1
-		sheet1 = book1.worksheet 0
+	# def create_spreadsheets(book)
+	# 	book = book1
+	# 	sheet1 = book1.worksheet 0
 
-		sheet1.each do |row|
-			#id = row[0]
-			name = row[1]
-			#created_id = row[2]
-			#updated_id = row[3]
-			estimation_id = row[4]
-			category_id = row[5]
-			dimension_h = row[6]
-			dimension_w = row[7]
-			plate = row[8]
-			wt_ibs_ft = row[9]
-			thk_dia = row[10]
-			puts name
-			puts estimation_id
-			puts category_id
-		end
+	# 	sheet1.each do |row|
+	# 		#id = row[0]
+	# 		name = row[1]
+	# 		#created_id = row[2]
+	# 		#updated_id = row[3]
+	# 		estimation_id = row[4]
+	# 		category_id = row[5]
+	# 		dimension_h = row[6]
+	# 		dimension_w = row[7]
+	# 		plate = row[8]
+	# 		wt_ibs_ft = row[9]
+	# 		thk_dia = row[10]
+	# 		puts name
+	# 		puts estimation_id
+	# 		puts category_id
+	# 	end
+	# end
+
+	def create_spreadsheets
+		@value
 	end
-
+end
 	# def open_spreadsheet(book)
  #      case Book.extname(book.path)
  #        when ".csv" then Csv.new(book.path, nil, :ignore)
@@ -76,7 +81,7 @@ class Spread
 # 		   #book.write '/path/to/output/excel-file.xls'
 # 	end
 
-end
+
 
 
 
@@ -111,10 +116,3 @@ end
 
 
 # workbook = RubyXL::Parser.parse("#{Rails.root.to_s}/public/Materials_testing.xls")
-
-# workbook.worksheet[1].extract_data
-# workbook.worksheet[9].extract_data
-# workbook.worksheet[7].extract_data
-# workbook.worksheet[8].extract_data
-# workbook.worksheet[10].extract_data
-# workbook.worksheet[6].extract_data

@@ -51,14 +51,19 @@ $(document).ready(function () {
         //"bInfo": false,   //exp :showing 1 of 15 pages 
     
 
-    $(function() {
-        $('[data-behaviour~=datepicker]').datepicker();
-        $('#datetimepicker4').datetimepicker({
-          pickTime: false
-        });
-        $('#datetimepicker5').datetimepicker({
-            pickTime: false
-        });
+    // $(function() {
+    //     $('[data-behaviour~=datepicker]').datepicker();
+    //     $('#datetimepicker4').datetimepicker({
+    //       pickTime: false
+    //     });
+    //     $('#datetimepicker5').datetimepicker({
+    //         pickTime: false
+    //     });
+    // });
+
+    $('.dp2').datepicker({
+        format: "dd/mm/yyyy"
     });
+
 
 });

@@ -1,13 +1,19 @@
 class PriceControlItemsController < ApplicationController
   before_action :set_price_control_item, only: [:show, :edit, :update, :destroy]
   autocomplete :materials, :material_code
-  layout "enter_data", :only => [:new]
+  layout "enter_data", :only => [:new , :edit , :create]
 
   # GET /price_control_items
   # GET /price_control_items.json
   def index
-    @price_control = PriceControlItem.all
+    @price_control_search = PriceControlItem.search(params[:q])
+    @price_control_item = @price_control_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 5 ).order("id DESC")
     #@price_control_items = PriceControl.find(params[:price_control_id])
+
+
+    # @search = Project.search(params[:q])
+    # @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+
   end
 
   # GET /price_control_items/1
@@ -37,7 +43,8 @@ class PriceControlItemsController < ApplicationController
     respond_to do |format|
       if @price_control_item.save 
         format.html { 
-        redirect_to new_price_control_item_path(:price_control_id => params[:price_control_item][:price_control_id]) , notice: 'Price control item was successfully created.' }
+          # (:price_control_id => params[:price_control_item][:price_control_id])
+        redirect_to new_price_control_item_path , notice: 'Price control item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @price_control_item }
       else
         format.html { render action: 'new' }

@@ -1,14 +1,14 @@
 class MaterialsController < ApplicationController
   before_action :check_role
   before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
-
+  autocomplete :material, :name
   # GET /materials
   # GET /materials.json
   def index
-    #@search = Material.search(params[:q])
-    #@materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-    @materials = Material.all
-    @create_material = Material.new
+    @search = Material.search(params[:q])
+    @materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    #@materials = Material.all
+    
   end
 
   # GET /materials/1
@@ -35,14 +35,21 @@ class MaterialsController < ApplicationController
     # render :text => @material.to_json
     respond_to do |format|
       if @material.save
+        
         format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
         format.json { render action: 'show', status: :created, location: @material }
       else
-        format.html { render action: 'new' 
-          flash.now[:alert] = 'Material cannot save..' }
+        format.html { 
+          render action: 'new' 
+          flash[:alert] = 'Material cannot save..' 
+        }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::RecordNotUnique
+    @material.errors[:material_code] << "duplicated"
+    flash[:alert] = 'Material cannot save..'
+    render action: 'new' 
   end
 
   # PATCH/PUT /materials/1

@@ -4,7 +4,7 @@ class Estimation < ActiveRecord::Base
 	# accepts_nested_attributes_for :estimation , allow_destroy => true
 
 	has_many :materials
-	has_many :estimation_item
+	has_many :estimation_items
 
 	belongs_to :station
 	belongs_to :client

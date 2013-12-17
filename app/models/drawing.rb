@@ -1,6 +1,7 @@
 class Drawing < ActiveRecord::Base
 	belongs_to :estimation
-  	has_attached_file :photo , :style => { :small => "200x200>" , :big => "500x500>" }, :default_url => "/images/missing.png",
+  	has_attached_file :photo , :style => { :small => "200x200>" , :big => "500x500>" }, 
+  	  :default_url => "/images/missing.png",
       :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
       :url => "/system/:attachment/:id/:style/:filename"
 

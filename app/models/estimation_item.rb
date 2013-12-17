@@ -5,7 +5,9 @@ class EstimationItem < ActiveRecord::Base
 
 
 	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	validates :material_id ,:uom , :material_id,:dimension_l,:unit_price,  presence: :true
+	validates :material_id ,:uom ,:dimension_l,:unit_price,  presence: :true
+	validates :qty ,:dimension_l , numericality: true
+
 
 	def total_wt_ibs_ft
 		if material.category_id == 1
@@ -70,7 +72,7 @@ class EstimationItem < ActiveRecord::Base
 	end
 
 	def weight_fomular_5
-		(((dimension_w.to_f / 1000) * (dimension_l/1000)) / 2.9768) * total_wt_ibs_ft * 2.20459 * qty
+		(((dimension_w.to_f / 1000) * (dimension_l / 1000)) / 2.9768) * total_wt_ibs_ft * 2.20459 * qty
 	end
 
 	def weight_fomular_6

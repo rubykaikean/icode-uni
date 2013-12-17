@@ -8,14 +8,12 @@
 
 <table>
 	<tr>
-		<td><%= check_box_tag "checkbox" , :id=>"checkbox" %></td>
 		<td>Project Name :</td>
-		<td style="align:right;"><%= @standard_project.name %></td>
+		<td style="align:right;"><u><%= @standard_project.name %></u></td>
 	</tr>
 	<tr>
-		<td><%= check_box_tag "checkbox" %></td>
 		<td>Project Code :</td>
-		<td style="align:right;"><%= @standard_project.project_code %></td>
+		<td style="align:right;"><u><%= @standard_project.project_code %></u></td>
 	</tr>
 </table>
 <hr>
