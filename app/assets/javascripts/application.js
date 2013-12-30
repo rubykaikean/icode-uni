@@ -39,7 +39,7 @@ $(document).ready(function () {
         "bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,
-        "oSearch": {"sSearch": "search here..."},
+        //"oSearch": {"sSearch": "search here..."},
         //"bServerSide": true,
         //"sAjaxSource": $('#jdatatable').data('source')
         "oLanguage": {
