@@ -1,0 +1,24 @@
+<h3><u>Listing Materials</u></h3>
+</div>
+<div style="float: right; "><%= link_home_button %></div>
+<div>
+
+  <% if roles.include?(InventoryManagementSystem::MATERIAL_ADD) %>
+    <%= link_to "New Material" , new_material_path , :class=>"btn btn-primary" %>
+  <% else %>
+    <button type="button" class="btn">New Material</button>            
+  <% end %>
+
+</div>
+<br>
+<!-- <table class="table table-striped " , id="my_table "> -->
+
+<div style="float: left;">
+<%= search_form_for @search do |f| %> 
+  <%#= f.text_field :username_cont, :class => "input-medium search-query", :placeholder => "Username", autocomplete: true %>
+  <%= f.text_field :name_cont, "data-autocomplete" => autocomplete_material_name_materials_path, :class => "input-medium search-query", :placeholder => "Name" %>
+  <%= f.submit "Search", :class => "btn" %>
+<% end %>
+</div>
+
+<div class="pull-right"><%= will_paginate @materials, :class => "pagination" %></div>

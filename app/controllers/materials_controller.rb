@@ -50,7 +50,7 @@ class MaterialsController < ApplicationController
     end
   rescue ActiveRecord::RecordNotUnique
     @material.errors[:material_code] << "duplicated"
-    flash[:alert] = 'Material cannot save..'
+    flash[:alert] = 'Material cannot save..duplicated code'
     render action: 'new' 
   end
 

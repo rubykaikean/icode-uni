@@ -1,14 +1,14 @@
-<%= render :text => params.to_json %>
+<%#= render :text => params.to_json %>
 <%#= render :text => params[:estimation].to_json %>
 
 <!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
-  <%= f.input "station_id" , as: :hidden ,:input_html=>{:value => params[:station_id]}, :label => false %>
-
-  <% if action_name == "Edit Estimation" %>
-    <%= f.input_field "station_id", :type => "hidden", :input_html => { :value => params[:station_id]} %>
-  <% end %>
+  <%= f.input "station_id", as: :hidden ,:input_html=>{:value => params[:station_id]}, :label => false %>
+  <%= f.input "standard_station_id",as: :hidden , :input_html=>{:value => params[:standard_station_id]}, :label => false %>
+  <%# if action_name == "Edit Estimation" %>
+    <%#= f.input_field "station_id", :input_html => { :value => params[:station_id]} %>
+  <%# end %>
   
   <div class="inputs">
   <table class="table table-striped">
@@ -18,7 +18,9 @@
       </td>
       <td>
           <%= f.input :dimension %>
-          <%#= f.input :drawing_no_id %>
+      </td>
+      <td>
+          <%= f.input :drawing_no_id , as: :string %>
       </td>
       <td>
             <div class="dp2 date">
@@ -60,7 +62,7 @@
 
   <div class="actions">
     <%= f.button :submit , :class=>"btn btn-primary" %> 
-    <%= link_to 'Back', estimations_path , :class=>"btn" %>
+    <%= link_to 'Back', :back , :class=>"btn" %>
   </div>
 <% end %>
 

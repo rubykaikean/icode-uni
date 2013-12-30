@@ -19,7 +19,9 @@
         
         <td><%= index + 1 %></td>
         <!-- (name, value = "1", checked = false, options = {}) -->
-        <td><%= check_box_tag "estimation_material", {},false,{:id=>"estimation_item_checkbox", :es_ma => material.id} %></td>
+        <td><%= check_box_tag "estimation_material", {} ,false,{:id=>"estimation_item_checkbox", :es_ma => material.id} %>
+            <%#= link_to "click", :class=>"btn" %>
+        </td>
         <td id="<%= "name_#{material.id}" %>"><%= material.name rescue'-' %></td>
         <td id="<%= "dimension_h_#{material.id}" %>"><%= material.dimension_h rescue'-' %></td>
         <td id="<%= "dimension_w_#{material.id}" %>"><%= material.dimension_w rescue'-' %></td>

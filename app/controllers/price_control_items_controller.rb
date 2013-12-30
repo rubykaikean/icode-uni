@@ -1,8 +1,8 @@
 class PriceControlItemsController < ApplicationController
   before_action :set_price_control_item, only: [:show, :edit, :update, :destroy]
-  autocomplete :materials, :material_code
+  
   layout "enter_data", :only => [:new , :edit , :create]
-
+  #autocomplete :price_control_items, :custom_name
   # GET /price_control_items
   # GET /price_control_items.json
   def index

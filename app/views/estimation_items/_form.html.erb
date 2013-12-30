@@ -9,15 +9,7 @@
     <div class="inputs">
     <tr>
         <td><%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
-        <td><%#= f.label :material_id %><%#= f.input :material_id , Material.all.map { |r| [r.name, r.id] } ,include_blank: true ,:size=> 9 %>
-            <%# if action_name == "edit" %>
-                <%#= f.input :material_id , :as => :string %>
-                <%#= hidden_field_tag "material_id" %>
-            <%# else %>
-            <%# if action_name => "edit" %>
-                <%#= f.input :material_id , :as => :string %>
-                <%# else %>
-                <%= f.input :material_id, :as => :string ,:disabled => true %>
+        <td><%= f.input :material_id, :as => :string ,:disabled => true %>
                 <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->
             <%# end %>
         </td>
@@ -76,11 +68,11 @@ $(document).ready(function(){
         
         //alert(material_id);
         // total allowed to be checked.
-        var max_allowed = 0;
+        //var max_allowed = 0;
         // count how many checked.
         var checked = $("input:checked").size();
         // perform test.
-            if ( checked > max_allowed ) {
+            if ( checked > 0 ) {
                 // is more than the max so uncheck.
                 $(this).attr("checked", false);
             }

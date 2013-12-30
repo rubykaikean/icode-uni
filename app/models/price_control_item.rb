@@ -16,6 +16,10 @@ class PriceControlItem < ActiveRecord::Base
 	# 	end
 	# end
 
+	def custom_name
+		"#{name} - #{dimension_h} - #{dimension_w} - #{wt_ibs_ft}"
+	end
+
 	ROLE = [
 	    InventoryManagementSystem::PRICE_CONTROL_ITEM
 	    # InventoryManagementSystem::CLIENT_ADD,

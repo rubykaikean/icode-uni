@@ -112,7 +112,7 @@ class StationsController < ApplicationController
   end
 
   def list_standard_station
-      #render :text => params[:standard_station_id]
+      # render :text => params
       @standard_project = Project.find(params[:standard_station_id])
       
   end

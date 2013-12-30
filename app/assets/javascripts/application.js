@@ -34,21 +34,22 @@ $(document).ready(function () {
     // });
 
     $('#jdatatable').dataTable({
-        //"sScrollY": content_height - 97,
+        "sScrollY": "content_height" - 97,
         //"sPaginationType": "full_numbers",  
         "bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,
-        //"oSearch": {"sSearch": "Search here..."},
+        "oSearch": {"sSearch": "search here..."},
         //"bServerSide": true,
         //"sAjaxSource": $('#jdatatable').data('source')
         "oLanguage": {
             "sZeroRecords":  "No Record Found...",
             "sSearch": "Search All Columns:"
         },
-        //"bAutoWidth": true    
+        "bInfo": true,
+         //"bAutoWidth": true    
      });
-        //"bInfo": false,   //exp :showing 1 of 15 pages 
+           //exp :showing 1 of 15 pages 
     
 
     // $(function() {

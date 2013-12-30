@@ -25,6 +25,7 @@
 						<th>No.</th>
 						<th>Title</th>
 						<th>Dimension</th>
+						<th>Drawing No</th>
 						<th>Date</th>
 						<th></th>
 					</tr>
@@ -35,10 +36,11 @@
 						<td><%= index + 1 %></td>
 						<td><%= estimations.title rescue'-' %></td>
 						<td><%= estimations.dimension rescue'-' %></td>
+						<td><%= estimations.drawing_no_id rescue'-' %></td>
 						<td><%= estimations.date rescue'-' %></td>
 						<td><%= render "standard_remark_estimation" %>
 							<% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
-							<%= link_to "Edit Estimation" ,  edit_estimation_path(estimations , :station_id => estimations.station_id), :class=>"btn" %>
+							<%= link_to "Edit Estimation" ,  edit_estimation_path(estimations , :station_id => estimations.station_id , :standard_station_id => params[:standard_station_id]), :class=>"btn" %>
 							<% else %>
 							<button class="btn">Edit Estimation</button>
 							<% end %>

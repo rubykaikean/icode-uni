@@ -1,22 +1,11 @@
-<h3>Listing Estimations <%#= station.name rescue'-' %> </h3>
-
-<div style="float: left;">
-<%= search_form_for @search do |f| %> 
-  <%#= f.text_field :title_cont, :class => "input-medium search-query", :placeholder => "Name" %>
-  <%= f.text_field :title_cont, "data-autocomplete" => autocomplete_estimation_title_estimations_path, :class => "input-medium search-query", :placeholder => "Estimation Title" %>
-  <%= f.submit "Search", :class => "btn"%>
-<% end %>
-</div>
-
-<div style="float: right;"><%= will_paginate @estimations, :class => "pagination" %></div>
-
+<%= render "action_estimations" %>
 <table class="table table-stripped">
   <thead>
     <tr>
       <th>No.</th>
       <th>Title</th>
       <th>Dimension</th>
-      <th></th>
+      <th>Drawing No</th>
       <th>Date</th>
       <th></th>
       <th></th>
@@ -31,7 +20,7 @@
         <td><%= index + 1 %></td>
         <td><%= estimation.title %></td>
         <td><%= estimation.dimension %></td>
-        <td><%#= estimation.drawing_no_id %></td>
+        <td><%= estimation.drawing_no_id %></td>
         <td><%= estimation.date %></td>
         <td><%#= estimation.issued_by %></td>
         <td><%= link_to 'Drawing Detail', drawings_path(:estimation_id => estimation) , :class=>"btn btn-mini" %></td>
@@ -62,5 +51,4 @@
   </tbody>
 </table>
 
-<br>
-<%= link_to 'Back', stations_path , :class=>"btn" %>
+

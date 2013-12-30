@@ -49,14 +49,17 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
-    # render json: estimation_params
+    # render :text => params.to_json
     
     #@estimation.estimation_items.build(params[:estimation_items])
-    #Estimation.generation_new_item(params[:estimation])  
+    #Estimation.generation_new_item(params[:estimation])
+    
     respond_to do |format|
-      if @estimation.update(estimation_params)
-        format.html { redirect_to estimations_path, notice: 'Estimation was successfully updated.' }
-        format.json { head :no_content }
+      if @estimation.update(estimation_params) && @estimation.station_id.present?
+         format.html { redirect_to list_standard_station_stations_path(:standard_station_id => params[:estimation][:standard_station_id]), notice: 'Estimation was successfully updated.' }
+        # format.json { head :no_content }
+      elsif @estimation.update(estimation_params) && @estimation.station_id.nil?
+        format.html { redirect_to estimations_path }
       else
         format.html { render action: 'edit' }
         format.json { render json: @estimation.errors, status: :unprocessable_entity }
@@ -99,7 +102,7 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no, :date, :issued_by ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
+      params.require(:estimation).permit(:client_id, :title, :dimension, :drawing_no_id, :date, :issued_by ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
     end
 
     def check_role

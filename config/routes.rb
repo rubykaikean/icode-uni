@@ -2,12 +2,11 @@ IcodeUni::Application.routes.draw do
   
 
   resources :price_controls do
-    get :autocomplete_price_control_reference, :on => :collection
+    #get :autocomplete_price_control_reference, :on => :collection
   end
 
   resources :price_control_items do
-    # get :autocomplete_materials_material_code , :on => :collection
-
+    #get :autocomplete_price_control_items_custom_name , :on => :collection
   end
 
 
@@ -62,8 +61,6 @@ IcodeUni::Application.routes.draw do
       get "standard_station_estimation"
     end
   end
-
-
   # resources :products do
   #   get :autocomplete_project_name, :on => :collection
   #   collection do

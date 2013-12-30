@@ -46,7 +46,7 @@ class DrawingsController < ApplicationController
     respond_to do |format|
       if @drawing.save
         format.html { redirect_to drawings_path(:estimation_id => params[:drawing][:estimation_id]), notice: 'Drawing was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @drawing }
+        format.json { render action: 'show', status: :created, location: @drawing }        
       else
         format.html { render action: 'new' }
         format.json { render json: @drawing.errors, status: :unprocessable_entity }
