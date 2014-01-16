@@ -14,16 +14,18 @@ class StationsController < ApplicationController
     # @search = Product.search(params[:search])
     # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
     @search = Project.search(params[:q])
-    @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
+    @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5).order('id DESC')
   end
 
   # GET /stations/1
   # GET /stations/1.json
   def show
+    @project_id 
   end
 
   # GET /stations/new
   def new
+    @project_id = Project.find(params[:id])
     @station = Station.new
   end
 
@@ -37,19 +39,16 @@ class StationsController < ApplicationController
 
     #render :json => params[:station_name]
     #render :text => params.to_json
-    
-    if params[:commit] == "Create"
-        @station = Station.new(station_params)
-        #Station.generation_new_item(params[:station])
-        respond_to do |format|
-          if @station.save
-            format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
-            #format.json { render action: 'show', status: :created, location: @station }
-          else
-            format.html { render action: 'new' }
-            format.json { render json: @station.errors, status: :unprocessable_entity }
-          end
-        end
+    @station = Station.new(station_params)
+    #Station.generation_new_item(params[:station])
+    respond_to do |format|
+      if @station.save
+        format.html { redirect_to stations_path , notice: 'Station was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @station }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @station.errors, status: :unprocessable_entity }
+      end
     end
   end
 

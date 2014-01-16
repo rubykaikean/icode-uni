@@ -9,10 +9,10 @@
       <th>No.</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th>Material Code (Name THK/H/W/Wt)</th>
+      <th><%= "Thk Dia" || model_class.human_attribute_name(:thk_dia) %></th>
       <th><%= "Dimension H" || model_class.human_attribute_name(:dimension_h) %></th>
       <th><%= "Dimension W" || model_class.human_attribute_name(:dimension_w) %></th>
       <th>WT</th>
-      <th><%= "Thk Dia" || model_class.human_attribute_name(:thk_dia) %></th>
       <th>Price</th>
       <%#= model_class.human_attribute_name(:created_at) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -24,10 +24,10 @@
         <td><%= index + 1 %></td>
         <td><%= material.name %></td>
         <td><%= material.material_code %></td>
-        <td><%= material.dimension_h rescue'-' %></td>
+        <td><%= material.thk_dia rescue'-' %></td>
         <td><%= material.dimension_w rescue'-' %></td>
         <td><%= material.plate rescue'-'%></td>
-        <td><%= material.thk_dia rescue'-' %></td>
+        <td><%= material.dimension_h rescue'-' %></td>
         <% a = material.price_control_items.last %>
           <td><%= a.new_unit_price rescue'-'%></td>
         <td>

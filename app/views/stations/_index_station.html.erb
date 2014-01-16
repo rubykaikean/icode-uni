@@ -20,7 +20,7 @@
               <td><%#=l station.created_at %></td>
               <td>
                 <% if roles.include?(InventoryManagementSystem::ESTIMATION_ADD) %>
-                <%= link_to 'add estimation' , new_estimation_path(:estimation => project_station) , :class=>"btn btn-mini" %>
+                <%= link_to 'add estimation' , new_estimation_path(:station_id => project_station) , :class=>"btn btn-mini" %>
                 <% else %>
                 <button type="button" class="btn">add estimation</button>            
                 <% end %>

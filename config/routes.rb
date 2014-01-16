@@ -9,15 +9,18 @@ IcodeUni::Application.routes.draw do
     #get :autocomplete_price_control_items_custom_name , :on => :collection
   end
 
-
+  get "home/testing_kendoi"
   resources :projects do
       get :autocomplete_project_name, :on => :collection
     member do
       get "project_station"
+      # get "project_estimation"
     end
     collection do
+      get "project_estimation"
       get "list_non_standard_project"
-      get "list_standard_project"
+      get "list_project_estimation"
+      #get "list_standard_project"
     end
   end
 
@@ -30,6 +33,10 @@ IcodeUni::Application.routes.draw do
       get "station_estimation"
       get "standard_project_estimation"
       get "standard_estimation"
+      get "estimation_deck"
+      # new standard estimation path
+      get "project_estimation_list"
+      get "non_standard_estimation"
     end
   end
   

@@ -45,34 +45,29 @@
         </td>
         <td><%= estimation_item.dimension_l rescue'-' %></td>
 
-        <td><% if estimation_item.wt_ibs_ft.present? %>
-          <%= estimation_item.wt_ibs_ft rescue'-' %>
-          <% else %>
-          <%= estimation_item.total_wt_ibs_ft rescue'-' %>
-          <% end %>
-        </td>
+        <td><%= two_precision estimation_item.total_wt_ibs_ft rescue'-' %></td>
 
         <td><%= estimation_item.qty rescue'-' %></td>
         <td><%= estimation_item.uom rescue'-' %></td>
 
         <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
-              <%= four_precision estimation_item.weight_fomular_1 rescue'-' %>
+              <%= three_precision estimation_item.weight_fomular_1 rescue'-' %>
               <% array << estimation_item.weight_fomular_1 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
-              <%= four_precision estimation_item.weight_fomular_2 rescue'-' %>
+              <%= three_precision estimation_item.weight_fomular_2 rescue'-' %>
               <% array << estimation_item.weight_fomular_2 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
-              <%= four_precision estimation_item.weight_fomular_3 rescue'-' %>
+              <%= three_precision estimation_item.weight_fomular_3 rescue'-' %>
               <% array << estimation_item.weight_fomular_3 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
-              <%= four_precision estimation_item.weight_fomular_4 rescue'-' %>
+              <%= three_precision estimation_item.weight_fomular_4 rescue'-' %>
               <% array << estimation_item.weight_fomular_4 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 5 %>
-              <%= four_precision estimation_item.weight_fomular_5 rescue'-' %>
+              <%= three_precision estimation_item.weight_fomular_5 rescue'-' %>
               <% array << estimation_item.weight_fomular_5 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 6 %>
@@ -93,9 +88,9 @@
           <% end %></td>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_DELETE) %>
-          <%= link_to 'Destroy', estimation_item , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%>
+          <%= link_to 'Remove', estimation_item , method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger'%>
           <% else %>
-          <button type="button" class="btn btn-mini">Destroy</button>
+          <button type="button" class="btn btn-mini">Remove</button>
           <% end %></td>
       </tr>
 

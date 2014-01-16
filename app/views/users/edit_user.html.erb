@@ -1,7 +1,6 @@
 <div class="page-header">
 <h1>Edit User</h1>
 </div>
-
 <%= form_for(@user, url: update_user_user_path(@user), method: :patch) do |f| %>
   <%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.label :username %>

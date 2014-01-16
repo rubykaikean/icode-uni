@@ -16,34 +16,32 @@
         <!-- <td><div id="showData"></div></td> -->
     </tr>
     <tr style="align:margin-right">
-        <td><%# if @material_detail.type_id == 1 %>
-            <%= f.input :thk_dia ,:as => :string %>
-            <%#= hidden_field_tag "thk_dia" , nil, :id=>"thk_dia_hidden_field" %>
-            <%# else %>
-            <%#= f.input :thk_dia , :as => :string , :disabled => true %>
-            <%#= hidden_field_tag "thk_dia" , nil, :id => "thk_dia_hidden_field" %>
-            <%# end %>
+        <td>
+            <%= f.input :thk_dia , label: "Thick / Dia." ,:as => :string %>
         </td>
-        
-        <td><%= f.input :dimension_h,:as => :string, :disabled => true %>
+        <td><%= f.input :dimension_h, label: "Dimension H" , :as => :string, :disabled => true %>
             <%= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %></td>
 
-        <td><%= f.input :dimension_w ,:as => :string %>
+        <td><%= f.input :dimension_w,label: "Dimension W" , :as => :string %>
             <%#= hidden_field_tag "dimension_w",:id=>"dimension_w_hidden_field" %></td>
 
         <td><%= f.input :dimension_l,:as => :string, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %></td>
 
-        <td><%= f.input :wt_ibs_ft, :as => :string, :disabled => true %>
+        <td><%= f.input :wt_ibs_ft,label: "Unit Weight(WT)" , :as => :string, :disabled => true %>
             <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
     </tr> 
     <tr>
         <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
-        <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %></td>
 
-        <td><%= f.input :unit_price ,:as => :string %>
+        <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %>
+            <%= hidden_field_tag "unit_measure" , nil , :id=>"unit_measure_hidden_field" %>
+        </td>
+
+        <td><%= f.input :unit_price ,:as => :string , :disabled => true %>
             <%= hidden_field_tag "unit_price" , nil , :id=>"unit_price_hidden_field" %></td>
             <%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
-        
+        <td><%=  %></td>
+
     </tr>
     </div>
 </table>
@@ -64,8 +62,6 @@
 $(document).ready(function(){
 
     $("input:checkbox").change(function(sel){
-
-        
         //alert(material_id);
         // total allowed to be checked.
         //var max_allowed = 0;
@@ -86,11 +82,15 @@ $(document).ready(function(){
         var thk_dia = $("#thk_dia_" + material_id ).text();
         var wt_ibs_ft = $("#wt_ibs_ft_" + material_id ).text();
         var unit_price = $("#unit_price_" + material_id ).text();
+        var unit_measure = $("#unit_measure_" + material_id).text();
         //alert(dimension_w);
         $("#estimation_item_material_id").val(name);
 
         $("#estimation_item_thk_dia").val(thk_dia);
         $("#thk_dia_hidden_field").val(thk_dia);    //hidden field for write down record and store in db
+
+        $("#estimation_item_uom").val(unit_measure);
+        $("#unit_measure_hidden_field").val(unit_measure);
 
         $("#estimation_item_dimension_h").val(dimension_h);
         $("#dimension_h_hidden_field").val(dimension_h);

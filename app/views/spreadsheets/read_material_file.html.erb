@@ -15,6 +15,7 @@
 			<th>Dimension W</th>
 			<th>Wt Ibs Ft</th>
 			<th>Plate</th>
+			<th>Unit Measure</th>
 			<th>Category Id</th>
 			<th>Price Fomular Id</th>
 		</tr>
@@ -33,8 +34,9 @@
 			<td><%= text_field_tag "row[#{a}][wt_ibs_ft]", '', :value =>
 			number_with_precision(row[5], :precision => 2 ) %></td>
 			<td><%= text_field_tag "row[#{a}][plate_thk_dia]", '' ,:value =>number_with_precision(row[6], :precision => 5) %></td>
-			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[7] %></td>
-			<td><%= text_field_tag "row[#{a}][price_fomular_id]" , '' , :value => row[8] %></td>
+			<td><%= text_field_tag "row[#{a}][unit_measure]", '', :value => row[7] %></td>
+			<td><%= text_field_tag "row[#{a}][category_id]", '', :value =>row[8] %></td>
+			<td><%= text_field_tag "row[#{a}][price_fomular_id]" , '' , :value => row[9] %></td>
 		</tr>
 		<% end %> <!-- end of each -->
 	</tbody>

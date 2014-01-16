@@ -1,28 +1,32 @@
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Client:</strong>
-  <%= @estimation.client_id %>
+  <%#= @estimation.client_id %>
 </p>
 
 <p>
   <strong>Title:</strong>
-  <%= @estimation.title %>
+  <%= @estimation.title rescue'-'%>
 </p>
 
 <p>
   <strong>Dimension:</strong>
-  <%= @estimation.dimension %>
+  <%= @estimation.dimension rescue'-'%>
 </p>
 
 <p>
   <strong>Drawing no:</strong>
-  <%= @estimation.drawing_no_id %>
+  <%= @estimation.drawing_no_id rescue'-' %>
 </p>
 
 <p>
   <strong>Date:</strong>
-  <%= @estimation.date %>
+  <%= @estimation.date rescue'-'%>
 </p>
 
 <p>

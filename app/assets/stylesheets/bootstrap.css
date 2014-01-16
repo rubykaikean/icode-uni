@@ -6147,6 +6147,10 @@ a.badge:focus {
   float: right;
 }
 
+.pull-center {
+  float: center;
+}
+
 .pull-left {
   float: left;
 }

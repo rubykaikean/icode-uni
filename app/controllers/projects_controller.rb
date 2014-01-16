@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @search = Project.search(params[:q])
-    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5).order("name DESC")
+    @projects = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10).order("id DESC")
   end
 
   def list_non_standard_project
@@ -18,14 +18,21 @@ class ProjectsController < ApplicationController
     @list_non_standard_projects = @list_non_standard_project_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
+  def list_project_estimation 
+    @list_project_estimation = Project.standard_type.search(params[:q])
+    @list_project_estimation = @list_project_estimation.result(:distinct => true).paginate(:page =>params[:page], :per_page=> 5).order("id DESC")
+  end
+
   def list_standard_project
-    @list_standard_projects_search = Project.standard_type.search(params[:q])
-    @list_standard_projects = @list_standard_projects_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
+    # standard project 
+    # @list_standard_projects_search = Project.standard_type.search(params[:q])
+    # @list_standard_projects = @list_standard_projects_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    #render :text => params.to_json
   end
 
   # GET /projects/new
@@ -41,25 +48,33 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    # render :text => params.to_json
     @project = Project.new(project_params)
     #render :text => project_params.to_json
-    respond_to do |format|
-      # toDo
-      # use ? to request the true/false value
-      if @project.standard.present?
-          @project.save
-          format.html { redirect_to project_station_project_path(@project) , notice: 'project was successfully created Standard.' }
-          format.json { render action: 'show', status: :created, location: @project }
+      respond_to do |format|
+        # toDo
+        # use ? to request the true/false value
+        # format.html { render :text => params.to_json }
 
-      elsif @project.non_standard.present?
-          @project.save
-          format.html { redirect_to stations_path, notice: 'project Was successfully created with Non Standard' }
-      
-      else 
-           format.html { render action: 'new'}
-           format.json { render json: @project.errors, status: :unprocessable_entity }
+        if params[:project][:standard] == '1'
+            @project.save
+            format.html { 
+              redirect_to project_estimation_projects_path(:id => @project) ,notice: "Customize Project was created" 
+              #redirect_to project_estimation_projects_path(@project), notice: "testing"
+            }
+            # standard path
+            # format.html { redirect_to project_station_project_path(@project) , notice: 'project was successfully created Standard.' }
+            #format.json { render action: 'show', status: :created, location: @project }
+        elsif params[:project][:standard] == '0'
+            # format.html {render :text => params.to_json}
+            @project.save
+            format.html { redirect_to new_station_path(:id => @project), notice: 'project Was successfully created with Non Standard' }
+        
+        else 
+            format.html { render action: 'new'}
+            format.json { render json: @project.errors, status: :unprocessable_entity }
         end
-    end
+      end
   end
 
   # PATCH/PUT /projects/1
@@ -97,7 +112,9 @@ class ProjectsController < ApplicationController
       end
   end
 
- 
+  def project_estimation
+    @project_estimation = Project.find(params[:id])
+  end
 
   def project_station
     #render :text => params[:id].to_json    #this link can take from (def create) @project 

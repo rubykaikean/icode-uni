@@ -7,7 +7,7 @@
       <th>Dimension</th>
       <th>Drawing No</th>
       <th>Date</th>
-      <th></th>
+      <th>Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,7 +22,12 @@
         <td><%= estimation.dimension %></td>
         <td><%= estimation.drawing_no_id %></td>
         <td><%= estimation.date %></td>
-        <td><%#= estimation.issued_by %></td>
+        <td><% if estimation.status == true %>
+            Completed
+            <% else %>
+            Pending
+            <% end %>
+          <%#= estimation.issued_by %></td>
         <td><%= link_to 'Drawing Detail', drawings_path(:estimation_id => estimation) , :class=>"btn btn-mini" %></td>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_ADD) %>
@@ -42,9 +47,9 @@
           <button type="button" class="btn btn-mini">Edit</button>
           <% end %>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_DELETE) %>
-          <%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Delete', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
           <% else %>
-          <button type="button" class="btn btn-mini">Destroy</button>
+          <button type="button" class="btn btn-mini">Delete</button>
           <% end %></td>
       </tr>
     <% end %>

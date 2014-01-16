@@ -39,6 +39,7 @@ class SpreadsheetsController < ApplicationController
 			m.dimension_w = value[:dimension_w]
 			m.wt_ibs_ft = value[:wt_ibs_ft]
 			m.plate = value[:plate_thk_dia]
+			m.unit_measure = value[:unit_measure]
 			m.category_id = value[:category_id]
 			m.price_fomular_id = value[:price_fomular_id]
 			m.save!
@@ -108,8 +109,8 @@ end
 #       # do something interesting with a row     data1 = row[0]     data2 = row[1]
 # end
 
-private
+# private
 
-	def spreadsheet_params
-      	params.require(:spreadsheet).permit(:name , :plate , :dimension_h, :dimension_w,:wt_ibs_ft,:category_id)
-    end
+# 	def spreadsheet_params
+#       	params.require(:spreadsheet).permit(:name , :plate , :dimension_h, :dimension_w,:wt_ibs_ft,:category_id , :price_fomular_id, :unit_measure)
+#     end

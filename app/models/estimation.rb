@@ -6,6 +6,7 @@ class Estimation < ActiveRecord::Base
 	has_many :materials
 	has_many :estimation_items
 
+	belongs_to :project
 	belongs_to :station
 	belongs_to :client
 

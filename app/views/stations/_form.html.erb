@@ -1,31 +1,21 @@
-<%#= simple_form_for @station, :html => { :class => 'form-horizontal' } do |f| %>
-  <%#= f.input :name %>
-  <%#= f.label :product %>
-  <%#= f.select :product_id , Product.all.map { |r| [r.name, r.id] }, :include_blank=>true %>
-  <%#= f.input :estimation_id , :type=>"hidden" %>
-<!--   <div class="form-actions">
-    <%#= f.button :submit, :class => 'btn-primary' %>
-    <%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                stations_path, :class => 'btn' %>
-  </div>
- -->
 
 <%= simple_form_for @station, :html => { :class => 'form-horizontal' } do |f| %>
+<%= f.input :project_id, as: :hidden , :input_html => {:value=>params[:id]} %>
+<%#= f.input "standard_station_id", :input_html=>{:value => params[:standard_station_id]} %>
 <table>
+
 	<thead>
 	<tr>
 		<th>Name Station</th>
-		<th>Project</th>
 	</tr>
 	</thead>
 	<tbody>
 	<tr>
 		<td><%= f.input :name , :label => false %></td>
-  		<td><%= f.association :project,
+  		<td><%#= f.association :project,
                     collection: Project.all ,
                     include_blank: true,
-                    input_html: { class: 'chosen-select' } , :label => false %>
-</td>
+                    input_html: { class: 'chosen-select' } , :label => false %></td>
 	</tr>
 	</tbody>
 </table>

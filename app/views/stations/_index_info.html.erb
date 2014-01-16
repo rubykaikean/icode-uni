@@ -1,9 +1,15 @@
-<div class="accordion" id="accordion2">
-  <% @projects.each do |project| %>
+<% @projects.each do |project| %>
+
+<div class="accordion span10" id="accordion2">
+  <% if roles.include?(InventoryManagementSystem::STATION_ADD) %>
+    <%= link_to "Add Station" ,new_station_path(:id => project.id) , :class=>"btn btn-primary" %>
+  <% else %>
+    <button>Add Station</button>
+  <% end %>
   <div class="accordion-group">
     <div class="accordion-heading">
       <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= project.id %>">
-        <%= project.name %> - <%= project.client.name %>
+        <%#= project.id %><%= project.name %> - <%= project.client.name %>
       </div>
     </div>
 
@@ -13,7 +19,8 @@
       </div>
     </div>
   </div>
-  <% end %>
+  
 </div>
+<% end %>
 
 

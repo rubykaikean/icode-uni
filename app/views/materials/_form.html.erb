@@ -13,7 +13,7 @@
 <table>
 	<tr>
 	  <td><%= f.input :name , :label => "Name :" %></td>
-  	<td><%= f.label :category_id , "Select a Fomular :" %>
+  	<td><%= f.label :category_id , "Select a Formula :" %>
           <%= f.select :category_id ,[[ "1.) W/304.8 x L/304.8 x WT/IBS/FT x qty" , 1],
           ["2.) (L/1000) x WT/IBS/FT x 2.20459 x qty" , 2],
           ["3.) (L/304.8) x WT/IBS/FT x qty" , 3],
@@ -24,8 +24,11 @@
           <%#= f.label :type_id ,"Type :" %>
           <%#= f.select :type_id ,[["WT" , 1] , ["Thk/Dia = WT" , 2] , ["Thk/Dia ≠ WT " , 3]] , :include_blank => true %>
     </td>
-    <td><%= f.label :price_fomular_id , "Select a Price Fomular :" %>
-      <%= f.select :price_fomular_id , [["1.) Price x weight" , 1], ["2.) (L/6000) x qty x price" , 2]] , :include_blank => true %></td>
+
+    <td><%= f.label :price_fomular_id , "Select a Price Formula :" %>
+        <%= f.select :price_fomular_id , [["1.) Price x weight" , 1], ["2.) (L/6000) x qty x price" , 2]] , :include_blank => true %></td>
+    <td>
+        <%= f.input :unit_measure, :label => "Unit Measure(Um) :" , as: :string ,:size => 6 %></td>
   	</tr>
   	<tr>
   		<td>

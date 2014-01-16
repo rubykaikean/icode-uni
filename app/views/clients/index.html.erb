@@ -27,8 +27,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%#= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Contact Person 1 / 2 / 3</th>
+      <th>E-mail</th>
+      <th>Address</th>
       <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -38,6 +41,9 @@
       <tr>
         <td><%= link_to client.id, client_path(client) %></td>
         <td><%= client.name %></td>
+        <td><%= client.contact_person_one rescue'-' %> / <%= client.contact_person_two rescue'-' %> / <%= client.contact_person_three rescue'-' %></td>
+        <td><%= client.email rescue'-' %></td>
+        <td><%= client.address rescue'-' %></td>
         <td><%#=l client.created_at %></td>
         <td>
           <% if roles.include?(InventoryManagementSystem::CLIENT_EDIT) %>

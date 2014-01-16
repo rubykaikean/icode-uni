@@ -1,3 +1,38 @@
-<h1>New estimation</h1>
+
+<div>
+	<h3><u>New estimation</u></h3>
+	<table class="table table-bordered span6">
+		<% if @info_project.present? %>
+		<tr>
+			<td>Project Name :</td>
+			<td><%= @info_project.name rescue'-' %></td>
+			<td>Project Code</td>
+			<td><%= @info_project.project_code rescue'-' %></td>
+		</tr>
+		<tr>
+			<td>Project Date :</td>
+			<td><%= @info_project.date.strftime("%d-%m-%Y") rescue'-' %></td>
+			<td>Project Client :</td>
+			<td><%= @info_project.client.name rescue'-' %></td>
+		</tr>
+		<% elsif @info_station.present? %>
+		<tr>
+			<td>Project Name :</td>
+			<td><%= @info_station.name rescue'-' %></td>
+			<td>Project Code :</td>
+			<td><%= @info_station.project_code rescue'-' %></td>
+		</tr>
+		<tr>
+			<td>Project Date :</td>
+			<td><%= @info_station.date rescue'-' %></td>
+			<td>Project Client</td>
+			<td><%= @info_station.client.name rescue'-' %></td>
+		</tr>
+		<% end %>
+	</table>
+
+	<div style="float:right;"><%= link_to "Back" , :back , :class=>"btn btn-defualt" %> <%= link_home_button %>
+	</div>
+</div>
 
 <%= render 'form' %>

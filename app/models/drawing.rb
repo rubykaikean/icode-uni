@@ -6,7 +6,8 @@ class Drawing < ActiveRecord::Base
   	has_attached_file :photo , :style => { :small => "200x200>" , :big => "500x500>" }, 
   	  :default_url => "/images/missing.png",
       :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-      :url => "/system/:attachment/:id/:style/jhgjhg"
+      :url => "/system/:attachment/:id/:style/:filename"
+      #:url => "/system/:attachment/:id/:style/jhgjhg"
 		#/system/:attachment/:id/:style/:filename
 
     validates_attachment_presence :photo

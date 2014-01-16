@@ -1,0 +1,43 @@
+<h3><u>Standard Project List</u></h3>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th>Name</th>
+			<th>Client Name</th>
+			<th>Project Code</th>
+			<th>Date</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @list_project_estimation.each_with_index do |p , index| %>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><%= p.name %></td>
+			<td><%= p.client.name %></td>
+			<td><%= p.project_code %></td>
+			<td><%= p.date.strftime("%d-%m-%Y") rescue'-' %></td>
+			<td><% if roles.include?(InventoryManagementSystem::PROJECT_SHOW)%>
+            <%= link_to "Show" , project_estimation_projects_path(:id => p.id , :non_standard_station_id => params[:non_standard_station_id]) , :class=> "btn btn-mini" %>
+	          <% else %>
+	            <button type="button">Show</button>
+	          <% end %>
+	          <% if roles.include?(InventoryManagementSystem::STANDARD_PROJECT_EDIT) %>
+	            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+	                      edit_project_path(p), :class => 'btn btn-mini' %>
+	          <% else %>
+	            <button type="button" class="btn btn-mini">Edit</button>            
+	          <% end %>
+	          <% if roles.include?(InventoryManagementSystem::STANDARD_PROJECT_DELETE) %>
+	          <%= link_to t('.delete', :default => t("helpers.links.destroy")),
+	          project_path(p),:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+	          :class => 'btn btn-mini btn-danger' %>
+	          <% else %>
+	          <button type="button" class="btn btn-mini">Delete</button>            
+	          <% end %>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>

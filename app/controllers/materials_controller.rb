@@ -90,7 +90,7 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name,:created_at , :updated_at , :price_fomular_id,:material_code , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id)
+      params.require(:material).permit(:name,:created_at , :updated_at , :price_fomular_id,:material_code , :wt_ibs_ft,  :thk_dia , :thk_dia_um , :dimension_h , :dimension_w , :plate , :category_id , :unit_measure)
     end
 
     def check_role

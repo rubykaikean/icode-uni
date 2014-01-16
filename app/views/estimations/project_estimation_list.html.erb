@@ -1,0 +1,58 @@
+<!-- <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Index</a></li>
+        <li><a href="#tab2" data-toggle="tab">Search</a></li>
+      </ul>
+    <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <%#= render "index_info" %>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p><%#= render "index_estimation_search" %></p>
+    </div>
+   </div>
+</div> -->
+
+<div class="page-header">
+  <h3><u>Show Standard Project - Estimation List</u></h3>
+  <div><%= link_to "Back" , :back , :class=>"btn btn-default" %>
+    <div style="float:right;"><%= link_home_button  %></div>
+  </div>
+</div>
+
+<table class="table table-bordered span7">
+  <tr>
+      <td>Name :</td>
+      <td><%= @project_estimation_list.name rescue'-' %></td>
+      <td>Project Code :</td>
+      <td><%= @project_estimation_list.project_code rescue'-' %></td>
+  </tr>
+  <tr>
+      <td>Client Name:</td>
+      <td><%= @project_estimation_list.client.name rescue'-' %></td>
+      <td></td>
+      <td></td>
+  </tr>
+</table>
+<%= render "index_project_estimation_list" %>
+
+
+<!-- <%# @project_estimation_list.each do |pel| %>
+<%# pel = @project_estimation_list %>
+  <div class="accordion span10" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%#= pel.id %>">
+        <%#= pel.id %><%#= pel.name %> - <%#= pel.client.name %>
+      </div>
+    </div>
+
+    <div id="collapse<%#= pel.id %>" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%#= render "index_project_estimation_list", :project_standard_estimation => pel %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# end %>
+-->

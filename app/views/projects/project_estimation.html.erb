@@ -1,0 +1,28 @@
+<%#= render :text => params.to_json %>
+
+<div class="page-header">
+		<h3>Standard Project >> Estimation</h3>
+	
+	<%= link_to "Add Standard Estimation" , new_estimation_path(:project_id => @project_estimation.id) , :class=>"btn btn-default"%>
+	<%= link_to "Back" , :back , :class=>"btn btn-default" %>
+
+	<div style="float: right;">
+		<table>
+			<tr>
+				<td><h4>Project Name :</h4></td>
+				<td><h4><u><%= @project_estimation.name %></u></h4></td>
+				<td><h4>Date :</h4></td>
+				<td><h4><u><%= @project_estimation.date.strftime("%d-%m-%Y") %></u></h4></td>
+			</tr>
+			<tr>
+				<td><h4>Client :</h4></td>
+				<td><h4><u><%= @project_estimation.client.name %></u></h4></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	
+</div>
+
+<%= render "project_estimation_list"  %>

@@ -48,6 +48,21 @@
 </tr>
 
 <tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT) %> Standard Project </td>
+    <td> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_ADD) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+
+</tr>
+
+<tr>
     <td><%= edit_module(@checkboxes, InventoryManagementSystem::STATION) %> Station </td>
     <td> - </td>
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STATION_ADD) %></td>
@@ -72,6 +87,21 @@
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_EDIT) %></td>
 
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %></td>
+
+</tr>
+
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %>Standard Estimation </td>
+    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_ADD) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_DELETE) %></td>
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %></td>
 

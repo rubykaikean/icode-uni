@@ -1,0 +1,82 @@
+<%= form_tag non_standard_estimation_estimations_path(params[:non_standard_station_id]) ,:method =>"get" do %>
+<h3><u>Standard Estimation List</u></h3>
+	<% if params[:non_standard_station_id].present? %>
+	<div class="pull-right"><%= submit_tag "Copy To Non Standard" , :class => "btn btn-info" %></div>
+	<% end %>
+
+<%#= render :text => params.to_json %>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Dimension</th>
+			<th>Drawing No</th>
+			<th>Date</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @project_estimation.estimations.each do |pe| %>
+		<% if params[:non_standard_station_id].present? && pe.status == true%>
+			<tr>
+				<td><%= pe.title %></td>
+				<td><%= pe.dimension rescue'-' %></td>
+				<td><%= pe.drawing_no_id rescue'-' %></td>
+				<td><%= pe.date rescue'-' %></td>
+				<td><% if pe.status == true %>
+					Completed
+					<% end %>
+				</td>
+				<td><%= link_to 'Detail' , estimation_items_path(:estimation_id => pe) ,:class=>" btn btn-mini btn-success" %>
+		          <%= check_box_tag "pe_ids[]" , pe.id  %>
+
+		      </td>
+			</tr>
+
+		<% else %>
+			<tr>
+				<td><%= pe.title %></td>
+				<td><%= pe.dimension rescue'-' %></td>
+				<td><%= pe.drawing_no_id rescue'-' %></td>
+				<td><%= pe.date rescue'-' %></td>
+				<td><% if pe.status == true %>
+						Completed
+					<% else %>
+						Pending
+					<% end %>
+				</td>
+				<td>
+		          <% if roles.include?(InventoryManagementSystem::STANDARD_ESTIMATION_ADD) %>
+		          <%= link_to 'Add Item' , new_estimation_item_path(:estimation_id => pe) , :class=>"btn btn-mini btn-info" , :target => "_blank" %>
+		          <% else %>
+		          <button type="button" class="btn btn-mini">Add Item</button>
+		          <% end %>
+		          <% if roles.include?(InventoryManagementSystem::STANDARD_ESTIMATION_SHOW) %>
+		          <%= link_to 'Detail' , estimation_items_path(:estimation_id => pe) ,:class=>
+		          " btn btn-mini btn-success" %>
+		          <% else %>
+		          <button type="button" class="btn btn-mini">Detail</button>
+		          <% end %>
+		          <% if roles.include?(InventoryManagementSystem::STANDARD_ESTIMATION_EDIT) %>
+		          <%= link_to 'Edit Standard', edit_estimation_path(pe, :project_id => @project_estimation.id , :standard_project_id => pe.id),:class => 'btn btn-mini' %>
+		          <% else %>
+		          <button type="button" class="btn btn-mini">Edit</button>
+		          <% end %>
+		          <% if roles.include?(InventoryManagementSystem::STANDARD_ESTIMATION_DELETE) %>
+		          <%= link_to 'Delete', pe, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
+		          <% else %>
+		          <button type="button" class="btn btn-mini">Destroy</button>
+		          <% end %>
+		          <%#= link_to "Copy To Deck" , estimation_deck_estimations_path(pe) , :class=>"btn btn-info" %>
+				</td>
+			</tr>
+
+			<% end %>
+			<% end %>
+		<% end %>  <!-- end with .each -->
+	</tbody>
+</table>
+
+
+
