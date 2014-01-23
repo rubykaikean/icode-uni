@@ -111,16 +111,20 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1
   # DELETE /estimations/1.json
   def destroy
-    estimation_item = EstimationItem.pluck(:estimation_id)
-    if estimation_item.any? {|a| a == @estimation.id }
-        redirect_to estimations_path , notice: 'Make sure delete all Estimation Item before delete Estimation.'
-      else
-      @estimation.destroy
-      respond_to do |format|
-        format.html { redirect_to estimations_url }
-        format.json { head :no_content }
-      end
-    end
+
+    render :text => params.top_json
+    #estimation_item = EstimationItem.pluck(:estimation_id)
+    #if estimation_item.any? {|a| a == @estimation.id }
+        #redirect_to estimations_path , notice: 'Make sure delete all Estimation Item before delete Estimation.'
+      #else
+      #EstimationItemService.new().check_estimation_item
+
+      # @estimation.destroy
+      # respond_to do |format|
+      #   format.html { redirect_to estimations_url }
+      #   format.json { head :no_content }
+      # end
+    #end
   end
 
   def station_estimation

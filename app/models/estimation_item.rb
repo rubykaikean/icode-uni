@@ -12,16 +12,16 @@ class EstimationItem < ActiveRecord::Base
 	def total_wt_ibs_ft
 		if material.category_id == 1
 			material.plate * thk_dia.to_f
-		elsif material.category_id == 2
+		elsif material.category_id == 2 || material.category_id == 3 || material.category_id == 4 || material.category_id == 5 || material.category_id == 6 
 			material.wt_ibs_ft
-		elsif material.category_id == 3
-			material.wt_ibs_ft
-		elsif material.category_id == 4
-			material.wt_ibs_ft
-		elsif material.category_id == 5
-			material.wt_ibs_ft
-		elsif material.category_id == 6
-			material.wt_ibs_ft
+		# elsif material.category_id == 3
+		# 	material.wt_ibs_ft
+		# elsif material.category_id == 4
+		# 	material.wt_ibs_ft
+		# elsif material.category_id == 5
+		# 	material.wt_ibs_ft
+		# elsif material.category_id == 6
+		# 	material.wt_ibs_ft
 		else
 			null
 		end

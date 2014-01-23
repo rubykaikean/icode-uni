@@ -17,7 +17,7 @@
     </tr>
     <tr style="align:margin-right">
         <td>
-            <%= f.input :thk_dia , label: "Thick / Dia." ,:as => :string %>
+            <%= f.input :thk_dia , label: "Thick / Dia. :" ,:as => :string , input_html: { :size => 5 } %><%= f.input :thk_dia_um ,label: "Thick / Dia Unit Measure:" , as: :string , :size => 9   %>
         </td>
         <td><%= f.input :dimension_h, label: "Dimension H" , :as => :string, :disabled => true %>
             <%= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %></td>

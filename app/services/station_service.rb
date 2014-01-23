@@ -1,7 +1,7 @@
 class StationService
 
 
-
+# here is for non-standard copy to non-standard .....
 	def initialize(station_value , station_id)
 		@station_value = station_value
 		@station_id = station_id

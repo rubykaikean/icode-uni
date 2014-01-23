@@ -85,6 +85,7 @@ class StationsController < ApplicationController
       end
   end
 
+  # this def is for non-standard copy to standard 
   def standard_station_estimation
        # render :text => params.to_json
       if params[:estimation_id].present?

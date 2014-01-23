@@ -37,6 +37,8 @@
         <% a = material.price_control_items.last %>
         <td id="<%= "unit_price_#{material.id}"%>"><%= a.new_unit_price rescue'-' %></td>
         <!-- <td id="<%#= "unit_price_#{material_id}" %>"><%#= material.price_control_items.new_unit_price rescue'-' %></td> -->
+        
+        <!-- new_unit_price_control.new_unit_price if new_unit_price_control -->
 
     </tr>
 
