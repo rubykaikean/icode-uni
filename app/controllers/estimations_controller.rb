@@ -111,25 +111,28 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1
   # DELETE /estimations/1.json
   def destroy
-    # render :text => params.to_json
-  
-    if params[:project_id].present?
-    #To record the delete history
-    Estimation.history_delete_file(params[:id])
-    #delete estimation item that relate to estimation
+    #render :text => params.to_json
+      #To record the delete history
+    Estimation.history_delete_file(params[:title] , params[:dimension], params[:current_user_id])
+    #   # #delete estimation item that relate to estimation
     estimation_item = EstimationItem.where("estimation_id = ?" , params[:id])
-    # render :text => estimation_item.to_json
+      # render :text => estimation_item.to_json
       estimation_item.each do |p|
         p.destroy
       end
-      # here is delete estimation
+        # here is delete estimation
     estimation = Estimation.find(params[:id])
     estimation.destroy
       respond_to do |format|
-        format.html { redirect_to project_estimation_projects_path(:id => params[:project_id]) }
-        format.json { head :no_content }
+        if params[:project_id].present?
+          format.html { redirect_to project_estimation_projects_path(:id => params[:project_id]) }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to estimations_path }
+          format.json { head :no_content }
+        end
       end
-    end
+    
 
   
     #@estimation_item.destroy

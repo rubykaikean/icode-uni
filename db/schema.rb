@@ -84,10 +84,13 @@ ActiveRecord::Schema.define(version: 20140207080917) do
     t.integer  "project_id"
     t.boolean  "status",           default: false
     t.integer  "user_id"
+    t.boolean  "kiv_status",       default: false
   end
 
   create_table "history_file_deletes", force: true do |t|
-    t.integer  "estimation_id"
+    t.string   "title"
+    t.string   "dimension"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

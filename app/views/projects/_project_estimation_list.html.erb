@@ -3,7 +3,7 @@
 	<% if params[:non_standard_station_id].present? %>
 	<div class="pull-right"><%= submit_tag "Copy To Non Standard" , :class => "btn btn-info" %></div>
 	<% end %>
-
+<% @current_user_id = current_user.id %>
 <%#= render :text => params.to_json %>
 <table class="table table-bordered">
 	<thead>
@@ -64,7 +64,7 @@
 		          <button type="button" class="btn btn-mini">Edit</button>
 		          <% end %>
 		          <% if roles.include?(InventoryManagementSystem::STANDARD_ESTIMATION_DELETE) %>
-		          <%= link_to 'Delete Standard', estimation_path(pe , :project_id => @project_estimation.id), method: :delete, data: { confirm: 'Delete Standard Estimation will delete Estimation Item. Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
+		          <%= link_to 'Delete Standard', estimation_path(pe , :project_id => @project_estimation.id , :current_user_id => @current_user_id , :title => pe.title , :dimension => pe.dimension), method: :delete, data: { confirm: 'Delete Standard Estimation will delete Estimation Item. Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
 		          <% else %>
 		          <button type="button" class="btn btn-mini">Destroy</button>
 		          <% end %>

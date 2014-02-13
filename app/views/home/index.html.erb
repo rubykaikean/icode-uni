@@ -97,7 +97,8 @@
 
 <div>
   <% if current_user.admin? %>
-    <%= link_to 'User List', users_path, :class=>"btn" %><br />
+    <%= link_to 'User List', users_path, :class=>"btn" %> 
+    <%= link_to 'Delete History' , history_file_deletes_path , :class => "btn" %>
   <% else %>
     &nbsp;
   <% end %>

@@ -4,7 +4,7 @@ class HistoryFileDeletesController < ApplicationController
   # GET /history_file_deletes
   # GET /history_file_deletes.json
   def index
-    @history_file_deletes = HistoryFileDelete.all
+    @history_file_deletes = HistoryFileDelete.all.paginate(:page => params[:page], :per_page=>5)
   end
 
   # GET /history_file_deletes/1
@@ -69,6 +69,6 @@ class HistoryFileDeletesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_file_delete_params
-      params.require(:history_file_delete).permit(:estimation_id)
+      params.require(:history_file_delete).permit(:title , :dimension , :user_id)
     end
 end

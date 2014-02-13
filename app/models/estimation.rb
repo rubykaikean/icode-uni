@@ -22,14 +22,18 @@ class Estimation < ActiveRecord::Base
 	]
 
 
-	def self.history_delete_file(id)
-	@estimation_id = id
-    # id.each do |estimation_id|
-      e = HistoryFileDelete.new(:created_at => Date.today, :estimation_id => @estimation_id)
-      #doc.authorize_print(params[doc_id]) 
-      e.save!
-    # end
-  end
+	def self.history_delete_file(title , dimension , current_user_id)
+		title = title
+		dimension = dimension
+		@current_user_id = current_user_id
+		  e = HistoryFileDelete.new(:title => title , :dimension => dimension ,:created_at => Date.today , :user_id => @current_user_id)
+		  #e.user_id = @curent_user_id  #doc.authorize_print(params[doc_id]) 
+		  e.save!
+  	end
+
+
+
+
 
 
 end

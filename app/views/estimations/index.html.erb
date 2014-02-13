@@ -1,4 +1,5 @@
 <%= render "action_estimations" %>
+<% @current_user_id = current_user.id %>
 <table class="table table-stripped">
   <thead>
     <tr>
@@ -47,7 +48,7 @@
           <button type="button" class="btn btn-mini">Edit</button>
           <% end %>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_DELETE) %>
-          <%= link_to 'Delete', estimation, method: :delete, data: { confirm: 'Delete Estimation will also delete Estimation Item. Are you sure !?' } ,:class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Delete', estimation_path(estimation, :current_user_id => @current_user_id , :title => estimation.title , :dimension => estimation.dimension), method: :delete, data: { confirm: 'Delete Estimation will also delete Estimation Item. Are you sure !?' } ,:class => 'btn btn-mini btn-danger' %>
           <% else %>
           <button type="button" class="btn btn-mini">Delete</button>
           <% end %></td>
