@@ -4,7 +4,7 @@
 <!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :user_id ,:input_html => {:value => "#{current_user.id}" } %>
+  <%= f.input :user_id ,as: :hidden ,:input_html => {:value => "#{current_user.id}" } %>
   <%# if params[:station_id].present? && params[:standard_station_id].present? %>
     <%#= f.input "standard_station_id", as: :hidden,:input_html=>{:value => params[:standard_station_id]} %>
     <%#= f.input "station_id" as: :hidden, :input_html=>{:value => params[:station_id]} %>
