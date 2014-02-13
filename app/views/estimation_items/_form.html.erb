@@ -102,18 +102,18 @@ $(document).ready(function(){
         $("#estimation_item_dimension_w").val(dimension_w);
         $("#dimension_w_hidden_field").val(dimension_w);
         
-        var estimation_item_dimension_w = [dimension_w]
+        //var estimation_item_dimension_w = [dimension_w]
         // alert(estimation_item_dimension_w);
-        if ( estimation_item_dimension_w > 0)
+        if ( dimension_w > 0)
         {
-            // alert("present");
+            //alert(dimension_w);
             $("#estimation_item_dimension_w").attr('disabled' , 'disabled');
             // $("#estimation_item_dimension_w").attr('disabled');
             // $("#estimation_item_dimension_w").removeAttr('disabled');
         }
         else 
         {
-            // alert("empty");
+            //alert(dimension_w);
             $("#estimation_item_dimension_w").attr('disabled');
             $("#estimation_item_dimension_w").removeAttr('disabled');    
         }

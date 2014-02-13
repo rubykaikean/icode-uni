@@ -1,7 +1,7 @@
 class Drawing < ActiveRecord::Base
 	belongs_to :estimation
 
-	before_save :basename
+	#before_save :basename
   	attr_accessor :xxx
   	has_attached_file :photo , :style => { :small => "200x200>" , :big => "500x500>" }, 
   	  :default_url => "/images/missing.png",
