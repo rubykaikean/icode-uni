@@ -1,3 +1,4 @@
+
 <table id="jdatatable" class="display" >
     <thead>
     <tr>
@@ -20,9 +21,10 @@
         
         <td><%= index + 1 %></td>
         <!-- (name, value = "1", checked = false, options = {}) -->
-        <td><%= check_box_tag "estimation_material", {} ,false,{:id=>"estimation_item_checkbox", :es_ma => material.id} %></td>
+        <td><%#= check_box_tag "estimation_material", {} ,false,{:es_ma => material.id} %>
+            <%= button_tag "submit", :es_ma => material.id ,:class=>"btn btn-mini estimation_button" %></td>
         <td id="<%= "name_#{material.id}" %>"><%= material.name rescue'-' %></td>
-        <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %>&nbsp;<%= material.thk_dia_um rescue'-' %></td>
+        <td id="<%= "thk_dia_#{material.id}" %>"><%= material.thk_dia rescue'-' %> <%= material.thk_dia_um rescue'-' %></td>
         <td id="<%= "dimension_h_#{material.id}" %>"><%= material.dimension_h rescue'-' %></td>
         <td id="<%= "dimension_w_#{material.id}" %>"><%= material.dimension_w rescue'-' %></td>
         <!-- <td id="<%#= "plate_#{material.id}" %>"><%#= material.plate rescue'-' %></td> -->

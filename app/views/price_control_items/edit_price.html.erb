@@ -1,0 +1,26 @@
+<h1>Editing Price Control Item</h1>
+
+<%= form_tag do %>
+	
+
+<% end %>
+<table class="table">
+	<tr>
+		<th>No</th>
+		<th>Material Id</th>
+		<th>Name</th>
+		<th>Material Code</th>
+		<th>Price</th>
+	</tr>
+	<% @materials_list.each_with_index do |price , index| %>
+	<tr>
+		<td><%= index + 1 %></td>
+		<td><%= price.material.id rescue'-' %></td>
+		<td><%= price.material.name rescue'-' %></td>
+		<td><%= price.material.material_code rescue'-' %></td>
+		<td><%= price.new_unit_price rescue'-' %></td>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', price_control_items_path , :class=> "btn" %>

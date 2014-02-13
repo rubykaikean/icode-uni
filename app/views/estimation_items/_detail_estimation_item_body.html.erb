@@ -6,7 +6,7 @@
  <% @info_estimation_items.estimation_items.each_with_index do |estimation_item , index| %>
  <tr>
    
-        <td><%= index + 1 %></td>
+        <td><%= index + 1 %>/ <%= estimation_item.id %></td>
         <td><% if estimation_item.part_detail.present? %>
           <%= estimation_item.part_detail rescue'-' %>
           <% else %>
@@ -60,7 +60,7 @@
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
               <%= three_precision estimation_item.weight_fomular_3 rescue'-' %>
-              <%# array << estimation_item.weight_fomular_3 %>
+              <% array << estimation_item.weight_fomular_3 %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
               <%= three_precision estimation_item.weight_fomular_4 rescue'-' %>

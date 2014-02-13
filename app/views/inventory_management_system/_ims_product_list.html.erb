@@ -48,8 +48,8 @@
 </tr>
 
 <tr>
-    <td><%= edit_module(@checkboxes, InventoryManagementSystem::PROJECT) %> Standard Project </td>
-    <td> - </td>
+    <td> </td>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT) %> Standard Project </td>
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_ADD) %></td>
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_PROJECT_SHOW) %></td>
@@ -93,8 +93,8 @@
 </tr>
 
 <tr>
-    <td><%= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION) %>Standard Estimation </td>
-    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
+    <td> - </td>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION) %>Standard Estimation </td>
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_ADD) %></td>
 
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::STANDARD_ESTIMATION_SHOW) %></td>
@@ -148,7 +148,7 @@
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_SHOW) %></td>
 
-    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_EDIT) %></td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ITEM_EDIT) %></td>
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_DELETE) %></td>
 

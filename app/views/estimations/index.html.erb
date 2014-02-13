@@ -47,7 +47,7 @@
           <button type="button" class="btn btn-mini">Edit</button>
           <% end %>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_DELETE) %>
-          <%= link_to 'Delete', estimation, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Delete', estimation, method: :delete, data: { confirm: 'Delete Estimation will also delete Estimation Item. Are you sure !?' } ,:class => 'btn btn-mini btn-danger' %>
           <% else %>
           <button type="button" class="btn btn-mini">Delete</button>
           <% end %></td>

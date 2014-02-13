@@ -1,7 +1,10 @@
 <h2><u>Home</u></h2>
 <hr />
-
-<%= link_to "New Project" , new_project_path , :class=>"btn" %>
+<% if roles.include?(InventoryManagementSystem::PROJECT_ADD)%>
+  <%= link_to "New Project" , new_project_path , :class=>"btn" %>
+<% else %>
+  <button> New Project </button>
+<% end %>
 <!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">New Project</a>
  --> 
 <!-- Modal -->
@@ -26,20 +29,40 @@
 
 <%#= link_to "Create with Existing Project" , show_standard_project_products_path , :class => "btn" %> 
 &nbsp;
-<%= link_to "Non-Standard Projects List" , list_non_standard_project_projects_path , :class=>"btn" %>
+<% if roles.include?(InventoryManagementSystem::PROJECT) %>
+  <%= link_to "Non-Standard Projects List" , list_non_standard_project_projects_path , :class=>"btn" %>
+<% else %>
+  <button class="btn">Non-Standard Project List</button>
+<% end %>
 &nbsp;
+
+<% if roles.include?(InventoryManagementSystem::STANDARD_PROJECT)%>
 <%= link_to "Standard Project List" , list_project_estimation_projects_path , :class=>"btn" %>
+<% else %>
+<button class="btn">Sandard Project</button>
+<% end %>
 <%#= link_to "Standard Project List",list_standard_project_projects_path,:class=>"btn" %>
 
 <hr />
 
-<%= link_to "Project List" , projects_path, :class=>"btn" %>
+<% if roles.include?(InventoryManagementSystem::PROJECT) %>
+  <%= link_to "Project List" , projects_path, :class=>"btn" %>
+<% else %>
+<button class="btn">Project List</button>
+<% end %>
 &nbsp;
+<% if roles.include?(InventoryManagementSystem::STATION) %>
 <%= link_to "Stations List" , stations_path , :class=>"btn" %>
+<% else %>
+<button class="btn">Station List</button>
+<% end %>
 &nbsp;
-<%# if roles.include?(InventoryManagementSystem::ESTIMATION) %>
+
+<% if roles.include?(InventoryManagementSystem::ESTIMATION) %>
 <%= link_to "Estimations List" , estimations_path , :class=>"btn" %>
-<%# end %>
+<% else %>
+<button class="btn">Estimation List</button>
+<% end %>
 
 
 
@@ -48,15 +71,24 @@
 
 
 <hr />
-<%# if roles.include?(InventoryManagementSystem::MATERIAL) %>
+<% if roles.include?(InventoryManagementSystem::MATERIAL) %>
 <%= link_to "Material" , materials_path , :class=>"btn" %>
-<%# end %>
+<% else %>
+<button class="btn">Material</button>
+<% end %>
 &nbsp;
-<%# if roles.include?(InventoryManagementSystem::CLIENT) %>
+<% if roles.include?(InventoryManagementSystem::CLIENT) %>
 <%= link_to "Client" , clients_path , :class=>"btn" %>
-<%# end %>
+<% else %>
+<button class="btn">Client</button>
+<% end %>
 &nbsp;
+
+<% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM) %>
 <%= link_to "Price Control Item" , price_control_items_path , :class=>"btn" %>
+<% else %>
+<button class="btn">Price Control Item</button>
+<% end  %>
 
 
 

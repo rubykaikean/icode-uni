@@ -1,42 +1,42 @@
-<%= simple_form_for(@price_control_item) do |f| %>
-<% if @price_control_item.errors.any? %>
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <ul>
-      <% @price_control_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<%# if action_name == 'Add Item Price' %>
+  <%= simple_form_for(@price_control_item) do |f| %>
+  <% if @price_control_item.errors.any? %>
+      <div class="alert alert-error fade in">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <ul>
+        <% @price_control_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+  <% end %>
+    <div class="inputs">
+      <%#= render "listing_price_control" %>
+      <table style="width:100%;" class="table table-bordered">
+        <tr>
+            <td>
+            <%= f.association :material, label: "Name(thk/H/W/WT)" , collection: Material.all.map {|r| [r.code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+            </td>
+            <td>
+              <%= f.input :new_unit_price , as: :string %>
+            </td>
+            <td>
+                <div class="dp2 date">
+                  <%= f.input :new_eff_date , as: :string %><span class="add-on"></span>
+                </div>
+                </td>       
+            </tr>
+           
+    </table>
     </div>
-<% end %>
-  <div class="inputs">
-    <%#= render "listing_price_control" %>
-    <table style="width:100%;" class="table table-bordered">
-      <tr>
-          <td>
-          <%= f.association :material, label: "Name(thk/H/W/WT)" , collection: Material.all.map {|r| [r.code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
-          </td>
-          <td>
-            <%= f.input :new_unit_price , as: :string %>
-          </td>
-          <td>
-              <div class="dp2 date">
-                <%= f.input :new_eff_date , as: :string %><span class="add-on"></span>
-              </div>
-              </td>       
-          </tr>
-         
-  </table>
-  </div>
 
-  <div class="actions">
-    <%= f.button :submit , :class => "btn" %>
-    <%#= link_to "Back", price_control_path , :class=>"btn" %>
-  </div>
-<% end %>
-<!-- 
-<%# if action_name == 'edit' %>
-            <%#= f.text_field :new_eff_date, :value => @price_control_item.new_eff_date.strftime("%d-%m-%Y"), :id => "kendo_date" %>
-          <%# else %>
-            <%#= f.text_field :new_eff_date, :value => Date.today.strftime("%d-%m-%Y"), :id => "kendo_date" %>
-          <%# end %> -->
+    <div class="actions">
+      <%= f.button :submit , :class => "btn" %>
+      <%#= link_to "Back", price_control_path , :class=>"btn" %>
+    </div>
+  <% end %>
+<%# end %>
+
+<%# if action_name == 'Edit Item Price' %>
+  <%#= render "edit_price_control_table" %> 
+<%# end %> 

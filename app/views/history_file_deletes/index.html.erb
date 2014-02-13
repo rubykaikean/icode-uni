@@ -1,0 +1,27 @@
+<h1>Listing history_file_deletes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Estimation</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @history_file_deletes.each do |history_file_delete| %>
+      <tr>
+        <td><%= history_file_delete.estimation_id %></td>
+        <td><%= link_to 'Show', history_file_delete %></td>
+        <td><%= link_to 'Edit', edit_history_file_delete_path(history_file_delete) %></td>
+        <td><%= link_to 'Destroy', history_file_delete, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New History file delete', new_history_file_delete_path %>

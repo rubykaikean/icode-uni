@@ -4,8 +4,7 @@
 <!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
-  
- 
+  <%= f.input :user_id, as: :hidden ,:input_html => {:value => "#{current_user.id}" } %>
   <%# if params[:station_id].present? && params[:standard_station_id].present? %>
     <%#= f.input "standard_station_id", as: :hidden,:input_html=>{:value => params[:standard_station_id]} %>
     <%#= f.input "station_id" as: :hidden, :input_html=>{:value => params[:station_id]} %>
@@ -14,7 +13,7 @@
   <% else %>
     <%= f.input :station_id , as: :hidden,:input_html=> {:value => params[:station_id]} %>
   <% end %>
-
+  
   <% if params[:project_id].present? %>
     <%= f.input :project_id  ,as: :hidden, :input_html => {:value => params[:project_id]} %>
     <%= f.input :standard_project_id , as: :hidden, :input_html => { :value => params[:standard_project_id]} %>
@@ -25,13 +24,13 @@
   <table class="table table-striped">
     <th>
       <td>
-          <%= f.input :title %>
+          <%= f.input :title ,  :input_html => {:style => 'width: 200px'} %>
       </td>
       <td>
           <%= f.input :dimension %>
       </td>
       <td>
-          <%= f.input :drawing_no_id , as: :string %>
+          <%= f.input :drawing_no_id , as: :string , input_html: { maxlength: 20 } %>
       </td>
       <td>
             <div class="dp2 date">
@@ -75,7 +74,7 @@
 
 
   <div class="actions">
-    <%= f.button :submit , :class=>"btn btn-primary" %> 
+    <%= f.button :submit , :class=>"btn btn-primarys" %> 
     <%= link_to 'Back', :back , :class=>"btn" %>
   </div>
 <% end %>

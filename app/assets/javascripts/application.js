@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     $('#jdatatable').dataTable({
         "sScrollY": "content_height" - 97,
-        //"sPaginationType": "full_numbers",  
+        // "sPaginationType": "full_numbers",  
         "bPaginate": false,
         "bJQueryUI": true,
         "bProcessing": true,

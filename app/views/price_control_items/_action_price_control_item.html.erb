@@ -6,6 +6,11 @@
   <button class="btn">Add Item Price</button>
 <% end %>
 
+<%if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_EDIT)  %>
+	<%= link_to "Edit Item Price" , edit_price_price_control_items_path , :class => "btn" , :target => "_blank" %>
+<% else %>
+	<button class="btn">Edit Item Price</button>
+<% end %>
 <div style="float: right; ">
 <%#= link_to 'Back' , price_controls_path , :class=>"btn" %>
 <%= link_home_button %>

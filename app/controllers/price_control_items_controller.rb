@@ -1,5 +1,5 @@
 class PriceControlItemsController < ApplicationController
-  before_action :set_price_control_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_price_control_item, only: [:show, :destroy]
   
   layout "enter_data", :only => [:new , :edit , :create]
   #autocomplete :price_control_items, :custom_name
@@ -25,11 +25,13 @@ class PriceControlItemsController < ApplicationController
   def new
     #@price_control = PriceControl.find(params[:price_control_id])
     @price_control_item = PriceControlItem.new
+    
   end
 
   # GET /price_control_items/1/edit
   def edit
-    @price_control = PriceControl.find(params[:price_control_id])
+    
+    #@price_control = PriceControl.find(params[:price_control_id])
   end
 
   # POST /price_control_items
@@ -75,6 +77,12 @@ class PriceControlItemsController < ApplicationController
       format.html { redirect_to price_control_items_url }
       format.json { head :no_content }
     end
+  end
+
+  def edit_price
+    @materials_list = PriceControlItem.all.paginate(:page => params[:page], :per_page=> 5 )
+
+    
   end
 
   private

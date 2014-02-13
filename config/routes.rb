@@ -1,11 +1,16 @@
 IcodeUni::Application.routes.draw do
   
 
+  resources :history_file_deletes
+
   resources :price_controls do
     #get :autocomplete_price_control_reference, :on => :collection
   end
 
   resources :price_control_items do
+    collection do
+      get "edit_price"
+    end
     #get :autocomplete_price_control_items_custom_name , :on => :collection
   end
 

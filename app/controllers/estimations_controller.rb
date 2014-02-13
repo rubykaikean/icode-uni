@@ -1,7 +1,7 @@
 class EstimationsController < ApplicationController
   before_filter :authenticate_user!
   before_action :check_role
-  before_action :set_estimation, only: [:edit, :update, :destroy]
+  before_action :set_estimation, only: [:edit, :update]
   autocomplete :estimation, :title
 
 
@@ -42,9 +42,9 @@ class EstimationsController < ApplicationController
   # POST /estimations
   # POST /estimations.json
   def create
-      @estimation = Estimation.new(estimation_params)
+    @estimation = Estimation.new(estimation_params)
 
-      # render :text => params.to_json
+    #render :text => params.to_json
     
       respond_to do |format|
           if params[:estimation][:project_id].present?
@@ -111,20 +111,41 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1
   # DELETE /estimations/1.json
   def destroy
+    # render :text => params.to_json
+  
+    if params[:project_id].present?
+    #To record the delete history
+    Estimation.history_delete_file(params[:id])
+    #delete estimation item that relate to estimation
+    estimation_item = EstimationItem.where("estimation_id = ?" , params[:id])
+    # render :text => estimation_item.to_json
+      estimation_item.each do |p|
+        p.destroy
+      end
+      # here is delete estimation
+    estimation = Estimation.find(params[:id])
+    estimation.destroy
+      respond_to do |format|
+        format.html { redirect_to project_estimation_projects_path(:id => params[:project_id]) }
+        format.json { head :no_content }
+      end
+    end
 
-    render :text => params.top_json
-    #estimation_item = EstimationItem.pluck(:estimation_id)
-    #if estimation_item.any? {|a| a == @estimation.id }
-        #redirect_to estimations_path , notice: 'Make sure delete all Estimation Item before delete Estimation.'
-      #else
-      #EstimationItemService.new().check_estimation_item
-
-      # @estimation.destroy
-      # respond_to do |format|
-      #   format.html { redirect_to estimations_url }
-      #   format.json { head :no_content }
-      # end
-    #end
+  
+    #@estimation_item.destroy
+    # # @estimation_item = EstimationItem.pluck(:estimation_id)
+    # @estimation_item = EstimationItem.where("estimation_id => ? ", params[:estimation_id])
+    # if @estimation_item.any? {|a| a == @estimation.id }
+    #     render :text => @estimation_item.to_json
+    # else
+    #   #EstimationItemService.new().check_estimation_item
+    #   render :text => "123"
+    # #    @estimation.destroy
+    # #    respond_to do |format|
+    # #      format.html { redirect_to estimations_url }
+    # #      format.json { head :no_content }
+    # #    end
+    # end
   end
 
   def station_estimation
@@ -178,7 +199,7 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:status, :project_id ,:client_id, :title, :dimension, :drawing_no_id, :date, :issued_by ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
+      params.require(:estimation).permit(:status, :project_id ,:client_id, :title, :dimension, :drawing_no_id, :date, :user_id ,:welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , :station_id)
     end
 
     def check_role

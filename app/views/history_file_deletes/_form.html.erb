@@ -1,0 +1,11 @@
+<%= simple_form_for(@history_file_delete) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :estimation_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

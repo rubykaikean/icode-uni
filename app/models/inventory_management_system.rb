@@ -53,10 +53,12 @@ class InventoryManagementSystem < ActiveRecord::Base
   ESTIMATION_ITEM_EDIT        = 77 
   ESTIMATION_ITEM_DELETE      = 75
 
-  STANDARD_PROJECT_ADD        = 80 #until this number
+  STANDARD_PROJECT            = 85 
+  STANDARD_PROJECT_ADD        = 80 
   STANDARD_PROJECT_EDIT       = 78
   STANDARD_PROJECT_DELETE     = 79
 
+  STANDARD_ESTIMATION         = 86 #until this number
   STANDARD_ESTIMATION_ADD     = 81
   STANDARD_ESTIMATION_SHOW    = 82
   STANDARD_ESTIMATION_EDIT    = 83

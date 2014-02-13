@@ -24,7 +24,7 @@ class EstimationItemsController < ApplicationController
   def new
     @estimation = Estimation.find(params[:estimation_id]) 
     @estimation_item = EstimationItem.new
-    @show_material = Material.all
+    @show_material = Material.all.paginate(:page => params[:page], :per_page=>10)
     # @show_estimation_id = Estimation.find(params[:estimation])
     # render :text => params[:estimation_id].to_json
     # session[:es] = session[:es].present? ? session[:es] : params[:estimation_id]

@@ -2,7 +2,7 @@
   <% estimation = @info_estimation_items %>
   <tr>
     <td>Client :       <u><%= estimation.station.project.client.name rescue'-'%></u></td>
-    <td>Drawing No:    </td>
+    <td>Drawing No:    <u><%= estimation.drawing_no_id rescue'-'  %></u></td>
   </tr>
   <tr>
     <td>Title :         <u><%= estimation.title rescue'-' %></u></td>
@@ -11,6 +11,11 @@
 
   <tr>
     <td>Dimension :     <u><%= estimation.dimension rescue'-' %></u></td>
+    <td>Issued By :     <u><%= estimation.user.username rescue'-' %></u></td>
+    
+  </tr>
+  <tr>
+    <td></td>
     <td>Total :         <u id="total_weight"></u></td>
   </tr>
   <%# end %>
