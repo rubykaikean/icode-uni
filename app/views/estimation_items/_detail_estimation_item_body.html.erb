@@ -3,10 +3,12 @@
 <% array_price_total = [] %>
 <% final_total = [] %>
 <% array_price_total_ton = [] %>
+<% index_count = [] %>
  <% @info_estimation_items.estimation_items.each_with_index do |estimation_item , index| %>
  <tr>
-   
-        <td><%= index + 1 %>/ <%= estimation_item.id %></td>
+        <% index_count << index + 1 %>
+
+        <td><%= index + 1 %></td>
         <td><% if estimation_item.part_detail.present? %>
           <%= estimation_item.part_detail rescue'-' %>
           <% else %>
@@ -97,6 +99,7 @@
         
     <% end %>
       <tr>
+        <td id="estimation_item_index_count" style="display:none;" ><%= index_count.count %></td>
         <td colspan="9"></td>
         <td style="align:left;">Total : </td>
         <td id="estimation_item_total_weight"><%= four_precision(array.sum) %></td>

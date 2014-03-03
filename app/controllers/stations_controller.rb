@@ -8,11 +8,6 @@ class StationsController < ApplicationController
   # GET /stations
   # GET /stations.json
   def index
-    # @search = Station.search(params[:q])
-    # @stations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
-
-    # @search = Product.search(params[:search])
-    # @products = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
     @search = Project.search(params[:q])
     @projects = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>5).order('id DESC')
   end

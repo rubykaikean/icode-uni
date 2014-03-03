@@ -1,0 +1,18 @@
+<div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Materials</a></li>
+        <li><a href="#tab2" data-toggle="tab">Purchasing Materials</a></li>
+        <li><a href="#tab3" data-toggle="tab">Search<a></li>
+      </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <p><%= render "input_estimation_material_table" %></p>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <p><%= render "input_estimation_purchasing_material_table" %></p>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <p><%= render "search_material" %></p>
+      </div>
+   </div>
+</div>

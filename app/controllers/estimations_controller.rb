@@ -9,7 +9,7 @@ class EstimationsController < ApplicationController
   # GET /estimations.json
   def index
     @search = Estimation.search(params[:q])
-    @estimations = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5).order('title DESC')
+    @estimations = @search.result.paginate(:page => params[:page], :per_page=>5).order('title DESC')
   end
 
   # GET /estimations/1
@@ -80,12 +80,8 @@ class EstimationsController < ApplicationController
   def update
     
     #render :text => params.to_json
-    
     #@estimation.estimation_items.build(params[:estimation_items])
     #Estimation.generation_new_item(params[:estimation])
-
-
-    
     respond_to do |format|
       if @estimation.update(estimation_params)
     #     if params[:estimation][:standard_station_id] && params[:estimation][:station_id].present?
@@ -112,9 +108,10 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1.json
   def destroy
     #render :text => params.to_json
+    a = Estimation.find(params[:id])
       #To record the delete history
-    Estimation.history_delete_file(params[:title] , params[:dimension], params[:current_user_id])
-    #   # #delete estimation item that relate to estimation
+    Estimation.history_delete_file(a.title , a.dimension, params[:current_user_id])
+    # #delete estimation item that relate to estimation
     estimation_item = EstimationItem.where("estimation_id = ?" , params[:id])
       # render :text => estimation_item.to_json
       estimation_item.each do |p|
@@ -132,23 +129,6 @@ class EstimationsController < ApplicationController
           format.json { head :no_content }
         end
       end
-    
-
-  
-    #@estimation_item.destroy
-    # # @estimation_item = EstimationItem.pluck(:estimation_id)
-    # @estimation_item = EstimationItem.where("estimation_id => ? ", params[:estimation_id])
-    # if @estimation_item.any? {|a| a == @estimation.id }
-    #     render :text => @estimation_item.to_json
-    # else
-    #   #EstimationItemService.new().check_estimation_item
-    #   render :text => "123"
-    # #    @estimation.destroy
-    # #    respond_to do |format|
-    # #      format.html { redirect_to estimations_url }
-    # #      format.json { head :no_content }
-    # #    end
-    # end
   end
 
   def station_estimation

@@ -4,7 +4,7 @@ class HistoryFileDeletesController < ApplicationController
   # GET /history_file_deletes
   # GET /history_file_deletes.json
   def index
-    @history_file_deletes = HistoryFileDelete.all.paginate(:page => params[:page], :per_page=>5)
+    @history_file_deletes = HistoryFileDelete.all.paginate(:page => params[:page], :per_page=>5).order("id DESC")
   end
 
   # GET /history_file_deletes/1

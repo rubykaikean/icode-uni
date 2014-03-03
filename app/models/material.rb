@@ -36,63 +36,8 @@ class Material < ActiveRecord::Base
 	  "#{name} - #{dimension_h} - #{dimension_w} - #{wt_ibs_ft}"
 	end
 	# private
-	# material_code = name - thk - H - W - WT 
+	# material_code = name - thk - H - W - WT
 	def generate_material_code
-		# if thk_dia.nil? && dimension_h.nil? && dimension_w.nil? && wt_ibs_ft.nil?	
-		#   	#self.material_code = "#{name} _ #{thk_dia.to_s} _-_#{dimension_w.to_s} _ #{wt_ibs_ft.to_s}"
-		# 	self.material_code = "1111"
-		# elsif dimension_h.nil? && dimension_w.nil? && wt_ibs_ft.nil? #name / thk / - / - / -  #name / - / H / W / WT
-		# 	#self.material_code = "#{name} _-_ #{dimension_h.to_s} _ #{dimension_w.to_s} _ #{wt_ibs_ft .to_s} "
-		# 	self.material_code = "124"
-		# elsif thk_dia.nil? && dimension_w.nil? && wt_ibs_ft.nil? #name / - / H / - / - 
-		#  	#self.material_code = "#{name} _ #{thk_dia.to_s} _#{dimension_h.to_s} _-_ #{wt_ibs_ft.to_s}"
-		# 	self.material_code = "125"
-		# elsif thk_dia.nil? && dimension_w.nil? && wt_ibs_ft.nil? #name / - / -  / W / -
-		# 	#self.material_code = "#{name} _ #{thk_dia.to_s} _ #{dimension_h.to_s} _ #{dimension_w.to_s} _ - "
-		# 	self.material_code = "126"
-		# elsif thk_dia.nil? && dimension_h.nil? && dimension_w.nil? #name / - / - / - / WT
-		# 	#self.material_code = "#{name} _ - _ - _#{dimension_w.to_s} _ #{wt_ibs_ft.to_s}"
-		# 	self.material_code = "127"
-		# elsif dimension_h.nil? && wt_ibs_ft.nil? #name / thk / - / W / -
-		# 	#self.material_code = "#{name} _ - _#{dimension_h.to_s} _ - _#{wt_ibs_ft.to_s}"
-		# 	self.material_code = "128"
-		# elsif thk_dia.nil? && wt_ibs_ft.nil? #name / - / H / W / -
-		# 	#self.material_code = "#{name} _ - _ #{dimension_h.to_s} _ #{dimension_w.to_s} _ - "
-		# 	self.material_code = "129"
-		# elsif dimension_h.nil? && dimension_w.nil? #name / thk / - / - / WT
-		# 	#self.material_code = "#{name} _ #{thk_dia.to_s} _ - _ - _ #{wt_ibs_ft.to_s}"
-		# 	self.material_code = "1210"
-		# elsif dimension_w.nil? && wt_ibs_ft.nil? #name / thk / H / - / -
-		# 	#self.material_code = "#{name} _ #{thk_dia.to_s} _ - _ #{dimension_w.to_s} _ -"
-		# 	self.material_code = "1211"
-		# elsif thk_dia.nil? && dimension_w.nil? #name / - / H / - / WT
-		# 	#self.material_code = "#{name} _ #{dimension_h.to_s} _ - _ -"
-		# 	self.material_code = "1212"
-		# elsif thk_dia.nil? && dimension_h.nil? #name / - / - / W / WT
-		# 	#self.material_code = "#{name} _ - _ - _ - _ #{wt_ibs_ft.to_s} "
-		# 	self.material_code = "1213"
-		# elsif wt_ibs_ft.nil? #name / thk / H / W / -
-		# 	#self.material_code = "#{name} _ - _ - _ #{dimension_w.to_s} _ - "
-		# 	self.material_code = "1214"
-		# elsif dimension_w.nil? #name / thk / H / - / WT
-		# 	#self.material_code = "#{name} _ - _ #{dimension_h.to_s} _ - _ - "
-		# 	self.material_code = "1215"
-		# elsif thk_dia.nil? #name / - / H / W / WT
-		# 	#self.material_code = "#{name} _ #{thk_dia.to_s} _ - _ - _ -"
-		# 	self.material_code = "116"
-		# elsif dimension_h.nil? #name / thk / - / W / WT
-		# 	#self.material_code = "#{name} _ - _ - _ - _ -"
-		# 	self.material_code = "123"
-		# else
-		#   	self.material_code = "#{name} _ #{thk_dia.to_s}_#{dimension_h.to_s} _ #{dimension_w.to_s} _ #{wt_ibs_ft.to_s}"
-		# end
-		# return material_params[:material_code]
-		# if thk_dia.nil? && dimension_h.nil? && dimension_w.nil? && wt_ibs_ft.nil?
-		# 	self.material_code = "#{name}_-_-_-_-"
-		# else
-		# 	self.material_code = "#{name} - #{thk_dia.to_s} - #{dimension_h.to_s} - #{dimension_w.to_s} - #{wt_ibs_ft.to_s}"
-		# end
-
 		self.material_code = "#{name}(#{custom_thk_dia}-#{custom_dimension_h}-#{custom_dimension_w}-#{custom_wt_ibs_ft})"
 	end
 

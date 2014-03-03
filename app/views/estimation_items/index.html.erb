@@ -19,7 +19,6 @@
       <th rowspan="1">Weight</th>
       <th rowspan="2" width="50">Unit Price</th>
       <th rowspan="2">Total</th>
-      <!-- <th rowspan="2">Remarks</th> -->
       <th rowspan="2">Action</th>
     </tr>
     <tr>
@@ -32,13 +31,10 @@
     </tr>
   </thead>
   
-  <%# estimation = params[:estimation] %>
   <tbody>
-   
      <%= render "detail_estimation_item_body" %>
-    
   </tbody>
 </table>
 
-<%= link_to "Back" , :back , :class=>"btn" %>
+<%= link_to "Back" , estimations_path , :class=>"btn" %>
 <br>

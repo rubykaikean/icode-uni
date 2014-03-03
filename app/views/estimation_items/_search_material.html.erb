@@ -1,0 +1,23 @@
+<%= search_form_for @search, :url => new_estimation_item_path do |f| %> 
+<table class="table table-hover">
+	<tr>
+		<td>* Material Code = Name - Thk - H - W - WT *</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Material Code :</td>
+		<td><%= f.text_field :material_code_cont , "data-autocomplete" => autocomplete_material_material_code_estimation_items_path, :class => "input-large search-query", :placeholder => "Material Code", :size => 9 %></td>
+		<td>
+			<%= hidden_field_tag :estimation_id ,"estimation_id" , :value => params[:estimation_id] %>
+		</td>
+	</tr>
+	<!-- <tr>
+		<td>Material Name</td>
+		<td><%#= f.text_field :name_cont , "data-autocomplete" => autocomplete_material_name_estimation_items_path, :class => "input-large search-query", :placeholder => "Materail Name" %></td>
+		<td>Dimension W</td>
+		<td><%#= f.text_field :dimension_w , "data-autocomplete" => autocomplete_material_dimension_w_estimation_items_path , :class => "input-large search-query", :placeholder => "Dimension W" %></td>
+	</tr> -->
+</table>
+
+<%= f.submit "Search", :class => "btn" %>
+<% end %>

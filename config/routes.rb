@@ -55,8 +55,10 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :estimation_items do
+    get :autocomplete_material_material_code, :on => :collection
+    get :autocomplete_material_dimension_w , :on => :collection
+    get :autocomplete_material_name , :on => :collection
     collection do
-      # get :report
       get "standard_estimation_item"
     end
   end
@@ -73,17 +75,7 @@ IcodeUni::Application.routes.draw do
       get "standard_station_estimation"
     end
   end
-  # resources :products do
-  #   get :autocomplete_project_name, :on => :collection
-  #   collection do
-  #     get "product_station"
-  #     get "show_standard_project"
-  #     get "show_standard_station"
-  #     get "show_standard_estimation"
-  #     get "add_standard_estimation"
-  #   end
-  # end
-  
+ 
 
   resources :materials do
     get :autocomplete_material_name, :on => :collection

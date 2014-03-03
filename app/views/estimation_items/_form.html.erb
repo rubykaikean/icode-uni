@@ -1,183 +1,72 @@
-<%#= render :text => params[:estimation_id].to_json %>
 <hr />
 <%= simple_form_for(@estimation_item) do |f| %>
-  <%= f.error_notification %>
-    <%= f.input "estimation_id",as: :hidden , :input_html => { :value => params[:estimation_id]} %>
+<%= f.error_notification %>
+<%= f.input "estimation_id",as: :hidden , :input_html => { :value => params[:estimation_id]} %>
 
 <table >
     <div class="inputs">
     <tr>
-        <td><%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
-        <td><%= f.input :material_id, :as => :string ,:disabled => true %>
-                <%= hidden_field_tag "material_id" %>  <!-- this link is to capture material id -->
-            <%# end %>
+        <td>
+            <%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
+        <td>
+            <%= f.input :material_id, :as => :string ,:disabled => true %>
+                <%= hidden_field_tag "material_id" %>
+            <!-- this link is to capture material id -->
         </td>
-        <!-- <td><div id="showData"></div></td> -->
     </tr>
     <tr style="align:margin-right">
         <td>
-        <%= f.input :thk_dia , label: "Thick / Dia. :" ,:as => :string , input_html: { :style => 'width: 200px' } %>
-        <%#= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %>
-        <%= f.input :thk_dia_um ,label: "Unit Measure:" , :as => :string , input_html: { :style => 'width: 200px' }   %>
-
+            <%= f.input :thk_dia , label: "Thick / Dia. :" ,:as => :string , input_html: { :style => 'width: 200px' } %>
+            <%= f.input :thk_dia_um ,label: "Unit Measure:" , :as => :string , input_html: { :style => 'width: 200px' } %>
         </td>
-        <td><%= f.input :dimension_h, label: "Dimension H" , :as => :string, :disabled => true %>
-            <%= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %></td>
+        <td>
+            <%= f.input :dimension_h, label: "Dimension H" , :as => :string, :disabled => true %>
+            <%= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %>
+        </td>
 
-        <td><%# if  %>
-            <%#= f.input :dimension_w,label: "Dimension W" , :as => :string , :disabled => true %>
-            <%# else %>
+        <td>
             <%= f.input :dimension_w,label: "Dimension W" , :as => :string %>
-            <%#= hidden_field_tag "dimension_w",:id=>"dimension_w_hidden_field" %></td>
-            <%# end %>
-        <td><%= f.input :dimension_l,:as => :string, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %></td>
+        </td>
+            
+        <td>
+            <%= f.input :dimension_l,:as => :string, label: "Dimension L" ,:size=> 9, :id=>"dimension_l" %>
+        </td>
 
-        <td><%= f.input :wt_ibs_ft,label: "Unit Weight(WT)" , :as => :string, :disabled => true %>
-            <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %></td>
+        <td>
+            <%= f.input :wt_ibs_ft,label: "Unit Weight(WT)" , :as => :string, :disabled => true %>
+            <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %>
+        </td>
     </tr> 
     <tr>
-        <td><%= f.input :qty , :as => :string , label: "Quantity" ,:size=> 9 %></td>
-
-        <td><%= f.input :uom , label: "Unit Measure" , :size=> 9 %>
-            <%= hidden_field_tag "unit_measure" , nil , :id=>"unit_measure_hidden_field" %>
+        <td>
+            <%= f.input :qty , :as =>:string , label: "Quantity" ,:size=> 9 %>
         </td>
 
-        <td><%= f.input :unit_price ,:as => :string , :disabled => true %>
-            <%= hidden_field_tag "unit_price" , nil , :id=>"unit_price_hidden_field" %></td>
-            <%#= f.input :weight , label: "Weight Ib" ,:disabled => true,:size=> 9 %>
-        <td><%=  %></td>
+        <td>
+            <%= f.input :uom , label: "Unit Measure" , :size=> 9 %>
+            <%= hidden_field_tag "unit_measure" , nil , :id=>"uom_hidden_field" %>
+        </td>
 
+        <td>
+            <%= f.input :unit_price ,:as => :string , :disabled => true %>
+            <%= hidden_field_tag "unit_price" , nil , :id=>"unit_price_hidden_field" %>
+        </td>
     </tr>
     </div>
 </table>
 <br>
   <div class="actions">
-
     <%= f.button :submit , :class=>"btn btn-primary" %>
     <%= link_to 'Back', estimations_path , :class=>"btn" %>
-    <div style="float: right;"><%= will_paginate @show_material, :class => "pagination" %></div>
+    <div style="float: right;"><%= will_paginate @show_material %></div>
   </div>
 <% end %>
 
-<%= render "input_estimation_material_table" %>
-
+    <%= render "tab_table" %>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
-
-
-    $(".estimation_button").click(function(sel){
-
-        
-        var material_id = $(this).attr("es_ma");
-        var name = $("#name_"+ material_id).text();
-        var dimension_w = $("#dimension_w_" + material_id ).text();
-        var dimension_h = $("#dimension_h_" + material_id ).text();
-        var thk_dia = $("#thk_dia_" + material_id ).text();
-        var wt_ibs_ft = $("#wt_ibs_ft_" + material_id ).text();
-        var unit_price = $("#unit_price_" + material_id ).text();
-        var unit_measure = $("#unit_measure_" + material_id).text();
-
-        $("#estimation_item_material_id").val(name);
-        var tk = []
-        var tk = thk_dia.split(" ");
-        var thk_dia_num = tk[0];
-        var thk_dia_um = tk[1];
-        // var thk_dia_3 = tk[3];
-        //alert(thk_dia_um);
-        $("#estimation_item_thk_dia").val(thk_dia_num);
-        $("#thk_dia_hidden_field").val(thk_dia_num);
-
-        $("#estimation_item_thk_dia_um").val(thk_dia_um);
-        $("#thk_dia_um_hidden_field").val(thk_dia_um);
-        //hidden field for write down record and store in db
-
-        $("#estimation_item_uom").val(unit_measure);
-        $("#unit_measure_hidden_field").val(unit_measure);
-
-        $("#estimation_item_dimension_h").val(dimension_h);
-        $("#dimension_h_hidden_field").val(dimension_h);
-
-        $("#estimation_item_dimension_w").val(dimension_w);
-        $("#dimension_w_hidden_field").val(dimension_w);
-        
-        //var estimation_item_dimension_w = [dimension_w]
-        // alert(estimation_item_dimension_w);
-        if ( dimension_w > 0)
-        {
-            //alert(dimension_w);
-            $("#estimation_item_dimension_w").attr('disabled' , 'disabled');
-            // $("#estimation_item_dimension_w").attr('disabled');
-            // $("#estimation_item_dimension_w").removeAttr('disabled');
-        }
-        else 
-        {
-            //alert(dimension_w);
-            $("#estimation_item_dimension_w").attr('disabled');
-            $("#estimation_item_dimension_w").removeAttr('disabled');    
-        }
-        
-        $("#estimation_item_wt_ibs_ft").val(wt_ibs_ft);
-        $("#wt_ibs_ft_hidden_field").val(wt_ibs_ft);
-
-        $("#estimation_item_unit_price").val(unit_price);
-        $("#unit_price_hidden_field").val(unit_price);
-
-
-        $("#material_id").val(material_id);
-    });
-
-    // $("input:checkbox").change(function(){
-    //     //alert(material_id);
-    //     // total allowed to be checked.
-    //     //var max_allowed = 0;
-    //     // count how many checked.
-    //     var checked = $("input:checked").size();
-    //     // perform test.
-    //         if ( checked > 0 ) {
-    //             // is more than the max so uncheck.
-    //             $(this).attr("checked", false);
-    //         }
-
-    //         // ($this.attr('disabled')) $this.removeAttr('disabled');  >> for key in
-    //         // $this.attr('disabled', 'disabled'); >> for non key in
-    //     //check box button
-    //     var material_id = $(this).attr("es_ma");
-    //     // down 5 line is to bring up from datatable to field 
-    //     var name = $("#name_"+ material_id).text();
-    //     var dimension_w = $("#dimension_w_" + material_id ).text();
-    //     var dimension_h = $("#dimension_h_" + material_id ).text();
-    //     var thk_dia = $("#thk_dia_" + material_id ).text();
-    //     var wt_ibs_ft = $("#wt_ibs_ft_" + material_id ).text();
-    //     var unit_price = $("#unit_price_" + material_id ).text();
-    //     var unit_measure = $("#unit_measure_" + material_id).text();
-    //     //alert(dimension_w);
-    //     $("#estimation_item_material_id").val(name);
-
-    //     $("#estimation_item_thk_dia").val(thk_dia);
-    //     $("#thk_dia_hidden_field").val(thk_dia);    //hidden field for write down record and store in db
-
-    //     $("#estimation_item_uom").val(unit_measure);
-    //     $("#unit_measure_hidden_field").val(unit_measure);
-
-    //     $("#estimation_item_dimension_h").val(dimension_h);
-    //     $("#dimension_h_hidden_field").val(dimension_h);
-
-    //     $("#estimation_item_dimension_w").val(dimension_w);
-    //     $("#dimension_w_hidden_field").val(dimension_w);
-
-    //     $("#estimation_item_wt_ibs_ft").val(wt_ibs_ft);
-    //     $("#wt_ibs_ft_hidden_field").val(wt_ibs_ft);
-
-    //     $("#estimation_item_unit_price").val(unit_price);
-    //     $("#unit_price_hidden_field").val(unit_price);
-
-
-    //     $("#material_id").val(material_id);
-
-        
-    // });
 
  });
 </script>

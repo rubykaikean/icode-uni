@@ -12,7 +12,8 @@ class Estimation < ActiveRecord::Base
 	belongs_to :user
 	#validates :welding , :oxygen_acetylene , :painting , :sand_blasting , :transport ,:crane ,:shipment,:labour,:installation,:dismantle,:machining,:insulation,:civil_work,:electrik,:piling_work,:forming,:misc,:jkkp , numericality: true
 
-
+	scope :result , -> {result(:distinct => true)}
+	#scope :paginate , -> {paginate(:page => params[:page], :per_page=>5)}
 
 	validates :title , :dimension , :date,  presence: :true
 

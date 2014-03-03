@@ -1,12 +1,12 @@
 <table style="width:100%;">
   <% estimation = @info_estimation_items %>
   <tr>
-    <td>Client :       <u><%= estimation.station.project.client.name rescue'-'%></u></td>
-    <td>Drawing No:    <u><%= estimation.drawing_no_id rescue'-'  %></u></td>
+    <td>Client :        <u><%= estimation.station.project.client.name rescue'-'%></u></td>
+    <td>Item :          <u id="index_count"></u></td>
   </tr>
   <tr>
     <td>Title :         <u><%= estimation.title rescue'-' %></u></td>
-    <td>Date :          <u><%= estimation.date rescue'-' %></u></td>
+    <td>Drawing No:     <u><%= estimation.drawing_no_id rescue'-'  %></u></td>
   </tr>
 
   <tr>
@@ -15,7 +15,7 @@
     
   </tr>
   <tr>
-    <td></td>
+    <td>Date :          <u><%= estimation.date rescue'-' %></u></td>
     <td>Total :         <u id="total_weight"></u></td>
   </tr>
   <%# end %>

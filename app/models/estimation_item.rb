@@ -1,5 +1,7 @@
 class EstimationItem < ActiveRecord::Base
 
+	
+	
 	belongs_to :estimation
 	belongs_to :material
 
