@@ -14,12 +14,12 @@ class ProjectsController < ApplicationController
   end
 
   def list_non_standard_project
-    @list_non_standard_project_search = Project.non_standard_type.search(params[:q])
+    @list_non_standard_project_search = Project.quotation_type.search(params[:q])
     @list_non_standard_projects = @list_non_standard_project_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>5)
   end
 
   def list_project_estimation 
-    @list_project_estimation = Project.standard_type.search(params[:q])
+    @list_project_estimation = Project.tender_type.search(params[:q])
     @list_project_estimation = @list_project_estimation.result(:distinct => true).paginate(:page =>params[:page], :per_page=> 5).order("id DESC")
   end
 
@@ -56,19 +56,19 @@ class ProjectsController < ApplicationController
         # use ? to request the true/false value
         # format.html { render :text => params.to_json }
 
-        if params[:project][:standard] == '1'
+        if params[:project][:tenders] == '1'
             @project.save
             format.html { 
-              redirect_to project_estimation_projects_path(:id => @project) ,notice: "Customize Project was created" 
+              redirect_to project_estimation_projects_path(:id => @project) ,notice: "project was successfully created with Tender" 
               #redirect_to project_estimation_projects_path(@project), notice: "testing"
             }
             # standard path
             # format.html { redirect_to project_station_project_path(@project) , notice: 'project was successfully created Standard.' }
             #format.json { render action: 'show', status: :created, location: @project }
-        elsif params[:project][:standard] == '0'
+        elsif params[:project][:tenders] == '0'
             # format.html {render :text => params.to_json}
             @project.save
-            format.html { redirect_to new_station_path(:id => @project), notice: 'project Was successfully created with Non Standard' }
+            format.html { redirect_to new_station_path(:id => @project), notice: 'project was successfully created with Customize' }
         
         else 
             format.html { render action: 'new'}
@@ -130,7 +130,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :project_code, :client_id, :date , :standard , :non_standard )
+      params.require(:project).permit(:name, :project_code, :client_id, :date , :tenders , :quotation)
     end
 
     def check_role

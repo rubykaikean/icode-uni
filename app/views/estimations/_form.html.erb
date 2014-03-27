@@ -1,12 +1,8 @@
-<%#= render :text => params.to_json %>
-<%#= render :text => params[:estimation].to_json %>
-
-<!-- Station : <%#= @station.name %> -->
 <%= simple_form_for(@estimation) do |f| %>
   <%= f.error_notification %>
   <%= f.input :user_id ,as: :hidden ,:input_html => {:value => "#{current_user.id}" } %>
-  <%# if params[:station_id].present? && params[:standard_station_id].present? %>
-    <%#= f.input "standard_station_id", as: :hidden,:input_html=>{:value => params[:standard_station_id]} %>
+  <%# if params[:station_id].present? && params[:tender_station_id].present? %>
+    <%#= f.input "tender_station_id", as: :hidden,:input_html=>{:value => params[:tender_station_id]} %>
     <%#= f.input "station_id" as: :hidden, :input_html=>{:value => params[:station_id]} %>
   <% if params[:standard_station_id].present? %>
     <%= f.input :station_id , "station id", as: :hidden, :input_html=>{:value => params[:station_id]} %>  

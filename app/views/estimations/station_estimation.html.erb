@@ -3,7 +3,7 @@
 <div> <h4>Station : <u><%= @station_estimation.name rescue'-' %></u></h4>
 
 <%#= render :text => params[:station_estimation].to_json %>
-<div style="float:right;"><%= link_to "Copy From Standard" , list_project_estimation_projects_path(:non_standard_station_id => @station_estimation.id ) , :class=>"btn btn-mini btn-success" %></div>
+<div style="float:right;"><%= link_to "Copy From Standard" , list_project_estimation_projects_path(:standard_station_id => @station_estimation.id ) , :class=>"btn btn-mini btn-success" %></div>
 </div>
 <table class="table table-stripped">
   <thead>

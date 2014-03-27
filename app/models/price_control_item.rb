@@ -1,7 +1,8 @@
 class PriceControlItem < ActiveRecord::Base
 
-	scope :desc , order("created_at DESC")
-
+	scope :desc, order("created_at DESC")
+	scope :new_eff_date, where("new_eff_date >= ?" , Date.today)
+	
 	belongs_to :material
 	belongs_to :price_control
 

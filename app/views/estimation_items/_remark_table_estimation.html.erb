@@ -1,4 +1,4 @@
-<!--  -->
+
 <% array_price_total = [] %>
 <a href="#myModal" role="button" class="btn" data-toggle="modal">Show Other Expenses</a>
  
@@ -10,73 +10,67 @@
   </div>
   <div class="modal-body">
 <p>
-    <%#= render :text => params[:estimation_id].to_json %>
-    <%#  estimation = @info_estimation_items %>
+   
     <table class="table">
         <tr>
             <td align="center">Materails</td>
-            <%# estimation.estimation_item.each do |estimation_item| %>
-
-                <%# two_precision(estimation_item.price_total) rescue'-' %>
-                
-                <%# array_price_total << estimation_item.price_total %>
-                <td align="right"><%#= two_precision(array_price_total.sum) rescue'-' %></td>
+            <td align="right"></td>
 
             <%# end %>
             <td align="center">Welding</td>
-            <td align="right"><%= estimation.welding rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.welding rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Oxygen & Acetylene</td>
-            <td align="right"><%= estimation.oxygen_acetylene rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.oxygen_acetylene rescue'-' %></td>
             <td align="center">Painting</td>
-            <td align="right"><%= estimation.painting rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.painting rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Sand Blasting</td>
-            <td align="right"><%= estimation.sand_blasting rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.sand_blasting rescue'-' %></td>
             <td align="center">Transport</td>
-            <td align="right"><%= estimation.transport rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.transport rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Crane</td>
-            <td align="right"><%= estimation.crane rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.crane rescue'-' %></td>
             <td align="center">Shipment</td>
-            <td align="right"><%= estimation.shipment rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.shipment rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Labour</td>
-            <td align="right"><%= estimation.labour rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.labour rescue'-' %></td>
             <td align="center">Installation</td>
-            <td align="right"><%= estimation.installation rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.installation rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Dismantle</td>
-            <td align="right"><%= estimation.dismantle rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.dismantle rescue'-' %></td>
             <td align="center">Machining</td>
-            <td align="right"><%= estimation.machining rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.machining rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Insulation</td>
-            <td align="right"><%= estimation.insulation rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.insulation rescue'-' %></td>
             <td align="center">Civil Work</td>
-            <td align="right"><%= estimation.civil_work rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.civil_work rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Electrik</td>
-            <td align="right"><%= estimation.electrik rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.electrik rescue'-' %></td>
             <td align="center">Piling Work</td>
-            <td align="right"><%= estimation.piling_work rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.piling_work rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">Forming</td>
-            <td align="right"><%= estimation.forming rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.forming rescue'-' %></td>
             <td align="center">Misc</td>
-            <td align="right"><%= estimation.misc rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.misc rescue'-' %></td>
         </tr>
         <tr>
             <td align="center">JKKP</td>
-            <td align="right"><%= estimation.jkkp rescue'-' %></td>
+            <td align="right"><%= @info_estimation_items.jkkp rescue'-' %></td>
             <td align="center"></td>
             <td align="right"></td>
         </tr>

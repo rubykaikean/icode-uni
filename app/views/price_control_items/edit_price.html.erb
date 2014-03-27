@@ -1,9 +1,13 @@
-<h1>Editing Price Control Item</h1>
+<h3><u>Edit Price Control Item</u></h3>
+<%= render "action_edit_price_control_item" %>
+<%= form_tag update_edit_price_price_control_items_path do %>
 
-<%#= form_tag do %>
-	
+Edit With New Price :<%= number_field_tag "new_price", nil, placeholder: "Enter New Price", :step => 'any' %>
 
-<%# end %>
+<div class="dp2 date">
+Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("%d-%m-%Y") %><span class="add-on"></span>
+</div>
+
 <table class="table">
 	<tr>
 		<th>No</th>
@@ -15,7 +19,7 @@
 	<% @materials_list.each_with_index do |price , index| %>
 	<tr>
 		<td><%= index + 1 %></td>
-		<td><%= price.material.id rescue'-' %></td>
+		<td><%= check_box_tag "price_ids[]" , price.id %><%= price.material.id rescue'-' %></td>
 		<td><%= price.material.name rescue'-' %></td>
 		<td><%= price.material.material_code rescue'-' %></td>
 		<td><%= price.new_unit_price rescue'-' %></td>
@@ -24,3 +28,6 @@
 </table>
 
 <%= link_to 'Back', price_control_items_path , :class=> "btn" %>
+
+<%= submit_tag "submit", :class => "btn" %>
+<% end %>

@@ -1,9 +1,9 @@
 class Project < ActiveRecord::Base
 
-	scope :non_standard_type , where(standard: '0')
-	scope :standard_type , where(standard: '1')
+	scope :tender_type , where(tenders: '1')
+	scope :quotation_type , where(tenders: '0')
 
-	validates :client , :project_code, :name , :date ,  presence: :true
+	validates :client, :name , :date ,  presence: :true
 	validates :name, uniqueness: :true
 
 	belongs_to :client

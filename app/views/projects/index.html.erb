@@ -20,10 +20,10 @@
         <td><%#= project.project_code rescue'-' %></td>
         <td><%= project.name %></td>
         <td><%= project.date.strftime("%d-%m-%Y") %></td>
-        <td><% if project.standard.present? %>
-            Standard
+        <td><% if project.tenders.present? %>
+            Tender 
             <% else %>
-            Non-standard
+            Customization
             <% end %>
         </td>
         <td>

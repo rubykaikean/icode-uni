@@ -17,15 +17,20 @@
     <tr style="align:margin-right">
         <td>
             <%= f.input :thk_dia , label: "Thick / Dia. :" ,:as => :string , input_html: { :style => 'width: 200px' } %>
-            <%= f.input :thk_dia_um ,label: "Unit Measure:" , :as => :string , input_html: { :style => 'width: 200px' } %>
+            <%= hidden_field_tag "thk_dia" , nil , :id=>"thk_dia_hidden_field" %>
+
+            <%= f.input :thk_dia_um ,label: "Thk/dia Unit Measure:" , :as => :string , input_html: { :style => 'width: 200px' } %>
+            <%= hidden_field_tag "thk_dia_um" , nil , :id => "thk_dia_um_hidden_field" %>
+            
         </td>
         <td>
             <%= f.input :dimension_h, label: "Dimension H" , :as => :string, :disabled => true %>
-            <%= hidden_field_tag "dimension_h", nil , :id=>"dimension_h_hidden_field" %>
+            <%= hidden_field_tag "estimation_item[dimension_h]", nil , :id=>"dimension_h_hidden_field" %>
         </td>
 
         <td>
             <%= f.input :dimension_w,label: "Dimension W" , :as => :string %>
+            <%= hidden_field_tag "dimension_w", nil , :id=>"dimension_w_hidden_field" %>
         </td>
             
         <td>
@@ -34,7 +39,7 @@
 
         <td>
             <%= f.input :wt_ibs_ft,label: "Unit Weight(WT)" , :as => :string, :disabled => true %>
-            <%= hidden_field_tag "wt_ibs_ft" , nil ,:id=>"wt_ibs_ft_hidden_field" %>
+            <%= hidden_field_tag "estimation_item[wt_ibs_ft]" , nil ,:id=>"wt_ibs_ft_hidden_field" %>
         </td>
     </tr> 
     <tr>
@@ -49,7 +54,7 @@
 
         <td>
             <%= f.input :unit_price ,:as => :string , :disabled => true %>
-            <%= hidden_field_tag "unit_price" , nil , :id=>"unit_price_hidden_field" %>
+            <%= hidden_field_tag "estimation_item[unit_price]" , nil , :id=>"unit_price_hidden_field" %>
         </td>
     </tr>
     </div>
@@ -62,11 +67,4 @@
   </div>
 <% end %>
 
-    <%= render "tab_table" %>
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-
- });
-</script>
+<%= render "tab_table" %>

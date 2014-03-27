@@ -16,7 +16,7 @@
 <div style="float: left;">
 <%= search_form_for @search do |f| %> 
   <%#= f.text_field :username_cont, :class => "input-medium search-query", :placeholder => "Username", autocomplete: true %>
-  <%= f.text_field :name_cont, "data-autocomplete" => autocomplete_material_name_materials_path, :class => "input-medium search-query", :placeholder => "Name" %>
+  <%= f.text_field :material_code_cont, "data-autocomplete" => autocomplete_material_material_code_materials_path, :class => "input-medium search-query", :placeholder => "Material Code" %>
   <%= f.submit "Search", :class => "btn" %>
 <% end %>
 </div>

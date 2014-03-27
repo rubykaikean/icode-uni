@@ -1,19 +1,13 @@
 <%- model_class = Station -%>
 
 <h2><u>New Station</u></h2>
-<div class="span4">
+<div class="span6">
 <table class="table table-bordered">
 	<tr>
 		<td><h5>Project Name:</h5></td>
 		<td align="left"><u><h5><%= @project_id.name %></h5></td>
 		<td><h5>Date :</h5></td>
-		<td algin="left"><h5><u><%= @project_id.date %></u></h5></td>
-	</tr>
-	<tr>
-		<td><h5>Project Code:</h5></td>
-		<td align="left"><u><h5><%= @project_id.project_code %></u><h5></td>
-		<td></td>
-		<td></td>
+		<td algin="left"><h5><u><%= @project_id.date.strftime("%d-%m-%Y") %></u></h5></td>
 	</tr>
 </table>
 </span>

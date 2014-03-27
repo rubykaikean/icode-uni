@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   before_action :check_role
   before_action :set_material, only: [:show, :edit, :update, :destroy, :estimation_item]
-  autocomplete :material, :name
+  autocomplete :material, :material_code
 
   # GET /materials
   # GET /materials.json

@@ -8,8 +8,10 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :price_control_items do
+    get :autocomplete_price_control_item_material_code, :on => :collection
     collection do
       get "edit_price"
+      post "update_edit_price"
     end
     #get :autocomplete_price_control_items_custom_name , :on => :collection
   end
@@ -25,7 +27,7 @@ IcodeUni::Application.routes.draw do
       get "project_estimation"
       get "list_non_standard_project"
       get "list_project_estimation"
-      #get "list_standard_project"
+      get "list_standard_project"
     end
   end
 
@@ -78,7 +80,7 @@ IcodeUni::Application.routes.draw do
  
 
   resources :materials do
-    get :autocomplete_material_name, :on => :collection
+    get :autocomplete_material_material_code, :on => :collection
     member do
       get "estimation_item"
     end

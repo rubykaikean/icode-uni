@@ -7,7 +7,7 @@ class EstimationItem < ActiveRecord::Base
 
 
 	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	validates :material_id ,:uom ,:dimension_l,:unit_price,  presence: :true
+	validates :material_id ,:uom , :qty ,:dimension_l, presence: :true
 	validates :qty ,:dimension_l , numericality: true
 
 
@@ -16,14 +16,6 @@ class EstimationItem < ActiveRecord::Base
 			material.plate * thk_dia.to_f
 		elsif material.category_id == 2 || material.category_id == 3 || material.category_id == 4 || material.category_id == 5 || material.category_id == 6 
 			material.wt_ibs_ft
-		# elsif material.category_id == 3
-		# 	material.wt_ibs_ft
-		# elsif material.category_id == 4
-		# 	material.wt_ibs_ft
-		# elsif material.category_id == 5
-		# 	material.wt_ibs_ft
-		# elsif material.category_id == 6
-		# 	material.wt_ibs_ft
 		else
 			null
 		end

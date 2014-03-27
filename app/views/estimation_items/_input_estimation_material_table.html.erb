@@ -40,7 +40,8 @@
             <% end %>
         </td>
         <td id="<%= "unit_measure_#{material.id}" %>"><%= material.unit_measure rescue'-' %></td>
-        <% a = material.price_control_items.last %>
+        
+        <% a = material.price_control_items.where("new_eff_date >= ?" , Date.today).order("new_eff_date").first %>
         <td id="<%= "unit_price_#{material.id}"%>"><%= a.new_unit_price rescue'-' %>
         </td>
     </tr>

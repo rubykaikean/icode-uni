@@ -78,14 +78,9 @@ class EstimationsController < ApplicationController
   # PATCH/PUT /estimations/1
   # PATCH/PUT /estimations/1.json
   def update
-    
-    #render :text => params.to_json
-    #@estimation.estimation_items.build(params[:estimation_items])
-    #Estimation.generation_new_item(params[:estimation])
     respond_to do |format|
       if @estimation.update(estimation_params)
-    #     if params[:estimation][:standard_station_id] && params[:estimation][:station_id].present?
-    #       format.html { redirect_to list_standard_station_stations_path(:standard_station_id => params[:estimation][:standard_station_id]), notice: 'Estimation was successfully updated.' }
+    
         if params[:estimation][:station_id].present?
         # if params[:estimation][:station_id].present?
           format.html { redirect_to estimations_path }
@@ -107,17 +102,17 @@ class EstimationsController < ApplicationController
   # DELETE /estimations/1
   # DELETE /estimations/1.json
   def destroy
-    #render :text => params.to_json
+
     a = Estimation.find(params[:id])
-      #To record the delete history
+    #To record the delete history
     Estimation.history_delete_file(a.title , a.dimension, params[:current_user_id])
     # #delete estimation item that relate to estimation
     estimation_item = EstimationItem.where("estimation_id = ?" , params[:id])
-      # render :text => estimation_item.to_json
+      
       estimation_item.each do |p|
         p.destroy
       end
-        # here is delete estimation
+      # here is delete estimation
     estimation = Estimation.find(params[:id])
     estimation.destroy
       respond_to do |format|
@@ -134,39 +129,20 @@ class EstimationsController < ApplicationController
   def station_estimation
     # render :text => params[:station_estimation].to_json
     @station_estimation = Station.find(params[:station_estimation])
-
-    #@show_estimation = a.all
   end
 
+  #here is standard copy to non_standard
   def non_standard_estimation
     # pe_ids is standard estimation id
+    non_standard_estimation = params[:format]
     if params[:pe_ids].present?
-      params[:pe_ids].each do |estimation|
-        new_non_standard_estimation = Estimation.new
-        standard_estimation = Estimation.find(estimation)
-
-        new_non_standard_estimation = standard_estimation.dup
-
-        new_non_standard_estimation.station_id = params[:format]
-        new_non_standard_estimation.project_id = ""
-        new_non_standard_estimation.save!
-
-        new_estimation_id = new_non_standard_estimation.id
-        old_estimation_id = EstimationItem.where("estimation_id = ?" , estimation)
-        EstimationService.new(new_estimation_id , old_estimation_id).create_non_standard_estimation_item
-
-        
-        
-      end
-      redirect_to stations_path , notice: "non_standard created successfully"
+      params[:pe_ids].each do |estimation_id|
+        EstimationService.new(estimation_id , non_standard_estimation).create_standard_estimation
+    end
+      redirect_to stations_path , notice: "Standard Item had created successfully"
     else
       redirect_to list_project_estimation_projects_path, notice: "No record found"
     end
-
-    # EstimationService.new
-
-
-
   end
 
   def project_estimation_list

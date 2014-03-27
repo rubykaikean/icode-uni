@@ -1,0 +1,15 @@
+<div>
+<%= link_to 'Back', price_control_items_path , :class=>"btn" %>
+
+<div class="pull-right"><%= link_home_button %></div>
+</div>
+<hr>
+<div style="float: left;">
+<%= search_form_for @search do |f| %> 
+  
+  <%#= f.text_field :material_code_cont, "data-autocomplete" => autocomplete_price_control_item_material_code_price_control_items_path, :class => "input-medium search-query", :placeholder => "Material Code" %>
+  <%#= f.submit "Search", :class => "btn"%>
+<% end %>
+</div>
+
+<div style="float: right;"><%#= will_paginate @materials_list, :class => "pagination" %></div>

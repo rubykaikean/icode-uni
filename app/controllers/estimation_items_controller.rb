@@ -23,25 +23,58 @@ class EstimationItemsController < ApplicationController
   def new
     @search = Material.search(params[:q])
     @show_material = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
-    @estimation = Estimation.find(params[:estimation_id]) 
+    @info_estimation_items = Estimation.find(params[:estimation_id]) 
     @estimation_item = EstimationItem.new
   end
 
   # GET /estimation_items/1/edit
   def edit
-    @show_material = Material.all
+    @search = Material.search(params[:q])
+    @show_material = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
+    
   end
 
   # POST /estimation_items
   # POST /estimation_items.json
   def create
     # this is for replace the string material_id to integer material_id
+    #render :text => params.to_json
+    # @estimation_items = EstimationItem.new(estimation_item_params)
+    # EstimationItemService.new(params).create_estimation_item  
+    
+    # respond_to do |format|
+    #   if @estimation_items.save
+    #     format.html { 
+    #       redirect_to new_estimation_item_path(:estimation_id => params[:estimation_item][:estimation_id])
+    #       # notice: 'Estimation item #{:estimation_id}was successfully created.' 
+    #     }
+    #     format.json { render action: 'show', status: :created, location: @estimation_item }
+    #   else
+    #     format.html { 
+    #       redirect_to estimation_items_path 
+    #     }
+    #     # format.json { render json: @estimation_item.errors, status: :unprocessable_entity }
+    #   end
+    # end
     @material_detail = Material.all
     params[:estimation_item][:material_id] = params[:material_id]
     @estimation_item = EstimationItem.new(estimation_item_params)
-    @estimation_item.dimension_h = params[:dimension_h]
-    @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
-    @estimation_item.unit_price = params[:unit_price]
+    
+    if params[:thk_dia].present?
+      @estimation_item.thk_dia = params[:thk_dia]
+    end
+
+    if params[:thk_dia_um].present?
+      @estimation_item.thk_dia_um = params[:thk_dia_um]
+    end
+
+    if params[:dimension_w].present?
+      @estimation_item.dimension_w = params[:dimension_w]
+    end
+
+    if params[:unit_measure].present?
+      @estimation_item.uom = params[:unit_measure]
+    end
 
     respond_to do |format|
       if @estimation_item.save!
@@ -60,15 +93,6 @@ class EstimationItemsController < ApplicationController
   # PATCH/PUT /estimation_items/1
   # PATCH/PUT /estimation_items/1.json
   def update
-    # render json: @estimation_item
-    # render json: estimation_item_params
-    # @show_material = Material.all
-    # # params[:estimation_item][:material_id] = params[:material_id]
-
-    # estimation_item[material_id]
-
-    # @estimation_item.dimension_h = params[:dimension_h]
-    # @estimation_item.wt_ibs_ft = params[:wt_ibs_ft]
     respond_to do |format|
       if @estimation_item.update(estimation_item_params)
         format.html { redirect_to estimation_items_path(:estimation_id => params[:estimation_item][:estimation_id]), notice: 'Estimation item was successfully updated.' }
@@ -105,6 +129,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :unit_price, :estimation_id)
+      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :unit_price, :estimation_id , :thk_dia_um)
     end
 end

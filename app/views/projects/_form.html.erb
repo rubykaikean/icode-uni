@@ -15,9 +15,14 @@
   <% if action_name == "edit" %>
       <!-- ***Type Cannot Edit*** -->
   <% else %>
-    <%= f.label "Standard" %><%= f.check_box(:standard) %><%#= f.label(:standard, "standard") %>
-    <%#= f.check_box(:non_standard) %>
-    <%#= f.label(:non_standard, "Non standard") %>
+  <table>
+    <tr>
+      <%= f.label "Tender" %><%= f.check_box(:tenders) %>
+    </tr>
+    <tr>
+      <%= f.label "Project" %><%= f.check_box(:projects) %>
+    </tr>
+  </table>
   <% end %>
   <div class="form-actions">
     <%#= f.button :submit , "Customize Project", :class => 'btn-primary' %>
@@ -31,25 +36,25 @@
 
 <script type="text/javascript">
 
-$(document).ready(function () {    
+// $(document).ready(function () {    
 
-  $("input:checkbox").change(function(){
+//   $("input:checkbox").change(function(){
  
-    // total allowed to be checked.
-    var max_allowed = 1;
-    // count how many checked.
-    var checked = $("input:checked").size();
-    // perform test.
-    if ( checked > max_allowed ) {
-        // is more than the max so uncheck.
-        $(this).attr("checked", false);
-        //$(this).
-        // display error message.
-        //alert("Please select a maximum of " + max_allowed + " options."); 
-    } 
-  });
+//     // total allowed to be checked.
+//     var max_allowed = 1;
+//     // count how many checked.
+//     var checked = $("input:checked").size();
+//     // perform test.
+//     if ( checked > max_allowed ) {
+//         // is more than the max so uncheck.
+//         $(this).attr("checked", false);
+//         //$(this).
+//         // display error message.
+//         //alert("Please select a maximum of " + max_allowed + " options."); 
+//     } 
+//   });
 
- });
+//  });
 
 </script>
 

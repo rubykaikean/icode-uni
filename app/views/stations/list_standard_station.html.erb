@@ -1,16 +1,15 @@
-<%#= render :text => @standard_project.to_json %>
 
-<div>Project Name : <a style="align:right;"><%= @standard_project.name %></a></div>
-<div>Project Code : <a style="align:right;"><%= @standard_project.project_code %></a></div>
-<div>Project Date : <a style="align:right;"><%= @standard_project.date.strftime("%d/%m/%Y") %></a></div>
-<div><%= link_to "Back" , list_standard_project_projects_path , :class=> "btn" %>
+<div>Project Name : <a style="align:right;"><%= @tender_project.name %></a></div>
+<div>Project Code : <a style="align:right;"><%= @tender_project.project_code %></a></div>
+<div>Project Date : <a style="align:right;"><%= @tender_project.date.strftime("%d/%m/%Y") %></a></div>
+<div><%= link_to "Back" , list_tender_project_projects_path , :class=> "btn" %>
 <div style="float: right;"><%= link_home_button %></div>
 </div>
 <hr>
 
-<% if @standard_project.present? %>
+<% if @tender_project.present? %>
 <table class="table table-bordered">
-	<% @standard_project.stations.each do |sp| %>
+	<% @tender_project.stations.each do |sp| %>
 	<thead>
 		<tr>
 			<th>Station Name : <u><%= sp.name %></u></th>
@@ -38,9 +37,9 @@
 						<td><%= estimations.dimension rescue'-' %></td>
 						<td><%= estimations.drawing_no_id rescue'-' %></td>
 						<td><%= estimations.date rescue'-' %></td>
-						<td><%= render "standard_remark_estimation" %>
+						<td><%= render "tender_remark_estimation" %>
 							<% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
-							<%= link_to "Edit Estimation" ,  edit_estimation_path(estimations , :station_id => estimations.station_id , :standard_station_id => params[:standard_station_id]), :class=>"btn" %>
+							<%= link_to "Edit Estimation" ,  edit_estimation_path(estimations , :station_id => estimations.station_id , :tender_station_id => params[:tender_station_id]), :class=>"btn" %>
 							<% else %>
 							<button class="btn">Edit Estimation</button>
 							<% end %>
@@ -63,7 +62,7 @@
 
 <% else %>
 
-no station record found
+No Station record found
 
 <% end %>
 
