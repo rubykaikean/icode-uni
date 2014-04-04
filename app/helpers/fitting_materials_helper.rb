@@ -1,0 +1,2 @@
+module FittingMaterialsHelper
+end

@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  thk_dia: MyString
+  brand: MyString
+  model: MyString
+  type: 
+  pump_capacity: MyString
+  head: MyString
+  material_type: MyString
+  pump_speed: MyString
+  fan_speed: MyString
+  motor_power: MyString
+  motor_pole: MyString
+  air_flow: MyString
+  static_pressure: MyString
+  other: MyString
+  remark: MyString
+
+two:
+  name: MyString
+  thk_dia: MyString
+  brand: MyString
+  model: MyString
+  type: 
+  pump_capacity: MyString
+  head: MyString
+  material_type: MyString
+  pump_speed: MyString
+  fan_speed: MyString
+  motor_power: MyString
+  motor_pole: MyString
+  air_flow: MyString
+  static_pressure: MyString
+  other: MyString
+  remark: MyString

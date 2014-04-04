@@ -1,0 +1,16 @@
+<hr>
+<div>
+<%= link_to 'New Fitting Material', new_fitting_material_path, :class=>"btn btn-primary" %>
+<div style="float:right;"><%= link_home_button %></div>
+</div>
+
+<br>
+<div style="float: left;">
+<%= search_form_for @search do |f| %> 
+  
+  <%#= f.text_field :name_cont, "data-autocomplete" => autocomplete_fitting_name_fitting_materials_path, :class => "input-medium search-query", :placeholder => "Name" %>
+  <%#= f.submit "Search", :class => "btn" %>
+<% end %>
+</div>
+
+<div class="pull-right"><%= will_paginate @fitting_materials, :class => "pagination" %></div>

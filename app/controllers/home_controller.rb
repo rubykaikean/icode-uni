@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :authorization_status
+	#before_action :authorization_status
 
   def index
 

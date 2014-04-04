@@ -23,6 +23,8 @@ class EstimationItemsController < ApplicationController
   def new
     @search = Material.search(params[:q])
     @show_material = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
+    @fitting_search = FittingMaterial.search(params[:q])
+    @show_fitting_material = @fitting_search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
     @info_estimation_items = Estimation.find(params[:estimation_id]) 
     @estimation_item = EstimationItem.new
   end
@@ -129,6 +131,6 @@ class EstimationItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_item_params
-      params.require(:estimation_item).permit(:part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :unit_price, :estimation_id , :thk_dia_um)
+      params.require(:estimation_item).permit(:description, :part_detail, :material_id, :thk_dia , :dimension_h, :dimension_w , :dimension_l, :wt_ibs_ft, :qty, :uom, :unit_price, :estimation_id , :thk_dia_um)
     end
 end

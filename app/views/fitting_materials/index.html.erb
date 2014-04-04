@@ -1,0 +1,57 @@
+<h3><u>List Fitting Materials</u></h3>
+
+<%= render "action_fitting_material" %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Thk dia</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Type</th>
+      <th>Pump capacity</th>
+      <th>Head</th>
+      <th>Material type</th>
+      <th>Pump speed</th>
+      <th>Fan speed</th>
+      <th>Motor power</th>
+      <th>Motor pole</th>
+      <th>Air flow</th>
+      <th>Static pressure</th>
+      <th>Other</th>
+      <th>Remark</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fitting_materials.each do |fitting_material| %>
+      <tr>
+        <td><%= fitting_material.name %></td>
+        <td><%= fitting_material.thk_dia %></td>
+        <td><%= fitting_material.brand %></td>
+        <td><%= fitting_material.modal %></td>
+        <td><%= fitting_material.type_1 %></td>
+        <td><%= fitting_material.pump_capacity %></td>
+        <td><%= fitting_material.head %></td>
+        <td><%= fitting_material.material_type %></td>
+        <td><%= fitting_material.pump_speed %></td>
+        <td><%= fitting_material.fan_speed %></td>
+        <td><%= fitting_material.motor_power %></td>
+        <td><%= fitting_material.motor_pole %></td>
+        <td><%= fitting_material.air_flow %></td>
+        <td><%= fitting_material.static_pressure %></td>
+        <td><%= fitting_material.other %></td>
+        <td><%= fitting_material.remark %></td>
+        <td><%#= link_to 'Show', fitting_material %>
+        <%= link_to 'Edit', edit_fitting_material_path(fitting_material), :class=>"btn btn-mini" %>
+        <%= link_to 'Destroy', fitting_material, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-mini btn-danger " %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

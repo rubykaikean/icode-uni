@@ -25,18 +25,51 @@
     <ul class="nav nav-pills">
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Catogery One
+              Category 1
             <b class="caret"></b>
             </a>
         <ul class="dropdown-menu">
-            <li><%= link_to "Project" , projects_path %></li>
-            <li><%= link_to "Station" , stations_path %></li>
-            <li><%= link_to "Estimation" , estimations_path %></li>
-            <li><%= link_to "Material" , materials_path %></li>
-            <li><%= link_to "Client" , clients_path %></li>
-
+          <% if roles.include?(InventoryManagementSystem::PROJECT) %>
+            <li><%= link_to "Project", projects_path %></li>
+          <% else %>
+            <li>Project</li>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::STATION) %>
+            <li><%= link_to "Station", stations_path %></li>
+           <% else %>
+            <li>Station</li>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::ESTIMATION) %>
+            <li><%= link_to "Estimation", estimations_path %></li>
+          <% else %>
+            <li>Estimation</li>
+          <% end %>
         </ul>
-      
+    </ul>
+
+    <ul class="nav nav-pills">
+      <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Category 2
+            <b class="caret"></b>
+            </a>
+        <ul class="dropdown-menu">
+          <% if roles.include?(InventoryManagementSystem::MATERIAL) %>
+            <li><%= link_to "Raw Material", materials_path %></li>
+          <% else %>
+            <li>Raw Material</li>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::FITTING_MATERIAL) %>
+            <li><%= link_to "Fitting Material", fitting_materials_path %></li>
+          <% else %>
+            <li>Fitting Material</li>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::CLIENT) %>
+            <li><%= link_to "Client", clients_path %></li>
+          <% else %>
+            <li>Client</li>
+          <% end %>
+        </ul>
     </ul>
     <!-- end of menu -->
 
@@ -47,7 +80,11 @@
             <b class="caret"></b>
             </a>
        <ul class="dropdown-menu">
+          <% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM) %>
             <li><%= link_to "Price Control Item" , price_control_items_path %></li>
+          <% else %>
+            <li>Price Control Item</li>
+          <% end %>
         </ul>
       </li>
     </ul>
@@ -56,34 +93,24 @@
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               Report
-            <b class="caret"></b>
-            </a>
+      <b class="caret"></b>
+      </a>
         <ul class="dropdown-menu">
-            <%# if roles.include?(InventoryManagementSystem::PR_MENU) %>
               <li class="dropdown-submenu">
               <a tabindex="-1" href="#">Estimation</a>
                <ul class="dropdown-menu">
-                <%# if roles.include?(InventoryManagementSystem::INVENTORY_TRANSACTION) %>
-                  <li class="text_gray" style="width:210px;"><%= link_to "Listing Estimation Report" , list_estimation_report_reports_path %></li>
-                  <!-- <li class="text_gray" style="width:210px;">Section selection</li> -->
-                <%# else %>
-                  <!-- <li class="text_gray" style="width:210px;">Inventory Transactions & Histories</li> -->
-                <%# end %>
-                
-                </li>
-                <%# end %>
-                </ul>
+                  <li class="text_gray" style="width:210px;"><%= link_to "Listing Estimation Report" , list_estimation_report_reports_path %>
+                  </li>
+              </li>
+              </ul>
             </ul>
           </li>
         </ul>
-            <!-- end of sub-menu -->
-            
+        <!-- end of sub-menu -->
         </ul>
       </li>
     </ul>
-
     <!-- end of menu -->
-
    </div>
   </div>
 </div>

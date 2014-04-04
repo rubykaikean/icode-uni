@@ -10,6 +10,10 @@ class EstimationItem < ActiveRecord::Base
 	validates :material_id ,:uom , :qty ,:dimension_l, presence: :true
 	validates :qty ,:dimension_l , numericality: true
 
+	ROLE = [
+	    InventoryManagementSystem::ESTIMATION_ITEM
+	]
+
 
 	def total_wt_ibs_ft
 		if material.category_id == 1

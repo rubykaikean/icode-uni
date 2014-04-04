@@ -29,7 +29,20 @@
     <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_DELETE) %></td>
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
+</tr>
 
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::FITTING_MATERIAL) %> Fitting Material </td>
+    <td> - </td>
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::FITTING_MATERIAL_ADD) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::MATERIAL_SHOW) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::FITTING_MATERIAL_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::FITTING_MATERIAL_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION_PRINTER) %></td>
 </tr>
 
 <tr>
@@ -122,25 +135,7 @@
 
         <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::DRAWING_PRINT) %></td>
 
-</tr>    
-
-<!--<tr>
-         <td></td>
-
-        <td><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM) %></td>
-
-        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_ADD) %></td>
-
-        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_SHOW) %></td>
-
-        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_EDIT) %></td>
-
-        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::ESTIMATION_ITEM_DELETE) %> </td>
-
-        <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::DRAWING_PRINT) %></td>
-
-</tr> -->
-
+</tr>
 <tr>
     <td><%= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ITEM) %> Price Control </td>
     <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
@@ -154,4 +149,18 @@
 
     <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL) %></td>
 
-</tr> 
+</tr>
+<tr>
+    <td><%= edit_module(@checkboxes, InventoryManagementSystem::HISTORY_FILE_DELETE) %> History Estimation Delete </td>
+    <td><%#= edit_module(@checkboxes, InventoryManagementSystem::PRODUCT_STATION) %> - </td>
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::HISTORY_ESTIMATION_DELETE_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_SHOW) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL_ITEM_EDIT) %></td>
+
+    <td align="center"><%= edit_module(@checkboxes, InventoryManagementSystem::HISTORY_FILE_DELETE_DELETE) %></td>
+
+    <td align="center"><%#= edit_module(@checkboxes, InventoryManagementSystem::PRICE_CONTROL) %></td>
+
+</tr>

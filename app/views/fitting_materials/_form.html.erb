@@ -1,0 +1,72 @@
+<%= simple_form_for(@fitting_material) do |f| %>
+  <%= f.error_notification %>
+  
+  <br>
+  <div class="inputs">
+  <table class="table table-bordered">
+    <tr>
+      <td><%= f.input :name %></td>
+      <td><%= f.input :thk_dia %><%= check_box_tag "fitting_ids[]", :id=>"fitting_thk_dia" %></td>
+      <td><%= f.input :brand, :id=>"brand" %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :modal, label: "Model" %><%= check_box_tag "fitting_ids[]" %></td>
+    </tr>
+    <tr>
+      <td><%= f.input :type_1, label: "Type" %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :pump_capacity %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :head %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :material_type %><%= check_box_tag "fitting_ids[]" %></td>
+    </tr>
+    <tr>
+      <td><%= f.input :pump_speed %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :fan_speed %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :motor_power %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :motor_pole %><%= check_box_tag "fitting_ids[]" %></td>
+    </tr>
+    <tr>
+      <td><%= f.input :air_flow %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :static_pressure %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :other %><%= check_box_tag "fitting_ids[]" %></td>
+      <td><%= f.input :remark %><%= check_box_tag "fitting_ids[]" %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><%= f.input :material_code %></td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, :class=>"btn btn-primary" %>
+    <%= link_to "back", fitting_materials_path, :class=>"btn" %>
+  </div>
+  
+<% end %>
+
+<script type="text/javascript">
+
+$("input:checkbox").change(function(){
+ 
+    // total allowed to be checked.
+    var max_allowed = 2;
+    // count how many checked.
+    var checked = $("input:checked").size();
+    // perform test.
+    if ( checked > max_allowed ) {
+        // is more than the max so uncheck.
+        $(this).attr("checked", false);
+    }
+
+    var check_thk_dia = $("#fitting_material_thk_dia").text
+    var check_brand = $("#fitting_material_brand").text
+    var check_model = $("#fitting_material_model").text
+    var check_type = $("#fitting_material_type").text
+    var check_pump_capacity = $("#fitting_material_pump_capacity").text
+    var check_head = $("#fitting_material_head").text
+    var check_material_type = $("#fitting_material_material_type").value
+
+    alert(check_material_type);
+    
+ 
+});
+
+
+</script>

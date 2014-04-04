@@ -1,6 +1,10 @@
 IcodeUni::Application.routes.draw do
   
 
+  resources :fitting_materials do 
+    get :autocomplete_fitting_name, :on => :collection
+  end
+
   resources :history_file_deletes
 
   resources :price_controls do

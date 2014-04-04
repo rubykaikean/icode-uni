@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307071208) do
+ActiveRecord::Schema.define(version: 20140404090346) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140307071208) do
     t.float    "unit_price"
     t.string   "thk_dia"
     t.boolean  "status_id",     default: false
+    t.string   "description"
   end
 
   create_table "estimations", force: true do |t|
@@ -87,6 +88,28 @@ ActiveRecord::Schema.define(version: 20140307071208) do
     t.boolean  "kiv_status",       default: false
   end
 
+  create_table "fitting_materials", force: true do |t|
+    t.string   "name"
+    t.string   "thk_dia"
+    t.string   "brand"
+    t.string   "modal"
+    t.string   "type_1"
+    t.string   "pump_capacity"
+    t.string   "head"
+    t.string   "material_type"
+    t.string   "pump_speed"
+    t.string   "fan_speed"
+    t.string   "motor_power"
+    t.string   "motor_pole"
+    t.string   "air_flow"
+    t.string   "static_pressure"
+    t.string   "other"
+    t.string   "remark"
+    t.string   "material_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "history_file_deletes", force: true do |t|
     t.string   "title"
     t.string   "dimension"
@@ -114,16 +137,14 @@ ActiveRecord::Schema.define(version: 20140307071208) do
     t.decimal  "dimension_h",      precision: 10, scale: 5
     t.decimal  "wt_ibs_ft",        precision: 10, scale: 5
     t.string   "unit_measure"
+    t.string   "description"
   end
 
   add_index "materials", ["material_code"], name: "index_materials_on_material_code", unique: true, using: :btree
 
   create_table "price_control_items", force: true do |t|
-    t.float    "old_unit_price"
-    t.date     "old_eff_date"
     t.float    "new_unit_price"
     t.date     "new_eff_date"
-    t.integer  "price_control_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "material_id"

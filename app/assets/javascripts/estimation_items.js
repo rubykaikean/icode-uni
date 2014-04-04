@@ -8,9 +8,9 @@ $(document).ready(function() {
 
 		var estimation_item_index_count = $("#estimation_item_index_count").text();
 		$("#index_count").text(estimation_item_index_count);
-	// $("#estimation_item_total").val();
-	// add class will let datatable lost css
-	// $().text().addClass();
+    	// $("#estimation_item_total").val();
+    	// add class will let datatable lost css
+    	// $().text().addClass();
 
 		$(".estimation_button").click(function(sel){
         var material_id = $(this).attr("es_ma");

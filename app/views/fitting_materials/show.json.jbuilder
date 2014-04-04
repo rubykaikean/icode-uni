@@ -1,0 +1,1 @@
+json.extract! @fitting_material, :name, :thk_dia, :brand, :modal, :type_1, :pump_capacity, :head, :material_type, :pump_speed, :fan_speed, :motor_power, :motor_pole, :air_flow, :static_pressure, :other, :remark, :created_at, :updated_at

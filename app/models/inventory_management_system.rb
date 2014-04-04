@@ -5,16 +5,21 @@ class InventoryManagementSystem < ActiveRecord::Base
 
 
   #MODULE
-  CLIENT                      = 1  #ok
+  CLIENT                      = 1
   MATERIAL                    = 2
+  FITTING_MATERIAL            = 87
   PROJECT                     = 3
   STATION                     = 4
   ESTIMATION                  = 5
   ESTIMATION_ITEM             = 76  
   PRICE_CONTROL_ITEM          = 6
   DRAWING                     = 7
+  HISTORY_FILE_DELETE         = 92
 
   #ACTION
+
+  HISTORY_FILE_DELETE_DELETE  = 93 #until this number
+
   CLIENT_ADD                  = 10
   CLIENT_EDIT                 = 11
   CLIENT_DELETE               = 12
@@ -23,6 +28,11 @@ class InventoryManagementSystem < ActiveRecord::Base
   MATERIAL_SHOW               = 21
   MATERIAL_EDIT               = 22
   MATERIAL_DELETE             = 23
+
+  FITTING_MATERIAL_ADD        = 88
+  FITTING_MATERIAL_SHOW       = 89
+  FITTING_MATERIAL_EDIT       = 90
+  FITTING_MATERIAL_DELETE     = 91
 
   PROJECT_ADD                 = 30
   PROJECT_SHOW                = 31
@@ -58,7 +68,7 @@ class InventoryManagementSystem < ActiveRecord::Base
   STANDARD_PROJECT_EDIT       = 78
   STANDARD_PROJECT_DELETE     = 79
 
-  STANDARD_ESTIMATION         = 86 #until this number
+  STANDARD_ESTIMATION         = 86
   STANDARD_ESTIMATION_ADD     = 81
   STANDARD_ESTIMATION_SHOW    = 82
   STANDARD_ESTIMATION_EDIT    = 83

@@ -5,29 +5,7 @@
 <% else %>
   <button> New Project </button>
 <% end %>
-<!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">New Project</a>
- --> 
-<!-- Modal -->
-<!-- <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Select New Project Type</h3>
-  </div>
-  <div class="modal-body">
-    <p class="pull-center">
-    <%#= link_to "Customize" , new_customize_project_projects_path , :class=>"btn btn-primary" %>
-    </p>
-    <p><%#= link_to "Tender" , new_project_path , :class=>"btn" %></p>
-    <p><%#= link_to "Project", new_project_path ,:class=>"btn btn-primary" %></p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <!-- <button class="btn btn-primary">Save changes</button> -->
-  <!-- </div> -->
-<!-- </div> -->
 
-
-<%#= link_to "Create with Existing Project" , show_standard_project_products_path , :class => "btn" %> 
 &nbsp;
 <% if roles.include?(InventoryManagementSystem::PROJECT) %>
   <%= link_to "Non-Standard Projects List" , list_non_standard_project_projects_path , :class=>"btn" %>
@@ -72,10 +50,16 @@
 
 <hr />
 <% if roles.include?(InventoryManagementSystem::MATERIAL) %>
-<%= link_to "Material" , materials_path , :class=>"btn" %>
+<%= link_to "Raw Material", materials_path , :class=>"btn" %>
 <% else %>
-<button class="btn">Material</button>
+<button class="btn">Raw Material</button>
 <% end %>
+&nbsp;
+<%# if roles.include?(InventoryManagementSystem::FITTING_MATERIAL) %>
+<%= link_to "Fitting Material", fitting_materials_path, :class => "btn" %>
+<%# else %>
+<!-- <button class="btn">Fitting Material</button> -->
+<%# end %>
 &nbsp;
 <% if roles.include?(InventoryManagementSystem::CLIENT) %>
 <%= link_to "Client" , clients_path , :class=>"btn" %>
@@ -97,8 +81,12 @@
 
 <div>
   <% if current_user.admin? %>
-    <%= link_to 'User List', users_path, :class=>"btn" %> 
-    <%= link_to 'Delete History' , history_file_deletes_path , :class => "btn" %>
+    <%= link_to 'User List', users_path, :class=>"btn" %>
+    <% if roles.include?(InventoryManagementSystem::HISTORY_FILE_DELETE) %>
+      <%= link_to 'Delete History' , history_file_deletes_path , :class => "btn" %>
+    <% else %>
+      <button class="btn">Delete Estimation History</button>
+    <% end %>
   <% else %>
     &nbsp;
   <% end %>

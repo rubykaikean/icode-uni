@@ -1,0 +1,47 @@
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Thk/Dia</th>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>Type</th>
+			<th>Pump Capacity</th>
+			<th>Head</th>
+			<th>Material Type</th>
+			<th>Pump Speed</th>
+			<th>Fan Speed</th>
+			<th>Motor Speed</th>
+			<th>Motor Pole</th>
+			<th>Air Flow</th>
+			<th>Static Pressure</th>
+			<th>Other</th>
+			<th>Remark</th>
+		</tr>
+	</thead>
+	<% @show_fitting_material.each do |fitting| %>
+	<tbody>
+		<tr>
+			<td><%= fitting.name %></td>
+			<td><%= fitting.thk_dia %></td>
+			<td><%= fitting.brand %></td>
+			<td><%= fitting.modal %></td>
+			<td><%= fitting.type_1 %></td>
+			<td><%= fitting.pump_capacity %></td>
+			<td><%= fitting.head %></td>
+			<td><%= fitting.material_type %></td>
+			<td><%= fitting.pump_speed %></td>
+			<td><%= fitting.fan_speed %></td>
+			<td><%= fitting.motor_power %></td>
+			<td><%= fitting.motor_pole %></td>
+			<td><%= fitting.air_flow %></td>
+			<td><%= fitting.static_pressure %></td>
+			<td><%= fitting.other %></td>
+			<td><%= fitting.remark %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	
+</table>
