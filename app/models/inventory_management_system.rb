@@ -15,10 +15,11 @@ class InventoryManagementSystem < ActiveRecord::Base
   PRICE_CONTROL_ITEM          = 6
   DRAWING                     = 7
   HISTORY_FILE_DELETE         = 92
+  REPORT                      = 94 
 
   #ACTION
 
-  HISTORY_FILE_DELETE_DELETE  = 93 #until this number
+  HISTORY_FILE_DELETE_DELETE  = 93 
 
   CLIENT_ADD                  = 10
   CLIENT_EDIT                 = 11
@@ -74,8 +75,13 @@ class InventoryManagementSystem < ActiveRecord::Base
   STANDARD_ESTIMATION_EDIT    = 83
   STANDARD_ESTIMATION_DELETE  = 84
   
+  LIST_STATION_REPORT         = 95 
+  LIST_STATION_REPORT_SHOW    = 96
+  LIST_STATION_REPORT_PRINT   = 97
 
-
+  LIST_ESTIMATION_REPORT      = 98
+  LIST_ESTIMATION_REPORT_SHOW = 99
+  LIST_ESTIMATION_REPORT_PRINT= 100 #until this number
 
 
 

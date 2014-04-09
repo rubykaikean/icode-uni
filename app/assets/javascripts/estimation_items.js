@@ -58,6 +58,7 @@ $(document).ready(function() {
             $("#uom_hidden_field").val(unit_measure);
             //========================================================
             
+            
             //======================================================
             // below line is fitting material description field
             $("#estimation_item_description").attr('disabled', 'disabled');
@@ -120,18 +121,34 @@ $(document).ready(function() {
             $("#estimation_item_unit_price").val(unit_price);
             $("#unit_price_hidden_field").val(unit_price);
 
-            $("#estimation_item_material_id").val("");
+
+            
             $("#estimation_item_thk_dia_um").attr('disabled', 'disabled');
-            $("#estimation_item_thk_dia_um").val("");
+            
+            
             $("#estimation_item_thk_dia").attr('disabled', 'disabled');
-            $("#estimation_item_thk_dia").val("");
+            
             $("#estimation_item_dimension_l").attr('disabled', 'disabled');
-            $("#estimation_item_dimension_l").val("");
+            
             $("#estimation_item_dimension_w").attr('disabled', 'disabled');
+            
+        });
+
+    $("#reset_button").click(function(){
             $("#estimation_item_dimension_w").val("");
             $("#estimation_item_dimension_h").val("");
             $("#estimation_item_wt_ibs_ft").val("");
-        });
+            $("#estimation_item_dimension_l").val("");
+            $("#estimation_item_thk_dia").val("");
+            $("#estimation_item_thk_dia_um").val("");
+            $("#estimation_item_material_id").val("");
+            $("#estimation_item_uom").val("");
+            $("#estimation_item_fitting_material_id").val("");
+            $("#estimation_item_description").val("");
+            $("#estimation_item_part_detail").val("");
+            $("#estimation_item_qty").val("");
+            $("#estimation_item_unit_price").val("");
+    });
 
 		
 });

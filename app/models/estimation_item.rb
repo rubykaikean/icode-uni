@@ -9,6 +9,8 @@ class EstimationItem < ActiveRecord::Base
 	validates :uom, :qty, presence: :true
 	validates :qty, numericality: true
 
+	attr_accessor :ccc
+
 	ROLE = [
 	    InventoryManagementSystem::ESTIMATION_ITEM
 	]

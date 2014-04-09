@@ -2,8 +2,8 @@ class ReportsController < ApplicationController
 
   layout "enter_data", :only => [:pdf_estimation_report] 
 
-
-  def index
+  def list_station_report
+    @project = Project.all
   end
 
   def list_estimation_report
@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
         #   send_data(@kit.to_pdf, :filename => "pdf_estimation_report.pdf",
         #                           :type => 'application/pdf',
         #                           :disposition => "attachement")
-render :text => @estimation.to_json
+        render :text => @estimation.to_json
       end
     elsif params[:commit] == "Show"
       if params[:estimation_ids].present?

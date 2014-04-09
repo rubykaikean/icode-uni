@@ -21,7 +21,7 @@
         <td><%= index + 1 %></td>
         <!-- (name, value = "1", checked = false, options = {}) -->
         <td>
-            <%= button_tag "submit", :es_ma => material.id ,
+            <%= button_tag "Load", :es_ma => material.id ,
             :class=>"btn btn-mini estimation_button" %>
         </td>
         <td id="<%= "name_#{material.id}" %>"><%= material.name rescue'-' %>

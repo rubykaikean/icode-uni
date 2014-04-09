@@ -37,6 +37,9 @@ class EstimationItemsController < ApplicationController
     @show_material = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
     @fitting_search = FittingMaterial.search(params[:q])
     @show_fitting_material = @fitting_search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
+    @estimation_item = EstimationItem.find(params[:id])
+    @estimation_item.ccc = @estimation_item.fitting_material.name
+    # render :json => @estimation_item.ccc
   end
 
   # POST /estimation_items
@@ -46,21 +49,7 @@ class EstimationItemsController < ApplicationController
     # render :text => params.to_json
     # @estimation_items = EstimationItem.new(estimation_item_params)
     # EstimationItemService.new(params).create_estimation_item  
-    
-    # respond_to do |format|
-    #   if @estimation_items.save
-    #     format.html { 
-    #       redirect_to new_estimation_item_path(:estimation_id => params[:estimation_item][:estimation_id])
-    #       # notice: 'Estimation item #{:estimation_id}was successfully created.' 
-    #     }
-    #     format.json { render action: 'show', status: :created, location: @estimation_item }
-    #   else
-    #     format.html { 
-    #       redirect_to estimation_items_path 
-    #     }
-    #     # format.json { render json: @estimation_item.errors, status: :unprocessable_entity }
-    #   end
-    # end
+
 
 
     @material_detail = Material.all

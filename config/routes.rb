@@ -123,6 +123,7 @@ IcodeUni::Application.routes.draw do
         get :pdf_estimation_report
         get :list_estimation_report
         get :testing_page
+        get :list_station_report
       end
     end
 

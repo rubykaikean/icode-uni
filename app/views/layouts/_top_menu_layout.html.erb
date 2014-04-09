@@ -93,23 +93,22 @@
       <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               Report
-      <b class="caret"></b>
-      </a>
+            <b class="caret"></b>
+            </a>
         <ul class="dropdown-menu">
-              <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">Estimation</a>
-               <ul class="dropdown-menu">
-                  <li class="text_gray" style="width:210px;"><%= link_to "Listing Estimation Report" , list_estimation_report_reports_path %>
-                  </li>
-              </li>
-              </ul>
-            </ul>
-          </li>
+          <% if roles.include?(InventoryManagementSystem::LIST_STATION_REPORT) %>
+            <li><%= link_to "List Station Report", list_station_report_reports_path %></li>
+          <% else %>
+            <li>List Station Report</li>
+          <% end %>
+          <% if roles.include?(InventoryManagementSystem::LIST_ESTIMATION_REPORT) %>
+            <li><%= link_to "List Estimation Report", list_estimation_report_reports_path %></li>
+           <% else %>
+            <li>List Estimation Report</li>
+          <% end %>
         </ul>
-        <!-- end of sub-menu -->
-        </ul>
-      </li>
     </ul>
+    
     <!-- end of menu -->
    </div>
   </div>

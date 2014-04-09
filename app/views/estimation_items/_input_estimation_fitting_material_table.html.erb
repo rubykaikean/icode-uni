@@ -13,7 +13,7 @@
 	<tbody>
 		<tr>
 			<td><%= index + 1 %></td>
-			<td><%= button_tag "submit", :es_ma => fitting.id ,
+			<td><%= button_tag "Load", :es_ma => fitting.id ,
             :class=>"btn btn-mini fitting_material_estimation_button" %></td>
 			<td id="<%= "name_#{fitting.id}" %>"><%= fitting.name %></td>
 			<td id="<%= "material_code_#{fitting.id}" %>"><%= fitting.material_code rescue'-' %></td>
