@@ -2,7 +2,7 @@ class PriceControlItemsController < ApplicationController
   before_action :set_price_control_item, only: [:show, :destroy]
   # before_action :check_materials_id, only: [:create, :update_edit_price]
   layout "enter_data", :only => [:new , :edit , :create]
-  autocomplete :price_control_item, :material_code
+  # autocomplete :price_control_item, :name
   #autocomplete :price_control_items, :custom_name
   # GET /price_control_items
   # GET /price_control_items.json
@@ -19,8 +19,8 @@ class PriceControlItemsController < ApplicationController
   # GET /price_control_items/new
   def new
     #@price_control = PriceControl.find(params[:price_control_id])
-    @price_control_item = PriceControlItem.new
-    
+    @raw_material_price_control_item = PriceControlItem.new
+    @fitting_material_price_control_item = PriceControlItem.new
   end
 
   # GET /price_control_items/1/edit
@@ -31,19 +31,31 @@ class PriceControlItemsController < ApplicationController
   # POST /price_control_items
   # POST /price_control_items.json
   def create
-    # render :text => params.to_json
-      @price_control_item = PriceControlItem.new(price_control_item_params)
-      
+    if params[:commit] == "Create Fitting Material"
+      @raw_material_price_control_item = PriceControlItem.new(price_control_item_params)
       respond_to do |format|
-        if @price_control_item.save 
+        if @raw_material_price_control_item.save 
           format.html { 
           redirect_to new_price_control_item_path , notice: 'Price control item was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @price_control_item }
+          format.json { render action: 'show', status: :created, location: @raw_material_price_control_item }
         else
           format.html { render action: 'new' }
-          format.json { render json: @price_control_item.errors, status: :unprocessable_entity }
+          format.json { render json: @raw_material_price_control_item.errors, status: :unprocessable_entity }
         end
       end
+    else 
+      @fitting_material_price_control_item = PriceControlItem.new(price_control_item_params)
+      respond_to do |format|
+        if @fitting_material_price_control_item.save 
+          format.html { 
+          redirect_to new_price_control_item_path , notice:'Price control item was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @fitting_material_price_control_item }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @fitting_material_price_control_item.errors, status: :unprocessable_entity }
+        end
+      end
+    end
   end
 
   # PATCH/PUT /price_control_items/1
@@ -71,27 +83,22 @@ class PriceControlItemsController < ApplicationController
   end
 
   def edit_price
-    @search = PriceControlItem.search(params[:q])
-    @materials_list = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10)
+    @edit_price_search = PriceControlItem.search(params[:q])
+    @materials_list = @edit_price_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10)
   end
 
   def update_edit_price
     # render :text => params.to_json
     if params[:price_ids].present?
-      params[:price_ids].each do |price_ids|
-        
-        new_price = Price.new
-        new_price.new_unit_price = params[:new_price]
-        new_price.new_eff_date = params[:date]
-        new_price.save
-        price = PriceControlItem.where("id = ?", price_ids)
-        price.each do |p|
-          p.destroy
-        end
+      params[:price_ids].each do |price_id|
+        item = PriceControlItem.find(price_id)
+        item.new_unit_price = params[:new_price]
+        item.new_eff_date = params[:date]
+        item.save
       end
+      redirect_to edit_price_price_control_items_path, notice: 'Price and Date had been updated'
     else
       redirect_to edit_price_price_control_items_path, notice: 'Please Select At least one item'
-      
     end
   end
 
@@ -103,18 +110,7 @@ class PriceControlItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_control_item_params
-      params.require(:price_control_item).permit(:material_id, :old_unit_price, :old_eff_date, :new_unit_price, :new_eff_date, :price_control_id)
-    end
-
-    def check_materials_id
-      if params[:price_ids].present?
-        a = PriceControlItem.where("id = ? ", params[:price_ids])
-          a.each do |p,v|
-            v.destroy
-          end
-      else
-        redirect_to update_edit_price_price_control_items_path, notice: "Please enter a price."
-      end
+      params.require(:price_control_item).permit(:fitting_material_id, :material_id, :old_unit_price, :old_eff_date, :new_unit_price, :new_eff_date, :price_control_id)
     end
 
 end

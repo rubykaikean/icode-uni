@@ -4,12 +4,14 @@
 <div class="pull-right"><%= link_home_button %></div>
 </div>
 <hr>
-<div style="float: left;">
-<%= search_form_for @search do |f| %> 
-  
-  <%#= f.text_field :material_code_cont, "data-autocomplete" => autocomplete_price_control_item_material_code_price_control_items_path, :class => "input-medium search-query", :placeholder => "Material Code" %>
-  <%#= f.submit "Search", :class => "btn"%>
+<div style="float: right;">
+<%= search_form_for @edit_price_search, :url => edit_price_price_control_items_path do |f| %> 
+  <%= f.text_field :material_name_cont, :class => "input-medium search-query", :placeholder => "Raw Material Name" %>
+  <%= f.submit "Search", :class => "btn"%>
+<% end %>
+
+<%= search_form_for @edit_price_search, :url => edit_price_price_control_items_path do |f| %> 
+  <%= f.text_field :fitting_material_name_cont, :class => "input-medium search-query", :placeholder => "Fitting Material Name" %>
+  <%= f.submit "Search", :class => "btn"%>
 <% end %>
 </div>
-
-<div style="float: right;"><%#= will_paginate @materials_list, :class => "pagination" %></div>

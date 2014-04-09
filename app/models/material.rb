@@ -32,6 +32,7 @@ class Material < ActiveRecord::Base
 	    InventoryManagementSystem::MATERIAL
 	]
 
+
 	def custom_name 
 	  "#{name} - #{dimension_h} - #{dimension_w} - #{wt_ibs_ft}"
 	end

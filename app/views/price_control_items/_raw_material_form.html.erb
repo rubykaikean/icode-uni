@@ -1,0 +1,39 @@
+<%# if action_name == 'Add Item Price' %>
+  <%= simple_form_for(@raw_material_price_control_item) do |f| %>
+  <% if @raw_material_price_control_item.errors.any? %>
+      <div class="alert alert-error fade in">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <ul>
+        <% @raw_material_price_control_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      </div>
+  <% end %>
+    <div class="inputs">
+      <%#= render "listing_price_control" %>
+      <table style="width:100%;" class="table table-bordered">
+        <tr>
+            <td>
+            <%= f.association :material, label: "Name(thk/H/W/WT)" , collection: Material.all.map {|r| [r.code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+            </td>
+            <td>
+              <%= f.input :new_unit_price , as: :string %>
+            </td>
+            <td>
+                <div class="dp2 date">
+                  <%= f.input :new_eff_date , as: :string %><span class="add-on"></span>
+                </div>
+                </td>       
+            </tr>
+           
+    </table>
+    </div>
+
+    <div class="actions">
+      <% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
+        <%= f.button :submit,'Create Raw Material' , :class => "btn" %>
+      <% end %>
+    </div>
+  <% end %>
+

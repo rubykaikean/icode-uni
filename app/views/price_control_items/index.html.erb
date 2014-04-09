@@ -5,10 +5,10 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Material(thk/H/W/WT)</th>
+      <th>Raw Material(thk/H/W/WT)</th>
+      <th>Fitting Material(Name - Material code)</th>
       <th>New Unit Price</th>
       <th>New Eff Date</th>
-      <!-- <th>Price control</th> -->
       <th></th>
       
     </tr>
@@ -18,8 +18,7 @@
     <% @price_control_item.each do |price_control_item| %>
       <tr>
         <td><%= price_control_item.material.custom_name rescue'-' %></td>
-        <!-- <td><%#= price_control_item.old_unit_price rescue'-' %></td>
-        <td><%#= price_control_item.old_eff_date.strftime("%d-%m-%Y") rescue'-' %></td> -->
+        <td><%= price_control_item.fitting_material.fitting_material_code rescue'-' %></td>
         <td><%= price_control_item.new_unit_price %></td>
         <td><%= price_control_item.new_eff_date.strftime("%d-%m-%Y") rescue'-' %></td>
         <!-- <td><%#= price_control_item.price_control_id %></td> -->

@@ -1,7 +1,7 @@
 class FittingMaterialsController < ApplicationController
   before_action :check_role
   before_action :set_fitting_material, only: [:show, :edit, :update, :destroy]
-  autocomplete :fitting, :name
+  autocomplete :fitting_material, :name
   
   # GET /fitting_materials
   # GET /fitting_materials.json
@@ -48,7 +48,7 @@ class FittingMaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @fitting_material.update(fitting_material_params)
-        format.html { redirect_to @fitting_material, notice: 'Fitting material was successfully updated.' }
+        format.html { redirect_to fitting_materials_path, notice: 'Fitting material was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,9 +73,14 @@ class FittingMaterialsController < ApplicationController
       @fitting_material = FittingMaterial.find(params[:id])
     end
 
+    def search
+      index
+      render :index
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def fitting_material_params
-      params.require(:fitting_material).permit(:name, :thk_dia, :brand, :modal, :type_1, :pump_capacity, :head, :material_type, :pump_speed, :fan_speed, :motor_power, :motor_pole, :air_flow, :static_pressure, :other, :remark)
+      params.require(:fitting_material).permit(:name, :thk_dia, :brand, :modal, :type_1, :pump_capacity, :head, :material_type, :pump_speed, :fan_speed, :motor_power, :motor_pole, :air_flow, :static_pressure, :other, :remark, :material_code)
     end
 
     def check_role

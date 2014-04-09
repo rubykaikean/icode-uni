@@ -15,38 +15,50 @@
           -
           <% end %>
         </td>
-        <td><%= estimation_item.material.name rescue'-' %>
-          <%#= render :text => p.material_id.to_json %>
-        </td>
-        <td><% if estimation_item.material && estimation_item.material.category_id == 6 %>
-              <%= estimation_item.thk_dia rescue'-' %>
-              &nbsp;
-              
-            <% else %>
-              
-              <%= estimation_item.thk_dia.to_f rescue'-' %>
-              <%= estimation_item.unit_measurement rescue'-' %>
-            <% end %>
+        <td>
+          <% if estimation_item.material_id.present? %>
+            <%= estimation_item.material.name rescue'-' %>
+          <% else %>
+            <%= estimation_item.fitting_material.name rescue'-' %>
+          <% end %>
         </td>
 
-        <td><% if estimation_item.dimension_h.present? %>
-            <%= estimation_item.dimension_h rescue'-' %>
-            <% else %>
-            -
-            <% end %>
-        </td>
-        <td><% if estimation_item.material && estimation_item.material.category_id == 2 %>
-              <% if estimation_item.dimension_w.present? %>
-                <%= estimation_item.dimension_w rescue'-' %>
-              <% else %>
+        <% if estimation_item.material.present? %>
+            <td>
+              <% if estimation_item.material && estimation_item.material.category_id == 6 %>
+                  <%= estimation_item.thk_dia rescue'-' %>
+                  &nbsp;
+                  
+                <% else %>
+                  
+                  <%= estimation_item.thk_dia.to_f rescue'-' %>
+                  <%= estimation_item.unit_measurement rescue'-' %>
+                <% end %>
+            </td>
+
+            <td><% if estimation_item.dimension_h.present? %>
+                <%= estimation_item.dimension_h rescue'-' %>
+                <% else %>
                 -
-              <% end %>
-            <% else %>
-              <%= estimation_item.dimension_w.to_f rescue'-' %>
-            <% end %>
-        </td>
-        <td><%= estimation_item.dimension_l rescue'-' %></td>
+                <% end %>
+            </td>
+            <td><% if estimation_item.material && estimation_item.material.category_id == 2 %>
+                  <% if estimation_item.dimension_w.present? %>
+                    <%= estimation_item.dimension_w rescue'-' %>
+                  <% else %>
+                    -
+                  <% end %>
+                <% else %>
+                  <%= estimation_item.dimension_w.to_f rescue'-' %>
+                <% end %>
+            </td>
+            <td><%= estimation_item.dimension_l rescue'-' %></td>
 
+        <% else %>
+          <td colspan="4">
+            <%= estimation_item.description rescue'-' %>
+          </td>
+        <% end %>
         <td><%= two_precision estimation_item.total_wt_ibs_ft rescue'-' %></td>
 
         <td><%= estimation_item.qty rescue'-' %></td>
@@ -54,34 +66,40 @@
 
         <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
               <%= three_precision estimation_item.weight_fomular_1 rescue'-' %>
-              <% array << estimation_item.weight_fomular_1 %>
+              <% array << estimation_item.weight_fomular_1 rescue'-' %>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 2 %>
               <%= three_precision estimation_item.weight_fomular_2 rescue'-' %>
-              <% array << estimation_item.weight_fomular_2 %>
+              <% array << estimation_item.weight_fomular_2 rescue'-'%>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 3 %>
               <%= three_precision estimation_item.weight_fomular_3 rescue'-' %>
-              <% array << estimation_item.weight_fomular_3 %>
+              <% array << estimation_item.weight_fomular_3 rescue'-'%>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 4 %>
               <%= three_precision estimation_item.weight_fomular_4 rescue'-' %>
-              <% array << estimation_item.weight_fomular_4 %>
+              <% array << estimation_item.weight_fomular_4 rescue'-'%>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 5 %>
               <%= three_precision estimation_item.weight_fomular_5 rescue'-' %>
-              <% array << estimation_item.weight_fomular_5 %>
+              <% array << estimation_item.weight_fomular_5 rescue'-'%>
 
             <% elsif estimation_item.material && estimation_item.material.category_id == 6 %>
               -
+            <% elsif estimation_item.fitting_material.present? %>
+              <% array << 0 %>
             <% else %>
               &nbsp;
             <% end %>
         </td>
         <td><%= estimation_item.unit_price %></td>
-
-        <td><%= two_precision(estimation_item.price_total) rescue'-' %></td>
-          <% array_price_total << estimation_item.price_total rescue'-'%>
+        <td><% if estimation_item.material_id.present? %>
+              <%= two_precision(estimation_item.price_total) rescue'-' %></td>
+              <% array_price_total << estimation_item.price_total rescue'-'%>
+            <% else %>
+              <%= two_precision(estimation_item.fitting_price_total) rescue'-' %>
+              <% array_price_total << estimation_item.fitting_price_total %>
+            <% end %>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
           <%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %>

@@ -2,7 +2,7 @@ IcodeUni::Application.routes.draw do
   
 
   resources :fitting_materials do 
-    get :autocomplete_fitting_name, :on => :collection
+    get :autocomplete_fitting_material_name, :on => :collection
   end
 
   resources :history_file_deletes
@@ -12,7 +12,6 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :price_control_items do
-    get :autocomplete_price_control_item_material_code, :on => :collection
     collection do
       get "edit_price"
       post "update_edit_price"
@@ -61,9 +60,11 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :estimation_items do
+    get :autocomplete_fitting_material_material_code, :on => :collection
+    get :autocomplete_fitting_material_name, :on => :collection
     get :autocomplete_material_material_code, :on => :collection
-    get :autocomplete_material_dimension_w , :on => :collection
-    get :autocomplete_material_name , :on => :collection
+    get :autocomplete_material_dimension_w, :on => :collection
+    get :autocomplete_material_name, :on => :collection
     collection do
       get "standard_estimation_item"
     end

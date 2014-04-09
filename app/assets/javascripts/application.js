@@ -33,23 +33,23 @@ $(document).ready(function () {
     //     else $('input:checkbox').removeAttr('checked');
     // });
 
-    $('#jdatatable').dataTable({
-        "sScrollY": "content_height" - 97,
-        "sPaginationType": "full_numbers",  
-        "bPaginate": true,
-        "bJQueryUI": true,
-        "bProcessing": true,
-        //"oSearch": {"sSearch": "search here..."},
-        //"bServerSide": true,
-        //"sAjaxSource": $('#jdatatable').data('source')
-        "oLanguage": {
-            "sZeroRecords":  "No Record Found...",
-            "sSearch": "Search All Columns:"
-        },
-        "bInfo": true,
-         //"bAutoWidth": true    
-     });
-           //exp :showing 1 of 15 pages 
+    // $('#jdatatable').dataTable({
+    //     "sScrollY": "content_height" - 97,
+    //     "sPaginationType": "full_numbers",  
+    //     "bPaginate": true,
+    //     "bJQueryUI": true,
+    //     "bProcessing": true,
+    //     //"oSearch": {"sSearch": "search here..."},
+    //     //"bServerSide": true,
+    //     //"sAjaxSource": $('#jdatatable').data('source')
+    //     "oLanguage": {
+    //         "sZeroRecords":  "No Record Found...",
+    //         "sSearch": "Search All Columns:"
+    //     },
+    //     "bInfo": true,
+    //      //"bAutoWidth": true    
+    //  });
+    //        //exp :showing 1 of 15 pages 
     
     
     // $(function() {

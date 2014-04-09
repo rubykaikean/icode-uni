@@ -4,11 +4,10 @@ class EstimationItem < ActiveRecord::Base
 	
 	belongs_to :estimation
 	belongs_to :material
+	belongs_to :fitting_material
 
-
-	#validates :dimension_l , :thk_dia , :uom , :qty ,:wt_ibs_ft ,  presence: :true
-	validates :material_id ,:uom , :qty ,:dimension_l, presence: :true
-	validates :qty ,:dimension_l , numericality: true
+	validates :uom, :qty, presence: :true
+	validates :qty, numericality: true
 
 	ROLE = [
 	    InventoryManagementSystem::ESTIMATION_ITEM
@@ -31,6 +30,10 @@ class EstimationItem < ActiveRecord::Base
 		end
 	end
 
+	def fitting_price_total
+			qty * unit_price
+	end
+
 	def price_total
 		if material.price_fomular_id == 1
 			if material.category_id == 1
@@ -47,9 +50,11 @@ class EstimationItem < ActiveRecord::Base
 				qty * unit_price
 			else
 				null
-			end								
-		else
+			end
+		elsif material.price_fomular_id == 2
 			(dimension_l / 6000) * qty * unit_price
+		else	
+			qty * unit_price
 		end
 	end
 

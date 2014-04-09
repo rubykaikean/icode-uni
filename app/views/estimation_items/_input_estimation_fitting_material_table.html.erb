@@ -1,45 +1,24 @@
-
-
+<div style="float: right;"><%= will_paginate @show_fitting_material %></div>
 <table class="table table-bordered">
 	<thead>
 		<tr>
+			<th>No.</th>
+			<th></th>
 			<th>Name</th>
-			<th>Thk/Dia</th>
-			<th>Brand</th>
-			<th>Model</th>
-			<th>Type</th>
-			<th>Pump Capacity</th>
-			<th>Head</th>
-			<th>Material Type</th>
-			<th>Pump Speed</th>
-			<th>Fan Speed</th>
-			<th>Motor Speed</th>
-			<th>Motor Pole</th>
-			<th>Air Flow</th>
-			<th>Static Pressure</th>
-			<th>Other</th>
-			<th>Remark</th>
+			<th>Material Code</th>
+			<th>Price</th>
 		</tr>
 	</thead>
-	<% @show_fitting_material.each do |fitting| %>
+	<% @show_fitting_material.each_with_index do |fitting, index| %>
 	<tbody>
 		<tr>
-			<td><%= fitting.name %></td>
-			<td><%= fitting.thk_dia %></td>
-			<td><%= fitting.brand %></td>
-			<td><%= fitting.modal %></td>
-			<td><%= fitting.type_1 %></td>
-			<td><%= fitting.pump_capacity %></td>
-			<td><%= fitting.head %></td>
-			<td><%= fitting.material_type %></td>
-			<td><%= fitting.pump_speed %></td>
-			<td><%= fitting.fan_speed %></td>
-			<td><%= fitting.motor_power %></td>
-			<td><%= fitting.motor_pole %></td>
-			<td><%= fitting.air_flow %></td>
-			<td><%= fitting.static_pressure %></td>
-			<td><%= fitting.other %></td>
-			<td><%= fitting.remark %></td>
+			<td><%= index + 1 %></td>
+			<td><%= button_tag "submit", :es_ma => fitting.id ,
+            :class=>"btn btn-mini fitting_material_estimation_button" %></td>
+			<td id="<%= "name_#{fitting.id}" %>"><%= fitting.name %></td>
+			<td id="<%= "material_code_#{fitting.id}" %>"><%= fitting.material_code rescue'-' %></td>
+			<% a = fitting.price_control_items.where("new_eff_date >= ?" , Date.today).order("new_eff_date").first %>
+			<td  id="<%= "unit_price_#{fitting.id}" %>"><%= a.new_unit_price rescue'-' %></td>
 		</tr>
 		<% end %>
 	</tbody>

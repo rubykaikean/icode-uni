@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20140404090346) do
     t.string   "thk_dia_um"
     t.float    "unit_price"
     t.string   "thk_dia"
-    t.boolean  "status_id",     default: false
+    t.boolean  "status_id",           default: false
     t.string   "description"
+    t.integer  "fitting_material_id"
   end
 
   create_table "estimations", force: true do |t|
@@ -148,6 +149,7 @@ ActiveRecord::Schema.define(version: 20140404090346) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "material_id"
+    t.integer  "fitting_material_id"
   end
 
   create_table "price_controls", force: true do |t|

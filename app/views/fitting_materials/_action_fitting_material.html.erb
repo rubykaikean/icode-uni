@@ -1,6 +1,10 @@
 <hr>
 <div>
-<%= link_to 'New Fitting Material', new_fitting_material_path, :class=>"btn btn-primary" %>
+	<% if roles.include?(InventoryManagementSystem::FITTING_MATERIAL_ADD) %>
+		<%= link_to 'New Fitting Material', new_fitting_material_path, :class=>"btn btn-primary" %>
+	<% else %>
+		<button class="btn btn-primary	">New Fitting Material</button>
+	<% end %>
 <div style="float:right;"><%= link_home_button %></div>
 </div>
 
@@ -8,9 +12,11 @@
 <div style="float: left;">
 <%= search_form_for @search do |f| %> 
   
-  <%#= f.text_field :name_cont, "data-autocomplete" => autocomplete_fitting_name_fitting_materials_path, :class => "input-medium search-query", :placeholder => "Name" %>
-  <%#= f.submit "Search", :class => "btn" %>
+  <%= f.text_field :name_cont, "data-autocomplete" => autocomplete_fitting_material_name_fitting_materials_path, :class => "input-medium search-query", :placeholder => "Name" %>
+  <%= f.submit "Search", :class => "btn" %>
 <% end %>
 </div>
 
 <div class="pull-right"><%= will_paginate @fitting_materials, :class => "pagination" %></div>
+
+<%#= f.text_field :name_cont, "data-autocomplete" => autocomplete_project_name_stations_path, :class => "input-medium search-query", :placeholder => "Project Name" %>
