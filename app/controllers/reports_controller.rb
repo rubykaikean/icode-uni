@@ -1,13 +1,15 @@
 class ReportsController < ApplicationController
-
-  layout "enter_data", :only => [:pdf_estimation_report] 
+  before_filter :authenticate_user!
+  layout "enter_data", :only => [:pdf_estimation_report]
+  autocomplete :station, :name
 
   def list_station_report
-    @project = Project.all
+    @list_station_report = Project.all
   end
 
   def list_estimation_report
-    @estimation_item = Estimation.all
+    @list_estimation_search = Station.search(params[:q])
+    @list_estimation_report = @list_estimation_search.result(distinct: true).paginate(:page => params[:page], :per_page=>5)
   end
 
   def pdf_estimation_report
@@ -37,7 +39,21 @@ class ReportsController < ApplicationController
     else
       redirect_to estimation_report_reports_path
     end
-  end  
+  end
+
+  def excel_list_estimation_report
+    # if params[:so_ids].present?
+    #   #render :text => params[:search]
+    #   @excel_so_customer_po_detail_report = SalesOrderItem.find(params[:so_ids])
+    #     respond_to do |format|
+    #       format.html
+    #       format.csv {render text: @excel_so_customer_po_detail_report.to_csv}
+    #       format.xls
+    #     end
+    #   else
+    #     redirect_to so_customer_po_detail_report_reports_path
+    #   end
+  end
 
 
   def testing_page

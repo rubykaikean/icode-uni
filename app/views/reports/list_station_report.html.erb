@@ -5,26 +5,18 @@
         <tr class="header_line">
           <th><%= check_box_tag 'checkall', :id =>"checkall" %></th>
           <th>No.</th>
-          <th>Trade company</th>
-          <th>Sales Tax Exemption</th>
-          <th>Tarif Code</th>
-          <th>Inv No.</th>
-          <th>Amount</th>
-          <th>Date</th>
+          <th>Project Name</th>
+          <th>Client Name</th>
         </tr>
       </thead>
 
       <tbody>
-        <% @show_sales_tax_exemption_report.each_with_index do |p , index| %>
-          <tr class="<%= cycle("odd_line", "even_line") %>">
-            <td align="center"><%= check_box_tag "ste_ids[]", p.id %></td>
+        <% @list_station_report.stations.each_with_index do |p , index| %>
+          <tr>
+            <td align="center"><%= check_box_tag "p_ids[]", p.id %></td>
             <td align="center"><%= index + 1 %></td>
-            <td align="center"><%= p.trade_company.name rescue '-'%></td>
-            <td align="center"><%= p.sales_tax_exemption_no rescue'-' %></td>
-            <td align="center"><%= p.tarif_code rescue '-' %></td>
-            <td align="center"><%= p.ste_no rescue '-' %></td>
-            <td align="center"><%= p.remaining_total rescue '-' %></td>
-            <td align="center"><%= p.period_start rescue '-' %></td>
+            <td align="center"><%= p.name rescue'-'%></td>
+            <td align="center"><%= p.client.name rescue'-' %></td>
           </tr>
         <% end %>
       </tbody>

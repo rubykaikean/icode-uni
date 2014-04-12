@@ -1,0 +1,10 @@
+<%= search_form_for @list_estimation_search, :url => list_estimation_report_reports_path do |f| %> 
+<table class="table table-bordered">
+	<tr>
+		<td>Station Name:</td>
+		<td><%= f.text_field :name_cont , "data-autocomplete" => autocomplete_station_name_reports_path, :class => "input-large search-query", :placeholder => "Station Name", :size => 9 %></td>
+	</tr>
+</table>
+
+<%= f.submit "Search", :class => "btn" %>
+<% end %>

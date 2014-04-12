@@ -9,18 +9,33 @@
         <td>
             <%= f.input :part_detail , :input_html => {:maxlength => 25, :size => 20 } %></td>
         <td>
-            <%= f.input :material_id, :as => :string ,:disabled => true %>
-            <%= hidden_field_tag "material_id" %>
+            <% if @estimation_item.material_id.present? %>
+                <%= f.input :material_id, :as => :string, :disabled => true, input_html: { value: @estimation_item.material.name } %>
+                <%= hidden_field_tag "material_id", @estimation_item.material_id %>
+            <% else %>
+                <%= f.input :material_id, :as => :string, :disabled => true %>
+                <%= hidden_field_tag "material_id" %>
+            <% end %>
+            
             <!-- this link is to capture material id -->
         </td>
         <td>
-            <%= f.input :fitting_material_id, :as => :string, :disabled => true %>
-            <%#= @estimation_item.ccc %>
-            <%= hidden_field_tag "fitting_material_id" %>
+            <% if @estimation_item.fitting_material_id.present? %>
+                <%= f.input :fitting_material_id, :as => :string, :disabled => true, input_html: { value: @estimation_item.fitting_material.name } %>
+                <%= hidden_field_tag "fitting_material_id", @estimation_item.fitting_material_id %>
+            <% else %>
+                <%= f.input :fitting_material_id, :as => :string, :disabled => true %>
+                <%= hidden_field_tag "fitting_material_id" %>
+            <% end %>
+            
         </td>
         <td>
             <%= f.input :description, label: "Raw Material Description", :disabled => true %>
-            <%= hidden_field_tag "estimation_item[description]", nil, :id=>"description_hidden_field" %>
+            <% if @estimation_item.description.present? %>
+                <%= hidden_field_tag "estimation_item[description]", @estimation_item.description, :id=>"description_hidden_field" %>
+            <% else %>
+                <%= hidden_field_tag "estimation_item[description]", nil, :id=>"description_hidden_field" %>
+            <% end %>
         </td>
     </tr>
     <tr style="align:margin-right">
@@ -58,12 +73,16 @@
 
         <td>
             <%= f.input :uom , label: "Unit Measure" , :size=> 9 %>
-            <%= hidden_field_tag "unit_measure" , nil , :id=>"uom_hidden_field" %>
+            <%= hidden_field_tag "unit_measure", nil, :id=>"uom_hidden_field" %>
         </td>
 
         <td>
-            <%= f.input :unit_price ,:as => :string , :disabled => true %>
-            <%= hidden_field_tag "estimation_item[unit_price]" , nil , :id=>"unit_price_hidden_field" %>
+            <%= f.input :unit_price, :as => :string, :disabled => true %>
+            <% if @estimation_item.unit_price.present? %>
+                <%= hidden_field_tag "estimation_item[unit_price]", @estimation_item.unit_price, :id=>"unit_price_hidden_field" %>
+            <% else %>
+                <%= hidden_field_tag "estimation_item[unit_price]", nil, :id=>"unit_price_hidden_field" %>
+            <% end %>
         </td>
     </tr>
     </div>

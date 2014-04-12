@@ -38,7 +38,7 @@ class EstimationItemsController < ApplicationController
     @fitting_search = FittingMaterial.search(params[:q])
     @show_fitting_material = @fitting_search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
     @estimation_item = EstimationItem.find(params[:id])
-    @estimation_item.ccc = @estimation_item.fitting_material.name
+    # @estimation_item.ccc = @estimation_item.fitting_material.name
     # render :json => @estimation_item.ccc
   end
 
@@ -84,16 +84,12 @@ class EstimationItemsController < ApplicationController
         format.json { render json: @estimation_item.errors, status: :unprocessable_entity }
       end
     end
-    rescue ActiveRecord::RecordInvalid
-    @estimation_item.errors[:qty] << "is not a number"
-    flash[:alert] = 'Is not a integer'
-    redirect_to new_estimation_item_path(:estimation_id => params[:estimation_item][:estimation_id])
   end
 
   # PATCH/PUT /estimation_items/1
   # PATCH/PUT /estimation_items/1.json
   def update
-    # render :text => params.to_json
+     # render :text => params.to_json
     # if params[:estimation_item][:material_id].blank?
 
     respond_to do |format|

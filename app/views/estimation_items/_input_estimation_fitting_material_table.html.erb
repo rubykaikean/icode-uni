@@ -6,6 +6,7 @@
 			<th></th>
 			<th>Name</th>
 			<th>Material Code</th>
+			<th>Remark</th>
 			<th>Price</th>
 		</tr>
 	</thead>
@@ -17,7 +18,8 @@
             :class=>"btn btn-mini fitting_material_estimation_button" %></td>
 			<td id="<%= "name_#{fitting.id}" %>"><%= fitting.name %></td>
 			<td id="<%= "material_code_#{fitting.id}" %>"><%= fitting.material_code rescue'-' %></td>
-			<% a = fitting.price_control_items.where("new_eff_date >= ?" , Date.today).order("new_eff_date").first %>
+			<% a = fitting.price_control_items.where("new_eff_date <= ?" , Date.today).order("new_eff_date").first %>
+			<td><%= fitting.remark rescue'-'%></td>
 			<td  id="<%= "unit_price_#{fitting.id}" %>"><%= a.new_unit_price rescue'-' %></td>
 		</tr>
 		<% end %>

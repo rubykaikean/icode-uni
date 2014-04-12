@@ -4,6 +4,8 @@ require 'rails/all'
 
 require 'pdfkit'
 
+require 'csv'
+
 #require 'reportbuilder'
 
 # Require the gems listed in Gemfile, including any gems

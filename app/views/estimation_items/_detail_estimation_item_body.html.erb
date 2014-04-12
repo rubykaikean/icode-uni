@@ -98,7 +98,7 @@
               <% array_price_total << estimation_item.price_total rescue'-'%>
             <% else %>
               <%= two_precision(estimation_item.fitting_price_total) rescue'-' %>
-              <% array_price_total << estimation_item.fitting_price_total %>
+              <% array_price_total << estimation_item.fitting_price_total rescue'-' %>
             <% end %>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>

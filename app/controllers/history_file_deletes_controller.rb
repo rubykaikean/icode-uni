@@ -1,4 +1,5 @@
 class HistoryFileDeletesController < ApplicationController
+  before_action :check_role
   before_action :set_history_file_delete, only: [:show, :edit, :update, :destroy]
 
   # GET /history_file_deletes

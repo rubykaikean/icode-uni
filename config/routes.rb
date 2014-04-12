@@ -119,6 +119,7 @@ IcodeUni::Application.routes.draw do
     resources :roles  
 
     resources :reports do
+      get :autocomplete_station_name, :on => :collection
       collection do
         get :pdf_estimation_report
         get :list_estimation_report
