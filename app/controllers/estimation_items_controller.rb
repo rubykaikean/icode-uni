@@ -4,6 +4,8 @@ class EstimationItemsController < ApplicationController
   layout "enter_data", :only => [:new , :edit , :update] 
   autocomplete :material, :material_code
   autocomplete :fitting_material, :material_code
+  autocomplete :fitting_material, :name
+  autocomplete :fitting_material, :remark
   # GET /estimation_items
   # GET /estimation_items.json
   def index

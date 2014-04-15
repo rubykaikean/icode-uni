@@ -15,6 +15,9 @@ IcodeUni::Application.routes.draw do
     collection do
       get "edit_price"
       post "update_edit_price"
+      get "add_raw_group_price"
+      get "add_fitting_group_price"
+      get "create_raw_fitting"
     end
     #get :autocomplete_price_control_items_custom_name , :on => :collection
   end
@@ -62,6 +65,7 @@ IcodeUni::Application.routes.draw do
   resources :estimation_items do
     get :autocomplete_fitting_material_material_code, :on => :collection
     get :autocomplete_fitting_material_name, :on => :collection
+    get :autocomplete_fitting_material_remark, :on => :collection
     get :autocomplete_material_material_code, :on => :collection
     get :autocomplete_material_dimension_w, :on => :collection
     get :autocomplete_material_name, :on => :collection

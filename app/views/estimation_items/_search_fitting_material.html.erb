@@ -1,10 +1,19 @@
-<%= search_form_for @fitting_search, :url => new_estimation_item_path do |f| %> 
+<%= search_form_for @fitting_search, :url => new_estimation_item_path do |f| %>
+<h4><u>Fitting Material Search</u></h4>
 <table class="table table-bordered">
 
 	<tr>
 		<td>Material Code :</td>
 		<td><%= f.text_field :material_code_cont , "data-autocomplete" => autocomplete_fitting_material_material_code_estimation_items_path, :class => "input-large search-query", :placeholder => "Fitting Material Code", :size => 9 %></td>
 		<%= hidden_field_tag :estimation_id ,"estimation_id" , :value => params[:estimation_id] %>
+		<td>Name :</td>
+		<td><%= f.text_field :name_cont, "data-autocomplete" => autocomplete_fitting_material_name_estimation_items_path, :class => "input-large search-query", :placeholder => "Fitting Material Name", :size => 9 %></td>
+	</tr>
+	<tr>
+		<td>Remark</td>
+		<td><%= f.text_field :remark_cont , "data-autocomplete" => autocomplete_fitting_material_remark_estimation_items_path, :class => "input-large search-query", :placeholder => "Fitting Material Remark", :size => 9 %></td>
+		<td colspan="2"></td>
+
 	</tr>
 </table>
 

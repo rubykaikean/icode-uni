@@ -81,14 +81,28 @@ class PriceControlItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def add_raw_group_price
+    @raw_material_search = Material.search(params[:q])
+    @raw_material_list = @raw_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>15 )
+  end
+
+  def add_fitting_group_price
+    @fitting_material_search = FittingMaterial.search(params[:q])
+    @fitting_material_list = @fitting_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 15 )
+  end
 
   def edit_price
     @edit_price_search = PriceControlItem.search(params[:q])
     @materials_list = @edit_price_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10)
   end
 
+  def create_raw_fitting
+    render :text => params.to_json
+  end
+
   def update_edit_price
-    # render :text => params.to_json
+    #render :text => params.to_json
     if params[:price_ids].present?
       params[:price_ids].each do |price_id|
         item = PriceControlItem.find(price_id)

@@ -14,7 +14,7 @@ Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("
 <table class="table table-bordered">
 	<tr>
 		<th>No</th>
-		<th></th>
+		<th><%= check_box_tag 'checkall' %></th>
 		<th>Name</th>
 		<th>Material Code</th>
 		<th>Material Type</th>
@@ -23,7 +23,7 @@ Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("
 	<% @materials_list.each_with_index do |price , index| %>
 	<tr>
 		<td><%= index + 1 %></td>
-		<td><%= check_box_tag "price_ids[]" , price.id, true %></td>
+		<td><%= check_box_tag "price_ids[]", price.id %></td>
 		<td><% if price.material.present? %>
 					<%= price.material.name rescue'-' %>
 				<% else %>
@@ -52,4 +52,22 @@ Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("
 	<%= submit_tag "Submit", :class => "btn" %>
 <% end %>
 <% end %>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $('#checkall').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('#price_ids_').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('#price_ids_').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    
+});
+</script>
 
