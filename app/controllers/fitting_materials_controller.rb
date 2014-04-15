@@ -8,7 +8,7 @@ class FittingMaterialsController < ApplicationController
   def index
     # @fitting_materials = FittingMaterial.all
     @search = FittingMaterial.search(params[:q])
-    @fitting_materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30)
+    @fitting_materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>50)
 
     # @create_materials = FittingMaterial.new
   end

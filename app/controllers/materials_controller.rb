@@ -7,7 +7,7 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @search = Material.search(params[:q])
-    @materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30)
+    @materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>50)
     #@materials = Material.all
     @create_material = Material.new
 
