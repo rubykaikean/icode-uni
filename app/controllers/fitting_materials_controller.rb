@@ -8,7 +8,7 @@ class FittingMaterialsController < ApplicationController
   def index
     # @fitting_materials = FittingMaterial.all
     @search = FittingMaterial.search(params[:q])
-    @fitting_materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10)
+    @fitting_materials = @search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30)
 
     # @create_materials = FittingMaterial.new
   end
@@ -41,6 +41,10 @@ class FittingMaterialsController < ApplicationController
         format.json { render json: @fitting_material.errors, status: :unprocessable_entity }
       end
     end
+    rescue ActiveRecord::RecordNotUnique
+    @fitting_material.errors[:material_code] << "duplicated"
+    flash[:alert] = 'Material cannot save..duplicated code'
+    render action: 'new' 
   end
 
   # PATCH/PUT /fitting_materials/1

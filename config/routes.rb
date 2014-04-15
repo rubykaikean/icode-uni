@@ -12,6 +12,7 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :price_control_items do
+    get :autocomplete_material_material_code, :on => :collection
     collection do
       get "edit_price"
       post "update_edit_price"

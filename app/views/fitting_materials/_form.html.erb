@@ -1,5 +1,16 @@
 <%= simple_form_for(@fitting_material) do |f| %>
-  <%= f.error_notification %>
+
+<% if @fitting_material.errors.any? %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <ul>
+      <% @fitting_material.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
+
   
   <br>
   <div class="inputs">

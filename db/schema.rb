@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404090346) do
+ActiveRecord::Schema.define(version: 20140415063910) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 20140404090346) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "fitting_materials", ["material_code"], name: "index_fitting_materials_on_material_code", unique: true, using: :btree
 
   create_table "history_file_deletes", force: true do |t|
     t.string   "title"

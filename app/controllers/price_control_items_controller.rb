@@ -3,7 +3,7 @@ class PriceControlItemsController < ApplicationController
   # before_action :check_materials_id, only: [:create, :update_edit_price]
   layout "enter_data", :only => [:new , :edit , :create]
   # autocomplete :price_control_item, :name
-  #autocomplete :price_control_items, :custom_name
+  autocomplete :materials, :material_code
   # GET /price_control_items
   # GET /price_control_items.json
   def index

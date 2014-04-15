@@ -25,9 +25,9 @@ class EstimationItemsController < ApplicationController
 
   # GET /estimation_items/new
   def new
-    @search = Material.search(params[:q])
+    @search = Material.ransack(params[:q])
     @show_material = @search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
-    @fitting_search = FittingMaterial.search(params[:q])
+    @fitting_search = FittingMaterial.ransack(params[:q])
     @show_fitting_material = @fitting_search.result(distinct: true).paginate(:page => params[:page], :per_page=>10)
     @info_estimation_items = Estimation.find(params[:estimation_id]) 
     @estimation_item = EstimationItem.new
