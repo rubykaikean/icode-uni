@@ -5,12 +5,12 @@
 <% else %>
   <button class="btn">Add Item Price</button>
 <% end %>
-<% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
-	<a href="#myModal" role="button" class="btn" data-toggle="modal">Add Group Items Price</a>
+<%# if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
+	<!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Add Group Items Price</a> -->
  
-<% else %>
+<%# else %>
 	<button class="btn">Add Group Item Price</button>
-<% end %>
+<%# end %>
 
 <% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_EDIT)  %>
 	<%= link_to "Edit Item Price" , edit_price_price_control_items_path , :class => "btn" , :target => "_blank" %>
