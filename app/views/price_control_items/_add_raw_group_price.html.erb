@@ -42,8 +42,9 @@ Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("
 	</tr>
 	<% end %>
 </table>
-<%= submit_tag "Submit", :class=> "btn" %>
-
+<% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
+		<%= submit_tag "Submit Raw Material", :class => "btn" %>
+<% end %>
 <% end %>
 
 <script type="text/javascript">
