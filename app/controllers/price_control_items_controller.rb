@@ -84,25 +84,55 @@ class PriceControlItemsController < ApplicationController
   
   def add_raw_group_price
     @raw_material_search = Material.search(params[:q])
-    @raw_material_list = @raw_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>15 )
+    @raw_material_list = @raw_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30 )
   end
 
   def add_fitting_group_price
     @fitting_material_search = FittingMaterial.search(params[:q])
-    @fitting_material_list = @fitting_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 15 )
+    @fitting_material_list = @fitting_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 30 )
   end
 
   def edit_price
     @edit_price_search = PriceControlItem.search(params[:q])
-    @materials_list = @edit_price_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>10)
+    @materials_list = @edit_price_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30)
   end
 
+  # this is group add item price
   def create_raw_fitting
-    render :text => params.to_json
+  # render :text => params.to_json
+    if params[:commit] == "Submit Fitting Material"
+      if params[:fitting_ids].present?
+        params[:fitting_ids].each do |fitting_ids|
+          new_fitting_price = PriceControlItem.new
+          new_fitting_price.fitting_material_id = fitting_ids
+          new_fitting_price.new_unit_price = params[:new_price]
+          new_fitting_price.new_eff_date = params[:date]
+          new_fitting_price.save!
+        end
+        redirect_to add_fitting_group_price_price_control_items_path, notice: "Successfully created Price and Date!"
+      else
+        redirect_to add_fitting_group_price_price_control_items_path, notice: "Please Click at least one check box!"
+      end
+    else
+      if params[:raw_ids].present?
+        params[:raw_ids].each do |raw_ids|
+          new_raw_price  = PriceControlItem.new
+          new_raw_price.material_id = raw_ids
+          new_raw_price.new_unit_price = params[:new_price]
+          new_raw_price.new_eff_date = params[:date]
+          new_raw_price.save!
+        end
+        redirect_to add_raw_group_price_price_control_items_path, notice: "Successfully created Price and Date!"
+      else
+        redirect_to add_raw_group_price_price_control_items_path, notice: "Please click at least one check box!"
+      end
+    end
   end
 
+
+  #this is add single add item price 
   def update_edit_price
-    #render :text => params.to_json
+    # render :text => params.to_json
     if params[:price_ids].present?
       params[:price_ids].each do |price_id|
         item = PriceControlItem.find(price_id)

@@ -1,0 +1,17 @@
+<%= search_form_for @fitting_material_search, :url => add_fitting_group_price_price_control_items_path do |f| %> 
+<table class="table table-bordered">
+	<tr>
+		<td>Material Name</td>
+		<td><%= f.text_field :name_cont, :class => "input-medium search-query", :placeholder => "Fitting Material Name" %></td>
+		<td>Material Code</td>
+		<td><%= f.text_field :material_code_cont, :class => "input-medium search-query" ,:placeholder => "Fitting Material Code" %></td>
+	</tr>
+	<tr>
+		<td>Remark</td>
+		<td><%= f.text_field :remark_cont, :class => "input-medium search-query", :placeholder => "Remark" %></td>
+		<td colspan="2"></td>
+	</tr>
+</table>
+<%= f.button "Submit", :class => "btn" %>
+
+<% end %>

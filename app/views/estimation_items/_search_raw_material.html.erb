@@ -6,9 +6,7 @@
 	</tr>
 	<tr>
 		<td>Material Code :</td>
-		<td><%#= f.text_field :material_code_cont , "data-autocomplete" => autocomplete_material_material_code_estimation_items_path, :class => "input-large search-query", :placeholder => "Material Code", :size => 9 %>
-
-			<%= f.association :material_code, label: "Name(thk/H/W/WT)" , collection: Material.all.map {|r| [r.material_code , r.id]} , :include_blank => true,input_html: {class: 'chosen-select' } %>
+		<td><%= f.text_field :material_code_cont , "data-autocomplete" => autocomplete_material_material_code_estimation_items_path, :class => "input-large search-query", :placeholder => "Material Code", :size => 9 %>
 		</td>
 			<%= hidden_field_tag :estimation_id ,"estimation_id" , :value => params[:estimation_id] %>
 	</tr>

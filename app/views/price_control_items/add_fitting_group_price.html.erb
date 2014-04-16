@@ -1,42 +1,18 @@
 
 <h3>Add Fitting Material Group Price</h3>
-
-<div style="float: right; "><%= link_home_button %></div>
-<br>
-<hr>
-<div style="float: left;">
-<%#= search_form_for @fitting_material_search, :url => add_fitting_group_price_price_control_items_path do |f| %> 
-  <%#= f.text_field :raw_material_name_cont, :class => "input-medium search-query", :placeholder => "Fitting Material Name" %>
-  <%#= f.submit "Search", :class => "btn"%>
-<%# end %>
+	
+<div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Fitting Material List</a></li>
+        <li><a href="#tab2" data-toggle="tab">Search</a></li>
+      </ul>
+    <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p><%= render "add_fitting_group_price" %></p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p><%= render "search_add_fitting_group_price" %></p>
+    </div>
+   </div>
 </div>
-<div style="float: right;"><%= will_paginate @fitting_material_list, :class => "pagination" %></div>
 
-<%= form_tag create_raw_fitting_price_control_items_path do %>
-<table class="table table-bordered">
-	<tr>
-		<th>No.</th>
-		<th></th>
-		<th>Name</th>
-		<th>Material Code</th>
-		<th>Remark</th>
-		<th>Price</th>
-	</tr>
-	<% @fitting_material_list.each_with_index do |fitting , index| %>
-	<% a = fitting.price_control_items.last %>
-	<tr>
-		<td><%= index + 1 %></td>
-		<td>
-			<%# if a.new_unit_price.blank? %>
-				<%= check_box_tag "raw_ids[]" %>
-			<%# end %>
-		</td>
-		<td><%= fitting.name %></td>
-		<td><%= fitting.material_code rescue'-' %></td>
-		<td><%= fitting.remark %></td>
-    <td><%= a.new_unit_price rescue'-'%></td>
-	</tr>
-	<% end %>
-</table>
-
-<% end %>

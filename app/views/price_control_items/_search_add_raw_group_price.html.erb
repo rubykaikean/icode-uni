@@ -1,0 +1,19 @@
+
+<%= search_form_for @raw_material_search, :url => add_raw_group_price_price_control_items_path do |f| %> 
+<table class="table table-bordered">
+	<tr>
+		<td>Material Name</td>
+		<td><%= f.text_field :name_cont, :class => "input-medium search-query", :placeholder => "Raw Material Name" %></td>
+		<td>Material Code</td>
+		<td><%= f.text_field :material_code_cont, :class => "input-medium search-query" ,:placeholder => "Raw Material Code" %></td>
+	</tr>
+	<tr>
+		<td>Dimension H</td>
+		<td><%= f.text_field :dimension_h_cont, :class =>"input-medium search-query" ,:placeholder => "Dimension H"  %></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<%= f.button "Submit", :class => "btn" %>
+
+<% end %>

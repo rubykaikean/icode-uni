@@ -12,13 +12,14 @@ IcodeUni::Application.routes.draw do
   end
 
   resources :price_control_items do
+    #match 'search' => 'price_control#search', :via => [:get, :post], :as => :search
     get :autocomplete_material_material_code, :on => :collection
     collection do
       get "edit_price"
       post "update_edit_price"
       get "add_raw_group_price"
       get "add_fitting_group_price"
-      get "create_raw_fitting"
+      post "create_raw_fitting"
     end
     #get :autocomplete_price_control_items_custom_name , :on => :collection
   end

@@ -58,15 +58,25 @@ $(document).ready(function() {
 
     $('#checkall').click(function(event) {  //on click 
         if(this.checked) { // check select status
-            $('#price_ids_').each(function() { //loop through each checkbox
+            $('input:checkbox').each(function() { //loop through each checkbox
                 this.checked = true;  //select all checkboxes with class "checkbox1"               
             });
         }else{
-            $('#price_ids_').each(function() { //loop through each checkbox
+            $('input:checkbox').each(function() { //loop through each checkbox
                 this.checked = false; //deselect all checkboxes with class "checkbox1"                       
             });         
         }
     });
+
+    // $('#checkall:checkbox').change(function () {
+    //     if($(this).attr("checked")) {
+    //     	$('#price_ids_').attr('checked','checked');
+    //     	}
+    //     else {
+    //     		$('#price_ids_').removeAttr('checked');
+    //     }
+    // });
+
     
 });
 </script>
