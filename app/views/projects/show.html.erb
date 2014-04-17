@@ -21,7 +21,7 @@
     <% @project.stations.each do |d| %>
   <tr>
     <td><%#= link_to d.name , station_path(station) %><%= d.name rescue'-'  %></td>
-    <td><%= link_to "show" , estimation_path(:station_id => d.id), :class=> "btn btn-mini" %></td>
+    <td><%#= link_to "show" , estimation_path(:station_id => d.id), :class=> "btn btn-mini" %></td>
   </tr>
   <% end %>
 </table>

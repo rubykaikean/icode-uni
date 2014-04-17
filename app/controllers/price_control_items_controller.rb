@@ -157,4 +157,11 @@ class PriceControlItemsController < ApplicationController
       params.require(:price_control_item).permit(:fitting_material_id, :material_id, :old_unit_price, :old_eff_date, :new_unit_price, :new_eff_date, :price_control_id)
     end
 
+    def check_role
+      unless role(PriceControlItem::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
+    end
+
 end

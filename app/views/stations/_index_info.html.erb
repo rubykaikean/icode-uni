@@ -9,7 +9,7 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= project.id %>">
-        <%#= project.id %><%= project.name %> - <%= project.client.name %>
+        <%#= project.id %><%= project.name rescue'-' %> - <%= project.client.name rescue'-'%>
       </div>
     </div>
 

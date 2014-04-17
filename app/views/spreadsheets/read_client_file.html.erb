@@ -1,0 +1,28 @@
+<h3>Excel File</h3>
+<%#= form_tag @profile, {:action => "save_file"} do %>
+<!-- below link is take record to where -->
+<%= form_tag("/spreadsheets/save_client_file", method: "post") do %>
+<%= submit_tag "import excel" , :class => "btn" %>
+<table class="table table-border">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th></th>
+			<th>Client Code</th>
+			<th>Client Name</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @client.each_with_index do |row, index | %>
+		<tr>
+			<td><%= a = index + 1 %></td>
+			<td><%#= check_box_tag "row[#{a}][]" %></td>
+			<td><%= text_field_tag "row[#{a}][client_code]", '', :value => row[2] %></td>
+			<td><%= text_field_tag "row[#{a}][client_name]", '', :value => row[3] %></td>
+		</tr>
+		<% end %> <!-- end of each -->
+	</tbody>
+</table>
+
+<% end %>   <!-- end of form for -->

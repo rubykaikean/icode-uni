@@ -59,8 +59,8 @@ IcodeUni::Application.routes.draw do
     collection do
       get "read_material_file"
       post "save_material_file"
-      get "read_price_control_file"
-      post "save_price_control_file"
+      get "read_client_file"
+      post "save_client_file"
     end
   end
 

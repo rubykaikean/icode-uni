@@ -72,4 +72,11 @@ class HistoryFileDeletesController < ApplicationController
     def history_file_delete_params
       params.require(:history_file_delete).permit(:title , :dimension , :user_id)
     end
+
+    def check_role
+      unless role(HistoryFileDelete::ROLE)
+        flash[:notice] = "You are not authorize!"
+        redirect_to root_url
+      end
+    end
 end

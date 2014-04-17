@@ -39,6 +39,10 @@ class ClientsController < ApplicationController
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
+    rescue ActiveRecord::RecordNotUnique
+    @client.errors[:client_code] << "duplicated"
+    flash[:alert] = 'Material cannot save..duplicated code'
+    render action: 'new' 
   end
 
   # PATCH/PUT /clients/1
@@ -73,7 +77,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name , :contact_person_one , :contact_person_two , :contact_person_three , :email , :address)
+      params.require(:client).permit(:name, :client_code , :contact_person_one , :contact_person_two , :contact_person_three , :email , :address)
     end
 
     def check_role

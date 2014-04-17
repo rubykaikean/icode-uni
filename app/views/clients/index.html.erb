@@ -29,6 +29,7 @@
     <tr>
       <th><%#= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Client Code</th>
       <th>Contact Person 1 / 2 / 3</th>
       <th>E-mail</th>
       <th>Address</th>
@@ -41,6 +42,7 @@
       <tr>
         <td><%= link_to client.id, client_path(client) %></td>
         <td><%= client.name %></td>
+        <td><%= client.client_code %></td>
         <td><%= client.contact_person_one rescue'-' %> / <%= client.contact_person_two rescue'-' %> / <%= client.contact_person_three rescue'-' %></td>
         <td><%= client.email rescue'-' %></td>
         <td><%= client.address rescue'-' %></td>

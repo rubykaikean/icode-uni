@@ -15,8 +15,7 @@
     <% @projects.each_with_index do |project , index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td>
-        <%= project.client.name %></td>
+        <td><%= project.client.name rescue'-' %></td>
         <td><%#= project.project_code rescue'-' %></td>
         <td><%= project.name %></td>
         <td><%= project.date.strftime("%d-%m-%Y") %></td>

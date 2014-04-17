@@ -1,21 +1,33 @@
 <%= simple_form_for @client, :html => { :class => 'form-horizontal' } do |f| %>
 
+<% if @client.errors.any? %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
+
 <table class="table table-bordered">
 	<tr>
-		<td>
-		  <%= f.input :name %>
+		<td><%= f.input :name %></td>
 
-		  <%= f.input :email %>
+		<td><%= f.input :email %></td>
 
-		  <%= f.input :address %>
-		</td>
-		<td>
-			<%= f.input :contact_person_one %>
+		<td><%= f.input :address %></td>
+	</tr>
+	<tr>
+		<td><%= f.input :contact_person_one %></td>
 
-		  	<%= f.input :contact_person_two %>
+		<td><%= f.input :contact_person_two %></td>
 
-		  	<%= f.input :contact_person_three %>
-		</td>
+		<td><%= f.input :contact_person_three %></td>
+	</tr>
+	<tr>
+		<td colspan="3"><%= f.input :client_code %></td>
 	</tr>
 </table>
 

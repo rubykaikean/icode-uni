@@ -88,7 +88,7 @@ class FittingMaterialsController < ApplicationController
     end
 
     def check_role
-      unless role(Material::ROLE)
+      unless role(FittingMaterial::ROLE)
         flash[:notice] = "You are not authorize!"
         redirect_to root_url
       end
