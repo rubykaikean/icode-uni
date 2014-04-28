@@ -61,6 +61,8 @@ IcodeUni::Application.routes.draw do
       post "save_material_file"
       get "read_client_file"
       post "save_client_file"
+      get "read_fitting_material_file"
+      post "save_fitting_material_file"
     end
   end
 

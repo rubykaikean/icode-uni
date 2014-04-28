@@ -62,5 +62,28 @@ class SpreadsheetsController < ApplicationController
 		redirect_to root_url, notice: "complete import client excel file!"
 	end
 
+	def read_fitting_material_file
+		fitting_material = Spreadsheet.open "#{Rails.root.to_s}/public/"
+
+		@fitting_material = fitting_material.worksheet 0
+	end
+
+	def save_fitting_material_file 
+		params[:row].each do |key, value|
+			f = FittingMaterial.new
+			f.name = value[:name]
+			f.thk_dia = value[:thk_dia]
+			f.brand = value[:brand]
+			f.model = value[:model]
+			f.type_1 = value[:type_1]
+			f.pump_capacity = value[:pump_capacity]
+			f.head = value[:head]
+			f.material_type = value[:material_type]
+			f.pump_speed = value[:pump_speed]
+			f.save!
+		end
+		redirect_to root_url, notice: "All Record had been store to database!!"
+	end
+
 
 end
