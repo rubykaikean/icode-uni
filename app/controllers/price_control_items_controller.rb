@@ -8,7 +8,7 @@ class PriceControlItemsController < ApplicationController
   # GET /price_control_items.json
   def index
     @price_control_search = PriceControlItem.search(params[:q])
-    @price_control_item = @price_control_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 5 ).order("id DESC")
+    @price_control_item = @price_control_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 30 ).order("id DESC")
   end
 
   # GET /price_control_items/1

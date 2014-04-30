@@ -34,7 +34,7 @@ class Material < ActiveRecord::Base
 
 
 	def custom_name 
-	  "#{name} - #{dimension_h} - #{dimension_w} - #{wt_ibs_ft}"
+	  "#{name} - (#{thk_dia} / #{dimension_h} / #{dimension_w} / #{wt_ibs_ft}) "
 	end
 	# private
 	# material_code = name - thk - H - W - WT

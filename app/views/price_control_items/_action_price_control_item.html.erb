@@ -26,10 +26,12 @@
 <div style="float: left;">
   <div>
     <%= search_form_for @price_control_search do |f| %> 
-      <%= f.text_field :material_material_code_start , :class => "input-medium search-query", :placeholder => "Raw - material code" %>
+      <%= f.text_field :material_material_code_cont , :class => "input-medium search-query", :placeholder => "Raw - material code" %> |
+      <%= f.text_field :fitting_material_material_code_cont , :class =>"input-medium search-query", :placeholder => "Fitting - material code" %>
       <%= f.submit "Search", :class => "btn"%>
     <% end %>
   </div>
+
 </div>
 
 

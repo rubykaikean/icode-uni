@@ -63,7 +63,7 @@ class SpreadsheetsController < ApplicationController
 	end
 
 	def read_fitting_material_file
-		fitting_material = Spreadsheet.open "#{Rails.root.to_s}/public/"
+		fitting_material = Spreadsheet.open "#{Rails.root.to_s}/public/fitting_material_data.xls"
 
 		@fitting_material = fitting_material.worksheet 0
 	end

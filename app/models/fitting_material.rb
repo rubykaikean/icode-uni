@@ -10,7 +10,7 @@ class FittingMaterial < ActiveRecord::Base
 	]
 
 	def fitting_material_code
-		"#{name} - #{material_code}"
+		"#{name} - (#{material_code})"
 	end
 
 	
