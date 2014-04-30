@@ -74,7 +74,7 @@ class SpreadsheetsController < ApplicationController
 			f.name = value[:name]
 			f.thk_dia = value[:thk_dia]
 			f.brand = value[:brand]
-			f.model = value[:model]
+			f.modal = value[:modal]
 			f.type_1 = value[:type_1]
 			f.pump_capacity = value[:pump_capacity]
 			f.head = value[:head]
