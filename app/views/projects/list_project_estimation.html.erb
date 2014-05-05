@@ -18,9 +18,9 @@
 		<% @list_project_estimation.each_with_index do |p , index| %>
 		<tr>
 			<td><%= index + 1 %></td>
-			<td><%= p.name %></td>
-			<td><%= p.client.name %></td>
-			<td><%= p.project_code %></td>
+			<td><%= p.name rescue'-' %></td>
+			<td><%= p.client.name rescue'-' %></td>
+			<td><%= p.project_code rescue'-' %></td>
 			<td><%= p.date.strftime("%d-%m-%Y") rescue'-' %></td>
 			<td><% if roles.include?(InventoryManagementSystem::PROJECT_SHOW)%>
             <%= link_to "Show" , project_estimation_projects_path(:id => p.id , :non_standard_station_id => params[:standard_station_id]) , :class=> "btn btn-mini" %>

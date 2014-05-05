@@ -9,7 +9,7 @@ class EstimationsController < ApplicationController
   # GET /estimations.json
   def index
     @search = Estimation.search(params[:q])
-    @estimations = @search.result.paginate(:page => params[:page], :per_page=>5).order('title DESC')
+    @estimations = @search.result.paginate(:page => params[:page], :per_page=>15).order('title DESC')
   end
 
   # GET /estimations/1

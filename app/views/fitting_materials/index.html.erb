@@ -5,6 +5,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th>No.</th>
       <th>Name</th>
       <th>Thk dia</th>
       <th>Brand</th>
@@ -26,8 +27,9 @@
   </thead>
 
   <tbody>
-    <% @fitting_materials.each do |fitting_material| %>
+    <% @fitting_materials.each_with_index do |fitting_material , index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= fitting_material.name %></td>
         <td><%= fitting_material.thk_dia %></td>
         <td><%= fitting_material.brand %></td>

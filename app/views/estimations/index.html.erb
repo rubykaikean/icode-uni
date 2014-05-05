@@ -1,6 +1,6 @@
 <%= render "action_estimations" %>
 <% @current_user_id = current_user.id %>
-<table class="table table-stripped">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>No.</th>
@@ -9,7 +9,6 @@
       <th>Drawing No</th>
       <th>Date</th>
       <th>Status</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -51,7 +50,8 @@
           <%= link_to 'Delete', estimation_path(estimation, :current_user_id => @current_user_id), method: :delete, data: { confirm: 'Delete Estimation will also delete Estimation Item. Are you sure !?' } ,:class => 'btn btn-mini btn-danger' %>
           <% else %>
           <button type="button" class="btn btn-mini">Delete</button>
-          <% end %></td>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

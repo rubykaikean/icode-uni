@@ -30,10 +30,10 @@ class ReportsController < ApplicationController
     elsif params[:commit] == "Show"
       if params[:estimation_ids].present?
 
-         @estimation = Estimation.find(params[:estimation_ids])
+        @estimation = Estimation.find(params[:estimation_ids])
           # render :text => @estimation.to_json
         respond_to do |format|
-        format.html
+          format.html
         end
       end 
     else

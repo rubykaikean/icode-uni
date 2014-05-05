@@ -25,6 +25,7 @@ class FittingMaterialsController < ApplicationController
 
   # GET /fitting_materials/1/edit
   def edit
+    session[:fitting_material_page] = request.referer 
   end
 
   # POST /fitting_materials
@@ -50,15 +51,16 @@ class FittingMaterialsController < ApplicationController
   # PATCH/PUT /fitting_materials/1
   # PATCH/PUT /fitting_materials/1.json
   def update
-    respond_to do |format|
+
       if @fitting_material.update(fitting_material_params)
-        format.html { redirect_to fitting_materials_path, notice: 'Fitting material was successfully updated.' }
-        format.json { head :no_content }
+        if session[:fitting_material_page].present?
+          redirect_to session[:fitting_material_page], notice: 'Fitting material was successfully updated.'
+        else
+          redirect_to fitting_material_path, notice: 'Fitting Material was successfully updated.'
+        end
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @fitting_material.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
   # DELETE /fitting_materials/1

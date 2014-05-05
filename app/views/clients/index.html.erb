@@ -24,7 +24,7 @@
 
 <div style="float: right;"><%= will_paginate @clients, :class => "pagination" %></div>
 
-<table class="table table-striped">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><%#= model_class.human_attribute_name(:id) %></th>
@@ -33,7 +33,6 @@
       <th>Contact Person 1 / 2 / 3</th>
       <th>E-mail</th>
       <th>Address</th>
-      <th><%#= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -46,7 +45,6 @@
         <td><%= client.contact_person_one rescue'-' %> / <%= client.contact_person_two rescue'-' %> / <%= client.contact_person_three rescue'-' %></td>
         <td><%= client.email rescue'-' %></td>
         <td><%= client.address rescue'-' %></td>
-        <td><%#=l client.created_at %></td>
         <td>
           <% if roles.include?(InventoryManagementSystem::CLIENT_EDIT) %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

@@ -1,7 +1,7 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
-
+<% array = [] %>
 <%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
@@ -18,7 +18,7 @@
 
 	<tr>
 		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
-		<th width="50%" align="left">Drawing No:</th>
+		<th width="50%" align="left">Drawing No: <%= estimation.drawing_no_id rescue'-'  %></th>
 	</tr>
 	<tr>
 		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
@@ -26,22 +26,22 @@
 	</tr>
 	<tr>
 		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
-		<th width="50%" align="left">Issued by:</th>
+		<th width="50%" align="left">Issued by: <%= estimation.user.username rescue'-' %></th>
 	</tr>
 	<tr>
 		<th width="50%" align="left"></th>
-		<th width="50%" align="left">Weight: <u id="total_weight"></u>Ton(s)</th>
+		<th width="50%" align="left">Weight: <u id="total_weight"></u></th>
 	</tr>
 	
 </table>
 <br>
-<table border="1">
+<table class="table table-bordered">
 	<thead>
 	<%= render "estimation_table" %>	
 	</thead>
 	<tbody>
 		<%# @remark_index = 0 %>
-	<% estimation.estimation_item.each_with_index do |item_list , index| %>
+	<% estimation.estimation_items.each_with_index do |item_list , index| %>
 		
 		<% counter += 1 %>
 		<% if counter < 31 %>
@@ -50,7 +50,13 @@
 	<tr>
 			<td><%= index + 1 %></td>
 			<td><%= item_list.part_detail %></td>
-			<td><%#= item_list.material.name %></td>
+			<td>
+				<% if item_list.material_id.present? %>
+					<%= item_list.material.name %>
+				<% else %>
+					<%= item_list.fitting_material.name %>
+				<% end %>
+			</td>
 			<td><%= item_list.thk_dia %></td>
 			<td><%= item_list.dimension_h %></td>
 			<td><%= item_list.dimension_w %></td>
@@ -59,13 +65,12 @@
 			<td><%= item_list.qty %></td>
 			<td><%= item_list.uom %></td>
 			<td>
-	        </td>	
-			<td><%#= item_list. %></td>
-			<td><%#= item_list. %></td>	
-			<%#= estimation_remarks[index] %>
-			<%#= estimation.estimation_item.count  %>
+				<%= render "estimation_item_weight", :item_list = item_list %>
+			</td>
+			<td><%= item_list.unit_price %></td>
+			<td></td>	
 				<% if index == 0 %>
-					<td rowspan="<%= 30  %>">
+					<td rowspan="<%= 30 %>">
 						<%#= my_helper(estimation)[index] %>
 						<%= my_helper(estimation).html_safe %>					
 					</td>		
@@ -80,7 +85,7 @@
 
 	<tr>
 		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
-		<th width="50%" align="left">Drawing No:</th>
+		<th width="50%" align="left">Drawing No: <%= estimation.drawing_no_id rescue'-' %></th>
 	</tr>
 	<tr>
 		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
@@ -88,11 +93,11 @@
 	</tr>
 	<tr>
 		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
-		<th width="50%" align="left">Issued by:</th>
+		<th width="50%" align="left">Issued by: <%= estimation.user.username rescue'-' %></th>
 	</tr>
 	<tr>
 		<th width="50%" align="left"></th>
-		<th width="50%" align="left">Weight: <%#= two_precision(weight.sum) %>Ton(s)</th>
+		<th width="50%" align="left">Weight: <u id="total_weight"></u>%>Ton(s)</th>
 	</tr>
 	
 </table>
@@ -106,7 +111,14 @@
 	<tr>
 			<td><%= index + 1 %></td>
 			<td><%= item_list.part_detail %></td>
-			<td><%#= item_list.material.name %></td>
+			<td>
+				<% if item_list.material_id.present? %>
+					<%= item_list.material.name %>
+				<% elsif item_list.fitting_material_id.present? %>
+					<%= item_list.fitting_material.name %>
+				<% else %>
+				-
+				<% end %></td>
 			<td><%= item_list.thk_dia %></td>
 			<td><%= item_list.dimension_h %></td>
 			<td><%= item_list.dimension_w %></td>
@@ -133,7 +145,8 @@
 		<td colspan="9"></td>
 		<td>Total:</td>
 		<td></td>
-		<td colspan="2"></td>
+		<td></td>
+		<td></td>
 	</tr>	
 
 </tbody>

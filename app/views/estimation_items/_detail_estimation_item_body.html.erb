@@ -64,7 +64,8 @@
         <td><%= estimation_item.qty rescue'-' %></td>
         <td><%= estimation_item.uom rescue'-' %></td>
 
-        <td><% if estimation_item.material && estimation_item.material.category_id == 1 %>
+        <td>
+          <% if estimation_item.material && estimation_item.material.category_id == 1 %>
               <%= three_precision estimation_item.weight_fomular_1 rescue'-' %>
               <% array << estimation_item.weight_fomular_1 rescue'-' %>
 
@@ -93,13 +94,14 @@
             <% end %>
         </td>
         <td><%= estimation_item.unit_price %></td>
-        <td><% if estimation_item.material_id.present? %>
-              <%= two_precision(estimation_item.price_total) rescue'-' %></td>
-              <% array_price_total << estimation_item.price_total rescue'-'%>
-            <% else %>
-              <%= two_precision(estimation_item.fitting_price_total) rescue'-' %>
-              <% array_price_total << estimation_item.fitting_price_total rescue'-' %>
-            <% end %>
+        <td>
+          <% if estimation_item.material_id.present? %>
+            <%= two_precision(estimation_item.price_total) rescue'-' %></td>
+            <% array_price_total << estimation_item.price_total rescue'-'%>
+          <% else %>
+            <%= two_precision(estimation_item.fitting_price_total) rescue'-' %>
+            <% array_price_total << estimation_item.fitting_price_total rescue'-' %>
+          <% end %>
         <td>
           <% if roles.include?(InventoryManagementSystem::ESTIMATION_EDIT) %>
           <%= link_to 'Edit', edit_estimation_item_path(estimation_item, :estimation_id => params[:estimation_id]) , :class => 'btn btn-mini' %>

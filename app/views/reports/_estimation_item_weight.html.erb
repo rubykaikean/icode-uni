@@ -1,0 +1,28 @@
+<% if item_list.material && item_list.material.category_id == 1 %>
+              <%= three_precision item_list.weight_fomular_1 rescue'-' %>
+              <% array << item_list.weight_fomular_1 rescue'-' %>
+
+            <% elsif item_list.material && item_list.material.category_id == 2 %>
+              <%= three_precision item_list.weight_fomular_2 rescue'-' %>
+              <% array << item_list.weight_fomular_2 rescue'-'%>
+
+            <% elsif item_list.material && item_list.material.category_id == 3 %>
+              <%= three_precision item_list.weight_fomular_3 rescue'-' %>
+              <% array << item_list.weight_fomular_3 rescue'-'%>
+
+            <% elsif item_list.material && item_list.material.category_id == 4 %>
+              <%= three_precision item_list.weight_fomular_4 rescue'-' %>
+              <% array << item_list.weight_fomular_4 rescue'-'%>
+
+            <% elsif item_list.material && item_list.material.category_id == 5 %>
+              <%= three_precision item_list.weight_fomular_5 rescue'-' %>
+              <% array << item_list.weight_fomular_5 rescue'-'%>
+
+            <% elsif item_list.material && item_list.material.category_id == 6 %>
+              -
+            <% elsif item_list.fitting_material.present? %>
+              <% array << 0 %>
+            <% else %>
+              &nbsp;
+            <% end %>
+	

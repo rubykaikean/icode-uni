@@ -80,6 +80,13 @@ class SpreadsheetsController < ApplicationController
 			f.head = value[:head]
 			f.material_type = value[:material_type]
 			f.pump_speed = value[:pump_speed]
+			f.fan_speed = value[:fan_speed]
+			f.motor_power = value[:motor_power]
+			f.motor_pole = value[:motor_pole]
+			f.air_flow = value[:air_flow]
+			f.static_pressure = value[:static_pressure]
+			f.other = value[:other]
+			f.remark = value[:remark]
 			f.save!
 		end
 		redirect_to root_url, notice: "All Record had been store to database!!"
