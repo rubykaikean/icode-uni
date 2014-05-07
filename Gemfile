@@ -66,6 +66,7 @@ group :development do
   #gem 'sextant'
 end
 gem "spreadsheet", "~> 0.8.9"
+gem 'shortener'
 #gem 'reportbuilder'
 
 #gem "roo" , "~> 1.12.2"

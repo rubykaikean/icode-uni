@@ -1,37 +1,22 @@
 <head>
 <meta name="pdfkit-orientation" content="Landscape"/>
 </head>
-<% array = [] %>
+<% @array = [] %>
+<% array_price_total = [] %>
 <%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
 	<% @estimation.each_with_index do |estimation, index| %>
-	<% if index == 0 %>
+		<% if index == 0 %>
 
-	  <div></div>
-	<% else %>
-	  <div style="page-break-before: always;"> 	
-	<% end %>
+		  <div></div>
+		<% else %>
+		  <div style="page-break-before: always;"> 	
+		<% end %>
 
 <table class="text-left" width="100%">
-	<%# @estimation.each do |estimation| %>
-
-	<tr>
-		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
-		<th width="50%" align="left">Drawing No: <%= estimation.drawing_no_id rescue'-'  %></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
-		<th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
-		<th width="50%" align="left">Issued by: <%= estimation.user.username rescue'-' %></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left"></th>
-		<th width="50%" align="left">Weight: <u id="total_weight"></u></th>
-	</tr>
+		<!-- estimation item top info -->
+<%= render "estimation_item_top_info", :estimation => estimation %>
 	
 </table>
 <br>
@@ -57,104 +42,118 @@
 					<%= item_list.fitting_material.name %>
 				<% end %>
 			</td>
-			<td><%= item_list.thk_dia %></td>
-			<td><%= item_list.dimension_h %></td>
-			<td><%= item_list.dimension_w %></td>
-			<td><%= item_list.dimension_l %></td>
+			<!-- <td> -->
+				<% if item_list.material_id.present? %>
+					<td><%= item_list.thk_dia %></td>
+					<td><%= item_list.dimension_h %></td>
+					<td><%= item_list.dimension_w %></td>
+					<td><%= item_list.dimension_l %></td>
+				<% else %>
+					<td colspan="4"><%= item_list.fitting_material.material_code %></td>
+				<% end %>
+			<!-- </td> -->
 			<td><%= item_list.wt_ibs_ft %></td>
 			<td><%= item_list.qty %></td>
 			<td><%= item_list.uom %></td>
 			<td>
-				<%= render "estimation_item_weight", :item_list = item_list %>
+				<%= render "estimation_item_weight", :item_list => item_list %>
+				
 			</td>
-			<td><%= item_list.unit_price %></td>
-			<td></td>	
+			<td><%= item_list.unit_price rescue'-' %></td>
+			<td>
+				<% if item_list.material_id.present? %>
+            <%= two_precision(item_list.price_total) rescue'-' %></td>
+            <% array_price_total << item_list.price_total rescue'-'%>
+          <% else %>
+            <%= two_precision(item_list.fitting_price_total) rescue'-' %>
+            <% array_price_total << item_list.fitting_price_total rescue'-' %>
+          <% end %>
+			</td>
 				<% if index == 0 %>
 					<td rowspan="<%= 30 %>">
 						<%#= my_helper(estimation)[index] %>
-						<%= my_helper(estimation).html_safe %>					
+						<%= my_helper(estimation).html_safe %>
 					</td>		
 				<% end %>	
 			
 	</tr>
 		
 	<% else %>
-</table>
-<div style="page-break-before: always;"></div>
-<table class="text-left" width="100%">
+		</table>
+		<div style="page-break-before: always;"></div>
+		<table class="text-left" width="100%">
+			<!-- estimation item top info -->
+			<%= render "estimation_item_top_info", :estimation => estimation %>
+			
+		</table>
+		<br>
+		<table border="1">
+			<thead>
+			<%= render "estimation_table" %>
+			</thead>
+				<!-- <tbody> -->
+				
+			<tr>
+					<td><%= index + 1 %></td>
+					<td><%= item_list.part_detail %></td>
+					<td>
+						<% if item_list.material_id.present? %>
+							<%= item_list.material.name %>
+						<% elsif item_list.fitting_material_id.present? %>
+							<%= item_list.fitting_material.name %>
+						<% else %>
+						-
+						<% end %></td>
+					<%# if item_list.material_id.present? %>
+						<td><%= item_list.thk_dia %></td>
+						<td><%= item_list.dimension_h %></td>
+						<td><%= item_list.dimension_w %></td>
+						<td><%= item_list.dimension_l %></td>
+					<%# else %>
+						<!-- <td colspan="4"> -->
+							<%#= item_list.fitting_material.material_code rescue'-' %>
+						<!-- </td> -->
+					<%# end %>
+					<td><%= item_list.wt_ibs_ft %></td>
+					<td><%= item_list.qty %></td>
+					<td><%= item_list.uom %></td>
+					<td>
+							<%= render "estimation_item_weight", :item_list => item_list %>
+					</td>	
+					<td><%= item_list.unit_price %></td>
+					<td><%#= two_precision(estimation_item.price_total) rescue'-' %>
+ 					<% if item_list.material_id.present? %>
+            <%= two_precision(item_list.price_total) rescue'-' %></td>
+            <% array_price_total << item_list.price_total rescue'-'%>
+          <% else %>
+            <%= two_precision(item_list.fitting_price_total) rescue'-' %>
+            <% array_price_total << item_list.fitting_price_total rescue'-' %>
+          <% end %>
+          </td>
+					<td rowspan="<%= estimation.estimation_item.count - 29  %>">
+					<%#= estimation_remarks[index] %>
+						<%#= my_helper(estimation)[index] %>
+					</td>
 
-	<tr>
-		<th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
-		<th width="50%" align="left">Drawing No: <%= estimation.drawing_no_id rescue'-' %></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
-		<th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
-		<th width="50%" align="left">Issued by: <%= estimation.user.username rescue'-' %></th>
-	</tr>
-	<tr>
-		<th width="50%" align="left"></th>
-		<th width="50%" align="left">Weight: <u id="total_weight"></u>%>Ton(s)</th>
-	</tr>
-	
-</table>
-<br>
-<table border="1">
-	<thead>
-	<%= render "estimation_table" %>
-	</thead>
-		<!-- <tbody> -->
-		
-	<tr>
-			<td><%= index + 1 %></td>
-			<td><%= item_list.part_detail %></td>
-			<td>
-				<% if item_list.material_id.present? %>
-					<%= item_list.material.name %>
-				<% elsif item_list.fitting_material_id.present? %>
-					<%= item_list.fitting_material.name %>
-				<% else %>
-				-
-				<% end %></td>
-			<td><%= item_list.thk_dia %></td>
-			<td><%= item_list.dimension_h %></td>
-			<td><%= item_list.dimension_w %></td>
-			<td><%= item_list.dimension_l %></td>
-			<td><%= item_list.wt_ibs_ft %></td>
-			<td><%= item_list.qty %></td>
-			<td><%= item_list.uom %></td>
-			<td>
-	        </td>	
-			<td><%#= item_list.unit_price %></td>
-			<td><%#= two_precision(estimation_item.price_total) rescue'-' %></td>	
-			<td rowspan="<%= estimation.estimation_item.count - 29  %>">
-			<%#= estimation_remarks[index] %>
-				<%#= my_helper(estimation)[index] %></td>
+			</tr>			
 
-	</tr>			
+				<% counter = 1 %>
 
-		<% counter = 1 %>
+				<% end %> <!-- counter -->	
+			<% end %> <!-- second each do -->
 
-		<% end %> <!-- counter -->	
-	<% end %> <!-- second each do -->
+			<tr>
+				<td colspan="9"></td>
+				<td>Total:</td>
+				<td><%= four_precision(@array.sum) %></td>
+				<td></td>
+				<td><%= four_precision(array_price_total.sum) %></td>
+			</tr>	
 
-	<tr>
-		<td colspan="9"></td>
-		<td>Total:</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>	
-
-</tbody>
-</table>
+		</tbody>
+		</table>
 <!-- </div> page break counter -->
-
 	<% end %>
-		
 <!-- </div> -->
 
 <% else %>

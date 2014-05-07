@@ -111,6 +111,9 @@ IcodeUni::Application.routes.draw do
 
   get "home/index"
   get "home/test"
+
+  match '/:id' => "shortener/shortened_urls#show", via: [:get]
+
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
     get :autocomplete_user_username, :on => :collection
