@@ -3,10 +3,12 @@
 </head>
 <% @array = [] %>
 <% array_price_total = [] %>
+<% @index_count = [] %>
 <%# index = 0 %>
 <% counter = 0 %>
 <% if @estimation.present? %>
 	<% @estimation.each_with_index do |estimation, index| %>
+	
 		<% if index == 0 %>
 
 		  <div></div>
@@ -27,7 +29,7 @@
 	<tbody>
 		<%# @remark_index = 0 %>
 	<% estimation.estimation_items.each_with_index do |item_list , index| %>
-		
+		<% @index_count << index + 1 %>
 		<% counter += 1 %>
 		<% if counter < 31 %>
 		<%# @remark_index = index %>
@@ -52,7 +54,13 @@
 					<td colspan="4"><%= item_list.fitting_material.material_code %></td>
 				<% end %>
 			<!-- </td> -->
-			<td><%= item_list.wt_ibs_ft %></td>
+			<td>
+					<% if item_list.material_id.present? %>
+						<%= item_list.wt_ibs_ft rescue'-' %>
+					<% else %>
+					-
+					<% end %>
+			</td>
 			<td><%= item_list.qty %></td>
 			<td><%= item_list.uom %></td>
 			<td>
@@ -147,7 +155,7 @@
 				<td>Total:</td>
 				<td><%= four_precision(@array.sum) %></td>
 				<td></td>
-				<td><%= four_precision(array_price_total.sum) %></td>
+				<td id="estimation_item_total_weight"><%= four_precision(array_price_total.sum) %></td>
 			</tr>	
 
 		</tbody>
