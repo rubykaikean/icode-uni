@@ -29,7 +29,7 @@
 	<tbody>
 		<%# @remark_index = 0 %>
 	<% estimation.estimation_items.each_with_index do |item_list , index| %>
-		<% @index_count << index + 1 %>
+		
 		<% counter += 1 %>
 		<% if counter < 31 %>
 		<%# @remark_index = index %>
@@ -112,16 +112,14 @@
 						<% else %>
 						-
 						<% end %></td>
-					<%# if item_list.material_id.present? %>
-						<td><%= item_list.thk_dia %></td>
-						<td><%= item_list.dimension_h %></td>
-						<td><%= item_list.dimension_w %></td>
-						<td><%= item_list.dimension_l %></td>
-					<%# else %>
-						<!-- <td colspan="4"> -->
-							<%#= item_list.fitting_material.material_code rescue'-' %>
-						<!-- </td> -->
-					<%# end %>
+						<% if item_list.material_id.present? %>
+							<td><%= item_list.thk_dia %></td>
+							<td><%= item_list.dimension_h %></td>
+							<td><%= item_list.dimension_w %></td>
+							<td><%= item_list.dimension_l %></td>
+						<% else %>
+							<td colspan="4"><%= item_list.fitting_material.material_code %></td>
+						<% end %>
 					<td><%= item_list.wt_ibs_ft %></td>
 					<td><%= item_list.qty %></td>
 					<td><%= item_list.uom %></td>

@@ -1,0 +1,11 @@
+
+<div>
+	<div class="pull-right"><%= link_home_button %></div>
+	<%= search_form_for @list_project_search do |f| %>
+		
+		<%= f.text_field :name_cont, :class => "input-medium search-query", :placeholder => "Search Name" %>
+  	<%= f.submit "Search", :class => "btn"%>
+		
+	<% end %>
+
+</div>

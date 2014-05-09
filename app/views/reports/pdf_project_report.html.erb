@@ -1,0 +1,61 @@
+<head>
+<meta name="pdfkit-orientation" content="Landscape"/>
+</head>
+
+<% counter = 0 %>
+<h3>Project List</h3>
+<% @project_report.each do |project| %>
+<% if index == 0 %>
+
+  <div></div>
+<% else %>
+  <div style="page-break-before: always;"> 	
+<% end %>
+<div>
+	<div class="pull-right">
+		Date : <%= project.date.strftime("%d/%m/%Y") rescue'-' %>
+	</div>
+	<u>Client : <%= project.client.name rescue'-' %></u>
+</div>
+
+<table class="table table-bordered">
+	<tr>
+		<th style="text-align:center;" colspan="9"><strong>Products List</strong></th>
+	</tr>
+	<tr>
+		<th>No.</th>
+		<th style="width:500px;">Description</th>
+		<th>Drawing No</th>
+		<th>Qty</th>
+		<th>Batch No.</th>
+		<th>Issue By</th>
+		<th>Issue Date</th>
+		<th>Remarks</th>
+	</tr>
+	<% project.stations.each_with_index do |p, index| %>
+	<tr>
+		<td><%= index + 1 %></td>
+		<td colspan="8"><%= p.name %></td>
+	</tr>
+
+		<% p.estimations.each_with_index do |g, index| %>
+		<%# counter += 1 %>
+		<%# if counter < 28 %>
+		<tr>
+			<td id="project_report_code"></td>
+			<td><%= g.title rescue'-' %></td>
+			<td><%= g.drawing_no_id rescue'-'%></td>
+			<td></td>
+			<td></td>
+			<td><%= g.user.username rescue'-'%></td>
+			<td><%= g.date %></td>
+			<td></td>
+		</tr>
+		<% end %>
+		<tr>
+			<% 8.times do |td| %><td></td><% end %>
+		</tr>
+	<% end %>
+</table>
+
+<% end %>	

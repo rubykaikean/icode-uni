@@ -56,7 +56,7 @@ class EstimationsController < ApplicationController
              end
           elsif params[:estimation][:station_id].present?
             if @estimation.save
-              format.html {redirect_to stations_path }
+              format.html {redirect_to stations_path, notice:"Estimation was successfully created." }
             else
               format.html { render action: 'new' }
               format.json { render json: @estimation.errors, status: :unprocessable_entity }
@@ -83,11 +83,11 @@ class EstimationsController < ApplicationController
     
         if params[:estimation][:station_id].present?
         # if params[:estimation][:station_id].present?
-          format.html { redirect_to estimations_path }
+          format.html { redirect_to estimations_path, notice:"Estimation was successfully updated." }
         # end
         # standrad path 
         elsif params[:estimation][:project_id].present? && params[:estimation][:standard_project_id].present?
-          format.html { redirect_to project_estimation_projects_path(:id => params[:estimation][:project_id]) }
+          format.html { redirect_to project_estimation_projects_path(:id => params[:estimation][:project_id]), notice:"Estimation was successfully updated." }
         else 
           format.html{ redirect_to estimations_path }
         end
@@ -117,7 +117,7 @@ class EstimationsController < ApplicationController
     estimation.destroy
       respond_to do |format|
         if params[:project_id].present?
-          format.html { redirect_to project_estimation_projects_path(:id => params[:project_id]) }
+          format.html { redirect_to project_estimation_projects_path(:id => params[:project_id]), notice:"Estimation was successfully deleted." }
           format.json { head :no_content }
         else
           format.html { redirect_to estimations_path }

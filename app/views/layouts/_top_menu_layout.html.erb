@@ -97,9 +97,9 @@
             </a>
         <ul class="dropdown-menu">
           <% if roles.include?(InventoryManagementSystem::LIST_STATION_REPORT) %>
-            <li><%= link_to "List Station Report", list_station_report_reports_path %></li>
+            <li><%= link_to "List Project Report", list_project_report_reports_path %></li>
           <% else %>
-            <li>List Station Report</li>
+            <li>List Project Report</li>
           <% end %>
           <% if roles.include?(InventoryManagementSystem::LIST_ESTIMATION_REPORT) %>
             <li><%= link_to "List Estimation Report", list_estimation_report_reports_path %></li>

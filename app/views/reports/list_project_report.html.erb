@@ -1,0 +1,43 @@
+<h3>List Project Report</h3>
+<%= render "top_action_list_station_report" %>
+<hr>
+<%= form_tag pdf_project_report_reports_path, :target=>"_blank", :method =>"get" do %>
+<div>
+	<div class="pull-right"></div>
+	<%= submit_tag "Show", :class=>"btn" %>
+	<%= submit_tag "PDF Report", :class=>"btn" %>
+	<%= submit_tag "Excel Report", :class=>"btn" %>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th></th>
+			<th>Project Name</th>
+			<th>Client Name</th>
+			<th>Date</th>
+			<th>Project Type</th>
+			<th></th>
+		</tr>
+	</thead>
+	<% @list_project_report.each_with_index do |p , index| %>
+	<tbody>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><%= check_box_tag "project_ids[]", p.id %></td>
+			<td><%= p.name rescue'-' %></td>
+			<td><%= p.client.name rescue'-' %></td>
+			<td><%= p.date.strftime("%d-%m-%Y") %></td>
+			<td><% if p.projects == true %>
+						Project
+					<% else %>
+						Customize
+					<% end %>
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<% end %>

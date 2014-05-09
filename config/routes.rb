@@ -134,8 +134,9 @@ IcodeUni::Application.routes.draw do
       collection do
         get :pdf_estimation_report
         get :list_estimation_report
-        get :testing_page
-        get :list_station_report
+        get :pdf_project_report
+        get :list_project_report
+        get :excel_project_report
       end
     end
 
