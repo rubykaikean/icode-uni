@@ -1,0 +1,146 @@
+<% @array = [] %>
+<% array_price_total = [] %>
+<% @index_count = [] %>
+<%# index = 0 %>
+<% counter = 0 %>
+
+
+<% if @excel_estimation_report.present? %>
+  <% @excel_estimation_report.each_with_index do |estimation, index| %>
+  
+<table style="width:100%;">
+  <%#= render "estimation_item_top_info", :estimation => estimation %>
+  <tr>
+        <th width="50%" align="left">Client: <%= estimation.station.project.client.name rescue'-'%></th>
+        <th width="50%" align="left">Drawing No: <%= estimation.drawing_no_id rescue'-' %></th>
+      </tr>
+      <tr>
+        <th width="50%" align="left">Title: <%= estimation.title rescue'-' %></th>
+        <th width="50%" align="left">Date: <%= estimation.date rescue'-'%></th>
+      </tr>
+      <tr>
+        <th width="50%" align="left">Dimension: <%= estimation.dimension rescue'-' %></th>
+        <th width="50%" align="left">Issued by: <%= estimation.user.username rescue'-' %></th>
+      </tr>
+      <tr>
+        <th width="50%" align="left"></th>
+        <th width="50%" align="left">Weight: <u id="total_weight"></u></th>
+      </tr>
+</table>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+    <th width="100" rowspan="2"><p class="text-center">No</p></th>
+    <th width="100" rowspan="2"><p class="text-center">Part/MatCode</p></th>
+    <th width="100" rowspan="2"><p class="text-center">Material</p></th>
+    <th width="100" colspan="4"><p class="text-center">Dimension(mm)</p></th>
+    <th width="100" rowspan="2"><p class="text-center">WT<br>lbs/FtÂ²</p></th>
+    <th width="50" rowspan="2"><p class="text-center">Qty</p></th>
+    <th width="50" rowspan="2"><p class="text-center">UOM</p></th>
+    <th width="50" rowspan="2"><p class="text-center">Weight<br>lb/kg</p></th>
+    <th width="100" rowspan="2"><p class="text-center">Unit<br>Price</p></th>
+    <th width="100" rowspan="2"><p class="text-center">Total</p></th>
+    <th width="150" rowspan="2"><p class="text-center">Remarks</p></th>
+  </tr>
+
+  <tr>
+    <th width="50"><p class="text-center"> Thk/Dia. </p></th>
+    <th width="50"><p class="text-center"> H </p></th>
+    <th width="50"><p class="text-center"> W </p></th>
+    <th width="50"><p class="text-center"> L </p></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% estimation.estimation_items.each_with_index do |item_list, index| %>
+
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= item_list.part_detail %></td>
+      <td>
+        <% if item_list.material_id.present? %>
+          <%= item_list.material.name %>
+        <% else %>
+          <%= item_list.fitting_material.name %>
+        <% end %>
+      </td>
+        <% if item_list.material_id.present? %>
+          <td><%= item_list.thk_dia %></td>
+          <td><%= item_list.dimension_h %></td>
+          <td><%= item_list.dimension_w %></td>
+          <td><%= item_list.dimension_l %></td>
+        <% else %>
+          <td colspan="4"><%= item_list.fitting_material.material_code %></td>
+        <% end %>
+      <td>
+          <% if item_list.material_id.present? %>
+            <%= item_list.wt_ibs_ft rescue'-' %>
+          <% else %>
+          -
+          <% end %>
+      </td>
+      <td><%= item_list.qty %></td>
+      <td><%= item_list.uom %></td>
+      <td>
+        <% if item_list.material && item_list.material.category_id == 1 %>
+              <%= three_precision item_list.weight_fomular_1 rescue'-' %>
+              <% @array << item_list.weight_fomular_1 rescue'-' %>
+        <% elsif item_list.material && item_list.material.category_id == 2 %>
+          <%= three_precision item_list.weight_fomular_2 rescue'-' %>
+          <% @array << item_list.weight_fomular_2 rescue'-'%>
+
+        <% elsif item_list.material && item_list.material.category_id == 3 %>
+          <%= three_precision item_list.weight_fomular_3 rescue'-' %>
+          <% @array << item_list.weight_fomular_3 rescue'-'%>
+
+        <% elsif item_list.material && item_list.material.category_id == 4 %>
+          <%= three_precision item_list.weight_fomular_4 rescue'-' %>
+          <% @array << item_list.weight_fomular_4 rescue'-'%>
+
+        <% elsif item_list.material && item_list.material.category_id == 5 %>
+          <%= three_precision item_list.weight_fomular_5 rescue'-' %>
+          <% @array << item_list.weight_fomular_5 rescue'-'%>
+
+        <% elsif item_list.material && item_list.material.category_id == 6 %>
+          -
+        <% elsif item_list.fitting_material.present? %>
+          <% @array << 0 %> - 
+        <% else %>
+          &nbsp;
+        <% end %>
+      </td>
+      <td><%= item_list.unit_price rescue'-' %></td>
+      <td>
+        <% if item_list.material_id.present? %>
+            <%= two_precision(item_list.price_total) rescue'-' %></td>
+            <% array_price_total << item_list.price_total rescue'-'%>
+          <% else %>
+            <%= two_precision(item_list.fitting_price_total) rescue'-' %>
+            <% array_price_total << item_list.fitting_price_total rescue'-' %>
+          <% end %>
+      </td>
+        <% if index == 0 %>
+          <td rowspan="<%= 30 %>">
+            <%#= my_helper(estimation)[index] %>
+            <%= my_helper(estimation).html_safe %>
+          </td>   
+        <% end %> 
+      </tr>
+  <% end %> <!-- end of second each -->
+      <tr>
+        <td colspan="9"></td>
+        <td>Total:</td>
+        <td><%= four_precision(@array.sum) %></td>
+        <td></td>
+        <td id="estimation_item_total_weight"><%= four_precision(array_price_total.sum) %></td>
+      </tr> 
+  </tbody>
+</table>
+
+
+<% end %> <!-- end of first each -->
+
+<% else %>
+No Record Found
+<% end %>

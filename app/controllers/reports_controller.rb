@@ -33,7 +33,7 @@ class ReportsController < ApplicationController
             format.html
           end
       elsif params[:commit] == "Excel Report"
-        redirect_to excel_estimation_report_reports_path(:estimation_ids => params[:estimation_ids])
+        redirect_to excel_estimation_report_reports_path(:estimation_ids => params[:estimation_ids], :format => "xls")
       end
     else
       redirect_to estimation_report_reports_path, notice: "please check at least one check box"
@@ -70,6 +70,7 @@ class ReportsController < ApplicationController
   def excel_project_report
     @excel_project_report = Project.find(params[:project_ids])
     respond_to do |format|
+      # format.html
       format.csv { render text: @excel_project_report.to_csv }
       format.xls
     end
@@ -78,6 +79,7 @@ class ReportsController < ApplicationController
   def excel_estimation_report
     @excel_estimation_report = Estimation.find(params[:estimation_ids])
     respond_to do |format|
+      # format.html
       format.csv { render text: @excel_estimation_report.to_csv }
       format.xls
     end
