@@ -83,11 +83,13 @@ class PriceControlItemsController < ApplicationController
   end
   
   def add_raw_group_price
+    session[:add_raw_group_price_page] = request.url
     @raw_material_search = Material.search(params[:q])
     @raw_material_list = @raw_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=>30 )
   end
 
   def add_fitting_group_price
+    session[:add_fitting_group_price_page] = request.url
     @fitting_material_search = FittingMaterial.search(params[:q])
     @fitting_material_list = @fitting_material_search.result(:distinct => true).paginate(:page => params[:page], :per_page=> 30 )
   end
@@ -102,14 +104,16 @@ class PriceControlItemsController < ApplicationController
   # render :text => params.to_json
     if params[:commit] == "Submit Fitting Material"
       if params[:fitting_ids].present?
-        params[:fitting_ids].each do |fitting_ids|
-          new_fitting_price = PriceControlItem.new
-          new_fitting_price.fitting_material_id = fitting_ids
-          new_fitting_price.new_unit_price = params[:new_price]
-          new_fitting_price.new_eff_date = params[:date]
-          new_fitting_price.save!
+        if session[:group_price_page].present?
+          params[:fitting_ids].each do |fitting_ids|
+            new_fitting_price = PriceControlItem.new
+            new_fitting_price.fitting_material_id = fitting_ids
+            new_fitting_price.new_unit_price = params[:new_price]
+            new_fitting_price.new_eff_date = params[:date]
+            new_fitting_price.save!
+          end
+        redirect_to session[:add_fitting_group_price_page], notice: "Successfully created Price and Date!"
         end
-        redirect_to add_fitting_group_price_price_control_items_path, notice: "Successfully created Price and Date!"
       else
         redirect_to add_fitting_group_price_price_control_items_path, notice: "Please Click at least one check box!"
       end
@@ -122,7 +126,7 @@ class PriceControlItemsController < ApplicationController
           new_raw_price.new_eff_date = params[:date]
           new_raw_price.save!
         end
-        redirect_to add_raw_group_price_price_control_items_path, notice: "Successfully created Price and Date!"
+        redirect_to session[:add_raw_group_price_page], notice: "Successfully created Price and Date!"
       else
         redirect_to add_raw_group_price_price_control_items_path, notice: "Please click at least one check box!"
       end

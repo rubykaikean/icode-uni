@@ -114,8 +114,6 @@ ActiveRecord::Schema.define(version: 20140507080955) do
     t.datetime "updated_at"
   end
 
-  add_index "fitting_materials", ["material_code"], name: "index_fitting_materials_on_material_code", unique: true, using: :btree
-
   create_table "history_file_deletes", force: true do |t|
     t.string   "title"
     t.string   "dimension"

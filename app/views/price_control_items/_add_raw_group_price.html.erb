@@ -1,4 +1,4 @@
-
+<%#= render :text => session[:add_raw_group_price_page].to_json %>
 <%= form_tag create_raw_fitting_price_control_items_path do %>
 
 <div style="float: right; "><%= link_home_button %></div>
@@ -11,6 +11,10 @@ Edit With New Price :<%= number_field_tag "new_price", nil, placeholder: "Enter 
 <div class="dp2 date">
 Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("%d/%m/%Y") %><span class="add-on"></span>
 </div>
+
+<% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
+		<%= submit_tag "Submit Raw Material", :class => "btn" %>
+<% end %>
 <table class="table table-bordered">
 	<tr>
 		<th>No.</th>
@@ -42,9 +46,7 @@ Edit with New Date :<%= text_field_tag "date", nil, value: Date.today.strftime("
 	</tr>
 	<% end %>
 </table>
-<% if roles.include?(InventoryManagementSystem::PRICE_CONTROL_ITEM_ADD) %>
-		<%= submit_tag "Submit Raw Material", :class => "btn" %>
-<% end %>
+
 <% end %>
 
 <script type="text/javascript">

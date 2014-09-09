@@ -25,7 +25,7 @@ class FittingMaterialsController < ApplicationController
 
   # GET /fitting_materials/1/edit
   def edit
-    session[:fitting_material_page] = request.referer 
+    session[:fitting_material_page] = request.referer
   end
 
   # POST /fitting_materials
