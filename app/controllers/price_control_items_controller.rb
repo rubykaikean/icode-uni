@@ -101,7 +101,6 @@ class PriceControlItemsController < ApplicationController
 
   # this is group add item price
   def create_raw_fitting
-  # render :text => params.to_json
     if params[:commit] == "Submit Fitting Material"
       if params[:fitting_ids].present?
         if session[:group_price_page].present?
