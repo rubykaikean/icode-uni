@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   # change the below method name to something descriptive 
   def authorization_admin
     unless user_is_admin?
-      # flash[:alert] = "You Cannot Access!"
+      flash[:alert] = "You Cannot Access!"
       redirect_to root_url
     end
   end
