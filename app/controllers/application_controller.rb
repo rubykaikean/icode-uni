@@ -29,8 +29,7 @@ class ApplicationController < ActionController::Base
   # change the below method name to something descriptive 
   def authorization_admin
     unless user_is_admin?
-      flash[:alert] = "You Cannot Access!"
-      redirect_to root_url
+      redirect_to root_url, flash[:alert] = "You Cannot Access!"
     end
   end
 
@@ -53,8 +52,7 @@ class ApplicationController < ActionController::Base
       model_array.each do |role|
         unless roles.include?(role)
           break;
-          flash[:notice] = "You are not authorize!"
-          redirect_to root_url
+          redirect_to root_url, flash[:notice] = "You are not authorize!"
         end
       end
   end

@@ -16,6 +16,7 @@
   <%#= f.password_field :password_confirmation %>  
   <%= f.label :status, "Is Active?" %>
   <%= f.check_box(:status) %>
+  <%= f.input :admin %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

@@ -112,7 +112,7 @@ IcodeUni::Application.routes.draw do
   get "home/index"
   get "home/test"
 
-  match '/:id' => "shortener/shortened_urls#show", via: [:get]
+  
 
   devise_for :users #, :controllers => {:registrations => "registrations"}
   resources :users do
@@ -141,7 +141,7 @@ IcodeUni::Application.routes.draw do
       end
     end
 
-
+    match '/:id' => "shortener/shortened_urls#show", via: [:get]
     # resources :reports do
     #   get :estimation, :on => :collection
     # end
