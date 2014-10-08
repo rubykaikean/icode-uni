@@ -4,7 +4,7 @@
 
 <% counter = 0 %>
 <h3>Project List</h3>
-<% @project_report.each do |project| %>
+<% @project_report.each_with_index do |project, index| %>
 <% if index == 0 %>
 
   <div></div>

@@ -36,7 +36,7 @@ class ReportsController < ApplicationController
         redirect_to excel_estimation_report_reports_path(:estimation_ids => params[:estimation_ids], :format => "xls")
       end
     else
-      redirect_to estimation_report_reports_path, notice: "please check at least one check box"
+      redirect_to list_estimation_report_reports_path, notice: "please check at least one check box"
     end
     
   end
